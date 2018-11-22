@@ -1,0 +1,10 @@
+Method,exp,Accuracy,0.800,MAE,0.997,Precision,0.667,Recall,1.000,Number of Cascades,225
+Method,exp,Accuracy,0.375,MAE,0.997,Precision,0.500,Recall,0.300,Number of Cascades,218
+Method,exp,Accuracy,0.800,MAE,0.992,Precision,0.800,Recall,0.800,Number of Cascades,230
+Method,exp,Accuracy,0.778,MAE,0.994,Precision,0.875,Recall,0.700,Number of Cascades,267
+Method,exp,Accuracy,0.533,MAE,0.994,Precision,0.800,Recall,0.400,Number of Cascades,218
+Method,exp,Accuracy,0.909,MAE,0.995,Precision,0.833,Recall,1.000,Number of Cascades,247
+Method,exp,Accuracy,0.909,MAE,0.993,Precision,0.833,Recall,1.000,Number of Cascades,272
+Method,exp,Accuracy,0.429,MAE,0.995,Precision,0.750,Recall,0.300,Number of Cascades,231
+Method,exp,Accuracy,0.560,MAE,0.996,Precision,0.467,Recall,0.700,Number of Cascades,281
+Method,exp,Accuracy,0.667,MAE,0.998,Precision,0.750,Recall,0.600,Number of Cascades,237

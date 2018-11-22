@@ -1,0 +1,2 @@
+Seed:1,num_nodes:50,sparsity:0.1,n=r/network_50_nodes/network_seed_1.csv,f:w/firing_50.csv,i:w/indice_50.csv,r:r/results_50.txt,m=r/network_50_nodes/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/network_50_nodes/progress_tracker_seed_1.txt
+Method:exp,Accuracy:0.407,MAE:0.996,Precision:0.406,Recall:0.408,Number of Cascades:1847

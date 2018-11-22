@@ -1,0 +1,6 @@
+Done Arranging Data, Took 0.010 seconds
+
+Done with node:3, Took 3.851 seconds
+Done with node:5, Took 1.440 seconds
+Done with node:8, Took 1.270 seconds
+Done with node:10, Took 1.159 seconds

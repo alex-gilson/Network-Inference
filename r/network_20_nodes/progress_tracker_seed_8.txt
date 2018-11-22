@@ -1,0 +1,22 @@
+Done Arranging Data, Took 0.059 seconds
+
+Done with node:1, Took 19.396 seconds
+Done with node:2, Took 5.989 seconds
+Done with node:3, Took 6.133 seconds
+Done with node:4, Took 28.569 seconds
+Done with node:5, Took 27.992 seconds
+Done with node:6, Took 6.398 seconds
+Done with node:7, Took 24.447 seconds
+Done with node:8, Took 27.147 seconds
+Done with node:9, Took 18.868 seconds
+Done with node:10, Took 5.448 seconds
+Done with node:11, Took 23.896 seconds
+Done with node:12, Took 24.425 seconds
+Done with node:13, Took 17.941 seconds
+Done with node:14, Took 11.845 seconds
+Done with node:15, Took 17.714 seconds
+Done with node:16, Took 4.130 seconds
+Done with node:17, Took 10.176 seconds
+Done with node:18, Took 5.824 seconds
+Done with node:19, Took 19.316 seconds
+Done with node:20, Took 26.321 seconds
