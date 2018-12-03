@@ -9,9 +9,10 @@ import sys
 
 # define number of nodes
 num_nodes=int(sys.argv[1])
+#num_nodes=10
 # file to write network to
 python_network=sys.argv[2]
-
+#python_network='weighted_network.csv'
 # set printing precision
 np.set_printoptions(precision=2)
 
