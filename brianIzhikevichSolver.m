@@ -21,7 +21,7 @@ m = 'inferred_matrix.csv';
 %sparsity = 2*degree;
 sparsity = 2;
 
-fileToTrackProgress = 'dummyFile.csv';
+fileToTrackProgress = 'track_progress.csv';
 
 %  read all the files obtained in python
 firings_indices=csvread(f);
@@ -97,6 +97,3 @@ S_hat_adjacency=digraph(S_hat);
 
 % write information to file
 writetable(S_hat_adjacency.Edges, m);
-
-
-        

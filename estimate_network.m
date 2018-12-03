@@ -8,32 +8,41 @@ total_obj = 0;
 
 tic
 for c=1:size(cascades, 1)
+    % Obtain the timing of the nodes that have fired
     idx = find(cascades(c,:)~=-1); % used nodes
+    
+    % Sort each cascade by earliest firing and keep the index order (ord)
     [val, ord] = sort(cascades(c, idx));
     
+    % For all used nodes
+    % Don't take the first value (it's value is 0, it belongs to the
+    % stimulated node)
+    
     for i=2:length(val)
+		
+        % num_cascades stores the amount of times each node has fired
         num_cascades(idx(ord(i))) = num_cascades(idx(ord(i))) + 1;
         for j=1:i-1
-%             if (strcmp(type_diffusion, 'exp'))
+            if (strcmp(type_diffusion, 'exp'))
                 A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+val(i)-val(j);
-%             elseif (strcmp(type_diffusion, 'pl') && (val(i)-val(j)) > 1)
-%                 A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+log(val(i)-val(j));
-%             elseif (strcmp(type_diffusion, 'rayleigh'))
-%                 A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+0.5*(val(i)-val(j))^2;
-%             end
+            elseif (strcmp(type_diffusion, 'pl') && (val(i)-val(j)) > 1)
+                A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+log(val(i)-val(j));
+            elseif (strcmp(type_diffusion, 'rayleigh'))
+                A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+0.5*(val(i)-val(j))^2;
+            end
         end
     end
     
     for j=1:num_nodes
         if isempty(find(idx==j))
             for i=1:length(val)
-%                 if (strcmp(type_diffusion, 'exp'))
+                if (strcmp(type_diffusion, 'exp'))
                     A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + (horizon-val(i));
-%                 elseif (strcmp(type_diffusion, 'pl') && (horizon-val(i)) > 1)
-%                     A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + log(horizon-val(i));
-%                 elseif (strcmp(type_diffusion, 'rayleigh'))
-%                     A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + 0.5*(horizon-val(i))^2;
-%                 end
+                elseif (strcmp(type_diffusion, 'pl') && (horizon-val(i)) > 1)
+                    A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + log(horizon-val(i));
+                elseif (strcmp(type_diffusion, 'rayleigh'))
+                    A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + 0.5*(horizon-val(i))^2;
+                end
             end
         end
     end

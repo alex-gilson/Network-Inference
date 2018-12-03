@@ -1,0 +1,2 @@
+Seed:1,num_nodes:,sparsity:0.1,n=r/for_histogram/network_sim_time_1000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_1000/results.txt,m=,fileToTrackProgress:
+Seed:1,num_nodes:,sparsity:0.1,n=r/for_histogram/network_sim_time_1000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_1000/results.txt,m=,fileToTrackProgress:
