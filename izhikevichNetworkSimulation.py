@@ -21,9 +21,9 @@ from utility import *
 # firingsFileName=sys.argv[6]
 # indicesFileName=sys.argv[7]
 seed=1
-N=int(10)
-sparsity=float(0.1)
-simulation_duration=int(1000)
+N=10
+sparsity=0.1
+simulation_duration=1000
 networkFileName="r/for_histogram/network_sim_time_100/network_seed_1.csv"
 firingsFileName="w/firing.csv"
 indicesFileName="w/indice.csv"
