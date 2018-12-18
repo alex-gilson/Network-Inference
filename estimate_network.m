@@ -48,15 +48,17 @@ for c=1:size(cascades, 1)
     end
 end
 stop=toc;
-% csvwrite('w/a_potential.csv',full(A_potential))
-% csvwrite('w/a_bad.csv',full(A_bad))
-% csvwrite('w/cascades.csv',full(cascades))
-% csvwrite('w/num_cascades.csv',full(num_cascades))
-% csvwrite('w/S_matrix.csv',full(A))
+csvwrite('w/a_potential.csv',full(A_potential))
+csvwrite('w/a_bad.csv',full(A_bad))
+csvwrite('w/cascades.csv',full(cascades))
+csvwrite('w/num_cascades.csv',full(num_cascades))
+csvwrite('w/S_matrix.csv',full(A))
 
 fprintf(progressTrackerHandle,'Done Arranging Data, Took %.3f seconds\n\n', stop);
 
+
 % we will have a convex program per column
+
 for i=1:num_nodes
     
     if (num_cascades(i)==0)
@@ -66,10 +68,12 @@ for i=1:num_nodes
     
     tic
     [a_hat, obj] = solve_using_cvx(i, type_diffusion, num_nodes, num_cascades, A_potential, A_bad, cascades);
+    %C = cascades;
+    
     stop=toc;
     
     fprintf(progressTrackerHandle,'Done with node:%d, Took %.3f seconds\n',i, stop);
-        
+    %disp('Done with node:%d, Took %.3f seconds\n',i, stop);
     total_obj = total_obj + obj;
     A_hat(:,i) = a_hat;
 end
