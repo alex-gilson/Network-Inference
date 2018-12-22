@@ -26,6 +26,8 @@ diffusion_type=rayleigh
 horizon=20
 num_processors=3
 
+. py27env/bin/activate
+
 echo "Seed:$seed,num_nodes:$num_nodes,sparsity:$sparsity,n=$networkFileName,f:$firingsFileName,i:$indicesFileName,r:$resultsFileName,m=$matlabNetworkFileName,fileToTrackProgress:$fileToTrackProgress" >> $resultsFileName
 
 rtime="$( TIMEFORMAT='%lR';time ( python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName ) 2>&1 1>/dev/null )"
@@ -39,10 +41,10 @@ echo -e "\tStarting Matlab"
 
 # echo -e "\tDone with Matlab Took Approximately $rtime"
 
-matlab -nodesktop -nosplash -nojvm -r "f=$firingsFileName;t=$indicesFileName;n=$networkFileName;N=$num_nodes;horizon=$horizon;sparsity=$sparsity;type_diffusion=$diffusion_type;r=$resultsFileName;m=$matlabNetworkFileName;fileToTrackProgress=$fileToTrackProgress;generate_cascades.m;exit;"
+# matlab -nodesktop -nosplash -nojvm -r "generate_cascades('$firingsFileName','$indicesFileName','$networkFileName',$num_nodes,$horizon,$sparsity,'$diffusion_type','$resultsFileName','$matlabNetworkFileName','$fileToTrackProgress');exit;"
 
 python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $fileToTrackProgress
 
-#matlab -nodesktop -nosplash -nojvm -r "n='$networkFileName';sparsity=$sparsity;diffusion_type=$diffusion_type;r='$resultsFileName';m='$matlabNetworkFileName';fileToTrackProgress='$fileToTrackProgress';process_results.m;exit"
+# matlab -nodesktop -nosplash -nojvm -r "n='$networkFileName';sparsity=$sparsity;diffusion_type=$diffusion_type;r='$resultsFileName';m='$matlabNetworkFileName';fileToTrackProgress='$fileToTrackProgress';process_results.m;exit"
 
 echo >> $resultsFileName

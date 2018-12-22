@@ -1,4 +1,4 @@
-% Created by Pranav Malhotra, 07/06/2017
+% Created by Pranav Malhotra, 07/06/2017, edited by Alejandro Gilson 21/12/2018
 % Before calling script, initialise variables f, t, n, N, horizon, sparsity, diffusion_type, r, m
 % f: name of file with fired nodes
 % t: name of file with the corresponding firing times
@@ -9,7 +9,9 @@
 % diffusion_type: Either 'exp', 'rayleigh', 'pl'
 % r: name of file to store results in
 % m: name of file to store inferred matrix
-disp('got here')
+% Setup the cvx package so that it can be used
+%run('/home/alex/Downloads/cvx/cvx_setup.m');
+function generate_cascades(f, t, n, N, horizon, sparsity, diffusion_type, r, m, fileToTrackProgress)
 f = 'firings.csv';
 t = 'indices.csv';
 n = 'weighted_network.csv';
@@ -20,7 +22,6 @@ r = 'results.csv';
 m = 'inferred_matrix.csv';
 %sparsity = 2*degree;
 sparsity = 2;
-
 fileToTrackProgress = 'track_progress.csv';
 
 %  read all the files obtained in python
@@ -74,7 +75,6 @@ for n=1:N
         cascades=[cascades;current_cascade];
     end
 end
-
 % file handle for writing results
 progressTrackerHandle=fopen(fileToTrackProgress,'a');
 
