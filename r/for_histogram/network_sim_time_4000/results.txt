@@ -1,78 +1,31 @@
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt
 
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt
+Method:rayleigh,Accuracy:0.125,MAE:1.000,Precision:0.067,Recall:1.000,Number of Cascades:450
 
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-
-
-
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_1000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=20
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_1000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
-
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:0.000,Number of Cascades:450
-Method:rayleigh,Accuracy:0.150,MAE:1.000,Precision:0.150,Recall:0.150,Number of Cascades:450
-Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_1000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
+Method:rayleigh,Accuracy:0.125,MAE:1.000,Precision:0.067,Recall:1.000,Number of Cascades:450
+Method:rayleigh,Accuracy:0.125,MAE:1.000,Precision:0.067,Recall:1.000,Number of Cascades:450
+Method:rayleigh,Accuracy:0.640,MAE:1.000,Precision:0.533,Recall:0.800,Number of Cascades:450
 
 Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
-Method:rayleigh,Accuracy:0.000,MAE:1.000,Precision:0.000,Recall:NaN,Number of Cascades:450
+Method:rayleigh,Accuracy:0.640,MAE:1.000,Precision:0.533,Recall:0.800,Number of Cascades:450
 
-Method:rayleigh,Accuracy:0.125,MAE:1.000,Precision:0.067,Recall:1.000,Number of Cascades:450
-Method:rayleigh,Accuracy:0.125,MAE:1.000,Precision:0.067,Recall:1.000,Number of Cascades:450
-Method:rayleigh,Accuracy:0.125,MAE:0.999,Precision:0.067,Recall:1.000,Number of Cascades:450
+Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
+
+Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
+Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
+Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
+
+Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
+Method:rayleigh,Accuracy:0.640,MAE:1.000,Precision:0.533,Recall:0.800,Number of Cascades:450
+"[?1h=
+                < M A T L A B (R) >
+      Copyright 1984-2018 The MathWorks, Inc.
+      R2018b (9.5.0.944444) 64-bit (glnxa64)
+                  August 28, 2018
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+[?1l>0m4.021s"
+Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100
+Seed:1,num_nodes:10,sparsity:0.1,n=r/for_histogram/network_sim_time_4000/network_seed_1.csv,f:w/firing.csv,i:w/indice.csv,r:r/for_histogram/network_sim_time_4000/results.txt,m=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv,fileToTrackProgress:r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt,horizon=100

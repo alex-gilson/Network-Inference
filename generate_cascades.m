@@ -12,28 +12,27 @@
 % Setup the cvx package so that it can be used
 %run('/home/alex/Downloads/cvx/cvx_setup.m');
 
-% function generate_cascades(f, t, n, N, horizon, sparsity, diffusion_type, r, m, fileToTrackProgress)
+function generate_cascades(f, t, n, N, horizon, sparsity, diffusion_type, r, m, fileToTrackProgress)
 
 
-seed=1;
-num_nodes=10;
-sparsity=0.1;
-simulation_duration=4000;
-networkFileName='r/for_histogram/network_sim_time_1000/network_seed_1.csv';
-f='w/firing.csv';
-t='w/indice.csv';
-r='r/for_histogram/network_sim_time_4000/results.txt';
-n='r/for_histogram/network_sim_time_4000/network_seed_1.csv'; 
-fileToTrackProgress='r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt';
-diffusion_type='rayleigh';
-horizon=100;
-num_processors=3;
-N = num_nodes;
+% seed=1;
+% num_nodes=10;
+% sparsity=0.1;
+% simulation_duration=4000;
+% networkFileName='r/for_histogram/network_sim_time_1000/network_seed_1.csv';
+% f='w/firing.csv';
+% t='w/indice.csv';
+% r='r/for_histogram/network_sim_time_4000/results.txt';
+% n='r/for_histogram/network_sim_time_4000/network_seed_1.csv'; 
+% fileToTrackProgress='r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt';
+% diffusion_type='rayleigh';
+% horizon=100;
+% num_processors=3;
+%
 %  read all the files obtained in python
 firings_indices=csvread(f);
 firing_times=csvread(t);
 network=csvread(n);
-m = 'r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv';
 
 % obtain adjacency matrix
 S=zeros(int32(N),int32(N));

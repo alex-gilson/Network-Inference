@@ -64,3 +64,21 @@ Done with node:7, Took 8.181 seconds
 Done with node:8, Took 12.111 seconds
 Done with node:9, Took 9.541 seconds
 Done with node:10, Took 19.143 seconds
+Done Arranging Data, Took 0.065 seconds
+
+Done Arranging Data, Took 0.043 seconds
+
+Done Arranging Data, Took 0.061 seconds
+
+Done Arranging Data, Took 0.065 seconds
+
+Done Arranging Data, Took 0.133 seconds
+
+Done Arranging Data, Took 0.065 seconds
+
+Done Arranging Data, Took 0.065 seconds
+
+Done Arranging Data, Took 0.039 seconds
+
+Done Arranging Data, Took 0.039 seconds
+

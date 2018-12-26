@@ -5,9 +5,7 @@ A_potential = csvread('w/a_potential.csv');
 A_bad = csvread('w/a_bad.csv');
 cascades = csvread('w/cascades.csv');
 num_cascades = csvread('w/num_cascades.csv');
-
-fprintf('Starting process: %i/n', i);
-run('cvx_setup.m');
+% run('cvx_setup.m');
 % Number of nodes that each processor will compute
 % Matlab rounds integers by default
 % Use fix() to truncate 
@@ -29,6 +27,7 @@ fprintf('\n');
 total_obj = 0;
 
 for n = nodes
+fprintf('Computing node %i \n ', n);
 	if (num_cascades(n)==0)
 		a_hat = zeros(num_nodes,1)
 		filename = 'temporary/a_hat_' + string(n) + '.csv';
@@ -38,11 +37,10 @@ for n = nodes
 
 	tic
 	[a_hat, obj] = solve_using_cvx(n, type_diffusion, num_nodes, num_cascades, A_potential, A_bad, cascades);
-
 	stop=toc;
 
-	fprintf(progressTrackerHandle,'Done with node:%d, Took %.3f seconds\n',n, stop);
-	fprintf('Done with node:%d, Took %.3f seconds\n',n, stop);
+	% fprintf(progressTrackerHandle,'Done with node:%d, Took %.3f seconds\n',n, stop);
+	% fprintf('Done with node:%d, Took %.3f seconds\n',n, stop);
 	total_obj = total_obj + obj;
 	filename = 'temporary/a_hat_' + string(n) + '.csv';
 	csvwrite(filename, full(a_hat)); 

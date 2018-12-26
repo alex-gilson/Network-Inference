@@ -33,7 +33,9 @@ num_processors=3
 
 echo "Seed:$seed,num_nodes:$num_nodes,sparsity:$sparsity,n=$networkFileName,f:$firingsFileName,i:$indicesFileName,r:$resultsFileName,m=$matlabNetworkFileName,fileToTrackProgress:$fileToTrackProgress,horizon=$horizon" >> $resultsFileName
 
-python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName
+# python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName
+
+python initial_time.py
 
 echo -e "\tDone with simulation"
 echo -e "\tStarting Matlab"
@@ -42,14 +44,14 @@ matlab -nodesktop -nosplash -nojvm -r "generate_cascades('$firingsFileName','$in
 
 echo -e "\tDone with Matlab" 
 
-# echo -e "\tDone with Matlab Took Approximately $rtime"
-
 python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $fileToTrackProgress
 
-matlab -nodesktop -nosplash -nojvm -r "process_results($sparsity,'$resultsFileName','$diffusion_type','$matlabNetworkFileName','$fileToTrackProgress', '$matlabNetworkFileName');exit;"
+matlab -nodesktop -nosplash -nojvm -r "process_results($sparsity,'$resultsFileName','$diffusion_type','$matlabNetworkFileName','$fileToTrackProgress');exit;"
 
-echo >> $resultsFileName
+echo "$rtime" >> $resultsFileName
+
+python final_time.py $resultsFileName
+
 echo "Results are available at '$resultsFileName'"
-
 
 
