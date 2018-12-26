@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+# !/usr/local/bin/bash
 
 # seed="$1"
 # num_nodes="$2"
@@ -10,41 +10,46 @@
 # resultsFileName="$8"
 # matlabNetworkFileName="$9"
 # fileToTrackProgress="${10}"
-# diffusion_type="$11"
-
+# diffusion_type="${11}"
+# horizon="${12}"
+# num_processors="${13}"
+#
 seed=1
 num_nodes=10
 sparsity=0.1
-simulation_duration=1000
+simulation_duration=4000
 networkFileName=r/for_histogram/network_sim_time_1000/network_seed_1.csv
 firingsFileName=w/firing.csv
 indicesFileName=w/indice.csv
-resultsFileName=r/for_histogram/network_sim_time_1000/results.txt
-matlabNetworkFileName=r/for_histogram/network_sim_time_5000/matlab_inferred_matrix_seed_1.csv 
-fileToTrackProgress=r/for_histogram/network_sim_time_5000/progress_tracker_seed_1.txt
+resultsFileName=r/for_histogram/network_sim_time_4000/results.txt
+matlabNetworkFileName=r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv 
+fileToTrackProgress=r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt
 diffusion_type=rayleigh
-horizon=20
+horizon=100
 num_processors=3
 
+# Activate virtual environment
 . py27env/bin/activate
 
-echo "Seed:$seed,num_nodes:$num_nodes,sparsity:$sparsity,n=$networkFileName,f:$firingsFileName,i:$indicesFileName,r:$resultsFileName,m=$matlabNetworkFileName,fileToTrackProgress:$fileToTrackProgress" >> $resultsFileName
+echo "Seed:$seed,num_nodes:$num_nodes,sparsity:$sparsity,n=$networkFileName,f:$firingsFileName,i:$indicesFileName,r:$resultsFileName,m=$matlabNetworkFileName,fileToTrackProgress:$fileToTrackProgress,horizon=$horizon" >> $resultsFileName
 
-rtime="$( TIMEFORMAT='%lR';time ( python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName ) 2>&1 1>/dev/null )"
+python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName
 
-# ./izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName
-
-echo -e "\tDone with simulation, Took Approximately $rtime"
+echo -e "\tDone with simulation"
 echo -e "\tStarting Matlab"
 
-# rtime="$( TIMEFORMAT='%lR';time ( matlab -nodesktop -nosplash -nojvm -r "f='$firingsFileName';t='$indicesFileName';n='$networkFileName';N=$num_nodes;horizon=20;sparsity=$sparsity;diffusion_type='exp';r='$resultsFileName';m='$matlabNetworkFileName';fileToTrackProgress='$fileToTrackProgress';brianIzhikevichSolver;exit" ) 2>&1)"
+matlab -nodesktop -nosplash -nojvm -r "generate_cascades('$firingsFileName','$indicesFileName','$networkFileName',$num_nodes,$horizon,$sparsity,'$diffusion_type','$resultsFileName','$matlabNetworkFileName','$fileToTrackProgress');exit;"
+
+echo -e "\tDone with Matlab" 
 
 # echo -e "\tDone with Matlab Took Approximately $rtime"
 
-# matlab -nodesktop -nosplash -nojvm -r "generate_cascades('$firingsFileName','$indicesFileName','$networkFileName',$num_nodes,$horizon,$sparsity,'$diffusion_type','$resultsFileName','$matlabNetworkFileName','$fileToTrackProgress');exit;"
-
 python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $fileToTrackProgress
 
-# matlab -nodesktop -nosplash -nojvm -r "n='$networkFileName';sparsity=$sparsity;diffusion_type=$diffusion_type;r='$resultsFileName';m='$matlabNetworkFileName';fileToTrackProgress='$fileToTrackProgress';process_results.m;exit"
+matlab -nodesktop -nosplash -nojvm -r "process_results($sparsity,'$resultsFileName','$diffusion_type','$matlabNetworkFileName','$fileToTrackProgress', '$matlabNetworkFileName');exit;"
 
 echo >> $resultsFileName
+echo "Results are available at '$resultsFileName'"
+
+
+

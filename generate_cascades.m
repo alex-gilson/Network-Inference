@@ -11,19 +11,21 @@
 % m: name of file to store inferred matrix
 % Setup the cvx package so that it can be used
 %run('/home/alex/Downloads/cvx/cvx_setup.m');
-function generate_cascades(f, t, n, N, horizon, sparsity, diffusion_type, r, m, fileToTrackProgress)
-f = 'firings.csv';
-t = 'indices.csv';
-n = 'weighted_network.csv';
-N = 10;
-horizon = 100;
-diffusion_type = 'rayleigh';
-r = 'results.csv';
-m = 'inferred_matrix.csv';
-%sparsity = 2*degree;
-sparsity = 2;
-fileToTrackProgress = 'track_progress.csv';
 
+function generate_cascades(f, t, n, N, horizon, sparsity, diffusion_type, r, m, fileToTrackProgress)
+
+% f = 'firings.csv';
+% t = 'indices.csv';
+% n = 'weighted_network.csv';
+% N = 10;
+% horizon = 100;
+% diffusion_type = 'rayleigh';
+% r = 'results.csv';
+% m = 'inferred_matrix.csv';
+% %sparsity = 2*degree;
+% sparsity = 2;
+% fileToTrackProgress = 'track_progress.csv';
+%
 %  read all the files obtained in python
 firings_indices=csvread(f);
 firing_times=csvread(t);
@@ -35,6 +37,7 @@ for i=1:size(network,1)
     S(network(i,1)+1,network(i,2)+1)=network(i,3);
 end
 
+num_nodes = N;
 % initiliase vector to hold cascades
 cascades=[];
 
@@ -78,5 +81,60 @@ end
 % file handle for writing results
 progressTrackerHandle=fopen(fileToTrackProgress,'a');
 
-% estimate the network
-%S_hat = estimate_network(S, cascades, N, horizon, diffusion_type, progressTrackerHandle);
+num_cascades = zeros(1,num_nodes);
+A_potential = zeros(size(S));
+A_bad = zeros(size(S));
+A_hat = zeros(size(S));
+total_obj = 0;
+
+tic
+for c=1:size(cascades, 1)
+    % Obtain the timing of the nodes that have fired
+    idx = find(cascades(c,:)~=-1); % used nodes
+    
+    % Sort each cascade by earliest firing and keep the index order (ord)
+    [val, ord] = sort(cascades(c, idx));
+    
+    % For all used nodes
+    % Don't take the first value (it's value is 0, it belongs to the
+    % stimulated node)
+    
+    for i=2:length(val)
+		
+        % num_cascades stores the amount of times each node has fired
+        num_cascades(idx(ord(i))) = num_cascades(idx(ord(i))) + 1;
+        for j=1:i-1
+            if (strcmp(diffusion_type, 'exp'))
+                A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+val(i)-val(j);
+            elseif (strcmp(diffusion_type, 'pl') && (val(i)-val(j)) > 1)
+                A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+log(val(i)-val(j));
+            elseif (strcmp(diffusion_type, 'rayleigh'))
+                A_potential(idx(ord(j)), idx(ord(i))) = A_potential(idx(ord(j)), idx(ord(i)))+0.5*(val(i)-val(j))^2;
+            end
+        end
+    end
+    
+    for j=1:num_nodes
+        if isempty(find(idx==j))
+            for i=1:length(val)
+                if (strcmp(diffusion_type, 'exp'))
+                    A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + (horizon-val(i));
+                elseif (strcmp(diffusion_type, 'pl') && (horizon-val(i)) > 1)
+                    A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + log(horizon-val(i));
+                elseif (strcmp(diffusion_type, 'rayleigh'))
+                    A_bad(idx(ord(i)), j) = A_bad(idx(ord(i)), j) + 0.5*(horizon-val(i))^2;
+                end
+            end
+        end
+    end
+end
+stop=toc;
+
+csvwrite('w/a_potential.csv',full(A_potential))
+csvwrite('w/a_bad.csv',full(A_bad))
+csvwrite('w/cascades.csv',full(cascades))
+csvwrite('w/num_cascades.csv',full(num_cascades))
+csvwrite('w/S_matrix.csv',full(S))
+
+fprintf(progressTrackerHandle,'Done Arranging Data, Took %.3f seconds\n\n', stop);
+

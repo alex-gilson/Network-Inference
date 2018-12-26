@@ -5,28 +5,18 @@ print('Running izhikevichNetworkSimulation.py')
 
 import sys
 import numpy
-import multiprocessing as mp
-import matplotlib
-matplotlib.use('Agg')
 from matplotlib import pyplot as plt
-from brian2  import devices, NeuronGroup, Synapses, SpikeMonitor, run
+from brian2  import *
 from utility import *
 
 # extract command line arguments
-# seed=int(sys.argv[1])
-# N=int(sys.argv[2])
-# sparsity=float(sys.argv[3])
-# simulation_duration=int(sys.argv[4])
-# networkFileName=sys.argv[5]
-# firingsFileName=sys.argv[6]
-# indicesFileName=sys.argv[7]
-seed=1
-N=10
-sparsity=0.1
-simulation_duration=1000
-networkFileName="r/for_histogram/network_sim_time_100/network_seed_1.csv"
-firingsFileName="w/firing.csv"
-indicesFileName="w/indice.csv"
+seed=int(sys.argv[1])
+N=int(sys.argv[2])
+sparsity=float(sys.argv[3])
+simulation_duration=int(sys.argv[4])
+networkFileName=sys.argv[5]
+firingsFileName=sys.argv[6]
+indicesFileName=sys.argv[7]
 
 # set the default seed
 devices.device.seed(seed)

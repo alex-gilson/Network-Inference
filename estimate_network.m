@@ -48,6 +48,7 @@ for c=1:size(cascades, 1)
     end
 end
 stop=toc;
+
 csvwrite('w/a_potential.csv',full(A_potential))
 csvwrite('w/a_bad.csv',full(A_bad))
 csvwrite('w/cascades.csv',full(cascades))

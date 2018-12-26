@@ -1,14 +1,13 @@
 
-function [A_hat] = parallel_cvx(i, num_nodes, num_processors, horizon, type_diffusion, progressTrackerHandle)
+function parallel_cvx(i, num_nodes, num_processors, horizon, type_diffusion, progressTrackerHandle)
 
 A_potential = csvread('w/a_potential.csv');
 A_bad = csvread('w/a_bad.csv');
 cascades = csvread('w/cascades.csv');
 num_cascades = csvread('w/num_cascades.csv');
-A = csvread('w/S_matrix.csv');
 
 fprintf('Starting process: %i/n', i);
-
+run('cvx_setup.m');
 % Number of nodes that each processor will compute
 % Matlab rounds integers by default
 % Use fix() to truncate 
@@ -22,13 +21,16 @@ if i <= remaining_nodes
 else
 	nodes = (i-1) * nodes_processor + remaining_nodes + 1: (i-1) * nodes_processor + remaining_nodes + nodes_processor;
 end
+
 fprintf('This process will calculate for %i nodes\n', nodes_processor);
 fprintf('Nodes to be computed are: ');
 fprintf('%i ', nodes);
+fprintf('\n');
+total_obj = 0;
 
 for n = nodes
-	if (num_cascades(i)==0)
-		a_hat(:,n) = 0;
+	if (num_cascades(n)==0)
+		a_hat = zeros(num_nodes,1)
 		filename = 'temporary/a_hat_' + string(n) + '.csv';
 		csvwrite(filename, full(a_hat)); 
 		continue;
@@ -40,9 +42,9 @@ for n = nodes
 	stop=toc;
 
 	fprintf(progressTrackerHandle,'Done with node:%d, Took %.3f seconds\n',n, stop);
-	fprintf('Done with node:%d, Took %.3f seconds\n',i, stop);
+	fprintf('Done with node:%d, Took %.3f seconds\n',n, stop);
 	total_obj = total_obj + obj;
-	filename = 'temporary/a_hat_' + string(n) + '.csv'
+	filename = 'temporary/a_hat_' + string(n) + '.csv';
 	csvwrite(filename, full(a_hat)); 
 end
 
