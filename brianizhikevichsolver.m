@@ -10,18 +10,21 @@
 % r: name of file to store results in
 % m: name of file to store inferred matrix
 
-f = 'w/firing.csv';
-t = 'w/indice.csv';
-n = 'weighted_network.csv';
-N = 10;
-horizon = 100;
-diffusion_type = 'rayleigh';
-r = 'r/for_histogram/network_sim_time_4000/results.txt';
+seed=1;
+num_nodes=10;
+sparsity=0.1;
+simulation_duration=4000;
+networkFileName='r/for_histogram/network_sim_time_1000/network_seed_1.csv';
+f='w/firing.csv';
+t='w/indice.csv';
+r='r/for_histogram/network_sim_time_4000/results.txt';
+n='r/for_histogram/network_sim_time_4000/network_seed_1.csv'; 
+fileToTrackProgress='r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt';
 m = 'r/for_histogram/network_sim_time_4000/matlab_inferred_matrix_seed_1.csv';
-%sparsity = 2*degree;
-sparsity = 2;
-
-fileToTrackProgress = 'dummyFile.csv';
+diffusion_type='rayleigh';
+horizon=100;
+num_processors=3;
+N = num_nodes;
 
 %  read all the files obtained in python
 firings_indices=csvread(f);
