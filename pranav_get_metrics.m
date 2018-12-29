@@ -33,6 +33,7 @@ function [S_bin, S_hat_bin, mae,recall,precision,accuracy]=pranav_get_metrics(S,
     % calculate the accuracy
     accuracy=1-sum(sum(num))/(sum(sum(S_bin))+sum(sum(S_hat_bin)));
     
-    fprintf(resultsFileHandle,'Method:%s,Accuracy:%.3f,MAE:%.3f,Precision:%.3f,Recall:%.3f,Number of Cascades:%d\n', type_diffusion, accuracy,mae,precision,recall, size(cascades,1));
+    % fprintf(resultsFileHandle,'Method:%s,Accuracy:%.3f,MAE:%.3f,Precision:%.3f,Recall:%.3f,Number of Cascades:%d\n', type_diffusion, accuracy,mae,precision,recall, size(cascades,1));
     
+    fprintf(resultsFileHandle,'\"%s\",%.3f,%.3f,%.3f,%.3f,%d\n', type_diffusion, accuracy,mae,precision,recall, size(cascades,1));
 end

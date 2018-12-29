@@ -4,5 +4,6 @@ jinja2==2.10
 brian2==2.2.1
 matplotlib==1.5.3
 cvxpy==1.0.10
+pandas==0.23.4
 # apt-get install python-tk  (2.7.12)
 # sudo apt-get install python-gtk2

@@ -1,7 +1,7 @@
 #!/usr/bin/env
 
 
-print('Running izhikevichNetworkSimulation.py')
+print('Running Brian Simulator...')
 
 import sys
 import numpy
@@ -100,5 +100,3 @@ for l in indices:
 	myIndicesFile.write(",".join(map(str,l)))
 	myIndicesFile.write("\n")
 myIndicesFile.close()
-
-print('Finished izhikevichNetworkSimulation.py')

@@ -1,5 +1,6 @@
 function process_results(sparsity, r, diffusion_type, m, fileToTrackProgress)
 
+r = 'temporary/accuracy.csv';
 S = csvread('w/S_matrix.csv');
 cascades = csvread('w/cascades.csv');
 size_S = size(S);

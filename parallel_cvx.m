@@ -5,7 +5,8 @@ A_potential = csvread('w/a_potential.csv');
 A_bad = csvread('w/a_bad.csv');
 cascades = csvread('w/cascades.csv');
 num_cascades = csvread('w/num_cascades.csv');
-% run('cvx_setup.m');
+run('cvx_setup.m');
+% run('/home/alex/Downloads/cvx_1/cvx/cvx_startup.m');
 % Number of nodes that each processor will compute
 % Matlab rounds integers by default
 % Use fix() to truncate 
@@ -25,7 +26,7 @@ fprintf('Nodes to be computed are: ');
 fprintf('%i ', nodes);
 fprintf('\n');
 total_obj = 0;
-
+disp(num_cascades);
 for n = nodes
 fprintf('Computing node %i \n ', n);
 	if (num_cascades(n)==0)
