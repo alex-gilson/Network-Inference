@@ -46,7 +46,6 @@ function [a_hat, obj] = solve_using_cvx(i, type_diffusion, num_nodes, num_cascad
         % this is because C is such that number of rows = number of cascades
         % traversing through the number of cascades
         for c=1:size(C, 1)
-	    disp(i);            
             % finds nodes in 1 row of C that are not equal to -1
             % idx finds the nodes that were present in that particular cascade
             idx = find(C(c,:)~=-1);

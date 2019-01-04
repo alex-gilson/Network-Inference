@@ -1,0 +1,8 @@
+Done Arranging Data, Took 0.577 seconds
+
+Done Arranging Data, Took 1.009 seconds
+
+Done Arranging Data, Took 0.557 seconds
+
+Done Arranging Data, Took 0.545 seconds
+

@@ -122,3 +122,55 @@ Done Arranging Data, Took 0.045 seconds
 
 Done Arranging Data, Took 0.045 seconds
 
+Done Arranging Data, Took 0.041 seconds
+
+Done Arranging Data, Took 0.048 seconds
+
+Done Arranging Data, Took 0.047 seconds
+
+Done Arranging Data, Took 0.039 seconds
+
+Done Arranging Data, Took 0.139 seconds
+
+Done Arranging Data, Took 0.026 seconds
+
+Done Arranging Data, Took 0.028 seconds
+
+Done Arranging Data, Took 0.055 seconds
+
+Done Arranging Data, Took 0.026 seconds
+
+Done Arranging Data, Took 0.026 seconds
+
+Done Arranging Data, Took 0.026 seconds
+
+Done Arranging Data, Took 0.035 seconds
+
+Done Arranging Data, Took 0.037 seconds
+
+Done Arranging Data, Took 0.025 seconds
+
+Done Arranging Data, Took 0.030 seconds
+
+Done Arranging Data, Took 0.025 seconds
+
+Done Arranging Data, Took 0.025 seconds
+
+Done Arranging Data, Took 0.026 seconds
+
+Done Arranging Data, Took 0.037 seconds
+
+Done Arranging Data, Took 0.036 seconds
+
+Done Arranging Data, Took 0.026 seconds
+
+Done Arranging Data, Took 0.027 seconds
+
+Done Arranging Data, Took 0.026 seconds
+
+Done Arranging Data, Took 0.040 seconds
+
+Done Arranging Data, Took 0.028 seconds
+
+Done Arranging Data, Took 0.035 seconds
+
