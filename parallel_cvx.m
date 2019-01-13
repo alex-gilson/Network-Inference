@@ -6,38 +6,16 @@ A_bad = csvread('w/a_bad.csv');
 cascades = csvread('w/cascades.csv');
 num_cascades = csvread('w/num_cascades.csv');
 % run('cvx_setup.m');
-% run('/home/alex/Downloads/cvx_1/cvx/cvx_startup.m');
 % Number of nodes that each processor will compute
 % Matlab rounds integers by default
 % Use fix() to truncate 
 nodes_processor = int8(fix(num_nodes/num_processors));
 remaining_nodes = mod(num_nodes, num_processors);
 
-% % Distribute the remaining nodes among the processors
-% if i <= remaining_nodes
-% 	nodes_processor = nodes_processor + 1;
-% 	nodes = ((i-1)*nodes_processor + 1):nodes_processor*i;
-% else
-% 	nodes = (i-1) * nodes_processor + remaining_nodes + 1: (i-1) * nodes_processor + remaining_nodes + nodes_processor;
-% end
-%
-% if i == 1
-%     nodes_processor = 1
-%     nodes = [4]
-% elseif i == 2
-%     nodes_processor = 3
-%     nodes = [10, 5, 1]
-% elseif i == 3
-%     nodes_processor = 3
-%     nodes = [6, 2, 9]
-% elseif i == 4
-%     nodes_processor = 3
-%     nodes = [3, 8, 7]
-% end
 %
 % MATLAB starts indexing from 1
 nodes = i + 1;
-fprintf('This process will calculate for %i nodes\n', nodes_processor);
+% fprintf('This process will calculate for %i nodes\n', nodes_processor);
 fprintf('Nodes to be computed are: ');
 fprintf('%i ', nodes);
 fprintf('\n');
