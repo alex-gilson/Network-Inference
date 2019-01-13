@@ -1,0 +1,151 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{OldeDubbelinkKimT.E.2014Dbnt}{article}{}
+      \name{author}{7}{}{%
+        {{hash=c475e3e3cfc82136f7c25f6e64e67232}{%
+           family={Olde\bibnamedelima Dubbelink},
+           familyi={O\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Kim\bibnamedelimb T.\bibnamedelimi E.},
+           giveni={K\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=a224ae51cdbf0b6d1749d3eea4976e91}{%
+           family={Hillebrand},
+           familyi={H\bibinitperiod},
+           given={Arjan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=47c979589178dbace7b5cc3f2dd19f5d}{%
+           family={Stoffers},
+           familyi={S\bibinitperiod},
+           given={Diederick},
+           giveni={D\bibinitperiod}}}%
+        {{hash=87bc538c3cacb0f0733fcfb95e96b31e}{%
+           family={Deijen},
+           familyi={D\bibinitperiod},
+           given={Jan\bibnamedelima Berend},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=2a066f00a6df83cd01ab0f3c6afe8242}{%
+           family={Twisk},
+           familyi={T\bibinitperiod},
+           given={Jos\bibnamedelimb W.\bibnamedelimi R.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=545d13f096a194cb97d6224401c5ee6f}{%
+           family={Stam},
+           familyi={S\bibinitperiod},
+           given={Cornelis\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=b454cb210a0cd1acc6fe90609321f874}{%
+           family={Berendse},
+           familyi={B\bibinitperiod},
+           given={Henk\bibnamedelima W.},
+           giveni={H\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{ec58e6099aad405e8940173f14d2f144}
+      \strng{fullhash}{8e648254b5453f60cbc5013d4e1e7464}
+      \strng{bibnamehash}{ec58e6099aad405e8940173f14d2f144}
+      \strng{authorbibnamehash}{ec58e6099aad405e8940173f14d2f144}
+      \strng{authornamehash}{ec58e6099aad405e8940173f14d2f144}
+      \strng{authorfullhash}{8e648254b5453f60cbc5013d4e1e7464}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Although alterations in resting-state functional connectivity between brain regions have previously been reported in Parkinson’s disease, the spatial organization of these changes remains largely unknown. Here, we longitudinally studied brain network topology in Parkinson’s disease in relation to clinical measures of disease progression, using magnetoencephalography and concepts from graph theory. We characterized whole-brain functional networks by means of a standard graph analysis approach, measuring clustering coefficient and shortest path length, as well as the construction of a minimum spanning tree, a novel approach that allows a unique and unbiased characterization of brain networks. We observed that brain networks in early stage untreated patients displayed lower local clustering with preserved path length in the delta frequency band in comparison to controls. Longitudinal analysis over a 4-year period in a larger group of patients showed a progressive decrease in local clustering in multiple frequency bands together with a decrease in path length in the alpha2 frequency band. In addition, minimum spanning tree analysis revealed a decentralized and less integrated network configuration in early stage, untreated Parkinson’s disease that also progressed over time. Moreover, the longitudinal changes in network topology identified with both techniques were associated with deteriorating motor function and cognitive performance. Our results indicate that impaired local efficiency and network decentralization are very early features of Parkinson’s disease that continue to progress over time, together with reductions in global efficiency. As these network changes appear to reflect clinically relevant phenomena, they hold promise as markers of disease progression.}
+      \field{issn}{0006-8950}
+      \field{journaltitle}{Brain}
+      \field{number}{1}
+      \field{title}{Disrupted brain network topology in Parkinson’s disease: a longitudinal magnetoencephalography study}
+      \field{volume}{137}
+      \field{year}{2014}
+      \field{pages}{197\bibrangedash 207}
+      \range{pages}{11}
+      \keyw{Parkinson’s Disease ; Resting - State Functional Brain Networks ; Magnetoencephalography (Meg) ; Longitudinal ; Graph Theory}
+    \endentry
+    \entry{alexandru2018estimating}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=cf06a0cd18749d942c1a00552cfc90fa}{%
+           family={Alexandru},
+           familyi={A\bibinitperiod},
+           given={Roxana},
+           giveni={R\bibinitperiod}}}%
+        {{hash=817da9b49ab34001bf4fc3b4db89678d}{%
+           family={Malhotra},
+           familyi={M\bibinitperiod},
+           given={Pranav},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d54bfdb9eea08929dda9d36315a7bd09}{%
+           family={Reynolds},
+           familyi={R\bibinitperiod},
+           given={Stephanie},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fc39035d98ba125df9d48c0ef6079c91}{%
+           family={Dragotti},
+           familyi={D\bibinitperiod},
+           given={Pier\bibnamedelima Luigi},
+           giveni={P\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{71656d8e6d8328bd95dfe0d2e2eb7a42}
+      \strng{fullhash}{599717ab6ac55f9581857a88f10e8507}
+      \strng{bibnamehash}{71656d8e6d8328bd95dfe0d2e2eb7a42}
+      \strng{authorbibnamehash}{71656d8e6d8328bd95dfe0d2e2eb7a42}
+      \strng{authornamehash}{71656d8e6d8328bd95dfe0d2e2eb7a42}
+      \strng{authorfullhash}{599717ab6ac55f9581857a88f10e8507}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2018 26th European Signal Processing Conference (EUSIPCO)}
+      \field{title}{Estimating the Topology of Neural Networks from Distributed Observations}
+      \field{year}{2018}
+      \field{pages}{420\bibrangedash 424}
+      \range{pages}{5}
+    \endentry
+    \entry{pranav_report}{report}{}
+      \name{author}{1}{}{%
+        {{hash=817da9b49ab34001bf4fc3b4db89678d}{%
+           family={Malhotra},
+           familyi={M\bibinitperiod},
+           given={Pranav},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{817da9b49ab34001bf4fc3b4db89678d}
+      \strng{fullhash}{817da9b49ab34001bf4fc3b4db89678d}
+      \strng{bibnamehash}{817da9b49ab34001bf4fc3b4db89678d}
+      \strng{authorbibnamehash}{817da9b49ab34001bf4fc3b4db89678d}
+      \strng{authornamehash}{817da9b49ab34001bf4fc3b4db89678d}
+      \strng{authorfullhash}{817da9b49ab34001bf4fc3b4db89678d}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Estimating the Topology of Networks from Distributed Obser- vations}
+      \field{year}{2017}
+      \field{dateera}{ce}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
