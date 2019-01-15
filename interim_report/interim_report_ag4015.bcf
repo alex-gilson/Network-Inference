@@ -1924,8 +1924,22 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">OldeDubbelinkKimT.E.2014Dbnt</bcf:citekey>
-    <bcf:citekey order="2">alexandru2018estimating</bcf:citekey>
-    <bcf:citekey order="2">pranav_report</bcf:citekey>
+    <bcf:citekey order="2">PONTEN2007918</bcf:citekey>
+    <bcf:citekey order="3">pranav_report</bcf:citekey>
+    <bcf:citekey order="3">alexandru2018estimating</bcf:citekey>
+    <bcf:citekey order="4">rodriguez2011uncovering</bcf:citekey>
+    <bcf:citekey order="5">izhikevich2003simple</bcf:citekey>
+    <bcf:citekey order="6">10.3389/neuro.01.026.2009</bcf:citekey>
+    <bcf:citekey order="7">ito2016spontaneous</bcf:citekey>
+    <bcf:citekey order="7">ito2014large</bcf:citekey>
+    <bcf:citekey order="7">litke2004does</bcf:citekey>
+    <bcf:citekey order="8">HORWITZ2003466</bcf:citekey>
+    <bcf:citekey order="9">friston1993functional</bcf:citekey>
+    <bcf:citekey order="10">pfurtscheller1999event</bcf:citekey>
+    <bcf:citekey order="11">gevins1985neurocognitive</bcf:citekey>
+    <bcf:citekey order="12">HORWITZ2003466</bcf:citekey>
+    <bcf:citekey order="13">friston1993functional</bcf:citekey>
+    <bcf:citekey order="14">alexandru2018estimating</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

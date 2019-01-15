@@ -127,23 +127,45 @@
 
 \section{Introduction}
 
-The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. However, little is known about how it works. By studying how the neurons structure to to store and process information we can understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and in machine learning for the development of more intelligent neural networks.
+The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. However, little is known about how it works. By studying how the neurons structure to to store and process information we can understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and epilepsy \cite{PONTEN2007918}, and in machine learning for the development of more intelligent neural networks.
 
-In order to infer the network structure of a set of neurons, these neurons are treated as a diffusion network where potential spikes travel from messenger to receptor just as if it were a disease. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the relationship between all of the neurons, an estimate of the topology of the network can be obtained. 
+In order to infer the network structure of a set of neurons, they are treated as a diffusion network where electrical spikes increase the likelihood of connected neurons to spike and therefore transmit a signal that travels as if it were a disease. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the relationship between all of the neurons, an estimate of the topology of the network can be obtained. 
 
-This project builds on previous research \cite{alexandru2018estimating, pranav_report}. In this published work, a biological neural network is simulated 
+Previous work on this topic \cite{pranav_report, alexandru2018estimating} evaluated the feasibility of using a maximum-likelihood estimator algorithm, NetRate \cite{rodriguez2011uncovering}, for the structure inference of biological neural networks. A network was simulated using the Izhikevic neuron model \cite{izhikevich2003simple} and the brian simulator \cite{10.3389/neuro.01.026.2009}. The connections between the neurons were then estimated, compared to the original network and the performance of the algorithm was evaluated.
 
-Here he approaches this problem using a certain Neuron model (Izhikevich) and a recently developed algorithm NetRate. A network of one type of neuron is generated and simulated and then the structure is inferred using NetRate. In this project he also suggests certain future work improvements. The aim of this project would be to improve on the methodologies used or look at the problem from another perspective. Some examples of this would be to optimize NetRate for parallel computing or including into the system different types of neurons.
+The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability and the addition of different types of neurons to the model.It would also be useful to test the accuracy of the algorithm on real interacting neurons. Developments in technology allow us to obtain spike data from individual neurons \cite{ito2016spontaneous, ito2014large, litke2004does}.
 
-The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain.
 
-There is now available a dataset from 100 neurons from a mouse's brain. One of the aims of this project would also be to study how well the algorithm performs on real data and to be able to check its accuracy. 
+\section{Background}
+
+\subsection{Definition of connectivity}
+
+The definition of connectivity between neurons has a history of lack of consensus among the scientific community \cite{HORWITZ2003466}. Connectivity studies from different researches may lead to different results depending on how they define it, as they may be looking at different aspects of connectivity. The two main accepted definitions that are used are functional and effective connectivity.
+
+Functional connectivity is the temporal correlation between spatially remote neurophysiological events \cite{friston1993functional}. Studies on this topic began with electroencephalography (EEG) measurements. Some methods to measure functional connectivity include the evaluation of the correlation in the frequency domain between EEG signals at different scalp locations \cite{pfurtscheller1999event}, and the cross-correlation of the time series measurements from a pair of electrodes \cite{gevins1985neurocognitive}. However, due to the volume conduction of brain tissue, the electrical activity from the scalp cannot infer the individual neuron behaviour below the electrode \cite{HORWITZ2003466}.
+
+Effective connectivity was defined in \cite{friston1993functional} as the influence that one neural system exerts on another. Effective connectivity can be measured in terms of efficacy and contribution. At a synaptic level it can be expressed as in eq.\ref{eq:synaptic_effectivity}, where $x_{j}$ is the post-synaptic response to many pre-synaptic inputs $x_{i}$ and $\textbf{W}_{ij}$ is the efficacy of the connections between neurons $i$ and $j$. Contribution is reflected in eq.\ref{eq:synaptic_contribution} as the effect of $i$ on $j$ relative to all pre-synaptic inputs. Using this definition, directional effects are taken into account and a richer representation of the network can be attained. Following the approach in \cite{alexandru2018estimating}, this project will focus on the effective connectivity of neurons in a network.
+
+
+\begin{equation}\label{eq:synaptic_effectivity}
+x_{j} = \Sigma \textbf{W}_{ij}\times x_{i}
+\end{equation}
+
+\begin{equation}\label{eq:synaptic_contribution}
+\frac{\textbf{W}_{ij}}{\Sigma \textbf{W}_{ij}}
+\end{equation}
+
+\subsection{Izhikevich neuron model}
+
+
 
 \printbibliography 
 
 
-
 \end{document}
+
+
+
 
 
 
