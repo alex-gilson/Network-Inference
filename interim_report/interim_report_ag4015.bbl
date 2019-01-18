@@ -690,6 +690,35 @@
       \field{pages}{500\bibrangedash 544}
       \range{pages}{45}
     \endentry
+    \entry{burkitt2006review}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6a4d4668340b0b4cfb9ef8fe9be90d20}{%
+           family={Burkitt},
+           familyi={B\bibinitperiod},
+           given={Anthony\bibnamedelima N},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
+      \strng{fullhash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
+      \strng{bibnamehash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
+      \strng{authorbibnamehash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
+      \strng{authornamehash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
+      \strng{authorfullhash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biological cybernetics}
+      \field{number}{1}
+      \field{title}{A review of the integrate-and-fire neuron model: I. Homogeneous synaptic input}
+      \field{volume}{95}
+      \field{year}{2006}
+      \field{pages}{1\bibrangedash 19}
+      \range{pages}{19}
+    \endentry
     \entry{connors1990intrinsic}{article}{}
       \name{author}{2}{}{%
         {{hash=22e8718c91bfa110378f9156b8225f74}{%

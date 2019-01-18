@@ -157,7 +157,7 @@ x_{j} = \Sigma \textbf{W}_{ij}\times x_{i}
 
 \subsection{Izhikevich neuron model}
 
-In order to understand how the brain works we must be able to replicate the behaviour of individual neurons applying simple and accurate models. However, meeting both criteria can be challenging. The Hodgkin–Huxley model \cite{hodgkin1952quantitative} is very accurate as it can emulate the rich firing patterns of many types of neurons. However, it is very computationally expensive and only a few neurons can be computed in real time. The integrate-and-fire model has the opposite problem: it is computationally simple but it is an unrealistic representation of the neuron since it does not capture the firing patterns with sufficient accuracy \cite{izhikevich2003simple}.
+In order to understand how the brain works we must be able to replicate the behaviour of individual neurons applying simple and accurate models. However, meeting both criteria can be challenging. The Hodgkin–Huxley model \cite{hodgkin1952quantitative} is very accurate as it can emulate the rich firing patterns of many types of neurons. However, it is very computationally expensive and only a few neurons can be computed in real time. The integrate-and-fire model \cite{burkitt2006review}  has the opposite problem: it is computationally simple but it is an unrealistic representation of the neuron since it does not capture the firing patterns with sufficient accuracy \cite{izhikevich2003simple}.
 In contrast, the Izhikevich neuron model \cite{izhikevich2003simple} meets both criteria. Tens of thousands of spiking cortical neurons can be simulated in real time by simplifying the Hodgkin-Huxley model into the two dimensional system of differential equations shown below.
 
 
@@ -193,18 +193,56 @@ The study of diffusion network is based on the observation of the nodes in a sys
 
 To infer the mechanisms behind diffusion processes the time of infection is analysed. A model needs to be created with some assumptions about the structures that generate diffusion processes:
 
-\begin{enumerate}
+\begin{itemize}
 \item The network in a diffusion process is fixed, unknown and directed.
 \item Infections are binary, they can only be infected or not infected, no partial infections are considered.
 \item Infections across the edges of the network occur independently from one another.
 \item The likelihood of a node $a$ infecting node $b$ at time $t$ is modelled by a probability distribution dependent on $a, b$ and $t$.
 \item All infections in a network are observed during a recorded time window.
-\end{enumerate}
+\end{itemize}
 
 NetRate aims to describe how infections occur during a period of time in a fixed network. This is achieved by finding the optimal network and transmission rates that maximizes the likelihood of a set of observed cascades to occur. The mathematical definitions that construct this model will be explained in the following section.
 
 
 \subsubsection{Mathematical definitions}
+
+The following definitions in this section are necessary for the construction of the model with which we intend to infer the connectivity of the network. First, the data that is going to be analysed will be defined:
+
+\begin{itemize}
+\item Observations are carried out on a population of $N$ nodes that have created a set of $C$ cascades $\{\textbf{t}^{1},\cdots,\textbf{t}^{|C|}\}$. 
+\item Each of the cascades $\textbf{t}^{c}$ contains the infection times of all the population within a time period $T^{c}$.
+\item Each of the cascades is an N-dimensional vector with recordings of when the nodes were infected in the cascade. If a node was not infected during the time period $[0,T^{c}]$, a symbol $\infty$ is assigned. This does not mean that the node never gets infected.
+\begin{equation}\label{eq:data_netrate}
+\textbf{t}^{c}:=(t_{1}^{c},\cdots,t_{N}^{c}),\quad t_{k}^{c}\in [0,T^{c}]\cup{\infty}
+\end{equation}
+\item For simplicity, $T^{c}=T$
+\item Node $i$ is parent of node $j$ if $t_{i}<t_{j}$ within the cascade.
+\end{itemize}
+
+The pairwise interactions are to be studied in order to obtain the pairwise transmission likelihood between nodes in the network. It will be assumed that infections can occur at different rates along different edges in the network. 
+
+\begin{itemize}
+\item $f(t_{i}|t_{j},\alpha _{j,i})$ is the conditional likelihood of transmission between nodes $j$ and $i$. It depends on the infection times $(t_{i},t{j})$ and pairwise transmission rate $\alpha_{j,i}$.
+\item A node cannot be infected by a healthy node. Node $j$, infected at $t_{j}$, can only infect node $i$ at time $t_{i}$ if and only if $t_{j}<t_{i}$.
+\item Transmission rate $\alpha _{j,i}\geq0$.
+\end{itemize}
+
+The cumulative density function is defined as $F(t_{i}|t_{j};\alpha _{j,i})$ and is obtained from the transmission likelihood. If a node $j$ was infected at time $t_{j}$, the probability that node $i$ is not infected by node $j$ by time $t_{i}$ is given by the survival function of the edge $j\rightarrow i$:
+
+\begin{equation}\label{eq:survival_function}
+S(t_{i}|t_{j};\alpha _{j,i})=1-F(t_{i}|t_{j};\alpha _{j,i})
+\end{equation}
+
+The instantaneous infection rate, or hazard function, of the edge $j\rightarrow i$ is the ratio of the transmission likelihood over the survival function as shown in eq.\ref{eq:hazard_function}.
+
+\begin{equation}\label{eq:hazard_function}
+H(t_{i}|t_{j};\alpha _{j,i})=\frac{f(t_{i}|t_{j};\alpha _{j,i})}{S(t_{i}|t_{j};\alpha _{j,i})}
+\end{equation}
+
+With a complete set of definitions, it will now be possible to derive the algorithm behind NetRate as it will be shown in the next section.
+
+\subsubsection{Derivation of NetRate}
+
 
 
 
