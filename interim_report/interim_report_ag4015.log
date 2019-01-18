@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.3)  15 JAN 2019 12:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.3)  18 JAN 2019 14:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -943,65 +943,65 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 147.
- [1]
-Overfull \hbox (11.4741pt too wide) in paragraph at lines 163--163
+ [1] [2]
+Overfull \hbox (11.4741pt too wide) in paragraph at lines 212--212
 \T1/ppl/m/n/10 dis-ease: a lon-gi-tu-di-nal mag-ne-toen-cephalog-ra-phy study''
 . In: \T1/ppl/m/it/10 Brain \T1/ppl/m/n/10 137.1 (2014), pp. 197^^U
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 162.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 211.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (3.10535pt too wide) in paragraph at lines 163--163
+Overfull \hbox (3.10535pt too wide) in paragraph at lines 212--212
 []\T1/ppl/m/n/10 S.C. Pon-ten, F. Bar-tolomei, and C.J. Stam. ``Small-world net
 -works and epilepsy: Graph
  []
 
-
-Overfull \hbox (3.47737pt too wide) in paragraph at lines 163--163
+[3]
+Overfull \hbox (3.47737pt too wide) in paragraph at lines 212--212
 \T1/ppl/m/n/10 tributed Ob-ser-va-tions''. In: \T1/ppl/m/it/10 2018 26th Eu-ro-
 pean Sig-nal Pro-cess-ing Con-fer-ence (EU-SIPCO)\T1/ppl/m/n/10 .
  []
 
 
-Overfull \hbox (8.52814pt too wide) in paragraph at lines 163--163
+Overfull \hbox (8.52814pt too wide) in paragraph at lines 212--212
 \T1/ppl/m/n/10 the tem-po-ral dy-nam-ics of dif-fu-sion net-works''. In: \T1/pp
 l/m/it/10 arXiv preprint arXiv:1105.0697 \T1/ppl/m/n/10 (2011). 
  []
 
 
-Overfull \hbox (3.66107pt too wide) in paragraph at lines 163--163
+Overfull \hbox (3.66107pt too wide) in paragraph at lines 212--212
 []\T1/ppl/m/n/10 Barry Hor-witz. ``The elu-sive con-cept of brain con-nec-tiv-i
 ty''. In: \T1/ppl/m/it/10 Neu-roIm-age \T1/ppl/m/n/10 19.2 (2003),
  []
 
-[2] [3] (./interim_report_ag4015.aux)
+[4] (./interim_report_ag4015.aux)
 Package logreq Info: Writing requests to 'interim_report_ag4015.run.xml'.
 \openout1 = `interim_report_ag4015.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 12901 strings out of 494923
- 210760 string characters out of 6180742
- 626186 words of memory out of 5000000
- 16038 multiletter control sequences out of 15000+600000
- 39391 words of font info for 70 fonts, out of 8000000 for 9000
+ 12914 strings out of 494923
+ 211148 string characters out of 6180742
+ 627525 words of memory out of 5000000
+ 16046 multiletter control sequences out of 15000+600000
+ 40578 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,5n,45p,1937b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,45p,1937b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/alex/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600p
 k>{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palati
-no/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.p
-fb>
-Output written on interim_report_ag4015.pdf (4 pages, 264601 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
+palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/upl
+r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on interim_report_ag4015.pdf (5 pages, 279204 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 84 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

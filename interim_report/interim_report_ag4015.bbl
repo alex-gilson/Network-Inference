@@ -656,6 +656,108 @@
       \field{pages}{32\bibrangedash 43}
       \range{pages}{12}
     \endentry
+    \entry{hodgkin1952quantitative}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2d431cbefa844616ace34344773b12a4}{%
+           family={Hodgkin},
+           familyi={H\bibinitperiod},
+           given={Alan\bibnamedelima L},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=05ec64db08e6a30baaadb6f9656ddd0e}{%
+           family={Huxley},
+           familyi={H\bibinitperiod},
+           given={Andrew\bibnamedelima F},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
+      \strng{fullhash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
+      \strng{bibnamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
+      \strng{authorbibnamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
+      \strng{authornamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
+      \strng{authorfullhash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of physiology}
+      \field{number}{4}
+      \field{title}{A quantitative description of membrane current and its application to conduction and excitation in nerve}
+      \field{volume}{117}
+      \field{year}{1952}
+      \field{pages}{500\bibrangedash 544}
+      \range{pages}{45}
+    \endentry
+    \entry{connors1990intrinsic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=22e8718c91bfa110378f9156b8225f74}{%
+           family={Connors},
+           familyi={C\bibinitperiod},
+           given={Barry\bibnamedelima W},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=16a0c4a4e0de6f3f9d9b478832c6bfd8}{%
+           family={Gutnick},
+           familyi={G\bibinitperiod},
+           given={Michael\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{fc55221f10a1f1a36d7a9891cf63e7a2}
+      \strng{fullhash}{fc55221f10a1f1a36d7a9891cf63e7a2}
+      \strng{bibnamehash}{fc55221f10a1f1a36d7a9891cf63e7a2}
+      \strng{authorbibnamehash}{fc55221f10a1f1a36d7a9891cf63e7a2}
+      \strng{authornamehash}{fc55221f10a1f1a36d7a9891cf63e7a2}
+      \strng{authorfullhash}{fc55221f10a1f1a36d7a9891cf63e7a2}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Trends in neurosciences}
+      \field{number}{3}
+      \field{title}{Intrinsic firing patterns of diverse neocortical neurons}
+      \field{volume}{13}
+      \field{year}{1990}
+      \field{pages}{99\bibrangedash 104}
+      \range{pages}{6}
+    \endentry
+    \entry{gray1996chattering}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6409595c086b49cb046fdbbdf5963f01}{%
+           family={Gray},
+           familyi={G\bibinitperiod},
+           given={Charles\bibnamedelima M},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=979179bde91e204746b6aeac62bc5b34}{%
+           family={McCormick},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association for the Advancement of Science}%
+      }
+      \strng{namehash}{2bd8bd4bf1ffa80d067ed952fc026f5b}
+      \strng{fullhash}{2bd8bd4bf1ffa80d067ed952fc026f5b}
+      \strng{bibnamehash}{2bd8bd4bf1ffa80d067ed952fc026f5b}
+      \strng{authorbibnamehash}{2bd8bd4bf1ffa80d067ed952fc026f5b}
+      \strng{authornamehash}{2bd8bd4bf1ffa80d067ed952fc026f5b}
+      \strng{authorfullhash}{2bd8bd4bf1ffa80d067ed952fc026f5b}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science}
+      \field{number}{5284}
+      \field{title}{Chattering cells: superficial pyramidal neurons contributing to the generation of synchronous oscillations in the visual cortex}
+      \field{volume}{274}
+      \field{year}{1996}
+      \field{pages}{109\bibrangedash 113}
+      \range{pages}{5}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

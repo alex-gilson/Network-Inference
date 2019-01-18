@@ -13,7 +13,7 @@
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 \usepackage[margin=1.5in]{geometry}
 
-
+\usepackage{amsmath}
 \usepackage{mathpazo} % Palatino font
 % \usepackage[style=authoryear,backend=biber]{biblatex}
 \lstset{frame=tb,
@@ -76,7 +76,7 @@
 	
 	% If you don't want a supervisor, uncomment the two lines below and comment the code above
 	{\large\textit{Project title}}\\
-	\textsc{Structure and dynamics of large networks of interacting neurons} \quad \text{CID: 01112712} % Your name
+	\textsc{Structure and dynamics of large networks of interacting neurons}
 	
 	\vfill
 	%------------------------------------------------
@@ -156,6 +156,55 @@ x_{j} = \Sigma \textbf{W}_{ij}\times x_{i}
 \end{equation}
 
 \subsection{Izhikevich neuron model}
+
+In order to understand how the brain works we must be able to replicate the behaviour of individual neurons applying simple and accurate models. However, meeting both criteria can be challenging. The Hodgkin–Huxley model \cite{hodgkin1952quantitative} is very accurate as it can emulate the rich firing patterns of many types of neurons. However, it is very computationally expensive and only a few neurons can be computed in real time. The integrate-and-fire model has the opposite problem: it is computationally simple but it is an unrealistic representation of the neuron since it does not capture the firing patterns with sufficient accuracy \cite{izhikevich2003simple}.
+In contrast, the Izhikevich neuron model \cite{izhikevich2003simple} meets both criteria. Tens of thousands of spiking cortical neurons can be simulated in real time by simplifying the Hodgkin-Huxley model into the two dimensional system of differential equations shown below.
+
+
+\begin{align}\label{eq:izhikevich_ode}
+&v'=0.04v^{2}+5v+140-u+\textbf{I} \\
+&u'=a(bv-u)
+\end{align}
+
+with the auxiliary after-spike reseting
+
+\begin{equation}\label{eq:izhikevich_reset}
+\text{if } v \geq 30 \text{mV, then}
+\begin{cases}
+    v     & \leftarrow c \\
+    u     & \leftarrow u + d 
+  \end{cases}
+\end{equation}
+
+Here, the dimensionless variables $v$ and $u$ represent the membrane potential of the neuron and the membrane recovery, respectively. When a spike reaches its apex (30 mV), both these variables are reset according to eq. \ref{eq:izhikevich_reset}. Synaptic or injected DC currents are represented by the variable \textbf{I}. The threshold is not fixed, just as with real neurons and it's based on previous spikes. 
+
+On the other hand, $a, b, c$ and $d$ are dimensionless parameters. $a$ determines the speed of the recovery variable $u$, $b$ defines the sensitivity of the recovery variable $u$ to sub-threshold fluctuations of the membrane potential $v$. Finally, $c$ and $d$ determine the after-spike reset value of the recovery variables $v$ and $u$, respectively. 
+
+The relevance of this algorithm stems from the fact that, different combinations of the parameters provide the model with a rich variety of firing patterns. When analysing the neocortical neurons in the mammalian brain, a number of different classes of excitatory neurons can be found \cite{connors1990intrinsic, gray1996chattering} such as RS (regular spiking), IB (intrinsically bursting) and CH (chattering). From the inhibitory type of neurons, two classes can be found: FS (fast spiking and LTS (low-threshold spiking). Other interesting classes of neurons are the TC (thalamo-cortical) and the RZ (resonator). It is of great importance to understand what types of neurons can be found so that a simulated network can become a closer representation of what can be found on a real brain. In order to simplify the network to be inferred, the only type of neurons simulated in the network were the regular spiking neurons. This was achieved by setting the parameters to $a=0.02$, $b=0.2$, $c=-65$ and $d=8$. This type of neuron is the most common type of excitatory neuron in the brain. There is also a ratio of excitatory and inhibitory neurons of 4 to 1 in the mammalian brain, respectively \cite{izhikevich2003simple}.
+
+
+\subsection{Netrate}
+
+\subsubsection{Diffusion processes}
+
+In order to infer the underlying structure of a network, \cite{alexandru2018estimating} employed  NetRate algorithm developed by Rodriguez \cite{rodriguez2011uncovering} by treating the network as a diffusion process.
+
+The study of diffusion network is based on the observation of the nodes in a system when they take a certain action: get infected by a virus, share a piece of information, etc. A problem concerning this kind of studies lies on the fact that we can only understand when and where these nodes propagate but not how or why the do so. An example of this is the propagation of a virus in a population. We can tell who and when somebody got infected but not who infected him. For the rest of this section we will refer to the propagation of an infection as the object of study of the network. 
+
+To infer the mechanisms behind diffusion processes the time of infection is analysed. A model needs to be created with some assumptions about the structures that generate diffusion processes:
+
+\begin{enumerate}
+\item The network in a diffusion process is fixed, unknown and directed.
+\item Infections are binary, they can only be infected or not infected, no partial infections are considered.
+\item Infections across the edges of the network occur independently from one another.
+\item The likelihood of a node $a$ infecting node $b$ at time $t$ is modelled by a probability distribution dependent on $a, b$ and $t$.
+\item All infections in a network are observed during a recorded time window.
+\end{enumerate}
+
+NetRate aims to describe how infections occur during a period of time in a fixed network. This is achieved by finding the optimal network and transmission rates that maximizes the likelihood of a set of observed cascades to occur. The mathematical definitions that construct this model will be explained in the following section.
+
+
+\subsubsection{Mathematical definitions}
 
 
 

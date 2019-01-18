@@ -1940,6 +1940,14 @@
     <bcf:citekey order="12">HORWITZ2003466</bcf:citekey>
     <bcf:citekey order="13">friston1993functional</bcf:citekey>
     <bcf:citekey order="14">alexandru2018estimating</bcf:citekey>
+    <bcf:citekey order="15">hodgkin1952quantitative</bcf:citekey>
+    <bcf:citekey order="16">izhikevich2003simple</bcf:citekey>
+    <bcf:citekey order="17">izhikevich2003simple</bcf:citekey>
+    <bcf:citekey order="18">connors1990intrinsic</bcf:citekey>
+    <bcf:citekey order="18">gray1996chattering</bcf:citekey>
+    <bcf:citekey order="19">izhikevich2003simple</bcf:citekey>
+    <bcf:citekey order="20">alexandru2018estimating</bcf:citekey>
+    <bcf:citekey order="21">rodriguez2011uncovering</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
