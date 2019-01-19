@@ -787,6 +787,43 @@
       \field{pages}{109\bibrangedash 113}
       \range{pages}{5}
     \endentry
+    \entry{kempe2003maximizing}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=548c8439009be7e3768757c6ff4fc6d3}{%
+           family={Kempe},
+           familyi={K\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=e405ae3c720db1b0e447ff5b601b968f}{%
+           family={Kleinberg},
+           familyi={K\bibinitperiod},
+           given={Jon},
+           giveni={J\bibinitperiod}}}%
+        {{hash=70788495a5c26ab4ada6410f5983a376}{%
+           family={Tardos},
+           familyi={T\bibinitperiod},
+           given={{É}va},
+           giveni={É\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{e0e908b2ed8ec086e7e81839c51b2510}
+      \strng{fullhash}{e0e908b2ed8ec086e7e81839c51b2510}
+      \strng{bibnamehash}{e0e908b2ed8ec086e7e81839c51b2510}
+      \strng{authorbibnamehash}{e0e908b2ed8ec086e7e81839c51b2510}
+      \strng{authornamehash}{e0e908b2ed8ec086e7e81839c51b2510}
+      \strng{authorfullhash}{e0e908b2ed8ec086e7e81839c51b2510}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the ninth ACM SIGKDD international conference on Knowledge discovery and data mining}
+      \field{title}{Maximizing the spread of influence through a social network}
+      \field{year}{2003}
+      \field{pages}{137\bibrangedash 146}
+      \range{pages}{10}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

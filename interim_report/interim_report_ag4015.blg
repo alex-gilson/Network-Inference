@@ -1,15 +1,15 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'interim_report_ag4015.blg'
-[38] biber:313> INFO - === Fri Jan 18, 2019, 18:20:59
-[58] Biber.pm:371> INFO - Reading 'interim_report_ag4015.bcf'
-[127] Biber.pm:857> INFO - Found 18 citekeys in bib section 0
-[142] Biber.pm:3981> INFO - Processing section 0
-[243] Biber.pm:4154> INFO - Looking for bibtex format file 'references.bib' for section 0
-[245] bibtex.pm:1468> INFO - LaTeX decoding ...
-[282] bibtex.pm:1294> INFO - Found BibTeX data source 'references.bib'
-[479] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[480] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[480] Biber.pm:3809> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[480] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[519] bbl.pm:617> INFO - Writing 'interim_report_ag4015.bbl' with encoding 'UTF-8'
-[529] bbl.pm:720> INFO - Output to interim_report_ag4015.bbl
+[40] biber:313> INFO - === Sat Jan 19, 2019, 18:35:22
+[62] Biber.pm:371> INFO - Reading 'interim_report_ag4015.bcf'
+[137] Biber.pm:857> INFO - Found 19 citekeys in bib section 0
+[153] Biber.pm:3981> INFO - Processing section 0
+[167] Biber.pm:4154> INFO - Looking for bibtex format file 'references.bib' for section 0
+[171] bibtex.pm:1468> INFO - LaTeX decoding ...
+[213] bibtex.pm:1294> INFO - Found BibTeX data source 'references.bib'
+[384] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[384] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[384] Biber.pm:3809> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[384] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[406] bbl.pm:617> INFO - Writing 'interim_report_ag4015.bbl' with encoding 'UTF-8'
+[419] bbl.pm:720> INFO - Output to interim_report_ag4015.bbl

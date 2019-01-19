@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{caption}
@@ -128,11 +128,12 @@
 \section{Introduction}
 
 The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. However, little is known about how it works. By studying how the neurons structure to to store and process information we can understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and epilepsy \cite{PONTEN2007918}, and in machine learning for the development of more intelligent neural networks.
-
+\\\\
 In order to infer the network structure of a set of neurons, they are treated as a diffusion network where electrical spikes increase the likelihood of connected neurons to spike and therefore transmit a signal that travels as if it were a disease. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the relationship between all of the neurons, an estimate of the topology of the network can be obtained. 
-
+\\\\
 Previous work on this topic \cite{pranav_report, alexandru2018estimating} evaluated the feasibility of using a maximum-likelihood estimator algorithm, NetRate \cite{rodriguez2011uncovering}, for the structure inference of biological neural networks. A network was simulated using the Izhikevic neuron model \cite{izhikevich2003simple} and the brian simulator \cite{10.3389/neuro.01.026.2009}. The connections between the neurons were then estimated, compared to the original network and the performance of the algorithm was evaluated.
-
+\\
+\\
 The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability and the addition of different types of neurons to the model.It would also be useful to test the accuracy of the algorithm on real interacting neurons. Developments in technology allow us to obtain spike data from individual neurons \cite{ito2016spontaneous, ito2014large, litke2004does}.
 
 
@@ -140,12 +141,12 @@ The aim of this project is to improve on the state of the art research of networ
 
 \subsection{Definition of connectivity}
 
-The definition of connectivity between neurons has a history of lack of consensus among the scientific community \cite{HORWITZ2003466}. Connectivity studies from different researches may lead to different results depending on how they define it, as they may be looking at different aspects of connectivity. The two main accepted definitions that are used are functional and effective connectivity.
-
+The definition of connectivity between neurons has a history of lack of consensus among the scientific community \cite{HORWITZ2003466}. Connectivity studies from different researchers may lead to different results depending on how they define it, as they may be looking at different aspects of connectivity. The two main accepted definitions that are used are functional and effective connectivity.
+\\
 Functional connectivity is the temporal correlation between spatially remote neurophysiological events \cite{friston1993functional}. Studies on this topic began with electroencephalography (EEG) measurements. Some methods to measure functional connectivity include the evaluation of the correlation in the frequency domain between EEG signals at different scalp locations \cite{pfurtscheller1999event}, and the cross-correlation of the time series measurements from a pair of electrodes \cite{gevins1985neurocognitive}. However, due to the volume conduction of brain tissue, the electrical activity from the scalp cannot infer the individual neuron behaviour below the electrode \cite{HORWITZ2003466}.
-
-Effective connectivity was defined in \cite{friston1993functional} as the influence that one neural system exerts on another. Effective connectivity can be measured in terms of efficacy and contribution. At a synaptic level it can be expressed as in eq.\ref{eq:synaptic_effectivity}, where $x_{j}$ is the post-synaptic response to many pre-synaptic inputs $x_{i}$ and $\textbf{W}_{ij}$ is the efficacy of the connections between neurons $i$ and $j$. Contribution is reflected in eq.\ref{eq:synaptic_contribution} as the effect of $i$ on $j$ relative to all pre-synaptic inputs. Using this definition, directional effects are taken into account and a richer representation of the network can be attained. Following the approach in \cite{alexandru2018estimating}, this project will focus on the effective connectivity of neurons in a network.
-
+\\
+Effective connectivity was defined in \cite{friston1993functional} as the influence that one neural system exerts on another. Effective connectivity can be measured in terms of efficacy and contribution. At a synaptic level it can be expressed as in Eq.\ref{eq:synaptic_effectivity}, where $x_{j}$ is the post-synaptic response to many pre-synaptic inputs $x_{i}$ and $\textbf{W}_{ij}$ is the efficacy of the connections between neurons $i$ and $j$. Contribution is reflected in Eq.\ref{eq:synaptic_contribution} as the effect of $i$ on $j$ relative to all pre-synaptic inputs. Using this definition, directional effects are taken into account and a richer representation of the network can be attained. Following the approach in \cite{alexandru2018estimating}, this project will focus on the effective connectivity of neurons in a network.
+\\
 
 \begin{equation}\label{eq:synaptic_effectivity}
 x_{j} = \Sigma \textbf{W}_{ij}\times x_{i}
@@ -158,6 +159,7 @@ x_{j} = \Sigma \textbf{W}_{ij}\times x_{i}
 \subsection{Izhikevich neuron model}
 
 In order to understand how the brain works we must be able to replicate the behaviour of individual neurons applying simple and accurate models. However, meeting both criteria can be challenging. The Hodgkin–Huxley model \cite{hodgkin1952quantitative} is very accurate as it can emulate the rich firing patterns of many types of neurons. However, it is very computationally expensive and only a few neurons can be computed in real time. The integrate-and-fire model \cite{burkitt2006review}  has the opposite problem: it is computationally simple but it is an unrealistic representation of the neuron since it does not capture the firing patterns with sufficient accuracy \cite{izhikevich2003simple}.
+\\
 In contrast, the Izhikevich neuron model \cite{izhikevich2003simple} meets both criteria. Tens of thousands of spiking cortical neurons can be simulated in real time by simplifying the Hodgkin-Huxley model into the two dimensional system of differential equations shown below.
 
 
@@ -176,10 +178,10 @@ with the auxiliary after-spike reseting
   \end{cases}
 \end{equation}
 
-Here, the dimensionless variables $v$ and $u$ represent the membrane potential of the neuron and the membrane recovery, respectively. When a spike reaches its apex (30 mV), both these variables are reset according to eq. \ref{eq:izhikevich_reset}. Synaptic or injected DC currents are represented by the variable \textbf{I}. The threshold is not fixed, just as with real neurons and it's based on previous spikes. 
-
+Here, the dimensionless variables $v$ and $u$ represent the membrane potential of the neuron and the membrane recovery, respectively. When a spike reaches its apex (30 mV), both these variables are reset according to Eq. \ref{eq:izhikevich_reset}. Synaptic or injected DC currents are represented by the variable \textbf{I}. The threshold is not fixed, just as with real neurons and it's based on previous spikes. 
+\\
 On the other hand, $a, b, c$ and $d$ are dimensionless parameters. $a$ determines the speed of the recovery variable $u$, $b$ defines the sensitivity of the recovery variable $u$ to sub-threshold fluctuations of the membrane potential $v$. Finally, $c$ and $d$ determine the after-spike reset value of the recovery variables $v$ and $u$, respectively. 
-
+\\
 The relevance of this algorithm stems from the fact that, different combinations of the parameters provide the model with a rich variety of firing patterns. When analysing the neocortical neurons in the mammalian brain, a number of different classes of excitatory neurons can be found \cite{connors1990intrinsic, gray1996chattering} such as RS (regular spiking), IB (intrinsically bursting) and CH (chattering). From the inhibitory type of neurons, two classes can be found: FS (fast spiking and LTS (low-threshold spiking). Other interesting classes of neurons are the TC (thalamo-cortical) and the RZ (resonator). It is of great importance to understand what types of neurons can be found so that a simulated network can become a closer representation of what can be found on a real brain. In order to simplify the network to be inferred, the only type of neurons simulated in the network were the regular spiking neurons. This was achieved by setting the parameters to $a=0.02$, $b=0.2$, $c=-65$ and $d=8$. This type of neuron is the most common type of excitatory neuron in the brain. There is also a ratio of excitatory and inhibitory neurons of 4 to 1 in the mammalian brain, respectively \cite{izhikevich2003simple}.
 
 
@@ -233,7 +235,7 @@ The cumulative density function is defined as $F(t_{i}|t_{j};\alpha _{j,i})$ and
 S(t_{i}|t_{j};\alpha _{j,i})=1-F(t_{i}|t_{j};\alpha _{j,i})
 \end{equation}
 
-The instantaneous infection rate, or hazard function, of the edge $j\rightarrow i$ is the ratio of the transmission likelihood over the survival function as shown in eq.\ref{eq:hazard_function}.
+The instantaneous infection rate, or hazard function, of the edge $j\rightarrow i$ is the ratio of the transmission likelihood over the survival function as shown in Eq.\ref{eq:hazard_function}.
 
 \begin{equation}\label{eq:hazard_function}
 H(t_{i}|t_{j};\alpha _{j,i})=\frac{f(t_{i}|t_{j};\alpha _{j,i})}{S(t_{i}|t_{j};\alpha _{j,i})}
@@ -243,13 +245,57 @@ With a complete set of definitions, it will now be possible to derive the algori
 
 \subsubsection{Derivation of NetRate}
 
+Rodriguez \cite{rodriguez2011uncovering} derives NetRate by studying the individual probability of infection of the nodes and then building the whole of the network. The probability of survival of any cascade is the probability that a node is not infected until time $T$, given that the parents are infected at the beginning of the cascade. For a non-infected node $i$, the probability that any of the nodes $1\cdots N$ does not infect node $i$ by time $T$ is given by the product of the survival functions of each of the infected nodes $k$ targeting node $i$ because the different probabilities of infection are considered independent. This is illustrated in Eq.\ref{eq:step_1_netrate}.
 
+\begin{equation}\label{eq:step_1_netrate}
+\prod_{t_{k}\leq T}S(T\mid t_{k};\alpha _{k,i})
+\end{equation}
 
+To compute the likelihood of a cascade $\textbf{t}:=(t_{1},\cdots,t_{N}|t_{i}\leq T)$ we require the the likelihood of the recorded infections $\textbf{t}^{\leq T}=(t_{1},\cdots,t_{N}|t_{i}\leq T)$. Again, using independence, the likelihood factorizes as seen in \ref{eq:step_2_netrate}. The likelihood of the cascade then becomes the conditional likelihood of the infection time given the rest of the cascade.
+
+\begin{equation}\label{eq:step_2_netrate}
+f(\textbf{t}^{\leq T};\textbf{A})=\prod_{t_{i}\leq T}f(t_{i}\mid t_{1},\cdots,t_{N}\textbackslash t_{i};\textbf{A})
+\end{equation}
+
+As in \cite{kempe2003maximizing}, a node gets infected when the first parent infects the node. We now compute the likelihood of a potential parent $j$ of being the first one by using Eq.\ref{eq:step_1_netrate}.
+
+\begin{equation}\label{eq:step_3_netrate}
+f(t_{i}\mid t_{j};\alpha_{j,i})\times \prod_{j\neq k,t_{k}< t_{i}}S(t_{i}\mid t_{k};\alpha _{k,i})
+\end{equation}
+ 
+In this step, we calculate the conditional likelihood of Eq.\ref{eq:step_2_netrate} by adding all the likelihoods of the mutually disjoint likelihoods that each potential parent is the first parent:
+
+\begin{equation}\label{eq:step_4_netrate}
+f(t_{i}\mid t_{1},\cdots,t_{N}\textbackslash t_{i};\textbf{A})=\sum_{j:t_{j}<t_{i}}f(t_{i}\mid t_{j};\alpha _{j,i})\times \prod _{j\neq k,t_{k}<t_{i}}S(t_{i}\mid t_{k};\alpha _{k,i})
+\end{equation}
+
+Using Eq.\ref{eq:step_2_netrate} and removing the condition $k\neq j$, the likelihood of infections then becomes:
+
+\begin{equation}\label{eq:step_5_netrate}
+f(\textbf{t}^{\leq T};\textbf{A})=\prod_{t_{i}\leq T}\prod_{k:t_{k}<t_{i}}S(t_{i}\mid t_{k};\alpha _{k,i})\times \sum_{j:t_{j}<t_{i}}\frac{f(t_{i}\mid t_{j};\alpha_{j,i})}{S(t_{i}\mid t_{j};\alpha _{j,i})}
+\end{equation}
+
+However, Eq.\ref{eq:step_5_netrate} needs to consider also the nodes that are not infected during the observation window. For this reason we add the multiplicative survival term from Eq.\ref{eq:step_1_netrate} and replace the ratios from Eq.\ref{eq:step_5_netrate} with hazard functions:
+
+\begin{equation}\label{eq:step_6_netrate}
+f(\textbf{t};\textbf{A})=\prod_{t_{i}\leq T}\prod_{t_{m}>T}S(T\mid t_{i};\alpha_{i,m})\times \prod_{k:t_{k}<t_{i}}S(t_{i}\mid t_{k};\alpha _{k,i})\sum_{j:t_{j}<t_{i}}H(t_{i}\mid t_{j};\alpha _{j,i})
+\end{equation}
+
+The likelihood of a set of independent set of cascades $C=\{t^{1},\cdots,t^{|C|}\}$ is the product of the likelihoods of all the individual cascades given by Eq.\ref{eq:step_6_netrate}:
+
+\begin{equation}\label{eq:step_7_netrate}
+\prod _{\textbf{t}^{c}\in C}f(\textbf{t}^{c};\textbf{A})
+\end{equation}
 
 \printbibliography 
 
 
 \end{document}
+
+
+
+
+
 
 
 

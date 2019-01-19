@@ -1949,6 +1949,8 @@
     <bcf:citekey order="20">izhikevich2003simple</bcf:citekey>
     <bcf:citekey order="21">alexandru2018estimating</bcf:citekey>
     <bcf:citekey order="22">rodriguez2011uncovering</bcf:citekey>
+    <bcf:citekey order="23">rodriguez2011uncovering</bcf:citekey>
+    <bcf:citekey order="24">kempe2003maximizing</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
