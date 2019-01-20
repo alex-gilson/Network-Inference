@@ -254,7 +254,7 @@ Rodriguez \cite{rodriguez2011uncovering} derives NetRate by studying the individ
 To compute the likelihood of a cascade $\textbf{t}:=(t_{1},\cdots,t_{N}|t_{i}\leq T)$ we require the the likelihood of the recorded infections $\textbf{t}^{\leq T}=(t_{1},\cdots,t_{N}|t_{i}\leq T)$. Again, using independence, the likelihood factorizes as seen in \ref{eq:step_2_netrate}. The likelihood of the cascade then becomes the conditional likelihood of the infection time given the rest of the cascade.
 
 \begin{equation}\label{eq:step_2_netrate}
-f(\textbf{t}^{\leq T};\textbf{A})=\prod_{t_{i}\leq T}f(t_{i}\mid t_{1},\cdots,t_{N}\textbackslash t_{i};\textbf{A})
+f(\textbf{t}^{\leq T};\textbf{A})=\prod_{t_{i}\leq T}f(t_{i}\mid t_{1},\cdots,t_{N}\backslash t_{i};\textbf{A})
 \end{equation}
 
 As in \cite{kempe2003maximizing}, a node gets infected when the first parent infects the node. We now compute the likelihood of a potential parent $j$ of being the first one by using Eq.\ref{eq:step_1_netrate}.
@@ -266,7 +266,7 @@ f(t_{i}\mid t_{j};\alpha_{j,i})\times \prod_{j\neq k,t_{k}< t_{i}}S(t_{i}\mid t_
 In this step, we calculate the conditional likelihood of Eq.\ref{eq:step_2_netrate} by adding all the likelihoods of the mutually disjoint likelihoods that each potential parent is the first parent:
 
 \begin{equation}\label{eq:step_4_netrate}
-f(t_{i}\mid t_{1},\cdots,t_{N}\textbackslash t_{i};\textbf{A})=\sum_{j:t_{j}<t_{i}}f(t_{i}\mid t_{j};\alpha _{j,i})\times \prod _{j\neq k,t_{k}<t_{i}}S(t_{i}\mid t_{k};\alpha _{k,i})
+f(t_{i}\mid t_{1},\cdots,t_{N}\backslash t_{i};\textbf{A})=\sum_{j:t_{j}<t_{i}}f(t_{i}\mid t_{j};\alpha _{j,i})\times \prod _{j\neq k,t_{k}<t_{i}}S(t_{i}\mid t_{k};\alpha _{k,i})
 \end{equation}
 
 Using Eq.\ref{eq:step_2_netrate} and removing the condition $k\neq j$, the likelihood of infections then becomes:
@@ -287,12 +287,35 @@ The likelihood of a set of independent set of cascades $C=\{t^{1},\cdots,t^{|C|}
 \prod _{\textbf{t}^{c}\in C}f(\textbf{t}^{c};\textbf{A})
 \end{equation}
 
+The goal of the algorithm is to find the transmission rates $\alpha_{j,i}$ of all the edges in the network such that the likelihood of the set of cascades is maximized.
+
+\begin{subequations}
+\label{eq:optimization_netrate}
+\begin{align}
+& \text{minimize}_{\textbf{A}} -\sum_{c\in C}\log f(\textbf{t};\textbf{A})\\
+& \text{subject to } \alpha _{j,i}\geq 0,i,j=1,\cdots,N,i\neq j,
+\end{align}
+\end{subequations}.
+
+Here, $\textbf{A}:=\{\alpha _{j,i}\mid i,j=1,\cdots,n,i\neq j\}$ are the variables and the edges of the network are defined as the pairs of nodes whose transmission rates $\alpha _{i,j}>0$. 
+
+The solution to Eq.\ref{eq:optimization_netrate} found in \cite{rodriguez2011uncovering} is given by \ref{eq:solution_netrate}. The survival and hazard functions are concave in the parameter(s) of the transmission likelihoods and, therefore, convexity of Eq.\ref{eq:optimization_netrate} follows from linearity.
+
+\begin{subequations}
+\begin{align}
+\label{eq:solution_netrate}
+& L(\{\textbf{t}^{1}\cdots \textbf{t}^{|C|}\};\textbf{A})=\sum _{c}\Psi_{1}(\textbf{t}^{c};\textbf{A})+\Psi_{2}(\textbf{t}^{c};\textbf{A})+\Psi_{3}(\textbf{t}^{c};\textbf{A})\\
+& \Psi_{1}(\textbf{t};\textbf{A})=\sum _{i:t_{i}\leq T}\sum _{t_{m}>T}\log S(T\mid t_{i};\alpha _{i,m})\\
+& \Psi _{2}(\textbf{t}^{c};\textbf{A})=\sum_{i:t_{i}\leq T} \sum_ {j:t_{j}<t_{i}}\log S(t_{i}\mid t_{j};\alpha_{j,i})\\
+& \Psi _{3}(\textbf{t}^{c};\textbf{A})=\sum_{i:t_{i}\leq T} \log (\sum_{j:t_{j}<t_{i}} H(t_{i}\mid t_{j};\alpha_{j,i}))
+\end{align}
+\end{subequations}
+
+
 \printbibliography 
 
 
 \end{document}
-
-
 
 
 
