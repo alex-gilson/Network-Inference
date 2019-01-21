@@ -6,6 +6,7 @@
 \usepackage{graphicx} %package to manage images
 \graphicspath{ {Images/} }
 \usepackage{xcolor}
+\usepackage{makeidx}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -124,10 +125,13 @@
 	
 \end{titlepage}
 
+\begin{titlepage}
+\tableofcontents
+\end{titlepage}
 
 \section{Introduction}
 
-The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. However, little is known about how it works. By studying how the neurons structure to to store and process information we can understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and epilepsy \cite{PONTEN2007918}, and in machine learning for the development of more intelligent neural networks.
+The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. However, little is known about how it works. By studying how the neurons structure to store and process information we can understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and epilepsy \cite{PONTEN2007918}, and in machine learning for the development of more intelligent neural networks.
 \\\\
 In order to infer the network structure of a set of neurons, they are treated as a diffusion network where electrical spikes increase the likelihood of connected neurons to spike and therefore transmit a signal that travels as if it were a disease. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the relationship between all of the neurons, an estimate of the topology of the network can be obtained. 
 \\\\
@@ -311,7 +315,51 @@ The solution to Eq.\ref{eq:optimization_netrate} found in \cite{rodriguez2011unc
 \end{align}
 \end{subequations}
 
+The terms in Eq.\ref{eq:solution_netrate} depend only on the infection time differences ($t_{i}-t_{j}$) and the transmission rates $\alpha_{j,i}$. Each of the terms adds a property to the solution of NetRate.
 
+\begin{itemize}
+\item The terms $\Psi_{1}$ and $\Psi_{2}$ apply a positively weighted norm on $\textbf{A}$, thus encouraging sparse solutions.
+\item $\Psi_{2}$ penalizes the edges that transmit infections slowly and promotes edges that infect quickly.
+\item $\Psi_{1}$ penalizes edges to uninfected nodes until the time horizon. With a longer observation window the penalties become larger, but so does the probability of nodes becoming infected.
+\item $\Psi_{3}$ makes sure that all infected nodes have a minimum of one parent to avoid $\log 0 = -\infty$. Since the logarithm grows slowly, it slightly encourages infected nodes to have many parents.
+\end{itemize}
+
+\subsubsection{Cascade generation}
+
+The maximization of the likelihood function requires data in the form of cascades in order to be computed. The time of infection of each of the nodes can be obtained from the network simulation but it must then be formatted into cascades. In \cite{pranav_report}, the procedure is well explained: 
+
+\begin{enumerate}
+\item At time $t=0$, a random node is selected to carry the disease.
+\item The disease propagates for a $T$ amount of time (horizon) based on the pairwise transmission likelihood $f(t_{i}\mid t_{j};\alpha_{j,i})$ of the edges in the network.
+\item At the end of the simulation, a cascade is generated with the information from the times at which the nodes were infected. 
+\end{enumerate}
+
+As an example, let there be a network of 6 nodes ($N=6$) and a horizon of $T=20$. Let us select node 5 at time $t=0$ to be the starting point of the experiment. The simulation begins and the disease spreads out. It infects node 2 at $t=3$ and node 6 at $t=5$. The resulting cascade has the form of Eq.\ref{eq:data_netrate}  would look like this:
+
+\begin{equation}\label{eq:cascade_example}
+\textbf{t}^{c}=\{\infty, 3, \infty, \infty, 0, 5\}
+\end{equation}
+
+In this cascade, nodes 2 and 6 were infected while nodes 1, 3 and 4 remained healthy for the duration of the cascade. Since at time $t=3$ the only infected node was 3, this node must have infected node 2. However, it becomes inconclusive as to which node infected 6 at time $t=6$. We could be lead to believe that the uninfected nodes are not connected to any of the other infected nodes. However, cascades are probabilistic models and no one cascade can tell us what the values of $\alpha_{j,i}$ are. We would, therefore, require a large number of cascades in order to infer those values with a high confidence. 
+
+
+\subsubsection{Performance metrics}
+
+Evaluating the performance of NetRate involves analysing the inferred network $\hat G$: which edges have been correctly inferred, which ones have been missed and what weights have been assigned to the inferred edges. These questions are answered by calculating the accuracy, precision, recall and MAE against the true network $G^{*}$.
+
+\begin{enumerate}
+\item Precision is the proportion of edges in the inferred network that exist in the true network.
+\item Recall is the proportion of edges in the true network that exist in the inferred network.
+\item $\text{Accuracy}=1-\frac{\sum_{i,j}\mid I(\alpha_{i,j}^{*})-I(\hat \alpha_{i,j}\mid}{\sum_{i,j}I(\alpha^{*}_{i,j})+\sum_{i,j}I(\hat \alpha _{i,j})}, \quad \text{where } I(\alpha)=1\text{ if } \alpha > 0\text{ and } I(\alpha)=0\text{, otherwise.}$
+\item $\text{MAE} = E[\mid \alpha^{*} - \hat \alpha \mid /\alpha^{*}], \quad $ where $ \alpha^{*}$ and $\hat \alpha $ are the true and estimated transmission rates, respectively.
+\end{enumerate}
+
+
+
+
+
+
+\newpage
 \printbibliography 
 
 
