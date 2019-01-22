@@ -4,6 +4,9 @@ from brian2 import *
 import csv
 import matplotlib.pyplot as plt
 import sys
+import numpy as np
+import networkx as nx
+
 
 def visualise_connectivity(S):
     Ns = len(S.source)
@@ -40,12 +43,33 @@ def visualise_simple(networkFileName):
             original_network[0].append(row[0])
             original_network[1].append(row[1])
             original_network[2].append(float(row[2])*20)
+    original_network = np.asarray(original_network)
+    original_network[0] = np.add(original_network[0].astype(int),np.ones(len(original_network[0])))
+    original_network[1] = np.add(original_network[1].astype(int),np.ones(len(original_network[1])))
     plt.figure(figsize=(10,7))
-    plt.scatter(original_network[0],original_network[1], original_network[2],c='b',label='Original Network')
+    plt.grid('--',linewidth=1, zorder=-1) 
+    plt.scatter(original_network[0],original_network[1], original_network[2].astype(float),c='b',label='Original Network', zorder=1)
     plt.xlabel('Source neuron index')
     plt.ylabel('Target neuron index')
+    plt.xlim([0,21])
+    plt.ylim([0,21])
+    plt.xticks(np.arange(1, 21, step=1))
+    plt.yticks(np.arange(1, 21, step=1))
+    plt.title('Network of 20 nodes')
+    # plt.set_axisbelow(True)
     plt.show()           
 
-
+    # # # Generating sample data
+    # # G = nx.florentine_families_graph()
+    # # adjacency_matrix = nx.adjacency_matrix(G)
+    # #
+    # # The actual work
+    # # You may prefer `nx.from_numpy_matrix`.
+    # G2 = nx.from_scipy_sparse_matrix(adjacency_matrix)
+    # import pdb; pdb.set_trace()
+    # nx.draw_circular(G2)
+    # plt.axis('equal')
+    # plt.show()
+    #
 if __name__ == "__main__":
     visualise_simple(sys.argv[1])
