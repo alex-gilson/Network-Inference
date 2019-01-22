@@ -1,4 +1,5 @@
-\documentclass[10pt]{article}
+\documentclass[11pt]{article}
+\renewcommand{\baselinestretch}{1.2}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{caption}
@@ -12,7 +13,7 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 \usepackage{listings}
 \usepackage[T1]{fontenc} % Output font encoding for international characters
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 
 \usepackage{amsmath}
 \usepackage{mathpazo} % Palatino font
@@ -186,7 +187,23 @@ Here, the dimensionless variables $v$ and $u$ represent the membrane potential o
 \\
 On the other hand, $a, b, c$ and $d$ are dimensionless parameters. $a$ determines the speed of the recovery variable $u$, $b$ defines the sensitivity of the recovery variable $u$ to sub-threshold fluctuations of the membrane potential $v$. Finally, $c$ and $d$ determine the after-spike reset value of the recovery variables $v$ and $u$, respectively. 
 \\
-The relevance of this algorithm stems from the fact that, different combinations of the parameters provide the model with a rich variety of firing patterns. When analysing the neocortical neurons in the mammalian brain, a number of different classes of excitatory neurons can be found \cite{connors1990intrinsic, gray1996chattering} such as RS (regular spiking), IB (intrinsically bursting) and CH (chattering). From the inhibitory type of neurons, two classes can be found: FS (fast spiking and LTS (low-threshold spiking). Other interesting classes of neurons are the TC (thalamo-cortical) and the RZ (resonator). It is of great importance to understand what types of neurons can be found so that a simulated network can become a closer representation of what can be found on a real brain. In order to simplify the network to be inferred, the only type of neurons simulated in the network were the regular spiking neurons. This was achieved by setting the parameters to $a=0.02$, $b=0.2$, $c=-65$ and $d=8$. This type of neuron is the most common type of excitatory neuron in the brain. There is also a ratio of excitatory and inhibitory neurons of 4 to 1 in the mammalian brain, respectively \cite{izhikevich2003simple}.
+The relevance of this algorithm stems from the fact that, different combinations of the parameters provide the model with a rich variety of firing patterns. When analysing the neocortical neurons in the mammalian brain, a number of different classes of excitatory neurons can be found \cite{connors1990intrinsic, gray1996chattering} such as RS (regular spiking), IB (intrinsically bursting) and CH (chattering). From the inhibitory type of neurons, two classes can be found: FS (fast spiking and LTS (low-threshold spiking). Other interesting classes of neurons are the TC (thalamo-cortical) and the RZ (resonator). A visual representation of these neurons can be observed in figure \ref{fig:types_neurons}. It is of great importance to understand what types of neurons can be found so that a simulated network can become a closer representation of what can be found on a real brain. In order to simplify the network to be inferred, the only type of neurons simulated in the network were the excitatory regular spiking neurons. This was achieved by setting the parameters to $a=0.02$, $b=0.2$, $c=-65$ and $d=8$. This type of neuron is the most common type of excitatory neuron in the brain. There is also a ratio of excitatory and inhibitory neurons of 4 to 1 in the mammalian brain, respectively \cite{izhikevich2003simple}.
+
+
+\begin{figure}
+	\label{fig:types_neurons}
+  \centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{regular_spiking.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{intrinsically_bursting.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{chattering.png}
+	\end{subfigure}
+  \caption{Types of neurons in the mammalian brain}
+\end{figure}
 
 
 \subsection{Netrate}
@@ -354,7 +371,26 @@ Evaluating the performance of NetRate involves analysing the inferred network $\
 \item $\text{MAE} = E[\mid \alpha^{*} - \hat \alpha \mid /\alpha^{*}], \quad $ where $ \alpha^{*}$ and $\hat \alpha $ are the true and estimated transmission rates, respectively.
 \end{enumerate}
 
+\subsection{Biological Neural Network}
 
+\subsubsection{Structure of the Network}
+
+In order to understand how neural networks are connected, a clear visual representation is required. This is achieved with an adjacency matrix plot. These matrices can be of three different types: binary ($\alpha_{i,j}\in\{0,1\}$), ternary ($\alpha_{i,j}\in\{-1,0,1\}$) or real ($\alpha_{i,j}\in \mathbb{R}$). Due to the characteristics of biological neuron connections, real adjacency matrices are employed. In Fig.\ref{fig:graph_20_nodes} an adjacency matrix of a network of 20 nodes can be observed. When $\alpha_{j,i}^{BNN}\neq 0$, the target neuron $i$ and the source neuron $j$ are connected and a dot appears on the graph. The source nodes are indexed in the x-axis and the target nodes on the y-axis. The weight of each of the edges is represented by the diameter of the dot. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{graph_20_nodes.png}
+  \caption{Adjacency matrix of a network of 20 nodes}
+	\label{fig:graph_20_nodes}
+\end{figure}
+
+The superscript \textit{BNN} in $\alpha_{j,i}^{BNN}$ is employed to differentitate between the weights in biological neural networks and the analogous transmission rates $\alpha_{j,i}$ in diffusion networks. When neurons $j$ and $i$ are connected with a weight $\alpha_{j,i}^{BNN}$, everytime $j$ spikes, it causes the membrane potential $v$ from Eq.\ref{eq:izhikevich_ode} to increase by $\alpha_{j,i}^{BNN}$. If neuron $i$ crosses the threshold of 30mV, it spikes. This phenomenon is proved in \cite{alexandru2018estimating} and explained in section \textbf{insert reference}. Using the example in figure \ref{fig:graph_20_nodes}, when node 10 spikes, it causes nodes 13 and 9 to increase by $\alpha_{10,13}^{BNN}$ and $\alpha_{10,9}^{BNN}$, respectively. 
+
+
+The type of networks that were simulated in \cite{alexandru2018estimating} are generated by Erdös \& Reny random graphs, where each possible edge in the network has an independent probability $p$ of being present. The weights assigned to the edges are the output of a uniform distribution between 0 and 30, the threshold value in Eq.\ref{eq:izhikevich_ode}. It can be observed that the adjacency matrix does not contain weights where $i=j$ because spikes do not increase the membrane potential of the source neuron.
+
+
+\subsubsection{Input stimulus model}
 
 
 

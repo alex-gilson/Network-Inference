@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.3)  21 JAN 2019 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.3)  22 JAN 2019 19:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -794,19 +794,19 @@ File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 (./interim_report_ag4015.aux)
 \openout1 = `interim_report_ag4015.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 48.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
@@ -858,23 +858,23 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(108.405pt, 397.485pt, 108.405pt)
-* v-part:(T,H,B)=(108.405pt, 578.15999pt, 108.405pt)
+* h-part:(L,W,R)=(86.72377pt, 440.84746pt, 86.72377pt)
+* v-part:(T,H,B)=(86.72377pt, 621.52245pt, 86.72377pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=397.485pt
-* \textheight=578.15999pt
-* \oddsidemargin=36.13501pt
-* \evensidemargin=36.13501pt
-* \topmargin=-0.86499pt
+* \textwidth=440.84746pt
+* \textheight=621.52245pt
+* \oddsidemargin=14.45378pt
+* \evensidemargin=14.45378pt
+* \topmargin=-22.54622pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=10.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -892,24 +892,24 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'interim_report_ag4015.bbl' found.
 (./interim_report_ag4015.bbl)
-Package biblatex Info: Reference section=0 on input line 47.
-Package biblatex Info: Reference segment=0 on input line 47.
+Package biblatex Info: Reference section=0 on input line 48.
+Package biblatex Info: Reference segment=0 on input line 48.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 69.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 70.
 <Images/imperialcollegelondon.jpg, id=1, 461.47406pt x 481.8pt>
 File: Images/imperialcollegelondon.jpg Graphic file (type jpg)
 <use Images/imperialcollegelondon.jpg>
 Package pdftex.def Info: Images/imperialcollegelondon.jpg  used on input line 1
-21.
+22.
 (pdftex.def)             Requested size: 142.26378pt x 148.52571pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Images/imperialcollegelo
 ndon.jpg>]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 129.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 130.
  (./interim_report_ag4015.toc
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 3.
 LaTeX Font Info:    Try loading font information for OT1+ppl on input line 7.
 
@@ -940,106 +940,122 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 \openout4 = `interim_report_ag4015.toc'.
 
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 134--142
+Underfull \hbox (badness 10000) in paragraph at lines 135--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--142
+Underfull \hbox (badness 10000) in paragraph at lines 135--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--142
+Underfull \hbox (badness 10000) in paragraph at lines 135--143
 
  []
 
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 146.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 147.
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--154
+Underfull \hbox (badness 10000) in paragraph at lines 149--155
 
  []
 
 [1] [2]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 203.
 
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
+Package caption Warning: \label without proper reference on input line 194.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:types_neurons' on page 3 undefined on input line 
+190.
+
+<Images/regular_spiking.png, id=22, 578.16pt x 433.62pt>
+File: Images/regular_spiking.png Graphic file (type png)
+<use Images/regular_spiking.png>
+Package pdftex.def Info: Images/regular_spiking.png  used on input line 197.
+(pdftex.def)             Requested size: 198.38pt x 148.78523pt.
+<Images/intrinsically_bursting.png, id=24, 578.16pt x 433.62pt>
+File: Images/intrinsically_bursting.png Graphic file (type png)
+<use Images/intrinsically_bursting.png>
+Package pdftex.def Info: Images/intrinsically_bursting.png  used on input line 
+200.
+(pdftex.def)             Requested size: 198.38pt x 148.78523pt.
+<Images/chattering.png, id=25, 578.16pt x 433.62pt>
+File: Images/chattering.png Graphic file (type png)
+<use Images/chattering.png>
+Package pdftex.def Info: Images/chattering.png  used on input line 203.
+(pdftex.def)             Requested size: 198.38pt x 148.78523pt.
+[3] [4 <./Images/regular_spiking.png> <./Images/intrinsically_bursting.png> <./
+Images/chattering.png>]
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 220.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 203.
- [3] [4]
-[5] [6]
-Overfull \hbox (2.0116pt too wide) in paragraph at lines 353--354
-[]$[] \OT1/zplm/m/n/10 = \OT1/ppl/m/n/10 1 \OMS/zplm/m/n/10 ^^@ []\OT1/ppl/m/n/
-10 ,  []\OML/zplm/m/it/10 I\OT1/zplm/m/n/10 (\OML/zplm/m/it/10 \OT1/zplm/m/n/1
-0 ) = \OT1/ppl/m/n/10 1[]\OML/zplm/m/it/10  > \OT1/ppl/m/n/10 0[]\OML/zplm/m/i
-t/10 I\OT1/zplm/m/n/10 (\OML/zplm/m/it/10 \OT1/zplm/m/n/10 ) = \OT1/ppl/m/n/10
- 0[]$ 
- []
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 220.
+ [5] [6] [7] [8]
+LaTeX Font Info:    Try loading font information for U+fplmbb on input line 378
+.
 
-[7]
-Overfull \hbox (11.4741pt too wide) in paragraph at lines 364--364
-\T1/ppl/m/n/10 dis-ease: a lon-gi-tu-di-nal mag-ne-toen-cephalog-ra-phy study''
-. In: \T1/ppl/m/it/10 Brain \T1/ppl/m/n/10 137.1 (2014), pp. 197^^U
- []
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+) [9]
+<Images/graph_20_nodes.png, id=55, 722.7pt x 505.89pt>
+File: Images/graph_20_nodes.png Graphic file (type png)
+<use Images/graph_20_nodes.png>
+Package pdftex.def Info: Images/graph_20_nodes.png  used on input line 382.
+(pdftex.def)             Requested size: 352.6793pt x 246.87703pt.
+ [10 <./Images/graph_20_nodes.png>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 399.
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 363.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (3.10535pt too wide) in paragraph at lines 364--364
-[]\T1/ppl/m/n/10 S.C. Pon-ten, F. Bar-tolomei, and C.J. Stam. ``Small-world net
--works and epilepsy: Graph
+Overfull \hbox (3.7363pt too wide) in paragraph at lines 400--400
+\T1/ppl/m/n/10.95 the tem-po-ral dy-nam-ics of dif-fu-sion net-works''. In: \T1
+/ppl/m/it/10.95 arXiv preprint arXiv:1105.0697 \T1/ppl/m/n/10.95 (2011). 
  []
 
 
-Overfull \hbox (3.47737pt too wide) in paragraph at lines 364--364
-\T1/ppl/m/n/10 tributed Ob-ser-va-tions''. In: \T1/ppl/m/it/10 2018 26th Eu-ro-
-pean Sig-nal Pro-cess-ing Con-fer-ence (EU-SIPCO)\T1/ppl/m/n/10 .
+Overfull \hbox (6.33104pt too wide) in paragraph at lines 400--400
+\T1/ppl/m/n/10.95 shifting foci of evoked cor-re-la-tions be-tween elec-trodes'
+'. In: \T1/ppl/m/it/10.95 Psy-chophys-i-ol-ogy \T1/ppl/m/n/10.95 22.1 (1985),
  []
 
+[11] [12] (./interim_report_ag4015.aux)
 
-Overfull \hbox (8.52814pt too wide) in paragraph at lines 364--364
-\T1/ppl/m/n/10 the tem-po-ral dy-nam-ics of dif-fu-sion net-works''. In: \T1/pp
-l/m/it/10 arXiv preprint arXiv:1105.0697 \T1/ppl/m/n/10 (2011). 
- []
+LaTeX Warning: There were undefined references.
 
-
-Overfull \hbox (3.66107pt too wide) in paragraph at lines 364--364
-[]\T1/ppl/m/n/10 Barry Hor-witz. ``The elu-sive con-cept of brain con-nec-tiv-i
-ty''. In: \T1/ppl/m/it/10 Neu-roIm-age \T1/ppl/m/n/10 19.2 (2003),
- []
-
-[8] [9] (./interim_report_ag4015.aux)
 Package logreq Info: Writing requests to 'interim_report_ag4015.run.xml'.
 \openout1 = `interim_report_ag4015.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 12976 strings out of 494923
- 212272 string characters out of 6180742
- 628941 words of memory out of 5000000
- 16086 multiletter control sequences out of 15000+600000
- 44858 words of font info for 87 fonts, out of 8000000 for 9000
+ 13020 strings out of 494923
+ 213319 string characters out of 6180742
+ 628096 words of memory out of 5000000
+ 16120 multiletter control sequences out of 15000+600000
+ 45997 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,11n,45p,1937b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/alex/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600p
+ </home/alex/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600p
 k>{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mat
-hpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on interim_report_ag4015.pdf (11 pages, 308446 bytes).
+public/mathpazo/fplmbb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ma
+thpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fpl
+mri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on interim_report_ag4015.pdf (14 pages, 497409 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 135 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
