@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.3)  22 JAN 2019 19:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.3)  24 JAN 2019 10:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -963,7 +963,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 149--155
 
 [1] [2]
 
-Package caption Warning: \label without proper reference on input line 194.
+Package caption Warning: \label without proper reference on input line 196.
 See the caption package documentation for explanation.
 
 
@@ -973,59 +973,71 @@ LaTeX Warning: Reference `fig:types_neurons' on page 3 undefined on input line
 <Images/regular_spiking.png, id=22, 578.16pt x 433.62pt>
 File: Images/regular_spiking.png Graphic file (type png)
 <use Images/regular_spiking.png>
-Package pdftex.def Info: Images/regular_spiking.png  used on input line 197.
-(pdftex.def)             Requested size: 198.38pt x 148.78523pt.
+Package pdftex.def Info: Images/regular_spiking.png  used on input line 199.
+(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
 <Images/intrinsically_bursting.png, id=24, 578.16pt x 433.62pt>
 File: Images/intrinsically_bursting.png Graphic file (type png)
 <use Images/intrinsically_bursting.png>
 Package pdftex.def Info: Images/intrinsically_bursting.png  used on input line 
-200.
-(pdftex.def)             Requested size: 198.38pt x 148.78523pt.
+202.
+(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
 <Images/chattering.png, id=25, 578.16pt x 433.62pt>
 File: Images/chattering.png Graphic file (type png)
 <use Images/chattering.png>
-Package pdftex.def Info: Images/chattering.png  used on input line 203.
-(pdftex.def)             Requested size: 198.38pt x 148.78523pt.
+Package pdftex.def Info: Images/chattering.png  used on input line 205.
+(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
+<Images/fast_spiking.png, id=26, 578.16pt x 433.62pt>
+File: Images/fast_spiking.png Graphic file (type png)
+<use Images/fast_spiking.png>
+Package pdftex.def Info: Images/fast_spiking.png  used on input line 208.
+(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
 [3] [4 <./Images/regular_spiking.png> <./Images/intrinsically_bursting.png> <./
-Images/chattering.png>]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 220.
+Images/chattering.png> <./Images/fast_spiking.png>]
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 225.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 220.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 225.
  [5] [6] [7] [8]
-LaTeX Font Info:    Try loading font information for U+fplmbb on input line 378
+LaTeX Font Info:    Try loading font information for U+fplmbb on input line 383
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 ) [9]
-<Images/graph_20_nodes.png, id=55, 722.7pt x 505.89pt>
+<Images/graph_20_nodes.png, id=56, 722.7pt x 505.89pt>
 File: Images/graph_20_nodes.png Graphic file (type png)
 <use Images/graph_20_nodes.png>
-Package pdftex.def Info: Images/graph_20_nodes.png  used on input line 382.
+Package pdftex.def Info: Images/graph_20_nodes.png  used on input line 387.
 (pdftex.def)             Requested size: 352.6793pt x 246.87703pt.
- [10 <./Images/graph_20_nodes.png>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 399.
+ [10 <./Images/graph_20_nodes.png>] [11]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 412.
 
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (3.7363pt too wide) in paragraph at lines 400--400
+Overfull \hbox (2.739pt too wide) in paragraph at lines 413--413
+[]\T1/ppl/m/n/10.95 Pranav Mal-ho-tra. \T1/ppl/m/it/10.95 Es-ti-mat-ing the Top
+ol-ogy of Net-works from Dis-tributed ob-ser-va-tions\T1/ppl/m/n/10.95 . MEng
+ []
+
+
+Overfull \hbox (3.7363pt too wide) in paragraph at lines 413--413
 \T1/ppl/m/n/10.95 the tem-po-ral dy-nam-ics of dif-fu-sion net-works''. In: \T1
 /ppl/m/it/10.95 arXiv preprint arXiv:1105.0697 \T1/ppl/m/n/10.95 (2011). 
  []
 
-
-Overfull \hbox (6.33104pt too wide) in paragraph at lines 400--400
+[12]
+Overfull \hbox (6.33104pt too wide) in paragraph at lines 413--413
 \T1/ppl/m/n/10.95 shifting foci of evoked cor-re-la-tions be-tween elec-trodes'
 '. In: \T1/ppl/m/it/10.95 Psy-chophys-i-ol-ogy \T1/ppl/m/n/10.95 22.1 (1985),
  []
 
-[11] [12] (./interim_report_ag4015.aux)
+[13] (./interim_report_ag4015.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1034,13 +1046,13 @@ Package logreq Info: Writing requests to 'interim_report_ag4015.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13020 strings out of 494923
- 213319 string characters out of 6180742
- 628096 words of memory out of 5000000
- 16120 multiletter control sequences out of 15000+600000
- 45997 words of font info for 93 fonts, out of 8000000 for 9000
+ 13049 strings out of 494923
+ 213779 string characters out of 6180742
+ 628334 words of memory out of 5000000
+ 16146 multiletter control sequences out of 15000+600000
+ 55230 words of font info for 115 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,11n,45p,1937b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,48p,1937b,1367s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/alex/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600p
 k>{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
@@ -1052,10 +1064,10 @@ thpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fpl
 mri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on interim_report_ag4015.pdf (14 pages, 497409 bytes).
+Output written on interim_report_ag4015.pdf (15 pages, 559338 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 140 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -163,7 +163,7 @@ x_{j} = \Sigma \textbf{W}_{ij}\times x_{i}
 
 \subsection{Izhikevich neuron model}
 
-In order to understand how the brain works we must be able to replicate the behaviour of individual neurons applying simple and accurate models. However, meeting both criteria can be challenging. The Hodgkin–Huxley model \cite{hodgkin1952quantitative} is very accurate as it can emulate the rich firing patterns of many types of neurons. However, it is very computationally expensive and only a few neurons can be computed in real time. The integrate-and-fire model \cite{burkitt2006review}  has the opposite problem: it is computationally simple but it is an unrealistic representation of the neuron since it does not capture the firing patterns with sufficient accuracy \cite{izhikevich2003simple}.
+In order to understand how the brain works we must be able to replicate the behaviour of individual neurons applying simple and accurate models. However, as explained in \cite{izhikevich2003simple}, meeting both criteria can be challenging. The Hodgkin–Huxley model \cite{hodgkin1952quantitative} is very accurate as it can emulate the rich firing patterns of many types of neurons. However, it is very computationally expensive and only a few neurons can be computed in real time. The integrate-and-fire model \cite{burkitt2006review}  has the opposite problem: it is computationally simple but it is an unrealistic representation of the neuron since it does not capture the firing patterns with sufficient accuracy \cite{izhikevich2003simple}.
 \\
 In contrast, the Izhikevich neuron model \cite{izhikevich2003simple} meets both criteria. Tens of thousands of spiking cortical neurons can be simulated in real time by simplifying the Hodgkin-Huxley model into the two dimensional system of differential equations shown below.
 
@@ -189,26 +189,31 @@ On the other hand, $a, b, c$ and $d$ are dimensionless parameters. $a$ determine
 \\
 The relevance of this algorithm stems from the fact that, different combinations of the parameters provide the model with a rich variety of firing patterns. When analysing the neocortical neurons in the mammalian brain, a number of different classes of excitatory neurons can be found \cite{connors1990intrinsic, gray1996chattering} such as RS (regular spiking), IB (intrinsically bursting) and CH (chattering). From the inhibitory type of neurons, two classes can be found: FS (fast spiking and LTS (low-threshold spiking). Other interesting classes of neurons are the TC (thalamo-cortical) and the RZ (resonator). A visual representation of these neurons can be observed in figure \ref{fig:types_neurons}. It is of great importance to understand what types of neurons can be found so that a simulated network can become a closer representation of what can be found on a real brain. In order to simplify the network to be inferred, the only type of neurons simulated in the network were the excitatory regular spiking neurons. This was achieved by setting the parameters to $a=0.02$, $b=0.2$, $c=-65$ and $d=8$. This type of neuron is the most common type of excitatory neuron in the brain. There is also a ratio of excitatory and inhibitory neurons of 4 to 1 in the mammalian brain, respectively \cite{izhikevich2003simple}.
 
+In order to make use of the Izhikevich neuron model, Eq.\ref{eq:izhikevich_ode} is declared in the Brian Simulator. This library computes the membrane potential voltage of the interacting neurons in the network and outputs all of their spiking times. This data will then be used to compute the NetRate algorithm.
+
 
 \begin{figure}
 	\label{fig:types_neurons}
   \centering
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{regular_spiking.png}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{intrinsically_bursting.png}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{chattering.png}
 	\end{subfigure}
-  \caption{Types of neurons in the mammalian brain}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{fast_spiking.png}
+	\end{subfigure}
+  \caption{Types of neurons in the mammalian brain. Generated with the Brian Simulator \cite{10.3389/neuro.01.026.2009} using the Izhikevich neuron model \cite{izhikevich2003simple}}
 \end{figure}
 
 
 \subsection{Netrate}
 
-\subsubsection{Diffusion processes}
+\subsubsection{Diffusion processes}\label{sec:diffusion_processes}
 
 In order to infer the underlying structure of a network, \cite{alexandru2018estimating} employed  NetRate algorithm developed by Rodriguez \cite{rodriguez2011uncovering} by treating the network as a diffusion process.
 
@@ -320,7 +325,7 @@ The goal of the algorithm is to find the transmission rates $\alpha_{j,i}$ of al
 
 Here, $\textbf{A}:=\{\alpha _{j,i}\mid i,j=1,\cdots,n,i\neq j\}$ are the variables and the edges of the network are defined as the pairs of nodes whose transmission rates $\alpha _{i,j}>0$. 
 
-The solution to Eq.\ref{eq:optimization_netrate} found in \cite{rodriguez2011uncovering} is given by \ref{eq:solution_netrate}. The survival and hazard functions are concave in the parameter(s) of the transmission likelihoods and, therefore, convexity of Eq.\ref{eq:optimization_netrate} follows from linearity.
+The solution to Eq.\ref{eq:optimization_netrate} found in \cite{rodriguez2011uncovering} is given by \ref{eq:solution_netrate}. The survival and hazard functions are concave in the parameter(s) of the transmission likelihoods and, therefore, convexity of Eq.\ref{eq:optimization_netrate} follows from linearity. The network inference problem from Eq.\ref{eq:optimization_netrate} is thus convex for Power-Law, Rayleigh and Exponential models of the likelihood function.
 
 \begin{subequations}
 \begin{align}
@@ -341,9 +346,9 @@ The terms in Eq.\ref{eq:solution_netrate} depend only on the infection time diff
 \item $\Psi_{3}$ makes sure that all infected nodes have a minimum of one parent to avoid $\log 0 = -\infty$. Since the logarithm grows slowly, it slightly encourages infected nodes to have many parents.
 \end{itemize}
 
-\subsubsection{Cascade generation}
+\subsubsection{Cascade generation}\ref{sec:cascade_generation}
 
-The maximization of the likelihood function requires data in the form of cascades in order to be computed. The time of infection of each of the nodes can be obtained from the network simulation but it must then be formatted into cascades. In \cite{pranav_report}, the procedure is well explained: 
+The maximization of the likelihood function requires data in the form of cascades in order to be computed. The time of infection of each of the nodes can be obtained from the network simulation but it must then be formatted into cascades. The rest of this section is based on \cite{pranav_report}, where cascade generation is explained. 
 
 \begin{enumerate}
 \item At time $t=0$, a random node is selected to carry the disease.
@@ -362,7 +367,7 @@ In this cascade, nodes 2 and 6 were infected while nodes 1, 3 and 4 remained hea
 
 \subsubsection{Performance metrics}
 
-Evaluating the performance of NetRate involves analysing the inferred network $\hat G$: which edges have been correctly inferred, which ones have been missed and what weights have been assigned to the inferred edges. These questions are answered by calculating the accuracy, precision, recall and MAE against the true network $G^{*}$.
+Evaluating the performance of NetRate involves analysing the inferred network $\hat G$: which edges have been correctly inferred, which ones have been missed and what weights have been assigned to the inferred edges. These questions are answered in \cite{rodriguez2011uncovering} by calculating the accuracy, precision, recall and MAE against the true network $G^{*}$:
 
 \begin{enumerate}
 \item Precision is the proportion of edges in the inferred network that exist in the true network.
@@ -384,13 +389,29 @@ In order to understand how neural networks are connected, a clear visual represe
 	\label{fig:graph_20_nodes}
 \end{figure}
 
-The superscript \textit{BNN} in $\alpha_{j,i}^{BNN}$ is employed to differentitate between the weights in biological neural networks and the analogous transmission rates $\alpha_{j,i}$ in diffusion networks. When neurons $j$ and $i$ are connected with a weight $\alpha_{j,i}^{BNN}$, everytime $j$ spikes, it causes the membrane potential $v$ from Eq.\ref{eq:izhikevich_ode} to increase by $\alpha_{j,i}^{BNN}$. If neuron $i$ crosses the threshold of 30mV, it spikes. This phenomenon is proved in \cite{alexandru2018estimating} and explained in section \textbf{insert reference}. Using the example in figure \ref{fig:graph_20_nodes}, when node 10 spikes, it causes nodes 13 and 9 to increase by $\alpha_{10,13}^{BNN}$ and $\alpha_{10,9}^{BNN}$, respectively. 
+The superscript \textit{BNN} in $\alpha_{j,i}^{BNN}$ is employed to differentitate between the weights in biological neural networks and the analogous transmission rates $\alpha_{j,i}$ in diffusion networks \cite{pranav_report}. When neurons $j$ and $i$ are connected with a weight $\alpha_{j,i}^{BNN}$, everytime $j$ spikes, it causes the membrane potential $v$ from Eq.\ref{eq:izhikevich_ode} to increase by $\alpha_{j,i}^{BNN}$. If neuron $i$ crosses the threshold of 30mV, it spikes. This phenomenon is proved in \cite{alexandru2018estimating} and explained in section \textbf{insert reference}. Using the example in figure \ref{fig:graph_20_nodes}, when node 10 spikes, it causes nodes 13 and 9 to increase by $\alpha_{10,13}^{BNN}$ and $\alpha_{10,9}^{BNN}$, respectively. 
 
 
-The type of networks that were simulated in \cite{alexandru2018estimating} are generated by Erdös \& Reny random graphs, where each possible edge in the network has an independent probability $p$ of being present. The weights assigned to the edges are the output of a uniform distribution between 0 and 30, the threshold value in Eq.\ref{eq:izhikevich_ode}. It can be observed that the adjacency matrix does not contain weights where $i=j$ because spikes do not increase the membrane potential of the source neuron.
+The type of networks that were simulated in \cite{alexandru2018estimating} are generated by Erdös \& Reny random graphs, where each possible edge in the network has an independent probability $p$ of being present. The weights assigned to the edges are the output of a uniform distribution in (0,30], the threshold value in Eq.\ref{eq:izhikevich_ode}. It can be observed that the adjacency matrix does not contain weights where $i=j$ because spikes do not increase the membrane potential of the source neuron.
 
 
-\subsubsection{Input stimulus model}
+\subsubsection{Input stimulus model for cascade generation}
+
+The neurons in the brain are susceptible to input stimuli from the rest of the neurons in the network. This is represented in the Izhikevich neuron model with the $I$ component in Eq.\ref{eq:izhikevich_ode}. This term can be employed to model injected current in the form of a DC input or can be normally distributed\footnote{In the Izhikevich neuron model \cite{izhikevich2003simple}, the mean and standard deviation are equal to 0 and 5 for excitatory neurons and to 0 and 2 for inhibitory neurons, respectively.} to represent noise from interactions with neurons that are outside the network being recorded.
+
+The selection of an appropriate input stimulus for the neurons was a challenge encountered by Malhotra \cite{alexandru2018estimating}. With a Gaussian input $I$, neurons spike at random times and there is no systematic way of selecting the beginning of a cascade. In a cascade where nodes 1, 3 and 5 spike in chronological order, each of them could have in turn their own cascade (i.e 1, 3 and 5; 3 and 5; and 5). However, this breaks the requirement of independence of cascades seen in section \ref{sec:diffusion_processes}, where no same spike can appear in two cascades. For this reason, a well studied approach was required for the selection of cascades. 
+
+The solution Malhotra found to this problem was to provide one neuron at a time with a constant input of 12 and the rest of the neurons with Gaussian noise. This caused the selected neuron to spike periodically. With an appropriate selection of the DC input, the spiking frequency could be changed, and with a sufficiently long time between spikes, the network could settle into a steady state. Unlike infections in diffusion networks, neurons can spike more than once. For this reason the horizon was arbitrarily limited so as to not allow two spikes from the same cascade to occur in the same cascade and, therefore, obey the law of binary infections imposed by NetRate \cite{alexandru2018estimating}.
+
+This method provides a systematic way of generating cascades: every time the node with DC input spiked, a new independent cascade was created. In order to obtain cascade information from all the nodes in the network, all nodes are stimulated over the course of an experiment. Otherwise, if only one node was selected, no information would be extracted from the nodes with no direct connection to it \cite{pranav_report}. 
+
+The experimental results obtained by Malhotra show that an optimal amount of spiking information that achieves a high inferring performance is achieved with a stimulation time of 4,000 ms. This is due to the underlying probabilistic nature of NetRate \cite{pranav_report}. In other words, more data does not result in a higher performance.
+
+\subsubsection{Likelihood function}
+
+The ability of NetRate to infer the weights in the adjacency matrix \textbf{A} stems from the fact that the shape of $f(t_{i}\mid t_{j};a_{j,i})$ provides a probabilistic description of $\alpha_{j,i}$. The Izhikevich spiking neuron is modelled deterministically while the propagation of infections is probabilistic. For this reason the suitability of NetRate for the biological network inference was proved in \cite{alexandru2018estimating}.
+
+As was explained in section \ref{sec:cascade_generation}, it is not possible to determine exactly which node caused some other node to become infected. However, this is not true for the Izhikevich neuron spikes. It was shown in \cite{alexandru2018estimating} that 
 
 
 

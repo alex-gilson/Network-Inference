@@ -137,6 +137,9 @@
            given={Pranav},
            giveni={P\bibinitperiod}}}%
       }
+      \list{institution}{1}{%
+        {Imperial College London}%
+      }
       \strng{namehash}{817da9b49ab34001bf4fc3b4db89678d}
       \strng{fullhash}{817da9b49ab34001bf4fc3b4db89678d}
       \strng{bibnamehash}{817da9b49ab34001bf4fc3b4db89678d}
@@ -148,6 +151,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Estimating the Topology of Networks from Distributed observations}
+      \field{type}{MEng FYP}
       \field{year}{2017}
       \field{dateera}{ce}
     \endentry
