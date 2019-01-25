@@ -145,19 +145,6 @@ Recent developments in technology now allow scientists to obtain individual neur
 
 The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability, increasing the similarity between simulated and real neural networks or changing NetRate so that it is more adapted to the problem in hand. If the simulation were to resemble more the behaviour of a network in a real world scenario it would provide more meaningful information as to how the algorithm would perform with measurements from the brain tissue. Finally, it is of great interest to employ the algorithm for a dataset of real neural network spikes and finding a way of measuring the performance when no ground truth is given.
 
-\subsection{Increase the speed of the algorithm}
-
-In \cite{alexandru2018estimating}, the size of the studied networks ranged from 10 to 30 nodes with the exception of one experiment with 50 neurons. This was due to the fact that the algorithm is very computationally expensive and it takes a long time for it to provide results. NetRate can be parallelized by nature since it computes an optimization problem for each column in a matrix. However, it makes use of CVX, a package for specifying and solving convex programs \cite{cvx,gb08}. Until this date, CVX cannot be naturally parallelized from within MATLAB. 
-
-In \cite{alexandru2018estimating}, a solution to this problem was attempted. Instead of using CVX, a different convex optimization package was employed, namely, CVXPY. This package was written for Python and could be easily parallelizable, so it was a good candidate for replacing CVX. However, solving the optimization problem involved the computation of a logarithmic function and most convex optimization packages are unable of doing so. They make use of successive approximation heuristic by which a polynomial approximation is input to the algorithm consecutively until the result converges. Unfortunately, this method is not used in CVXPY and, therefore, the output of the algorithm has a significantly poorer performance \cite{pranav_report}. 
-
-In this project a novel approach has been implemented by which the algorithm can be parallelized and the size of the network that can be computed is increased. Instead of attempting to parallelize CVX from within MATLAB, several MATLAB instances are run at the same time from the terminal and thus achieving parallelism. Preliminary results show that this method works. However, it seems to have an asymptotic behaviour with respect to the number of processors that the algorithm makes use of. When employing 4 processors, a network of 10, 20, 30 and 40 neurons takes approximately the same, 67\%, 50\% and 33\% amount of time to be computed than with just one processor. 
-
-The aim of the project with this respect will be to measure accurately how much faster the algorithm is with different sizes of networks. It is also of great interest to formulate an equation that determines the computation time depending on the number of processors, spikes and the size of the network. This would allow us to understand what network size is feasible to compute.
-
-\subsection{Implementation of the algorithm on real data}
-
-A new dataset has been made available \cite{ito2016spontaneous, ito2014large, litke2004does} with real neuron spike information from a mouse somatosensory cortex
 
 \section{Background}
 
@@ -178,7 +165,7 @@ x_{j} = \Sigma \textbf{W}_{ij}\times x_{i}
 \frac{\textbf{W}_{ij}}{\Sigma \textbf{W}_{ij}}
 \end{equation}
 
-\subsection{Izhikevich neuron model}
+\subsection{Izhikevich neuron model}\label{sec:izhikevich_neuron_model}
 
 In order to understand how the brain works we must be able to replicate the behaviour of individual neurons applying simple and accurate models. However, as explained in \cite{izhikevich2003simple}, meeting both criteria can be challenging. The Hodgkin–Huxley model \cite{hodgkin1952quantitative} is very accurate as it can emulate the rich firing patterns of many types of neurons. However, it is very computationally expensive and only a few neurons can be computed in real time. The integrate-and-fire model \cite{burkitt2006review}  has the opposite problem: it is computationally simple but it is an unrealistic representation of the neuron since it does not capture the firing patterns with sufficient accuracy \cite{izhikevich2003simple}.
 \\
@@ -453,17 +440,89 @@ The final test to determine the feasibility of the proposed algorithm in \cite{a
 
 When analyzing the results, it can be observed that the algorithm is good at detecting the edges with large weights from the network since it has a high value for accuracy, precision and recall. However, the high MAE shows that the algorithm is unable to infer the weights of the edges $\alpha_{j,i}$ correctly. A more extensive explanation for the high MAE can be found in \cite{pranav_report}.
 
+\section{Implementation plan}
+
+
+\subsection{Increase the speed of the algorithm}
+
+In \cite{alexandru2018estimating}, the size of the studied networks ranged from 10 to 30 nodes with the exception of one experiment with 50 neurons. This was due to the fact that the algorithm is very computationally expensive and it takes a long time for it to provide results. NetRate can be parallelized by nature since it computes an optimization problem for each column in a matrix. However, it makes use of CVX, a package for specifying and solving convex programs \cite{cvx,gb08}. Until this date, CVX cannot be naturally parallelized from within MATLAB. 
+
+In \cite{alexandru2018estimating}, a solution to this problem was attempted. Instead of using CVX, a different convex optimization package was employed, namely, CVXPY. This package was written for Python and could be easily parallelizable, so it was a good candidate for replacing CVX. However, solving the optimization problem involved the computation of a logarithmic function and most convex optimization packages are unable of doing so. They make use of successive approximation heuristic by which a polynomial approximation is input to the algorithm consecutively until the result converges. Unfortunately, this method is not used in CVXPY and, therefore, the output of the algorithm has a significantly poorer performance \cite{pranav_report}. 
+
+In this project a novel approach has been implemented by which the algorithm can be parallelized and the size of the network that can be computed is increased. Instead of attempting to parallelize CVX from within MATLAB, several MATLAB instances are run at the same time from the terminal and thus achieving parallelism. Preliminary results show that this method works. However, it seems to have an asymptotic behaviour with respect to the number of processors that the algorithm makes use of. When employing 4 processors, a network of 10, 20, 30 and 40 neurons takes approximately the same, 67\%, 50\% and 33\% amount of time to be computed than with just one processor. 
+
+The aim of the project with this respect will be to measure accurately how much faster the algorithm is with different sizes of networks. It is also of great interest to formulate an equation that determines the computation time depending on the number of processors, spikes and the size of the network. This would allow us to understand what network size is feasible to compute.
+
+\subsection{Implementation of the algorithm on real data}
+
+A new dataset has been made available with real neuron spike information from a mouse somatosensory cortex \cite{ito2016spontaneous, ito2014large, litke2004does}. This data contains several recordings lasting one hour with an average spiking frequency of 2.1Hz. The minimum, maximum and average number of neurons in each of the recordings is 98, 594 and 309, respectively. An ultimate test to the algorithm would be to infer the connectivity of such a network. However, several problems arise:
+
+\begin{enumerate}
+\item The input stimulus model of the dataset and that of the simulation do not match. The data contains observations from spikes without stimulation (i.e spontaneous activity) and the algorithm is designed for a DC input stimulus. The shape of the likelihood function could be different and it would, therefore, be necessary to estimate it again for the new model.
+
+\item One of the reasons for using a DC input stimulus was to have a systematic way of selecting the beginning of a cascade. Every time the selected stimulated neuron spiked, a new cascade originated \cite{pranav_report}. A new method must be devised for cascade generation in the dataset by which NetRate requirements are met and the cascades contain high quality data. 
+
+\item Since there is no ground truth for the connectivity of the network in the dataset, there is no obvious way of evaluating the performance of the algorithm. Some sort of data splitting is necessary for determining how good the algorithm is. 
+
+\end{enumerate}
+
+In this project, a solution to each of these issues will be attempted. The dataset also contains information about the location of each of the neurons. It could be interested to evaluate if there is any correlation between connectivity and proximity.
+
+\subsection{Increase the similarity between simulated and real neural networks}
+
+The more the simulated network resembles a biological one, the better it will be possible to determine how accurate the algorithm would perform on real data. This would prove useful if no other method for evaluating the performance is found. There are several ways this could be done:
+
+\begin{enumerate}
+
+\item Introduce inhibitory neurons into the network. In the mammalian brain, there is a ratio of 4 to 1 excitatory to inhibitory neurons \cite{izhikevich2003simple}. The simulated network in \cite{alexandru2018estimating} only includes excitatory neurons and, therefore, it is not an accurate representation of the biological network.
+
+\item The network can also be made more reallistic by adding different types of excitatory and inhibitory neurons. The only ones considered in \cite{alexandru2018estimating} were the regular spiking (RS) neurons. However, as discussed in section (\ref{sec:izhikevich_neuron_model}), there are many different types. 
+
+\end{enumerate}
+
+All these chages to the network would require a new method for infering the weights of the adjancency matrix and this could prove to be challenging. For this reason, the feasibility of this option will only be considered when other, more important milestones, are completed.
+
+\subsection{Estimated timeline of the project}
+
+The date of submission of the report is in mid-June. This gives the project a time frame of almost 5 months. This is sufficient time for a succesful completion of the project. However, a timeline, like the one seen in table \ref{tab:project_timeline}, is required in order not to fall behind.
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+		\hline
+		Month & Milestones \\
+		\hline
+		 & Evaluate the increase in speed due to parallelism. \\
+		 February & Create a function that relates the computation time of\\
+		 & the algorithm to the number of nodes. \\
+		\hline
+		& See if there are more adequate datasets.  \\
+		March & If not, create an algorithm for cascade selection \\
+		& under the new input stimulus\\
+		\hline
+	  & Simulate the network under the new conditions and \\
+		April & assess the performance. Investigate if the shape of the \\
+		& likelihood function needs to be changed. \\
+		\hline
+		& Apply the algorithm to the dataset and draw the \\
+		May & inferred network. Find a way of evaluating the  \\
+		& performance of the algorithm.\\
+		\hline
+		June & Increase the complexity or of the simulated network  \\
+		\hline
+		\end{tabular}
+		\caption{Timeline of the project from February to June}
+		\label{tab:project_timeline}
+\end{table}
+
+
+
+
 
 \newpage
 \printbibliography 
 
 
 \end{document}
-
-
-
-
-
 
 
 

@@ -4,32 +4,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Project Specification}{1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Increase the speed of the algorithm}{2}
-\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Background}{2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}Definition of connectivity}{2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Izhikevich neuron model}{3}
+\contentsline {subsection}{\numberline {3.2}Izhikevich neuron model}{2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Netrate}{4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.1}Diffusion processes}{4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.2}Mathematical definitions}{6}
+\contentsline {subsubsection}{\numberline {3.3.2}Mathematical definitions}{5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.3}Derivation of NetRate}{7}
+\contentsline {subsubsection}{\numberline {3.3.3}Derivation of NetRate}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.4}Cascade generation}{10}
+\contentsline {subsubsection}{\numberline {3.3.4}Cascade generation}{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.5}Performance metrics}{10}
+\contentsline {subsubsection}{\numberline {3.3.5}Performance metrics}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Biological Neural Network}{11}
+\contentsline {subsection}{\numberline {3.4}Biological Neural Network}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1}Structure of the Network}{11}
+\contentsline {subsubsection}{\numberline {3.4.1}Structure of the Network}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.2}Input stimulus model for cascade generation}{12}
+\contentsline {subsubsection}{\numberline {3.4.2}Input stimulus model for cascade generation}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.3}Likelihood function}{13}
+\contentsline {subsubsection}{\numberline {3.4.3}Likelihood function}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.4}Network inference results}{13}
+\contentsline {subsubsection}{\numberline {3.4.4}Network inference results}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Implementation plan}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Increase the speed of the algorithm}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Implementation of the algorithm on real data}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}Increase the similarity between simulated and real neural networks}{14}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4}Estimated timeline of the project}{15}
