@@ -138,8 +138,15 @@ In order to infer the network structure of a set of neurons, they are treated as
 \\\\
 Previous work on this topic \cite{pranav_report, alexandru2018estimating} evaluated the feasibility of using a maximum-likelihood estimator algorithm, NetRate \cite{rodriguez2011uncovering}, for the structure inference of biological neural networks. A network was simulated using the Izhikevic neuron model \cite{izhikevich2003simple} and the brian simulator \cite{10.3389/neuro.01.026.2009}. The connections between the neurons were then estimated, compared to the original network and the performance of the algorithm was evaluated.
 \\
-\\
-The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability and the addition of different types of neurons to the model.It would also be useful to test the accuracy of the algorithm on real interacting neurons. Developments in technology allow us to obtain spike data from individual neurons \cite{ito2016spontaneous, ito2014large, litke2004does}.
+Recent developments in technology now allow scientists to obtain individual neuron spike information from the brain tissue \cite{ito2016spontaneous, ito2014large, litke2004does}. This data is very useful and serves as a mean of evaluating the performance of the algorithm with real neurons.
+
+\section{Project Specification}
+
+
+The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability, increasing the speed, changing NetRate so that it is more adapted to biological neural networks. Another objective is to increase the similarity between simulated and real neural networks. This would provide more meaningful information as to how the algorithm would perform with measurements from the brain tissue. Finally, it is of great interest to employ the algorithm for a dataset of real neural network spikes and finding a way of measuring the performance when no ground truth is given.
+
+
+
 
 
 \section{Background}
@@ -346,7 +353,7 @@ The terms in Eq.\ref{eq:solution_netrate} depend only on the infection time diff
 \item $\Psi_{3}$ makes sure that all infected nodes have a minimum of one parent to avoid $\log 0 = -\infty$. Since the logarithm grows slowly, it slightly encourages infected nodes to have many parents.
 \end{itemize}
 
-\subsubsection{Cascade generation}\ref{sec:cascade_generation}
+\subsubsection{Cascade generation}\label{sec:cascade_generation}
 
 The maximization of the likelihood function requires data in the form of cascades in order to be computed. The time of infection of each of the nodes can be obtained from the network simulation but it must then be formatted into cascades. The rest of this section is based on \cite{pranav_report}, where cascade generation is explained. 
 
@@ -411,9 +418,30 @@ The experimental results obtained by Malhotra show that an optimal amount of spi
 
 The ability of NetRate to infer the weights in the adjacency matrix \textbf{A} stems from the fact that the shape of $f(t_{i}\mid t_{j};a_{j,i})$ provides a probabilistic description of $\alpha_{j,i}$. The Izhikevich spiking neuron is modelled deterministically while the propagation of infections is probabilistic. For this reason the suitability of NetRate for the biological network inference was proved in \cite{alexandru2018estimating}.
 
-As was explained in section \ref{sec:cascade_generation}, it is not possible to determine exactly which node caused some other node to become infected. However, this is not true for the Izhikevich neuron spikes. It was shown in \cite{alexandru2018estimating} that 
+As was explained in section \ref{sec:cascade_generation}, it is not possible to determine exactly which node caused some other node to become infected. However, this is not true for the Izhikevich neuron spikes. It was shown in \cite{alexandru2018estimating} that the time it takes from a neuron $i$ becoming unstable to the time it spikes is directly related to $\alpha_{j,i}$. A neuron becomes unstable when it crosses the threshold membrane value of 30mV. This can be caused by another neuron that spikes at that exact time or by random noise. In order to determine the shape that the likelihood function takes for different values of $\alpha_{j,i}$, an histogram of time was employed. It was observed that the likelihood function had an exponential and Rayleigh shape for low and large values of $\alpha_{j,i}$, respectively.Both of these distributions are convex for the solution of the optimization problem in Eq.\ref{eq:optimization_netrate}. NetRate only allows the use of one model, and because it is more relevant to infer the connections with larger weights, it was decided in \cite{alexandru2018estimating} to employ the Rayleigh distribution. 
 
+\subsubsection{Network inference results}
 
+The final test to determine the feasibility of the proposed algorithm in \cite{alexandru2018estimating} was to compare an original simulated network and the resulting inferred network. Due to the underlying probabilistic nature of the network, the ability to infer the connections is different each time the experiment is performed. To provide a better representation of the performance of the algorithm, an average of 10 simulations was made. The results published in \cite{alexandru2018estimating} can be seen in table \ref{tab:results_pranav}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+		\hline
+		& Accuracy & Recall & Precision & MAE \\
+		\hline
+		Average performance & 0.667 & 0.633 & 0.704 & 0.997 \\
+		\hline
+		Best performance & 0.778 & 0.7 & 0.875 & 0.996  \\
+		\hline
+		Worst performance & 0.596 & 0.567 & 0.63 & 0.994 \\
+		\hline
+		\end{tabular}
+		\caption{Results for network inference obtained in \cite{alexandru2018estimating}}
+		\label{tab:results_pranav}
+\end{table}
+
+When analyzing the results, it can be observed that the algorithm is good at detecting the edges with large weights from the network since it has a high value for accuracy, precision and recall. However, the high MAE shows that the algorithm is unable to infer the weights of the edges $\alpha_{j,i}$ correctly. A more extensive explanation for the high MAE can be found in \cite{pranav_report}.
 
 
 \newpage

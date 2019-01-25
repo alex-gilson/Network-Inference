@@ -16,7 +16,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.3.3}Derivation of NetRate}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.4}Cascade generation}{8}
+\contentsline {subsubsection}{\numberline {2.3.4}Cascade generation}{9}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.3.5}Performance metrics}{9}
 \defcounter {refsection}{0}\relax 
@@ -25,3 +25,9 @@
 \contentsline {subsubsection}{\numberline {2.4.1}Structure of the Network}{10}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.4.2}Input stimulus model for cascade generation}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.4.3}Likelihood function}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.4.4}Network inference results}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Project Specification}{13}
