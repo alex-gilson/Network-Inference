@@ -491,6 +491,88 @@
       \field{pages}{1434\bibrangedash 1440}
       \range{pages}{7}
     \endentry
+    \entry{cvx}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=94c0b4e071e86a74d681ba3394cd97ca}{%
+           family={Grant},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{fullhash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{bibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{authorbibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{authornamehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{authorfullhash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://cvxr.com/cvx}}
+      \field{month}{3}
+      \field{title}{{CVX}: Matlab Software for Disciplined Convex Programming, version 2.1}
+      \field{year}{2014}
+    \endentry
+    \entry{gb08}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=94c0b4e071e86a74d681ba3394cd97ca}{%
+           family={Grant},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=4d6ce137d9f74f9dba14e2b30b2206da}{%
+           family={Blondel},
+           familyi={B\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod}}}%
+        {{hash=b18cbeba4540b1e65d4f180870cb8004}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6663a8d524c1b5c15c1170993c4cfc3d}{%
+           family={Kimura},
+           familyi={K\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag Limited}%
+      }
+      \strng{namehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{fullhash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{bibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{authorbibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{authornamehash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{authorfullhash}{1ebedaef3303dc7d9530dd2f2f869721}
+      \strng{editorbibnamehash}{12852b0fccf3b3a2e0ab43114f77eeaa}
+      \strng{editornamehash}{12852b0fccf3b3a2e0ab43114f77eeaa}
+      \strng{editorfullhash}{12852b0fccf3b3a2e0ab43114f77eeaa}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Recent Advances in Learning and Control}
+      \field{note}{\url{http://stanford.edu/~boyd/graph_dcp.html}}
+      \field{series}{Lecture Notes in Control and Information Sciences}
+      \field{title}{Graph implementations for nonsmooth convex programs}
+      \field{year}{2008}
+      \field{pages}{95\bibrangedash 110}
+      \range{pages}{16}
+    \endentry
     \entry{HORWITZ2003466}{article}{}
       \name{author}{1}{}{%
         {{hash=6988459544e65a3649b73d84dc45e382}{%
@@ -505,8 +587,8 @@
       \strng{authorbibnamehash}{6988459544e65a3649b73d84dc45e382}
       \strng{authornamehash}{6988459544e65a3649b73d84dc45e382}
       \strng{authorfullhash}{6988459544e65a3649b73d84dc45e382}
-      \field{sortinit}{8}
-      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Neurons and neural populations do not function as islands onto themselves. Rather, they interact with other such elements through their afferent and efferent connections in an orchestrated manner so as to enable different sensorimotor and cognitive tasks to be performed. The concept of functional connectivity and the allied notion of effective connectivity were introduced to designate the functional strengths of such interactions. Functional neuroimaging methods, especially PET and fMRI, have been used extensively to evaluate the functional connectivity between different brain regions. After providing a brief historical review of these notions of brain connectivity, I argue that the conceptual formulations of functional and effective connectivity are far from clear. Specifically, the terms functional and effective connectivity are applied to quantities computed on types of functional imaging data (e.g., PET, fMRI, EEG) that vary in spatial, temporal, and other features, using different definitions (even for data of the same modality) and employing different computational algorithms. Until it is understood what each definition means in terms of an underlying neural substrate, comparisons of functional and/or effective connectivity across studies may appear inconsistent and should be performed with great caution.}
@@ -560,8 +642,8 @@
       \strng{authorbibnamehash}{186104dfba34bfcd34db1d24bc6d1be3}
       \strng{authornamehash}{186104dfba34bfcd34db1d24bc6d1be3}
       \strng{authorfullhash}{96de4f7eb538f796d7d0e3ed87f3817b}
-      \field{sortinit}{9}
-      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Cerebral Blood Flow \& Metabolism}
@@ -682,8 +764,8 @@
       \strng{authorbibnamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
       \strng{authornamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
       \strng{authorfullhash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Journal of physiology}
@@ -711,8 +793,8 @@
       \strng{authorbibnamehash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
       \strng{authornamehash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
       \strng{authorfullhash}{6a4d4668340b0b4cfb9ef8fe9be90d20}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Biological cybernetics}
@@ -818,8 +900,8 @@
       \strng{authorbibnamehash}{e0e908b2ed8ec086e7e81839c51b2510}
       \strng{authornamehash}{e0e908b2ed8ec086e7e81839c51b2510}
       \strng{authorfullhash}{e0e908b2ed8ec086e7e81839c51b2510}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the ninth ACM SIGKDD international conference on Knowledge discovery and data mining}
@@ -829,6 +911,7 @@
       \range{pages}{10}
     \endentry
   \enddatalist
+  \missing{alexandru208estimating}
 \endrefsection
 \endinput
 

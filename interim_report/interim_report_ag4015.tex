@@ -137,17 +137,27 @@ The brain is a complex machine, it allows the human being to think, communicate 
 In order to infer the network structure of a set of neurons, they are treated as a diffusion network where electrical spikes increase the likelihood of connected neurons to spike and therefore transmit a signal that travels as if it were a disease. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the relationship between all of the neurons, an estimate of the topology of the network can be obtained. 
 \\\\
 Previous work on this topic \cite{pranav_report, alexandru2018estimating} evaluated the feasibility of using a maximum-likelihood estimator algorithm, NetRate \cite{rodriguez2011uncovering}, for the structure inference of biological neural networks. A network was simulated using the Izhikevic neuron model \cite{izhikevich2003simple} and the brian simulator \cite{10.3389/neuro.01.026.2009}. The connections between the neurons were then estimated, compared to the original network and the performance of the algorithm was evaluated.
-\\
+\\\\
 Recent developments in technology now allow scientists to obtain individual neuron spike information from the brain tissue \cite{ito2016spontaneous, ito2014large, litke2004does}. This data is very useful and serves as a mean of evaluating the performance of the algorithm with real neurons.
 
 \section{Project Specification}
 
 
-The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability, increasing the speed, changing NetRate so that it is more adapted to biological neural networks. Another objective is to increase the similarity between simulated and real neural networks. This would provide more meaningful information as to how the algorithm would perform with measurements from the brain tissue. Finally, it is of great interest to employ the algorithm for a dataset of real neural network spikes and finding a way of measuring the performance when no ground truth is given.
+The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability, increasing the similarity between simulated and real neural networks or changing NetRate so that it is more adapted to the problem in hand. If the simulation were to resemble more the behaviour of a network in a real world scenario it would provide more meaningful information as to how the algorithm would perform with measurements from the brain tissue. Finally, it is of great interest to employ the algorithm for a dataset of real neural network spikes and finding a way of measuring the performance when no ground truth is given.
 
+\subsection{Increase the speed of the algorithm}
 
+In \cite{alexandru2018estimating}, the size of the studied networks ranged from 10 to 30 nodes with the exception of one experiment with 50 neurons. This was due to the fact that the algorithm is very computationally expensive and it takes a long time for it to provide results. NetRate can be parallelized by nature since it computes an optimization problem for each column in a matrix. However, it makes use of CVX, a package for specifying and solving convex programs \cite{cvx,gb08}. Until this date, CVX cannot be naturally parallelized from within MATLAB. 
 
+In \cite{alexandru2018estimating}, a solution to this problem was attempted. Instead of using CVX, a different convex optimization package was employed, namely, CVXPY. This package was written for Python and could be easily parallelizable, so it was a good candidate for replacing CVX. However, solving the optimization problem involved the computation of a logarithmic function and most convex optimization packages are unable of doing so. They make use of successive approximation heuristic by which a polynomial approximation is input to the algorithm consecutively until the result converges. Unfortunately, this method is not used in CVXPY and, therefore, the output of the algorithm has a significantly poorer performance \cite{pranav_report}. 
 
+In this project a novel approach has been implemented by which the algorithm can be parallelized and the size of the network that can be computed is increased. Instead of attempting to parallelize CVX from within MATLAB, several MATLAB instances are run at the same time from the terminal and thus achieving parallelism. Preliminary results show that this method works. However, it seems to have an asymptotic behaviour with respect to the number of processors that the algorithm makes use of. When employing 4 processors, a network of 10, 20, 30 and 40 neurons takes approximately the same, 67\%, 50\% and 33\% amount of time to be computed than with just one processor. 
+
+The aim of the project with this respect will be to measure accurately how much faster the algorithm is with different sizes of networks. It is also of great interest to formulate an equation that determines the computation time depending on the number of processors, spikes and the size of the network. This would allow us to understand what network size is feasible to compute.
+
+\subsection{Implementation of the algorithm on real data}
+
+A new dataset has been made available \cite{ito2016spontaneous, ito2014large, litke2004does} with real neuron spike information from a mouse somatosensory cortex
 
 \section{Background}
 
