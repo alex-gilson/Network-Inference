@@ -1988,9 +1988,10 @@
     <bcf:citekey order="56">izhikevich2003simple</bcf:citekey>
     <bcf:citekey order="57">alexandru2018estimating</bcf:citekey>
     <bcf:citekey order="58">alexandru2018estimating</bcf:citekey>
-    <bcf:citekey order="59">cvx</bcf:citekey>
-    <bcf:citekey order="59">gb08</bcf:citekey>
-    <bcf:citekey order="60">10.3389/neuro.01.026.2009</bcf:citekey>
+    <bcf:citekey order="59">alexandru2018estimating</bcf:citekey>
+    <bcf:citekey order="60">cvx</bcf:citekey>
+    <bcf:citekey order="60">gb08</bcf:citekey>
+    <bcf:citekey order="61">10.3389/neuro.01.026.2009</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

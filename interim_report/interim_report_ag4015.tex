@@ -67,7 +67,7 @@
 	
 	\HRule\\[0.4cm]
 	
-	{\huge\bfseries Interim Report}\\[0.4cm] % Title of your document
+	{\huge\bfseries Structure and dynamics of large networks of interacting neurons}\\[0.4cm] % Title of your document
 	
 	\HRule\\[1.5cm]
 	
@@ -77,10 +77,10 @@
 	
 	
 	% If you don't want a supervisor, uncomment the two lines below and comment the code above
-	{\large\textit{Project title}}\\
-	\textsc{Structure and dynamics of large networks of interacting neurons}
+	% {\large\textit{Project title}}\\
+	% \textsc{Structure and dynamics of large networks of interacting neurons}
 	
-	\vfill
+	% \vfill
 	%------------------------------------------------
 	%	Author(s)
 	%------------------------------------------------
@@ -133,11 +133,11 @@
 \section{Introduction}
 
 The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. However, little is known about how it works. By studying how the neurons structure to store and process information we can understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and epilepsy \cite{PONTEN2007918}, and in machine learning for the development of more intelligent neural networks.
-\\\\
+
 In order to infer the network structure of a set of neurons, they are treated as a diffusion network where electrical spikes increase the likelihood of connected neurons to spike and therefore transmit a signal that travels as if it were a disease. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the relationship between all of the neurons, an estimate of the topology of the network can be obtained. 
-\\\\
+
 Previous work on this topic \cite{pranav_report, alexandru2018estimating} evaluated the feasibility of using a maximum-likelihood estimator algorithm, NetRate \cite{rodriguez2011uncovering}, for the inference of the structure of biological neural networks. A network was simulated using the Izhikevic neuron model \cite{izhikevich2003simple} and the Brian simulator \cite{10.3389/neuro.01.026.2009}. The connections between the neurons were then estimated, compared to the original network and the performance of the algorithm was evaluated.
-\\\\
+
 Recent developments in technology now allow scientists to obtain individual neuron spike information from the brain tissue \cite{ito2016spontaneous, ito2014large, litke2004does}. This data is very useful and serves as a mean of evaluating the performance of the algorithm with real neurons. Moreover, this information can help in creating simulated networks that resemble more the real biological ones.
 
 \section{Project Specification}
@@ -240,16 +240,12 @@ NetRate aims to describe how infections occur during a period of time in a fixed
 
 The following definitions in this section are necessary for the construction of the model with which we intend to infer the connectivity of the network. First, the data that is going to be analysed will be defined:
 
-\begin{itemize}
-\item Observations are carried out on a population of $N$ nodes that have created a set of $C$ cascades $\{\textbf{t}^{1},\cdots,\textbf{t}^{|C|}\}$. 
-\item Each of the cascades $\textbf{t}^{c}$ contains the infection times of all the population within a time period $T^{c}$.
-\item Each of the cascades is an N-dimensional vector with recordings of when the nodes were infected in the cascade. If a node was not infected during the time period $[0,T^{c}]$, a symbol $\infty$ is assigned. This does not mean that the node never gets infected.
+Observations are carried out on a population of $N$ nodes that have created a set of $C$ cascades $\{\textbf{t}^{1},\cdots,\textbf{t}^{|C|}\}$. Each of the cascades $\textbf{t}^{c}$ contains the infection times of all the population within a time period $T^{c}$. Each of these cascades is an N-dimensional vector with recordings of when the nodes were infected in the cascade. If a node was not infected during the time period $[0,T^{c}]$, a symbol $\infty$ is assigned. This does not mean that the node never gets infected. For simplicity, we define $T^{c}=T$. Node $i$ is parent of node $j$ if $t_{i}<t_{j}$ within the cascade.
+
+
 \begin{equation}\label{eq:data_netrate}
 \textbf{t}^{c}:=(t_{1}^{c},\cdots,t_{N}^{c}),\quad t_{k}^{c}\in [0,T^{c}]\cup{\infty}
 \end{equation}
-\item For simplicity, $T^{c}=T$
-\item Node $i$ is parent of node $j$ if $t_{i}<t_{j}$ within the cascade.
-\end{itemize}
 
 The pairwise interactions are to be studied in order to obtain the pairwise transmission likelihood between nodes in the network. It will be assumed that infections can occur at different rates along different edges in the network. 
 
@@ -458,6 +454,7 @@ The aim of the project with this respect will be to measure accurately how much 
 A new dataset has been made available with real neuron spike information from a mouse somatosensory cortex \cite{ito2016spontaneous, ito2014large, litke2004does}. This data contains several recordings lasting one hour with an average spiking frequency of 2.1Hz. The minimum, maximum and average number of neurons in each of the recordings is 98, 594 and 309, respectively. An ultimate test to the algorithm would be to infer the connectivity of such a network. However, several problems arise:
 
 \begin{enumerate}
+\item The minimum number of neurons in the dataset is 98 and the algorithm has only been employed for networks of a maximum of 50 nodes. This is due to the fact that it is computationally expensive to compute larger networks. In order to apply the algorithm to this dataset, the computation time must be significantly reduced.
 \item The input stimulus model of the dataset and that of the simulation do not match. The data contains observations from spikes without stimulation (i.e spontaneous activity) and the algorithm is designed for a DC input stimulus. The shape of the likelihood function could be different and it would, therefore, be necessary to estimate it again for the new model.
 
 \item One of the reasons for using a DC input stimulus was to have a systematic way of selecting the beginning of a cascade. Every time the selected stimulated neuron spiked, a new cascade originated \cite{pranav_report}. A new method must be devised for cascade generation in the dataset by which NetRate requirements are met and the cascades contain high quality data. 
@@ -513,6 +510,17 @@ The date of submission of the report is in mid-June. This gives the project a ti
 		\caption{Timeline of the project from February to June}
 		\label{tab:project_timeline}
 \end{table}
+
+\section{Evaluation plan}
+
+In order to test the results of this project some performance metrics can be used related to the deliverables set in section \ref{sec:implementation_plan}. These results will be compared to those obtained in \cite{alexandru2018estimating}. However, special care must be taken since they could end up being compared under different test conditions (e.g network complexity is different).
+
+\begin{enumerate}
+\item Determining the speed of the algorithm with respect to the number of nodes will provide information about how much faster the algorithm has become by being parallelized. If the algorithm is proportionally speed up with respect to the number of processors, then this deliverable of the project will have been a success.
+\item Improving the accuracy of the algorithm or keeping it fixed while testing on more complex networks will be an indicator of success for this section of the project.
+\end{enumerate}
+
+A major project deliverable to apply the algorithm on a real neural network dataset. Some of the issues related to this deliverable were explained on section \ref{sec:implementation_plan}. If these problems are solved, the project will have been a complete success.
 
 \section{Ethical, Legal and Safety Plan}
 

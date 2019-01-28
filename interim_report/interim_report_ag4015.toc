@@ -16,9 +16,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.2}Mathematical definitions}{5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.3}Derivation of NetRate}{7}
+\contentsline {subsubsection}{\numberline {3.3.3}Derivation of NetRate}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.4}Cascade generation}{9}
+\contentsline {subsubsection}{\numberline {3.3.4}Cascade generation}{8}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.5}Performance metrics}{9}
 \defcounter {refsection}{0}\relax 
@@ -36,16 +36,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Increase the speed of the algorithm}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Implementation of the algorithm on real data}{14}
+\contentsline {subsection}{\numberline {4.2}Implementation of the algorithm on real data}{13}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3}Increase the similarity between simulated and real neural networks}{14}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.4}Estimated timeline of the project}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Ethical, Legal and Safety Plan}{16}
+\contentsline {section}{\numberline {5}Evaluation plan}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Ethical plan}{16}
+\contentsline {section}{\numberline {6}Ethical, Legal and Safety Plan}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Legal plan}{16}
+\contentsline {subsection}{\numberline {6.1}Ethical plan}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Safety plan}{16}
+\contentsline {subsection}{\numberline {6.2}Legal plan}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3}Safety plan}{16}
