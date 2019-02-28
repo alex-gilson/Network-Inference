@@ -1,8 +1,8 @@
 #!/usr/local/bin/bash
 
 simulation_times=(4000)
-num_nodes=(10)
-num_processors=(1)
+num_nodes=(8)
+num_processors=(8)
 s=1
 for j in ${simulation_times[*]}
 do

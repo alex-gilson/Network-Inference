@@ -38,5 +38,6 @@ for n = nodes
 	total_obj = total_obj + obj;
 	filename = 'temporary/a_hat_' + string(n) + '.csv';
 	csvwrite(filename, full(a_hat)); 
+	disp(strcat('Finished computing node ', string(n)))
 end
 

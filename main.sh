@@ -26,15 +26,15 @@ num_processors="${13}"
 # fileToTrackProgress=r/for_histogram/network_sim_time_4000/progress_tracker_seed_1.txt
 # diffusion_type=rayleigh
 # horizon=20
-# num_processors=4
+# num_processors=1
 #
 mkdir temporary
 # Activate virtual environment
 . py27env/bin/activate
 
-if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]; then
+# if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]; then
 	python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName
-fi
+
 
 echo -e "Found Brian Simulator files"
 
@@ -49,13 +49,17 @@ echo -e "\tComputing Netrate..."
 
 python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $fileToTrackProgress
 
-matlab -nodesktop -nosplash -nojvm -r "process_results($sparsity,'$resultsFileName','$diffusion_type','$matlabNetworkFileName','$fileToTrackProgress');exit;"
-
-python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $matlabNetworkFileName $fileToTrackProgress $horizon $num_processors
-
-rm initial_time.pickle
-rm temporary/*
-
-echo "Results are available at '$resultsFileName'"
-
+# echo -e "Processing results..."
+#
+# matlab -nodesktop -nosplash -nojvm -r "process_results($sparsity,'$resultsFileName','$diffusion_type','$matlabNetworkFileName','$fileToTrackProgress');exit;"
+#
+# echo -e "Calculating elapsed time..."
+#
+# python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $matlabNetworkFileName $fileToTrackProgress $horizon $num_processors
+#
+# rm initial_time.pickle
+# rm temporary/*
+#
+# echo "Results are available at '$resultsFileName'"
+#
 

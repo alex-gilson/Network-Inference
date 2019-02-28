@@ -5,7 +5,7 @@ print('Running Brian Simulator...')
 
 import sys
 import numpy
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 from brian2  import *
 from utility import *
 
