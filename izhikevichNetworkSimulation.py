@@ -18,7 +18,7 @@ from utility import *
 # firingsFileName=sys.argv[6]
 # indicesFileName=sys.argv[7]
 
-seed=int(2)
+seed=int(1)
 N=int(10)
 sparsity=float(0.1)
 simulation_duration=int(500)
@@ -40,7 +40,7 @@ tau=1*ms
 eqs= '''
 dv/dt = (0.04*v*v + 5*v + 140 - u + I)/tau : 1
 du/dt = (a*(b*v-u))/tau : 1
-I = 2*randn() : 1 (constant over dt)
+I = 30*randn() : 1 (constant over dt)
 a:1
 b:1
 c:1
@@ -67,7 +67,10 @@ S = Synapses(G, G, 'w:1', on_pre='v_post += w')
 S.connect(condition='i!=j', p=sparsity)
 S.w='30*rand()'
 
-import pdb; pdb.set_trace()
+# reset v and u values
+G.v=-65
+G.u=G.b*G.v
+
 
 spikemon = SpikeMonitor(G)
 
