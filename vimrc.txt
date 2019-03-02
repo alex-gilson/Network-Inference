@@ -1,0 +1,68 @@
+
+set autoindent
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set number
+set paste
+"make cursor be in the middle
+set so=999
+set shiftwidth=2
+set tabstop=2
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'dracula/vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'Mistobaan/pyclewn'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'tomtom/tcomment_vim'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+" Colorscheme "
+color dracula
+syntax on
+" NERDTREE "
+map <C-o> :NERDTreeToggle<CR>
+
+" LIGHTLINE "
+set laststatus=2
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" ALE "
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+
+" FZF "
+map ; :Files<CR>
+
+let b = "import pdb; pdb.set_trace()"
+
+" VIM INDENT GUIDES"
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_auto_colors=0
+" let g:indent_guides_guide_size =3 
+" hi IndentGuidesEven ctermbg=238
+" hi IndentGuidesOdd ctermbg=236
+"
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+map gm :call cursor(0, len(getline('.'))/2)<CR>
+set splitbelow
+set splitright
+
+"YOUCOMPLETEME"
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
