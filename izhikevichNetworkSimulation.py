@@ -19,12 +19,12 @@ from utility import *
 # indicesFileName=sys.argv[7]
 
 seed=int(1)
-N=int(10)
+N=int(98)
 sparsity=float(0.1)
-simulation_duration=int(500)
-networkFileName='network.csv'
-firingsFileName='firings.csv'
-indicesFileName='indices.csv'
+simulation_duration=int(10000)
+networkFileName='network_98.csv'
+firingsFileName='firings_98.csv'
+indicesFileName='indices_98.csv'
 
 # set the default seed
 devices.device.seed(seed)
@@ -40,7 +40,7 @@ tau=1*ms
 eqs= '''
 dv/dt = (0.04*v*v + 5*v + 140 - u + I)/tau : 1
 du/dt = (a*(b*v-u))/tau : 1
-I = 30*randn() : 1 (constant over dt)
+I = 7*randn() : 1 (constant over dt)
 a:1
 b:1
 c:1
@@ -74,7 +74,7 @@ G.u=G.b*G.v
 
 spikemon = SpikeMonitor(G)
 
-run(500*ms)
+run(simulation_duration*ms)
 plot(M.t/ms, M.v[0])
 # for t in spikemon.t:
 #     axvline(t/ms, ls='--', c='blue', lw=3)
@@ -89,6 +89,7 @@ show()
 # store firings and indices
 firings.append(list(spikemon.i))
 indices.append(list(spikemon.t/ms))
+import pdb; pdb.set_trace()
 
 
 # Write Network to File
