@@ -1,5 +1,3 @@
-#!/usr/bin/env
-
 
 print('Running Brian Simulator...')
 
@@ -9,22 +7,22 @@ from matplotlib import pyplot as plt
 from brian2  import *
 from utility import *
 
-# extract command line arguments
-seed=int(sys.argv[1])
-N=int(sys.argv[2])
-sparsity=float(sys.argv[3])
-simulation_duration=int(sys.argv[4])
-networkFileName=sys.argv[5]
-firingsFileName=sys.argv[6]
-indicesFileName=sys.argv[7]
+# # extract command line arguments
+# seed=int(sys.argv[1])
+# N=int(sys.argv[2])
+# sparsity=float(sys.argv[3])
+# simulation_duration=int(sys.argv[4])
+# networkFileName=sys.argv[5]
+# firingsFileName=sys.argv[6]
+# indicesFileName=sys.argv[7]
 
-# seed=int(1)
-# N=int(98)
-# sparsity=float(0.1)
-# simulation_duration=int(1000)
-# networkFileName='network_98.csv'
-# firingsFileName='firings_98.csv'
-# indicesFileName='indices_98.csv'
+seed=int(1)
+N=int(98)
+sparsity=float(0.1)
+simulation_duration=int(3600*1000)
+networkFileName='network_98_78.csv'
+firingsFileName='firings_98_78.csv'
+indicesFileName='indices_98_78.csv'
 
 # set the default seed
 devices.device.seed(seed)
@@ -40,7 +38,7 @@ tau=1*ms
 eqs= '''
 dv/dt = (0.04*v*v + 5*v + 140 - u + I)/tau : 1
 du/dt = (a*(b*v-u))/tau : 1
-I = 12*randn() : 1 (constant over dt)
+I = 7.8*randn() : 1 (constant over dt)
 a:1
 b:1
 c:1
@@ -89,7 +87,6 @@ show()
 # store firings and indices
 firings.append(list(spikemon.i))
 indices.append(list(spikemon.t/ms))
-import pdb; pdb.set_trace()
 
 
 # Write Network to File
@@ -112,3 +109,5 @@ for l in indices:
 	myIndicesFile.write(",".join(map(str,l)))
 	myIndicesFile.write("\n")
 myIndicesFile.close()
+
+
