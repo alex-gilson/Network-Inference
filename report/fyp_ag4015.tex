@@ -14,6 +14,9 @@
 \usepackage{listings}
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 \usepackage[margin=1.2in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
 
 \usepackage{amsmath}
 \usepackage{mathpazo} % Palatino font
@@ -411,7 +414,7 @@ The experimental results obtained by Malhotra show that an optimal amount of spi
 
 The ability of NetRate to infer the weights in the adjacency matrix \textbf{A} stems from the fact that the shape of $f(t_{i}\mid t_{j};a_{j,i})$ provides a probabilistic description of $\alpha_{j,i}$. The Izhikevich spiking neuron is modelled deterministically while the propagation of infections is probabilistic. For this reason the suitability of NetRate for the biological network inference was proved in \cite{alexandru2018estimating}.
 
-As was explained in section \ref{sec:cascade_generation}, it is not possible to determine exactly which node caused some other node to become infected. However, this is not true for the Izhikevich neuron spikes. It was shown in \cite{alexandru2018estimating} that the time it takes from a neuron $i$ becoming unstable to the time it spikes is directly related to $\alpha_{j,i}$. A neuron becomes unstable when it crosses the threshold membrane value of 30mV. This can be caused by another neuron that spikes at that exact time or by random noise. In order to determine the shape that the likelihood function takes for different values of $\alpha_{j,i}$, an histogram of time was employed. It was observed that the likelihood function had an exponential and Rayleigh shape for low and large values of $\alpha_{j,i}$, respectively.Both of these distributions are convex for the solution of the optimization problem in Eq.\ref{eq:optimization_netrate}. NetRate only allows the use of one model, and because it is more relevant to infer the connections with larger weights, it was decided in \cite{alexandru2018estimating} to employ the Rayleigh distribution. 
+As was explained in section \ref{sec:cascade_generation}, it is not possible to determine exactly which node caused some other node to become infected. However, this is not true for the Izhikevich neuron spikes. It was shown in \cite{alexandru2018estimating} that the time it takes from a neuron $i$ becoming unstable to the time it spikes is directly related to $\alpha_{j,i}$. A neuron becomes unstable when it crosses the threshold membrane value of 30mV. This can be caused by another neuron that spikes at that exact time or by random noise. In order to determine the shape that the likelihood function takes for different values of $\alpha_{j,i}$, an histogram of time was employed. It was observed that the likelihood function had an exponential and Rayleigh shape for low and large values of $\alpha_{j,i}$, respectively. Both of these distributions are convex for the solution of the optimization problem in Eq.\ref{eq:optimization_netrate}. NetRate only allows the use of one model, and because it is more relevant to infer the connections with larger weights, it was decided in \cite{alexandru2018estimating} to employ the Rayleigh distribution. 
 
 \subsubsection{Network inference results}
 
@@ -439,10 +442,55 @@ When analyzing the results, it can be observed that the algorithm is good at det
 
 \section{Improving the speed of NetRate}
 
-NetRate is a powerful algorithm that can make a good estimate of the connections of the nodes in a network. It analyses the spiking time of numerous neurons and constructs cascades that are used in the optimization problem. However, this is a computationally expensive process due to large amount of interactions between each of the neurons in the network. Moreover, as the size of the network increases, the number of cascades that are built grows exponentially. For a network of 10 neurons it only takes 8 minutes to obtain a result using one processor\footnote{The processors used throughout the whole work are the Intel i7 3.12 GHz processors}. However, for each addition of ten neurons to the system, the computation time increases threefold. 
-For this algorithm to eventually become useful in the area of neural signal processing it must be able to scale up and analyse systems of hundreds if not thousands of neurons. Fortunately, NetRate is an inherently parallel problem because it computes an independent optimization problem for each of the columns of a matrix. \textbf{insert information about the content of the matrix}.
+NetRate is a powerful algorithm that can make a good estimate of the connections of the nodes in a network. It analyses the spiking time of numerous neurons and constructs cascades that are used in the optimization problem. However, this is a computationally expensive process due to the large amount of interactions between each of the neurons in the network. Moreover, as the size of the network increases, the number of cascades that are built grows exponentially. For a network of 10 neurons it only takes 8 minutes to obtain a result using one processor\footnote{The processors used throughout the whole work are the Intel(R) Core(TM) i7-4770 CPU @ 3.4GHz with 12GB of RAM}. However, for each addition of ten neurons to the system, the computation time increases threefold. 
+For this algorithm to eventually become useful in the area of neural signal processing it must be able to scale up and analyse systems of hundreds if not thousands of neurons. Fortunately, NetRate is an inherently parallel problem because it computes an independent optimization problem for each of the nodes of the network. A node \(j\) within a system of \(N\) nodes has \(N-1\) directed connections because the adjacency matrix has null diagonal entries. Remember that the transmission rate of a node with itself is null \(\alpha_{j,i} = 0 \text{ if } j=i\).  
+A set of cascades is obtained from the spiking times of the system and assigned to the neuron node that originated them. This is necessary in order to compute the adjacency matrix row. Then, they are used to build the components of the optimization problem. Therefore, after the cascade information is ready, each of the rows of the adjacency matrix can be computed with a different processor.
 
-\subsection{Successive quadratic approximation algorithm}
+The objective function of NetRate's optimization problem makes use of logarithmic functions. Some solvers, such as SDPT3 \cite{toh1999sdpt3,tutuncu2003solving} (the one used by CVX) do not have support for these kind of problems and make use of recursive quadratic programming. This is a relatively new field of research \cite{powell1986recursive} where a quadratic approximation of the objective function is taken. The solution to the new problem will converge to the one of the original problem for a sufficient number of iterations at which the initialization values are shifted towards the solution of the previous iteration.
+
+One of the problems encountered in \cite{pranav_report} was the lack of parallelization capabilities of the CVX software package used for NetRate. The package was not built to be parallelized and, therefore, aiming to do so would require a low level redevelopment of the software. However, the attempts of speed up were always carried out from within MATLAB. For this reason, a new approach, were the parallelization is achieved by opening several MATLAB instances is presented. 
+
+\subsection{Parallelization of NetRate}
+
+When an algorithm is parallelized and each of the processes are completely independent, all the information required for its computation must be available from the beginning. Then, after all the processes have finished, their outputs must be recombined in the same way as if only one processor had computed the whole algorithm. These are the steps required to compute NetRate:
+
+\begin{enumerate}
+\item The two files obtained from the Brian Simulator containing the indexes and times of each of the spikes must be converted into cascades and assigned to each of the nodes in the network
+\item The components that constitute the objective function and the constraints are constructed for each of the nodes in the network. This requires the characterization of the hazard and log survival functions.
+\item Each of these components is assembled together to form the optimization problem in \ref{eq:optimization_netrate} for each of the rows of the adjacency matrix.
+\item The software package CVX is used to compute the optimization problem that returns the optimal weights.
+\item Post-processing of the solution is carried out. This includes cutting off adjacency weights below a certain threshold in order to promote sparsity.
+\end{enumerate}
+
+From the steps above, it can be observed that the one that requires the most amount of computation power is number 4, where CVX is executed. Moreover, the information required to compute each specific row of the adjacency matrix is obtained in step 2. Thus, the ramification of the jobs occurs from step 1 to 2. From this point onwards, the parallelization is possible. However, due to the insignificant computation time and an increased complexity of a parallelized step 2, it makes it unnecessary to parallelize. 
+Steps 3 and 4 are very closely linked: in order to use CVX, the problem must be defined following the rules of CVX and, thus, it is required for both of them to be computed by the same processor.
+\tikzstyle{int}=[draw, fill=blue!20, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+% Definition of blocks:
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+
+\begin{tikzpicture}[auto, thick, node distance=4cm, >=triangle 45]
+    \node at (0,0) [block] (a) {\(\textbf{t}^{c}\)};
+    \node [block, right of=a, node distance=4cm] (b) {\(\log S(t_{i}| t_{j};\alpha_{j,i}), H(t_{i}| t_{j};\alpha_{j,i})\)};
+		\node [coordinate] (c) [right of=b, node distance=2cm] {};
+		\node [coordinate] (d) [above of=c, node distance=2cm] {};
+		\node [block, right of=d, node distance=2cm] (e) {\(\Pi\)};
+    \node [coordinate] (end) [right of=e, node distance=4cm]{};
+    \path[->] (a) edge node {} (b);
+    \path[->] (b) edge node {} (c);
+    \path[->] (c) edge node {} (d);
+    \path[->] (d) edge node {} (e);
+    \draw[->] (e) edge node {} (end);
+\end{tikzpicture}
+
+
+\subsection{Recursive quadratic approximation algorithm}
 
 
 

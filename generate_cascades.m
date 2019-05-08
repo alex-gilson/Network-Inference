@@ -41,7 +41,7 @@ for i=1:size(network,1)
 end
 
 num_nodes = N;
-% initiliase vector to hold cascades
+% initialize a vector to hold the cascades
 cascades=[];
 
 % extract cascades for each node in the network
@@ -61,17 +61,21 @@ for n=1:N
 
         % find the location of all the nodes that fired in the window
         index=find(firing_times(n,:)>start & firing_times(n,:)<end_of_period);
+
         % collate the fired nodes
         firings_in_window=firings_indices(n,index);
         firings_in_window(2,:)=firing_times(n,index)-start;
         firings_in_window=firings_in_window';
+
         % initialise a cascade, non-fired with -1; assume all non-fired
         current_cascade=ones(1,N)*-1;
-        % stimulated nodde starts the cascade
+
+        % stimulated node starts the cascade
         current_cascade(firings_indices(n,i)+1)=0;
+
         % update cascade based on the rest of the firings
         for k=1:length(firings_in_window(:,1))
-            % if 1 node fires twice in an observation winddow,
+            % if 1 node fires twice in an observation window,
             % only the first one is considered
             if(current_cascade(firings_in_window(k,1)+1)==-1)
                 current_cascade(firings_in_window(k,1)+1)=firings_in_window(k,2);

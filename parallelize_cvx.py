@@ -40,7 +40,7 @@ def cvx_matlab(i, num_nodes=num_nodes, horizon=horizon, diffusion_type=diffusion
     arguments = ''
     # Tell matlab what nodes to compute 
     nodes = processor_list[i-1]        
-    # To reduce RAM consumption make the algorithm spread the most memory expensive nodes throught the computation period
+    # To reduce RAM consumption make the algorithm spread the most memory expensive nodes throughout the computation period
     # If the processor number is even, start computing the nodes with the least number of cascades
     if i%2 == 0:
         nodes = nodes[::-1]

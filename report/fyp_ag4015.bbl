@@ -828,87 +828,117 @@
       \field{pages}{137\bibrangedash 146}
       \range{pages}{10}
     \endentry
-    \entry{cvx}{misc}{}
-      \name{author}{2}{}{%
-        {{hash=94c0b4e071e86a74d681ba3394cd97ca}{%
-           family={Grant},
-           familyi={G\bibinitperiod},
-           given={Michael},
-           giveni={M\bibinitperiod}}}%
-        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
-           family={Boyd},
-           familyi={B\bibinitperiod},
-           given={Stephen},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{fullhash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{bibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{authorbibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{authornamehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{authorfullhash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://cvxr.com/cvx}}
-      \field{month}{3}
-      \field{title}{{CVX}: Matlab Software for Disciplined Convex Programming, version 2.1}
-      \field{year}{2014}
-    \endentry
-    \entry{gb08}{incollection}{}
-      \name{author}{2}{}{%
-        {{hash=94c0b4e071e86a74d681ba3394cd97ca}{%
-           family={Grant},
-           familyi={G\bibinitperiod},
-           given={Michael},
-           giveni={M\bibinitperiod}}}%
-        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
-           family={Boyd},
-           familyi={B\bibinitperiod},
-           given={Stephen},
-           giveni={S\bibinitperiod}}}%
-      }
-      \name{editor}{3}{}{%
-        {{hash=4d6ce137d9f74f9dba14e2b30b2206da}{%
-           family={Blondel},
-           familyi={B\bibinitperiod},
-           given={V.},
-           giveni={V\bibinitperiod}}}%
-        {{hash=b18cbeba4540b1e65d4f180870cb8004}{%
-           family={Boyd},
-           familyi={B\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
-        {{hash=6663a8d524c1b5c15c1170993c4cfc3d}{%
-           family={Kimura},
-           familyi={K\bibinitperiod},
-           given={H.},
-           giveni={H\bibinitperiod}}}%
+    \entry{toh1999sdpt3}{article}{}
+      \name{author}{3}{}{%
+        {{hash=51069ff3372161883643db52eec3be0f}{%
+           family={Toh},
+           familyi={T\bibinitperiod},
+           given={Kim-Chuan},
+           giveni={K\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=72bd3735fe4a0da64180ab133d675454}{%
+           family={Todd},
+           familyi={T\bibinitperiod},
+           given={Michael\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=76a50ee5bf5c0846750a62d07094c89c}{%
+           family={T{ü}t{ü}nc{ü}},
+           familyi={T\bibinitperiod},
+           given={Reha\bibnamedelima H},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Springer-Verlag Limited}%
+        {Taylor \& Francis}%
       }
-      \strng{namehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{fullhash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{bibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{authorbibnamehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{authornamehash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{authorfullhash}{1ebedaef3303dc7d9530dd2f2f869721}
-      \strng{editorbibnamehash}{12852b0fccf3b3a2e0ab43114f77eeaa}
-      \strng{editornamehash}{12852b0fccf3b3a2e0ab43114f77eeaa}
-      \strng{editorfullhash}{12852b0fccf3b3a2e0ab43114f77eeaa}
+      \strng{namehash}{33e0df300117e3df045e0b59d3ee46af}
+      \strng{fullhash}{33e0df300117e3df045e0b59d3ee46af}
+      \strng{bibnamehash}{33e0df300117e3df045e0b59d3ee46af}
+      \strng{authorbibnamehash}{33e0df300117e3df045e0b59d3ee46af}
+      \strng{authornamehash}{33e0df300117e3df045e0b59d3ee46af}
+      \strng{authorfullhash}{33e0df300117e3df045e0b59d3ee46af}
       \field{sortinit}{5}
       \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Recent Advances in Learning and Control}
-      \field{note}{\url{http://stanford.edu/~boyd/graph_dcp.html}}
-      \field{series}{Lecture Notes in Control and Information Sciences}
-      \field{title}{Graph implementations for nonsmooth convex programs}
-      \field{year}{2008}
-      \field{pages}{95\bibrangedash 110}
-      \range{pages}{16}
+      \field{journaltitle}{Optimization methods and software}
+      \field{number}{1-4}
+      \field{title}{SDPT3—a MATLAB software package for semidefinite programming, version 1.3}
+      \field{volume}{11}
+      \field{year}{1999}
+      \field{pages}{545\bibrangedash 581}
+      \range{pages}{37}
+    \endentry
+    \entry{tutuncu2003solving}{article}{}
+      \name{author}{3}{}{%
+        {{hash=76a50ee5bf5c0846750a62d07094c89c}{%
+           family={T{ü}t{ü}nc{ü}},
+           familyi={T\bibinitperiod},
+           given={Reha\bibnamedelima H},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=51069ff3372161883643db52eec3be0f}{%
+           family={Toh},
+           familyi={T\bibinitperiod},
+           given={Kim-Chuan},
+           giveni={K\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=72bd3735fe4a0da64180ab133d675454}{%
+           family={Todd},
+           familyi={T\bibinitperiod},
+           given={Michael\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{acded7f45317b7dddd345b4706246480}
+      \strng{fullhash}{acded7f45317b7dddd345b4706246480}
+      \strng{bibnamehash}{acded7f45317b7dddd345b4706246480}
+      \strng{authorbibnamehash}{acded7f45317b7dddd345b4706246480}
+      \strng{authornamehash}{acded7f45317b7dddd345b4706246480}
+      \strng{authorfullhash}{acded7f45317b7dddd345b4706246480}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical programming}
+      \field{number}{2}
+      \field{title}{Solving semidefinite-quadratic-linear programs using SDPT3}
+      \field{volume}{95}
+      \field{year}{2003}
+      \field{pages}{189\bibrangedash 217}
+      \range{pages}{29}
+    \endentry
+    \entry{powell1986recursive}{article}{}
+      \name{author}{2}{}{%
+        {{hash=dffc724e969a2abffd7cd55cf6250b79}{%
+           family={Powell},
+           familyi={P\bibinitperiod},
+           given={Michael\bibnamedelima JD},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=20359925e02215ab2301f6ee4bde4bfe}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{06ada661a9a6f9c9dfc8b4611df10814}
+      \strng{fullhash}{06ada661a9a6f9c9dfc8b4611df10814}
+      \strng{bibnamehash}{06ada661a9a6f9c9dfc8b4611df10814}
+      \strng{authorbibnamehash}{06ada661a9a6f9c9dfc8b4611df10814}
+      \strng{authornamehash}{06ada661a9a6f9c9dfc8b4611df10814}
+      \strng{authorfullhash}{06ada661a9a6f9c9dfc8b4611df10814}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{number}{3}
+      \field{title}{A recursive quadratic programming algorithm that uses differentiable exact penalty functions}
+      \field{volume}{35}
+      \field{year}{1986}
+      \field{pages}{265\bibrangedash 278}
+      \range{pages}{14}
     \endentry
   \enddatalist
 \endrefsection
