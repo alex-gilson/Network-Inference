@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  8 MAY 2019 18:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  8 MAY 2019 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**fyp_ag4015.tex
-(./fyp_ag4015.tex
+**diagram_parallelization.tex
+(./diagram_parallelization.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -1077,23 +1077,24 @@ File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 \@quotelevel=\count320
 \@quotereset=\count321
 
-(./fyp_ag4015.aux)
-\openout1 = `fyp_ag4015.aux'.
+(./diagram_parallelization.aux)
+\openout1 = `diagram_parallelization.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 52.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 53.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -1143,15 +1144,15 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(86.72377pt, 440.84746pt, 86.72377pt)
-* v-part:(T,H,B)=(86.72377pt, 621.52245pt, 86.72377pt)
+* h-part:(L,W,R)=(0.0pt, 614.295pt, 0.0pt)
+* v-part:(T,H,B)=(0.0pt, 794.96999pt, 0.0pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=440.84746pt
-* \textheight=621.52245pt
-* \oddsidemargin=14.45378pt
-* \evensidemargin=14.45378pt
-* \topmargin=-22.54622pt
+* \textwidth=614.295pt
+* \textheight=794.96999pt
+* \oddsidemargin=-72.26999pt
+* \evensidemargin=-72.26999pt
+* \topmargin=-109.26999pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -1173,194 +1174,101 @@ ABD: EveryShipout initializing macros
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout5 = `fyp_ag4015.bcf'.
+\openout5 = `diagram_parallelization.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'fyp_ag4015.bbl' found.
- (./fyp_ag4015.bbl)
-Package biblatex Info: Reference section=0 on input line 52.
-Package biblatex Info: Reference segment=0 on input line 52.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 74.
-<Images/imperialcollegelondon.jpg, id=4, 461.47406pt x 481.8pt>
-File: Images/imperialcollegelondon.jpg Graphic file (type jpg)
-<use Images/imperialcollegelondon.jpg>
-Package pdftex.def Info: Images/imperialcollegelondon.jpg  used on input line 1
-26.
-(pdftex.def)             Requested size: 142.26378pt x 148.52571pt.
- [1
+Package biblatex Info: ... file 'diagram_parallelization.bbl' not found.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Images/imperialcollegelo
-ndon.jpg>]
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 134.
+No file diagram_parallelization.bbl.
+Package biblatex Info: Reference section=0 on input line 53.
+Package biblatex Info: Reference segment=0 on input line 53.
 
-(./fyp_ag4015.toc
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 3.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 9.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathreplacing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
+e.tex
+\pgfdecoratedcompleteddistance=\dimen182
+\pgfdecoratedremainingdistance=\dimen183
+\pgfdecoratedinputsegmentcompleteddistance=\dimen184
+\pgfdecoratedinputsegmentremainingdistance=\dimen185
+\pgf@decorate@distancetomove=\dimen186
+\pgf@decorate@repeatstate=\count329
+\pgfdecorationsegmentamplitude=\dimen187
+\pgfdecorationsegmentlength=\dimen188
+)
+\tikz@lib@dec@box=\box42
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathreplacing.code.tex))
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 67.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 9.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 67.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 9.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 67.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 9.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 67.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 9.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 67.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-))
-\tf@toc=\write6
-\openout6 = `fyp_ag4015.toc'.
-
- [1]
-Overfull \hbox (1.70766pt too wide) in paragraph at lines 143--144
-[]\T1/ppl/m/n/10.95 Previous work on this topic [3, 4] eval-u-ated the fea-si-b
-il-ity of us-ing a maximum-likelihood
- []
-
-
-LaTeX Warning: Reference `sec:implementation_plan' on page 1 undefined on input
- line 150.
-
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 155.
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--163
-
- []
-
-[1] [2]
-<Images/regular_spiking.png, id=25, 578.16pt x 433.62pt>
-File: Images/regular_spiking.png Graphic file (type png)
-<use Images/regular_spiking.png>
-Package pdftex.def Info: Images/regular_spiking.png  used on input line 206.
-(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
-<Images/intrinsically_bursting.png, id=27, 578.16pt x 433.62pt>
-File: Images/intrinsically_bursting.png Graphic file (type png)
-<use Images/intrinsically_bursting.png>
-Package pdftex.def Info: Images/intrinsically_bursting.png  used on input line 
-209.
-(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
-<Images/chattering.png, id=28, 578.16pt x 433.62pt>
-File: Images/chattering.png Graphic file (type png)
-<use Images/chattering.png>
-Package pdftex.def Info: Images/chattering.png  used on input line 212.
-(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
-<Images/fast_spiking.png, id=29, 578.16pt x 433.62pt>
-File: Images/fast_spiking.png Graphic file (type png)
-<use Images/fast_spiking.png>
-Package pdftex.def Info: Images/fast_spiking.png  used on input line 215.
-(pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
- [3] [4 <./Images/regular_spiking.png> <./Images/intrinsically_bursting.png> <.
-/Images/chattering.png> <./Images/fast_spiking.png>]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 233.
-
+)
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 67.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 99.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 233.
- [5] [6] [7] [8]
-LaTeX Font Info:    Try loading font information for U+fplmbb on input line 387
-.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 99.
+ [1
 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ufplmbb.fd
-File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
-) [9]
-<Images/graph_20_nodes.png, id=59, 722.7pt x 505.89pt>
-File: Images/graph_20_nodes.png Graphic file (type png)
-<use Images/graph_20_nodes.png>
-Package pdftex.def Info: Images/graph_20_nodes.png  used on input line 391.
-(pdftex.def)             Requested size: 352.6793pt x 246.87703pt.
- [10 <./Images/graph_20_nodes.png>] [11] [12] [13]
-<Images/diagram_parallelization.pdf, id=75, 614.295pt x 794.97pt>
-File: Images/diagram_parallelization.pdf Graphic file (type pdf)
-<use Images/diagram_parallelization.pdf>
-Package pdftex.def Info: Images/diagram_parallelization.pdf  used on input line
- 475.
-(pdftex.def)             Requested size: 440.84746pt x 141.70862pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[14] [15 <./Images/diagram_parallelization.pdf>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 490.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Overfull \hbox (2.739pt too wide) in paragraph at lines 491--491
-[]\T1/ppl/m/n/10.95 Pranav Mal-ho-tra. \T1/ppl/m/it/10.95 Es-ti-mat-ing the Top
-ol-ogy of Net-works from Dis-tributed ob-ser-va-tions\T1/ppl/m/n/10.95 . MEng
- []
-
-
-Overfull \hbox (3.7363pt too wide) in paragraph at lines 491--491
-\T1/ppl/m/n/10.95 the tem-po-ral dy-nam-ics of dif-fu-sion net-works''. In: \T1
-/ppl/m/it/10.95 arXiv preprint arXiv:1105.0697 \T1/ppl/m/n/10.95 (2011). 
- []
-
-[16]
-Overfull \hbox (6.33104pt too wide) in paragraph at lines 491--491
-\T1/ppl/m/n/10.95 shifting foci of evoked cor-re-la-tions be-tween elec-trodes'
-'. In: \T1/ppl/m/it/10.95 Psy-chophys-i-ol-ogy \T1/ppl/m/n/10.95 22.1 (1985),
- []
-
-
-Overfull \hbox (8.75156pt too wide) in paragraph at lines 491--491
-[]\T1/ppl/m/n/10.95 Reha H Tütüncü, Kim-Chuan Toh, and Michael J Todd. ``Solv-i
-ng semidefinite-quadratic-
- []
-
-[17] (./fyp_ag4015.aux)
-
-LaTeX Warning: There were undefined references.
-
-Package logreq Info: Writing requests to 'fyp_ag4015.run.xml'.
-\openout1 = `fyp_ag4015.run.xml'.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./diagram_parallelization
+.aux)
+Package logreq Info: Writing requests to 'diagram_parallelization.run.xml'.
+\openout1 = `diagram_parallelization.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23058 strings out of 492982
- 435020 string characters out of 6134896
- 818403 words of memory out of 5000000
- 26171 multiletter control sequences out of 15000+600000
- 60757 words of font info for 133 fonts, out of 8000000 for 9000
+ 23345 strings out of 492982
+ 445400 string characters out of 6134896
+ 818919 words of memory out of 5000000
+ 26491 multiletter control sequences out of 15000+600000
+ 40892 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,1926b,1363s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texliv
-e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texmf/
-fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pal
-atino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on fyp_ag4015.pdf (19 pages, 615504 bytes).
+ 55i,9n,65p,843b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/up
+lbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on diagram_parallelization.pdf (1 page, 69140 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
+ 48 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

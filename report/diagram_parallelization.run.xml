@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>fyp_ag4015.bcf</file>
+      <file>diagram_parallelization.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>fyp_ag4015.bbl</file>
+      <file>diagram_parallelization.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -65,19 +65,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>fyp_ag4015</infile>
+      <infile>diagram_parallelization</infile>
     </cmdline>
     <input>
-      <file>fyp_ag4015.bcf</file>
+      <file>diagram_parallelization.bcf</file>
     </input>
     <output>
-      <file>fyp_ag4015.bbl</file>
+      <file>diagram_parallelization.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>fyp_ag4015.bbl</file>
+      <file>diagram_parallelization.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>fyp_ag4015.bcf</file>
+      <file>diagram_parallelization.bcf</file>
     </requires>
     <requires type="editable">
       <file>references.bib</file>
