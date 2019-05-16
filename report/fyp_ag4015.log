@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  8 MAY 2019 18:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  16 MAY 2019 19:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -806,6 +806,14 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count132
+\float@exts=\toks38
+\float@box=\box41
+\@float@everytoks=\toks39
+\@floatcapt=\box42
+)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/mathpazo.sty
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup7
@@ -837,7 +845,7 @@ Package pdftexcmds Info: \pdfdraftmode found.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count132
+\etb@tempcnta=\count133
 )
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
@@ -854,7 +862,7 @@ Package etexcmds Info: Could not find \expanded.
 )))
 (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count133
+\lrq@indent=\count134
 
 (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -869,49 +877,49 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
 \@xs@message=\write4
-\integerpart=\count134
-\decimalpart=\count135
+\integerpart=\count135
+\decimalpart=\count136
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
-\c@tabx@nest=\count136
-\c@listtotal=\count137
-\c@listcount=\count138
-\c@liststart=\count139
-\c@liststop=\count140
-\c@citecount=\count141
-\c@citetotal=\count142
-\c@multicitecount=\count143
-\c@multicitetotal=\count144
-\c@instcount=\count145
-\c@maxnames=\count146
-\c@minnames=\count147
-\c@maxitems=\count148
-\c@minitems=\count149
-\c@citecounter=\count150
-\c@savedcitecounter=\count151
-\c@uniquelist=\count152
-\c@uniquename=\count153
-\c@refsection=\count154
-\c@refsegment=\count155
-\c@maxextratitle=\count156
-\c@maxextratitleyear=\count157
-\c@maxextradate=\count158
-\c@maxextraalpha=\count159
-\c@abbrvpenalty=\count160
-\c@highnamepenalty=\count161
-\c@lownamepenalty=\count162
-\c@maxparens=\count163
-\c@parenlevel=\count164
-\blx@tempcnta=\count165
-\blx@tempcntb=\count166
-\blx@tempcntc=\count167
-\blx@maxsection=\count168
-\blx@maxsegment@0=\count169
-\blx@notetype=\count170
-\blx@parenlevel@text=\count171
-\blx@parenlevel@foot=\count172
-\blx@sectionciteorder@0=\count173
+\c@tabx@nest=\count137
+\c@listtotal=\count138
+\c@listcount=\count139
+\c@liststart=\count140
+\c@liststop=\count141
+\c@citecount=\count142
+\c@citetotal=\count143
+\c@multicitecount=\count144
+\c@multicitetotal=\count145
+\c@instcount=\count146
+\c@maxnames=\count147
+\c@minnames=\count148
+\c@maxitems=\count149
+\c@minitems=\count150
+\c@citecounter=\count151
+\c@savedcitecounter=\count152
+\c@uniquelist=\count153
+\c@uniquename=\count154
+\c@refsection=\count155
+\c@refsegment=\count156
+\c@maxextratitle=\count157
+\c@maxextratitleyear=\count158
+\c@maxextradate=\count159
+\c@maxextraalpha=\count160
+\c@abbrvpenalty=\count161
+\c@highnamepenalty=\count162
+\c@lownamepenalty=\count163
+\c@maxparens=\count164
+\c@parenlevel=\count165
+\blx@tempcnta=\count166
+\blx@tempcntb=\count167
+\blx@tempcntc=\count168
+\blx@maxsection=\count169
+\blx@maxsegment@0=\count170
+\blx@notetype=\count171
+\blx@parenlevel@text=\count172
+\blx@parenlevel@foot=\count173
+\blx@sectionciteorder@0=\count174
 \labelnumberwidth=\skip46
 \labelalphawidth=\skip47
 \biblabelsep=\skip48
@@ -922,9 +930,9 @@ Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 \bibhang=\skip53
 \blx@bcfin=\read3
 \blx@bcfout=\write5
-\c@mincomprange=\count174
-\c@maxcomprange=\count175
-\c@mincompwidth=\count176
+\c@mincomprange=\count175
+\c@maxcomprange=\count176
+\c@mincompwidth=\count177
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -933,74 +941,74 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'numeric.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count177
-\c@savedafterword=\count178
-\c@annotator=\count179
-\c@savedannotator=\count180
-\c@author=\count181
-\c@savedauthor=\count182
-\c@bookauthor=\count183
-\c@savedbookauthor=\count184
-\c@commentator=\count185
-\c@savedcommentator=\count186
-\c@editor=\count187
-\c@savededitor=\count188
-\c@editora=\count189
-\c@savededitora=\count190
-\c@editorb=\count191
-\c@savededitorb=\count192
-\c@editorc=\count193
-\c@savededitorc=\count194
-\c@foreword=\count195
-\c@savedforeword=\count196
-\c@holder=\count197
-\c@savedholder=\count198
-\c@introduction=\count199
-\c@savedintroduction=\count266
-\c@namea=\count267
-\c@savednamea=\count268
-\c@nameb=\count269
-\c@savednameb=\count270
-\c@namec=\count271
-\c@savednamec=\count272
-\c@translator=\count273
-\c@savedtranslator=\count274
-\c@shortauthor=\count275
-\c@savedshortauthor=\count276
-\c@shorteditor=\count277
-\c@savedshorteditor=\count278
-\c@labelname=\count279
-\c@savedlabelname=\count280
-\c@institution=\count281
-\c@savedinstitution=\count282
-\c@lista=\count283
-\c@savedlista=\count284
-\c@listb=\count285
-\c@savedlistb=\count286
-\c@listc=\count287
-\c@savedlistc=\count288
-\c@listd=\count289
-\c@savedlistd=\count290
-\c@liste=\count291
-\c@savedliste=\count292
-\c@listf=\count293
-\c@savedlistf=\count294
-\c@location=\count295
-\c@savedlocation=\count296
-\c@organization=\count297
-\c@savedorganization=\count298
-\c@origlocation=\count299
-\c@savedoriglocation=\count300
-\c@origpublisher=\count301
-\c@savedorigpublisher=\count302
-\c@publisher=\count303
-\c@savedpublisher=\count304
-\c@language=\count305
-\c@savedlanguage=\count306
-\c@origlanguage=\count307
-\c@savedoriglanguage=\count308
-\c@pageref=\count309
-\c@savedpageref=\count310
+\c@afterword=\count178
+\c@savedafterword=\count179
+\c@annotator=\count180
+\c@savedannotator=\count181
+\c@author=\count182
+\c@savedauthor=\count183
+\c@bookauthor=\count184
+\c@savedbookauthor=\count185
+\c@commentator=\count186
+\c@savedcommentator=\count187
+\c@editor=\count188
+\c@savededitor=\count189
+\c@editora=\count190
+\c@savededitora=\count191
+\c@editorb=\count192
+\c@savededitorb=\count193
+\c@editorc=\count194
+\c@savededitorc=\count195
+\c@foreword=\count196
+\c@savedforeword=\count197
+\c@holder=\count198
+\c@savedholder=\count199
+\c@introduction=\count266
+\c@savedintroduction=\count267
+\c@namea=\count268
+\c@savednamea=\count269
+\c@nameb=\count270
+\c@savednameb=\count271
+\c@namec=\count272
+\c@savednamec=\count273
+\c@translator=\count274
+\c@savedtranslator=\count275
+\c@shortauthor=\count276
+\c@savedshortauthor=\count277
+\c@shorteditor=\count278
+\c@savedshorteditor=\count279
+\c@labelname=\count280
+\c@savedlabelname=\count281
+\c@institution=\count282
+\c@savedinstitution=\count283
+\c@lista=\count284
+\c@savedlista=\count285
+\c@listb=\count286
+\c@savedlistb=\count287
+\c@listc=\count288
+\c@savedlistc=\count289
+\c@listd=\count290
+\c@savedlistd=\count291
+\c@liste=\count292
+\c@savedliste=\count293
+\c@listf=\count294
+\c@savedlistf=\count295
+\c@location=\count296
+\c@savedlocation=\count297
+\c@organization=\count298
+\c@savedorganization=\count299
+\c@origlocation=\count300
+\c@savedoriglocation=\count301
+\c@origpublisher=\count302
+\c@savedorigpublisher=\count303
+\c@publisher=\count304
+\c@savedpublisher=\count305
+\c@language=\count306
+\c@savedlanguage=\count307
+\c@origlanguage=\count308
+\c@savedoriglanguage=\count309
+\c@pageref=\count310
+\c@savedpageref=\count311
 \shorthandwidth=\skip54
 \shortjournalwidth=\skip55
 \shortserieswidth=\skip56
@@ -1018,13 +1026,13 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2017/12/19 v3.10 biblatex compatibility (PK/JW/AB)
-\c@textcitecount=\count311
-\c@textcitetotal=\count312
-\c@textcitemaxnames=\count313
-\c@biburlnumpenalty=\count314
-\c@biburlucpenalty=\count315
-\c@biburllcpenalty=\count316
-\c@smartand=\count317
+\c@textcitecount=\count312
+\c@textcitetotal=\count313
+\c@textcitemaxnames=\count314
+\c@biburlnumpenalty=\count315
+\c@biburlucpenalty=\count316
+\c@biburllcpenalty=\count317
+\c@smartand=\count318
 )
 Package biblatex Info: Trying to load natbib compatibility...
 Package biblatex Info: ... file 'blx-natbib.def' found.
@@ -1042,8 +1050,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2017/12/19 v3.10 biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count318
-\c@bbx:relatedtotal=\count319
+\c@bbx:relatedcount=\count319
+\c@bbx:relatedtotal=\count320
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -1074,45 +1082,46 @@ Package biblatex Info: ... file 'english.lbx' found.
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 )
-\@quotelevel=\count320
-\@quotereset=\count321
+\@quotelevel=\count321
+\@quotereset=\count322
 
 (./fyp_ag4015.aux)
 \openout1 = `fyp_ag4015.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 53.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count322
+\scratchcounter=\count323
 \scratchdimen=\dimen180
-\scratchbox=\box41
-\nofMPsegments=\count323
-\nofMParguments=\count324
-\everyMPshowfont=\toks38
-\MPscratchCnt=\count325
+\scratchbox=\box43
+\nofMPsegments=\count324
+\nofMParguments=\count325
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count326
 \MPscratchDim=\dimen181
-\MPnumerator=\count326
-\makeMPintoPDFobject=\count327
-\everyMPtoPDFconversion=\toks39
+\MPnumerator=\count327
+\makeMPintoPDFobject=\count328
+\everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1133,7 +1142,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count328
+\c@lstlisting=\count329
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1178,22 +1187,22 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'fyp_ag4015.bbl' found.
  (./fyp_ag4015.bbl)
-Package biblatex Info: Reference section=0 on input line 52.
-Package biblatex Info: Reference segment=0 on input line 52.
+Package biblatex Info: Reference section=0 on input line 53.
+Package biblatex Info: Reference segment=0 on input line 53.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 74.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 75.
 <Images/imperialcollegelondon.jpg, id=4, 461.47406pt x 481.8pt>
 File: Images/imperialcollegelondon.jpg Graphic file (type jpg)
 <use Images/imperialcollegelondon.jpg>
 Package pdftex.def Info: Images/imperialcollegelondon.jpg  used on input line 1
-26.
+27.
 (pdftex.def)             Requested size: 142.26378pt x 148.52571pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Images/imperialcollegelo
 ndon.jpg>]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 134.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 135.
 
 (./fyp_ag4015.toc
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
@@ -1226,19 +1235,19 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 \openout6 = `fyp_ag4015.toc'.
 
  [1]
-Overfull \hbox (1.70766pt too wide) in paragraph at lines 143--144
+Overfull \hbox (1.70766pt too wide) in paragraph at lines 144--145
 []\T1/ppl/m/n/10.95 Previous work on this topic [3, 4] eval-u-ated the fea-si-b
 il-ity of us-ing a maximum-likelihood
  []
 
 
 LaTeX Warning: Reference `sec:implementation_plan' on page 1 undefined on input
- line 150.
+ line 151.
 
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 155.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 156.
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--163
+Underfull \hbox (badness 10000) in paragraph at lines 158--164
 
  []
 
@@ -1246,36 +1255,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--163
 <Images/regular_spiking.png, id=25, 578.16pt x 433.62pt>
 File: Images/regular_spiking.png Graphic file (type png)
 <use Images/regular_spiking.png>
-Package pdftex.def Info: Images/regular_spiking.png  used on input line 206.
+Package pdftex.def Info: Images/regular_spiking.png  used on input line 207.
 (pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
 <Images/intrinsically_bursting.png, id=27, 578.16pt x 433.62pt>
 File: Images/intrinsically_bursting.png Graphic file (type png)
 <use Images/intrinsically_bursting.png>
 Package pdftex.def Info: Images/intrinsically_bursting.png  used on input line 
-209.
+210.
 (pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
 <Images/chattering.png, id=28, 578.16pt x 433.62pt>
 File: Images/chattering.png Graphic file (type png)
 <use Images/chattering.png>
-Package pdftex.def Info: Images/chattering.png  used on input line 212.
+Package pdftex.def Info: Images/chattering.png  used on input line 213.
 (pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
 <Images/fast_spiking.png, id=29, 578.16pt x 433.62pt>
 File: Images/fast_spiking.png Graphic file (type png)
 <use Images/fast_spiking.png>
-Package pdftex.def Info: Images/fast_spiking.png  used on input line 215.
+Package pdftex.def Info: Images/fast_spiking.png  used on input line 216.
 (pdftex.def)             Requested size: 216.01767pt x 162.01161pt.
  [3] [4 <./Images/regular_spiking.png> <./Images/intrinsically_bursting.png> <.
 /Images/chattering.png> <./Images/fast_spiking.png>]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 233.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 234.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 233.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 234.
  [5] [6] [7] [8]
-LaTeX Font Info:    Try loading font information for U+fplmbb on input line 387
+LaTeX Font Info:    Try loading font information for U+fplmbb on input line 388
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ufplmbb.fd
@@ -1284,50 +1293,61 @@ File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 <Images/graph_20_nodes.png, id=59, 722.7pt x 505.89pt>
 File: Images/graph_20_nodes.png Graphic file (type png)
 <use Images/graph_20_nodes.png>
-Package pdftex.def Info: Images/graph_20_nodes.png  used on input line 391.
+Package pdftex.def Info: Images/graph_20_nodes.png  used on input line 392.
 (pdftex.def)             Requested size: 352.6793pt x 246.87703pt.
  [10 <./Images/graph_20_nodes.png>] [11] [12] [13]
 <Images/diagram_parallelization.pdf, id=75, 614.295pt x 794.97pt>
 File: Images/diagram_parallelization.pdf Graphic file (type pdf)
 <use Images/diagram_parallelization.pdf>
 Package pdftex.def Info: Images/diagram_parallelization.pdf  used on input line
- 475.
+ 476.
 (pdftex.def)             Requested size: 440.84746pt x 141.70862pt.
+ [14] [15 <./Images/diagram_parallelization.pdf>]
+
+Package caption Warning: \label without proper reference on input line 522.
+See the caption package documentation for explanation.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `fig:speed_netrate' on page 16 undefined on input line
+ 517.
 
-[14] [15 <./Images/diagram_parallelization.pdf>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 490.
+<Images/computation_time_netrate.png, id=129, 462.528pt x 346.896pt>
+File: Images/computation_time_netrate.png Graphic file (type png)
+<use Images/computation_time_netrate.png>
+Package pdftex.def Info: Images/computation_time_netrate.png  used on input lin
+e 521.
+(pdftex.def)             Requested size: 352.6793pt x 264.52235pt.
+[16] [17 <./Images/computation_time_netrate.png>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 531.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (2.739pt too wide) in paragraph at lines 491--491
+Overfull \hbox (2.739pt too wide) in paragraph at lines 532--532
 []\T1/ppl/m/n/10.95 Pranav Mal-ho-tra. \T1/ppl/m/it/10.95 Es-ti-mat-ing the Top
 ol-ogy of Net-works from Dis-tributed ob-ser-va-tions\T1/ppl/m/n/10.95 . MEng
  []
 
 
-Overfull \hbox (3.7363pt too wide) in paragraph at lines 491--491
+Overfull \hbox (3.7363pt too wide) in paragraph at lines 532--532
 \T1/ppl/m/n/10.95 the tem-po-ral dy-nam-ics of dif-fu-sion net-works''. In: \T1
 /ppl/m/it/10.95 arXiv preprint arXiv:1105.0697 \T1/ppl/m/n/10.95 (2011). 
  []
 
-[16]
-Overfull \hbox (6.33104pt too wide) in paragraph at lines 491--491
+[18]
+Overfull \hbox (6.33104pt too wide) in paragraph at lines 532--532
 \T1/ppl/m/n/10.95 shifting foci of evoked cor-re-la-tions be-tween elec-trodes'
 '. In: \T1/ppl/m/it/10.95 Psy-chophys-i-ol-ogy \T1/ppl/m/n/10.95 22.1 (1985),
  []
 
 
-Overfull \hbox (8.75156pt too wide) in paragraph at lines 491--491
+Overfull \hbox (8.75156pt too wide) in paragraph at lines 532--532
 []\T1/ppl/m/n/10.95 Reha H Tütüncü, Kim-Chuan Toh, and Michael J Todd. ``Solv-i
 ng semidefinite-quadratic-
  []
 
-[17] (./fyp_ag4015.aux)
+[19] (./fyp_ag4015.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1336,13 +1356,13 @@ Package logreq Info: Writing requests to 'fyp_ag4015.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23058 strings out of 492982
- 435020 string characters out of 6134896
- 818403 words of memory out of 5000000
- 26171 multiletter control sequences out of 15000+600000
+ 23114 strings out of 492982
+ 435914 string characters out of 6134896
+ 820015 words of memory out of 5000000
+ 26222 multiletter control sequences out of 15000+600000
  60757 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,1926b,1363s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,11n,54p,1926b,1367s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texliv
 e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
@@ -1357,10 +1377,10 @@ fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pal
 atino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on fyp_ag4015.pdf (19 pages, 615504 bytes).
+Output written on fyp_ag4015.pdf (21 pages, 649025 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
+ 182 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
