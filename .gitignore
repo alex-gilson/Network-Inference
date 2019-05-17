@@ -1,6 +1,5 @@
 py27env/
 .vscode
 Documentation/papers/
-indices_98_78.csv
-firings_98_78.csv
+spike_data/
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  17 MAY 2019 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  17 MAY 2019 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1299,13 +1299,12 @@ Package pdftex.def Info: Images/diagram_parallelization.pdf  used on input line
  470.
 (pdftex.def)             Requested size: 440.84746pt x 141.70862pt.
  [14] [15 <./Images/diagram_parallelization.pdf>]
-<Images/computation_time_netrate.png, id=129, 462.528pt x 346.896pt>
-File: Images/computation_time_netrate.png Graphic file (type png)
-<use Images/computation_time_netrate.png>
-Package pdftex.def Info: Images/computation_time_netrate.png  used on input lin
-e 516.
-(pdftex.def)             Requested size: 352.6793pt x 264.52235pt.
- [16] [17 <./Images/computation_time_netrate.png>]
+<computation_time_netrate.pdf, id=129, 462.52798pt x 346.89601pt>
+File: computation_time_netrate.pdf Graphic file (type pdf)
+<use computation_time_netrate.pdf>
+Package pdftex.def Info: computation_time_netrate.pdf  used on input line 516.
+(pdftex.def)             Requested size: 352.6793pt x 264.52237pt.
+ [16] [17 <./computation_time_netrate.pdf>]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 528.
 
 
@@ -1342,7 +1341,7 @@ Package logreq Info: Writing requests to 'fyp_ag4015.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  23113 strings out of 492982
- 435889 string characters out of 6134896
+ 435885 string characters out of 6134896
  821976 words of memory out of 5000000
  26221 multiletter control sequences out of 15000+600000
  60757 words of font info for 133 fonts, out of 8000000 for 9000
@@ -1362,10 +1361,10 @@ fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pal
 atino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on fyp_ag4015.pdf (21 pages, 647607 bytes).
+Output written on fyp_ag4015.pdf (21 pages, 629626 bytes).
 PDF statistics:
- 182 PDF objects out of 1000 (max. 8388607)
- 129 compressed objects within 2 object streams
+ 215 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

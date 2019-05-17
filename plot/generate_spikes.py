@@ -19,10 +19,12 @@ from utility import *
 seed=int(1)
 N=int(98)
 sparsity=float(0.1)
-simulation_duration=int(3600*1000)
-networkFileName='network_98_78.csv'
-firingsFileName='firings_98_78.csv'
-indicesFileName='indices_98_78.csv'
+simulation_duration=int(60*1000)
+I_var = 6 
+number_neurons = 98
+networkFileName = '../spike_data/network_' + str(int(number_neurons)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)/1000) + '.csv'
+firingsFileName = '../spike_data/firings_' + str(int(number_neurons)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)/1000) + '.csv'
+indicesFileName = '../spike_data/indices_' + str(int(number_neurons)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)/1000) + '.csv'
 
 # set the default seed
 devices.device.seed(seed)
@@ -38,7 +40,8 @@ tau=1*ms
 eqs= '''
 dv/dt = (0.04*v*v + 5*v + 140 - u + I)/tau : 1
 du/dt = (a*(b*v-u))/tau : 1
-I = 7.8*randn() : 1 (constant over dt)
+'''
+eqs = eqs + '\nI = ' + str(I_var) + '*randn() : 1 (constant over dt)' + '''
 a:1
 b:1
 c:1
