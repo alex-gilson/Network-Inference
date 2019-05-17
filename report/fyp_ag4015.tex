@@ -145,12 +145,6 @@ Previous work on this topic \cite{pranav_report, alexandru2018estimating} evalua
 
 Recent developments in technology now allow scientists to obtain individual neuron spike information from the brain tissue \cite{ito2016spontaneous, ito2014large, litke2004does}. This data is very useful and serves as a mean of evaluating the performance of the algorithm with real neurons. Moreover, this information can help in creating simulated networks that resemble more the real biological ones.
 
-\section{Project Specification}
-
-
-The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability, increasing the similarity between simulated and real neural networks or changing NetRate so that it is more adapted to the problem in hand. If the simulation were to resemble more the behaviour of a network in a real world scenario it would provide more meaningful information as to how the algorithm would perform with measurements from the brain tissue. Finally, it is of great interest to employ the algorithm for a dataset of real neural network spikes and finding a way of measuring the performance when no ground truth is given. More information on how this will be achieved will be explained in section \ref{sec:implementation_plan}.
-
-
 \section{Background}
 
 \subsection{Definition of connectivity}
@@ -456,7 +450,7 @@ One of the problems encountered in \cite{pranav_report} was the lack of parallel
 
 \subsection{Parallelization of NetRate}
 
-When an algorithm is parallelized and each of the processes are completely independent, all the information required for its computation must be available from the beginning. Otherwise, a special communication protocol between the processes must be carried out. Then, after all the processes have finished, their outputs must be recombined in the same way as if only one processor had computed the whole algorithm. An analysis of the necessary steps for computing NetRate is critical to understand what benefit can be obtained from parallelization:
+When an algorithm is parallelized and each of the processes are completely independent, all the information required for its computation must be available from the beginning. Otherwise, a special communication protocol between the processes must be carried out. Then, after all of them have finished, their outputs must be recombined in the same way as if only one processor had computed the whole algorithm. An analysis of the necessary steps for computing NetRate is critical to understand what benefit can be obtained from parallelization:
 
 \begin{enumerate}
 \item The two files obtained from the Brian Simulator containing the indexes and times of each of the spikes must be converted into cascades and assigned to each of the neurons in the network that originated them.
@@ -467,7 +461,7 @@ When an algorithm is parallelized and each of the processes are completely indep
 \end{enumerate}
 
 From the steps above, it can be observed that the one that requires the most amount of computation power is number 4, where CVX is executed. Moreover, the information required to compute each specific row of the adjacency matrix is obtained in step 2. Thus, the ramification of the jobs occurs from step 1 to 2. From this point onwards, the parallelization is possible. However, due to the insignificant computation time and an increased complexity of a parallelized step 2, it makes it unnecessary to parallelize. 
-Steps 3 and 4 are very closely linked: in order to use CVX, the problem must be defined following the rules of CVX and, thus, it is required for both of them to be computed by the same processor.
+Steps 3 and 4 are very closely linked: in order to use CVX, the problem must be defined following the rules of CVX and, thus, it is easier if both of them are computed by the same processor.
 
 It can be concluded that an optimal benefit from parallelization can be achieved by assigning the individual tasks corresponding to each of the rows of the adjacency matrix to the available number of processors. Let \(N\) be the number of nodes in a network, \(\bm{\alpha}_{n} = \{\alpha_{n,1},\alpha_{n,2},\cdots,\alpha_{n,N}\}\) and let \(\bm{C}_{n} \subset \bm{C}\text{, } n \in [1,N]\) be the set of cascades originated by node \(n\). Then, the structure of the proposed parallelized NetRate is described in figure \ref{fig:diagram_parallelization}.
 
@@ -481,7 +475,7 @@ It can be concluded that an optimal benefit from parallelization can be achieved
 Originally, the algorithm computed steps 3 and 4 sequentially. Once the transmission rates of a row of the adjacency matrix were computed, it continued with the following one. However, in a parallelized NetRate, they are all computed at the same time with step 5 also involving the stacking of each of the \(\bm{\hat{\alpha}}_{n}\) vectors to form the matrix \(\bm{\hat{A}}\).
 The components in step 2 correspond to the ones seen in Eq.\ref{eq:solution_netrate} and whose solution is the assembled version of the one in step 3.
 
-Once the structure of the algorithm is laid out, it still remains to plan how each of the jobs in steps 3 and 4 are will be assigned to the available processors. Not all the jobs take the same amount of time to be computed because they heavily depend on the number of cascades for their given node. As an illustration, a network of 10 neurons is simulated, and the number of cascades belonging to each node is shown in figure \ref{eq:num_cascades}As an illustration, a network of 10 neurons is simulated, and the number of cascades belonging to each node is shown in Eq.\ref{eq:num_cascades}. 
+Once the structure of the algorithm is laid out, it still remains to plan how each of the jobs in steps 3 and 4 are will be assigned to the available processors. Not all the jobs take the same amount of time to be computed because they heavily depend on the number of cascades for their given node. As an illustration, a network of 10 neurons is simulated, and the number of cascades belonging to each node is shown in Eq.\ref{eq:num_cascades}. 
 
 \begin{equation}
 	\centering
@@ -489,7 +483,7 @@ Once the structure of the algorithm is laid out, it still remains to plan how ea
 	\label{eq:num_cascades}
 \end{equation}
 
-The mean of the distribution is 49 and the standard deviation 46. This means that the number of cascades differs significantly from node to node and that an appropriate way of distributing the jobs is required in order to keep all processors similarly busy. This is necessary because the whole algorithm will not finish until the last processor has computed the cascades belonging to the last node. 
+The mean of the distribution is 49 and the standard deviation 46. This means that the number of cascades differs significantly from node to node and that an appropriate way of distributing the jobs is required in order to keep all processors similarly busy. This is necessary because the whole algorithm will not finish until the last processor has estimated the weight parameters belonging to the last node. 
 
 Let \(M\) be the number of processors and \(N\) the number of nodes, where \(N > M\). The first \(M\) with the largest number of cascades are assigned in order to each of the processors. Each of the remaining \(N-M\) nodes is assigned to the processors following Eq.\ref{eq:argmin_processor}.
 
@@ -508,7 +502,8 @@ Where \(i \in [0,M]\) is the processor number, \(n \in [0, N - M]\) the node ind
 \end{equation}
 
 The resulting number of cascades for each of the processors becomes 166, 114, 106 and 109, respectively. This is a more balanced distribution than if the nodes had been assigned in any other way. 
-Now, it remains to clarify in which order they must be computed. One constraint that limits the algorithm is memory. The larger the number of cascades that need to be computed, the more memory is required for the algorithm to compute the weights. The relationship between the number of cascades and size of the network is exponential and, as it grows, NetRate makes use of a larger amount of memory. Thus, it becomes prohibitive to use several processors at the same time for large networks. Each of the processors requires its own memory to perform NetRate in parallel. However, some minor adjustments can be made to increase the capability of a parallelized NetRate by choosing which nodes are computed first. If all the largest nodes are computed at the same time the computer will not be able to finish the task for a sufficiently big network. For this reason, half of the processors will start with the nodes whose number of cascades is the lowest. The other half will do the opposite and compute the ones with the highest number of cascades. This way, the number of cascades computed at any given moment is levelled out and the likelihood of sudden spikes of memory usage are reduced. 
+
+It remains to clarify in which order each of the nodes must be computed. One constraint that limits the algorithm is memory. The larger the number of cascades that need to be computed, the more memory is required for the algorithm to compute the weights. The relationship between the number of cascades and size of the network is exponential and, as it grows, NetRate makes use of a larger amount of memory. Each of the processors requires its own memory to perform NetRate in parallel. Thus, it becomes prohibitive to use several processors at the same time for large networks. However, some minor adjustments can be made to increase the capability of a parallelized NetRate by choosing which nodes are computed first. If all the largest nodes are computed at the same time the computer will not be able to finish the task for a sufficiently big network. For this reason, half of the processors will start with the nodes whose number of cascades is the lowest. The other half will do the opposite and compute the ones with the highest number of cascades. This way, the number of cascades computed at any given moment is levelled out and the likelihood of sudden spikes of memory usage are reduced. 
 
 As mentioned above, the CVX package cannot be parallelized naturally. Since the previous attempts to do so failed \cite{pranav_report}, a new method had to be implemented. For this project, instead of parallelizing NetRate from within MATLAB, several MATLAB instances are opened that work independently of each other. Each of these instances outputs a csv file and they are all combined by a Python script at the end of the computation. 
 
@@ -517,16 +512,18 @@ As mentioned above, the CVX package cannot be parallelized naturally. Since the 
 In this section the speed performance of the parallelized NetRate is evaluated. The computation time of NetRate for networks of different sizes, a stimulation period of 4000 ms and using 1, 4 and 8 processors is displayed in figure \ref{fig:speed_netrate}. Due to memory constraints of the computer, only up to 40 nodes were evaluated. As explained above, the more processors used at the time the more memory is required and this made the algorithm stall when using 8 processors in a network of 50 neurons.
 
 \begin{figure}
-	\centering
-	\includegraphics[width=0.8\linewidth]{computation_time_netrate.png}
-	\label{fig:speed_netrate}
+\centering
+\includegraphics[width=0.8\linewidth]{computation_time_netrate.png}
+\caption{Computation time of NetRate}
+\label{fig:speed_netrate}
 \end{figure}
 
 There is a significant improvement in the speed of the algorithm when comparing 1 processor to 4 and 8 processors. For 30 neurons, it takes 22, 8 and 9 minutes for 1, 4 and 8 processors whereas for 40 neurons, it takes 196, 77 and 78 minutes. Although these are good results, they are far from ideal. 
 Firstly, the time it takes to do the computation with 4 processors is not 4 times faster than with just one processor. It is, in fact, approximately 2.6 for the networks with 30 and 40 neurons. 
 Moreover, using 8 processors instead of 4 results in no speed improvement for any of the networks. It is difficult to understand this behaviour because deeper analysis shows that all 8 processors are busy during the computation of the algorithm. One possible explanation is that the only steps that are actually being parallelized are number 3 from figure \ref{fig:diagram_parallelization}, where the optimization problem in \ref{eq:optimization_netrate} for each of the rows of the adjacency matrix is built, and half of step 4, where the CVX package is used but the solver has not been called. This means that the solver in the CVX package is a shared resource among all the running MATLAB instances and that each of the processors waits in a queue to compute its own row of the adjacency matrix. Further investigation into this hypothesis leads in this direction: when printing the progress of the optimization solver SDPT3, there is a linear behaviour i.e all processes print in an orderly fashion and there is no overlapping between them. However, further research into this issue must be carried out.
 
-In this section it has been described what the steps of NetRate are, how the parallelization is implemented and what its limitations are. It is necessary to have a fast algorithm for it to be used with large networks. Finally, it was shown that although there had been a significant improvement in the speed of NetRate, it was not as good as desired, and it also posed further restrictions on memory usage.  
+In this section it has been described what the steps of NetRate are, how the parallelization is implemented and what its limitations are. It is necessary to have a fast algorithm for it to be used with large networks. Finally, it was shown that although there is a significant improvement in the speed of NetRate, it is not as good as desired, and it also poses further restrictions on memory usage.  
+
 \newpage
 \printbibliography 
 
