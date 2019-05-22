@@ -1,25 +1,50 @@
-Dataset: 1 Number of neurons: 166 Sum: 938018 Mean: 5650 Std: 12267 
-Dataset: 2 Number of neurons: 443 Sum: 1747006 Mean: 3943 Std: 8149 
-Dataset: 3 Number of neurons: 99 Sum: 1824459 Mean: 18428 Std: 16434 
-Dataset: 4 Number of neurons: 98 Sum: 636878 Mean: 6498 Std: 7849 
-Dataset: 5 Number of neurons: 367 Sum: 1012842 Mean: 2759 Std: 7909 
-Dataset: 6 Number of neurons: 286 Sum: 1627332 Mean: 5689 Std: 9291 
-Dataset: 7 Number of neurons: 172 Sum: 555219 Mean: 3228 Std: 4595 
-Dataset: 8 Number of neurons: 191 Sum: 1624992 Mean: 8507 Std: 10668 
-Dataset: 9 Number of neurons: 333 Sum: 1511265 Mean: 4538 Std: 9470 
-Dataset: 10 Number of neurons: 368 Sum: 1468110 Mean: 3989 Std: 10600 
-Dataset: 11 Number of neurons: 243 Sum: 2876476 Mean: 11837 Std: 17809 
-Dataset: 12 Number of neurons: 346 Sum: 3492464 Mean: 10093 Std: 20805 
-Dataset: 13 Number of neurons: 381 Sum: 2680249 Mean: 7034 Std: 10096 
-Dataset: 14 Number of neurons: 304 Sum: 4571337 Mean: 15037 Std: 20885 
-Dataset: 15 Number of neurons: 206 Sum: 3320462 Mean: 16118 Std: 24155 
-Dataset: 16 Number of neurons: 594 Sum: 4124010 Mean: 6942 Std: 14701 
-Dataset: 17 Number of neurons: 435 Sum: 1303691 Mean: 2996 Std: 5796 
-Dataset: 18 Number of neurons: 180 Sum: 3326881 Mean: 18482 Std: 21865 
-Dataset: 19 Number of neurons: 262 Sum: 3262680 Mean: 12452 Std: 22185 
-Dataset: 20 Number of neurons: 534 Sum: 2414324 Mean: 4521 Std: 15210 
-Dataset: 21 Number of neurons: 444 Sum: 1184903 Mean: 2668 Std: 4570 
-Dataset: 22 Number of neurons: 384 Sum: 4747566 Mean: 12363 Std: 19129 
-Dataset: 23 Number of neurons: 310 Sum: 3144411 Mean: 10143 Std: 10250 
-Dataset: 24 Number of neurons: 358 Sum: 3301476 Mean: 9222 Std: 20193 
-Dataset: 25 Number of neurons: 231 Sum: 1861501 Mean: 8058 Std: 10300 
+Dataset: 1
+# neurons: 166 Sum: 938018 Mean: 5650.2 Median: 1531.2 Std: 12267.2 Freq spikes 260.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 2
+# neurons: 443 Sum: 1747006 Mean: 3943.2 Median: 2008.2 Std: 8149.2 Freq spikes 485.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 3
+# neurons: 99 Sum: 1824459 Mean: 18428.2 Median: 13735.2 Std: 16434.2 Freq spikes 506.2 Hz Freq spikes/neuron: 5.2 Hz 
+Dataset: 4
+# neurons: 98 Sum: 636878 Mean: 6498.2 Median: 3723.2 Std: 7849.2 Freq spikes 176.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 5
+# neurons: 367 Sum: 1012842 Mean: 2759.2 Median: 1043.2 Std: 7909.2 Freq spikes 281.2 Hz Freq spikes/neuron: 0.2 Hz 
+Dataset: 6
+# neurons: 286 Sum: 1627332 Mean: 5689.2 Median: 2019.2 Std: 9291.2 Freq spikes 452.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 7
+# neurons: 172 Sum: 555219 Mean: 3228.2 Median: 1521.2 Std: 4595.2 Freq spikes 154.2 Hz Freq spikes/neuron: 0.2 Hz 
+Dataset: 8
+# neurons: 191 Sum: 1624992 Mean: 8507.2 Median: 3740.2 Std: 10668.2 Freq spikes 451.2 Hz Freq spikes/neuron: 2.2 Hz 
+Dataset: 9
+# neurons: 333 Sum: 1511265 Mean: 4538.2 Median: 1113.2 Std: 9470.2 Freq spikes 419.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 10
+# neurons: 368 Sum: 1468110 Mean: 3989.2 Median: 934.2 Std: 10600.2 Freq spikes 407.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 11
+# neurons: 243 Sum: 2876476 Mean: 11837.2 Median: 4981.2 Std: 17809.2 Freq spikes 799.2 Hz Freq spikes/neuron: 3.2 Hz 
+Dataset: 12
+# neurons: 346 Sum: 3492464 Mean: 10093.2 Median: 3660.2 Std: 20805.2 Freq spikes 970.2 Hz Freq spikes/neuron: 2.2 Hz 
+Dataset: 13
+# neurons: 381 Sum: 2680249 Mean: 7034.2 Median: 3506.2 Std: 10096.2 Freq spikes 744.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 14
+# neurons: 304 Sum: 4571337 Mean: 15037.2 Median: 7398.2 Std: 20885.2 Freq spikes 1269.2 Hz Freq spikes/neuron: 4.2 Hz 
+Dataset: 15
+# neurons: 206 Sum: 3320462 Mean: 16118.2 Median: 5475.2 Std: 24155.2 Freq spikes 922.2 Hz Freq spikes/neuron: 4.2 Hz 
+Dataset: 16
+# neurons: 594 Sum: 4124010 Mean: 6942.2 Median: 1821.2 Std: 14701.2 Freq spikes 1145.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 17
+# neurons: 435 Sum: 1303691 Mean: 2996.2 Median: 1145.2 Std: 5796.2 Freq spikes 362.2 Hz Freq spikes/neuron: 0.2 Hz 
+Dataset: 18
+# neurons: 180 Sum: 3326881 Mean: 18482.2 Median: 11740.2 Std: 21865.2 Freq spikes 924.2 Hz Freq spikes/neuron: 5.2 Hz 
+Dataset: 19
+# neurons: 262 Sum: 3262680 Mean: 12452.2 Median: 2565.2 Std: 22185.2 Freq spikes 1129.2 Hz Freq spikes/neuron: 4.2 Hz 
+Dataset: 20
+# neurons: 534 Sum: 2414324 Mean: 4521.2 Median: 1174.2 Std: 15210.2 Freq spikes 670.2 Hz Freq spikes/neuron: 1.2 Hz 
+Dataset: 21
+# neurons: 444 Sum: 1184903 Mean: 2668.2 Median: 1349.2 Std: 4570.2 Freq spikes 329.2 Hz Freq spikes/neuron: 0.2 Hz 
+Dataset: 22
+# neurons: 384 Sum: 4747566 Mean: 12363.2 Median: 5094.2 Std: 19129.2 Freq spikes 1318.2 Hz Freq spikes/neuron: 3.2 Hz 
+Dataset: 23
+# neurons: 310 Sum: 3144411 Mean: 10143.2 Median: 6430.2 Std: 10250.2 Freq spikes 873.2 Hz Freq spikes/neuron: 2.2 Hz 
+Dataset: 24
+# neurons: 358 Sum: 3301476 Mean: 9222.2 Median: 2515.2 Std: 20193.2 Freq spikes 917.2 Hz Freq spikes/neuron: 2.2 Hz 
+Dataset: 25
+# neurons: 231 Sum: 1861501 Mean: 8058.2 Median: 4393.2 Std: 10300.2 Freq spikes 517.2 Hz Freq spikes/neuron: 2.2 Hz 

@@ -8,23 +8,15 @@ from brian2  import *
 from utility import *
 
 # # extract command line arguments
-# seed=int(sys.argv[1])
-# N=int(sys.argv[2])
-# sparsity=float(sys.argv[3])
-# simulation_duration=int(sys.argv[4])
-# networkFileName=sys.argv[5]
-# firingsFileName=sys.argv[6]
-# indicesFileName=sys.argv[7]
-
-seed=int(1)
-N=int(98)
+seed=int(sys.argv[1])
+N=int(sys.argv[2])
+I_var=float(sys.argv[3])
+simulation_duration=int(sys.argv[4])
 sparsity=float(0.1)
-simulation_duration=int(60*1000)
-I_var = 6 
-number_neurons = 98
-networkFileName = '../spike_data/network_' + str(int(number_neurons)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)/1000) + '.csv'
-firingsFileName = '../spike_data/firings_' + str(int(number_neurons)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)/1000) + '.csv'
-indicesFileName = '../spike_data/indices_' + str(int(number_neurons)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)/1000) + '.csv'
+
+networkFileName = '../spike_data/network_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + str(seed) + '.csv'
+firingsFileName = '../spike_data/firings_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + str(seed) + '.csv'
+indicesFileName = '../spike_data/indices_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + str(seed) + '.csv'
 
 # set the default seed
 devices.device.seed(seed)
@@ -75,17 +67,17 @@ G.u=G.b*G.v
 
 spikemon = SpikeMonitor(G)
 
-run(simulation_duration*ms)
-plot(M.t/ms, M.v[0])
-# for t in spikemon.t:
-#     axvline(t/ms, ls='--', c='blue', lw=3)
-# axhline(0.8, ls=':', c='blue', lw=3)
-xlabel('Time (ms)')
-ylabel('Membrane potential (mv)')
-grid()
-title('Fast Spiking neuron with constant imput = 5')
-print("Spike times: %s" % spikemon.t[:])
-show()
+run(1000*simulation_duration*ms)
+# plot(M.t/ms, M.v[0])
+# # for t in spikemon.t:
+# #     axvline(t/ms, ls='--', c='blue', lw=3)
+# # axhline(0.8, ls=':', c='blue', lw=3)
+# xlabel('Time (ms)')
+# ylabel('Membrane potential (mv)')
+# grid()
+# title('Fast Spiking neuron')
+# print("Spike times: %s" % spikemon.t[:])
+# show()
 
 # store firings and indices
 firings.append(list(spikemon.i))
