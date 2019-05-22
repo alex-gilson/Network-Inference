@@ -3,9 +3,9 @@ print('Running Brian Simulator...')
 
 import sys
 import numpy
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 from brian2  import *
-from utility import *
+# from utility import *
 
 # # extract command line arguments
 seed=int(sys.argv[1])
