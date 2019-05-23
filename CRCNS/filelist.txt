@@ -1,0 +1,9 @@
+# CRCNS.org 'ssc-3' dataset files
+# To use this for fetching files, comment out files that are
+# not needed by putting a '#' as the first character on the line (default mode)
+# or put a '+' as the first character to specifiy files to be fetched (+ mode).
+# mode='default' (change to '+' for + mode).
+ data.tar.gz	194818862 (185.7 MB)
+ docs/crcns_ssc-3_data_description.docx	41129 (40.1 KB)
+ docs/crcns_ssc-3_data_description.pdf	101420 (99.0 KB)
+ checksums.md5	238
