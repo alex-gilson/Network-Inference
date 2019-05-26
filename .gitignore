@@ -2,4 +2,5 @@ py27env/
 .vscode
 Documentation/papers/
 spike_data/
+*.swp
 

@@ -3,6 +3,7 @@ print('Running Brian Simulator...')
 
 import sys
 import numpy
+import os.path
 # from matplotlib import pyplot as plt
 from brian2  import *
 # from utility import *
@@ -12,11 +13,16 @@ seed=int(sys.argv[1])
 N=int(sys.argv[2])
 I_var=float(sys.argv[3])
 simulation_duration=int(sys.argv[4])
+stimulus=str(sys.argv[5])
 sparsity=float(0.1)
 
-networkFileName = '../spike_data/network_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + str(seed) + '.csv'
-firingsFileName = '../spike_data/firings_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + str(seed) + '.csv'
-indicesFileName = '../spike_data/indices_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + str(seed) + '.csv'
+networkFileName = '../spike_data/network_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + stimulus +  '_' + str(seed) + '.csv'
+firingsFileName = '../spike_data/firings_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + stimulus +  '_' + str(seed) + '.csv'
+indicesFileName = '../spike_data/indices_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) +  '_' + stimulus + '_' + str(seed) + '.csv'
+
+if (os.path.isfile(networkFileName) and os.path.isfile(firingsFileName) and os.path.isfile(indicesFileName)):
+    sys.exit('Files for Brian simulation found')
+        
 
 # set the default seed
 devices.device.seed(seed)
@@ -29,17 +35,29 @@ indices=[]
 
 tau=1*ms
 
-eqs= '''
-dv/dt = (0.04*v*v + 5*v + 140 - u + I)/tau : 1
-du/dt = (a*(b*v-u))/tau : 1
-'''
-eqs = eqs + '\nI = ' + str(I_var) + '*randn() : 1 (constant over dt)' + '''
-a:1
-b:1
-c:1
-d:1
-'''
+if stimulus == 'normal':
+    eqs= '''
+    dv/dt = (0.04*v*v + 5*v + 140 - u + I)/tau : 1
+    du/dt = (a*(b*v-u))/tau : 1
+    '''
+    eqs = eqs + '\nI = ' + str(I_var) + '*randn() : 1 (constant over dt)' + '''
+    a:1
+    b:1
+    c:1
+    d:1
+    '''
 
+if stimulus == 'abs':
+    eqs= '''
+    dv/dt = (0.04*v*v + 5*v + 140 - u + I)/tau : 1
+    du/dt = (a*(b*v-u))/tau : 1
+    '''
+    eqs = eqs + '\nI = ' + str(I_var) + '*abs(randn()) : 1 (constant over dt)' + '''
+    a:1
+    b:1
+    c:1
+    d:1
+    '''
 threshold='v>30'
 
 reset='''
@@ -87,22 +105,22 @@ indices.append(list(spikemon.t/ms))
 # Write Network to File
 myNetworkFile=open(networkFileName,'w')
 for l in zip(S.i, S.j, S.w):
-	myNetworkFile.write(",".join(map(str,l)))
-	myNetworkFile.write("\n")
+        myNetworkFile.write(",".join(map(str,l)))
+        myNetworkFile.write("\n")
 myNetworkFile.close()
 
 # Write Firings to File
 myFiringsFile=open(firingsFileName,'w')
 for l in firings:
-	myFiringsFile.write(",".join(map(str,l)))
-	myFiringsFile.write("\n")
+        myFiringsFile.write(",".join(map(str,l)))
+        myFiringsFile.write("\n")
 myFiringsFile.close()
 
 # Write Indices to File
 myIndicesFile=open(indicesFileName,'w')
 for l in indices:
-	myIndicesFile.write(",".join(map(str,l)))
-	myIndicesFile.write("\n")
+        myIndicesFile.write(",".join(map(str,l)))
+        myIndicesFile.write("\n")
 myIndicesFile.close()
 
 

@@ -39,14 +39,16 @@ indices = [indices[sort_idx[i]] for i in range(len(indices))]
 
 n = 0
 m = 0
+x = 0
 start = firings[n]
 cascades = np.ones((int(simulation_duration/horizon),N))*(-1)
 
 # Iterate through the simulation spikes
-while start < simulation_duration:
+while n < len(firings):
     
-    if n%10000 == 0:
-        print(n)
+    if n != 0 and (n > x*1000):
+        print(x*1000)
+        x = x + 1
 
     # define the window of observation
     start = firings[n] 
@@ -80,6 +82,7 @@ while start < simulation_duration:
 # Delete the cascades with no entries (they were initialized with all -1s)
 cascades = cascades[0:np.where(cascades == 0)[0][-1] + 1]
 
+x = 0
 
 # Iterate through all the cascades
 for c in range(len(cascades)):
@@ -92,8 +95,9 @@ for c in range(len(cascades)):
     val = np.sort(fired_nodes)
     order = np.argsort(fired_nodes)
 
-    if c%1000 == 0:
-        print(c)
+    if c != 0 and (c > x*1000):
+        print(x * 1000)
+        x = x + 1
 
     # For all used nodes
     # Don't take the first value (it's value is 0, it belongs to the
