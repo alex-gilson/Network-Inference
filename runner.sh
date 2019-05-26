@@ -1,20 +1,33 @@
 #!/usr/local/bin/bash
 
-simulation_times=(4000)
-num_nodes=(8)
-num_processors=(8)
+simulation_times=(10)
+num_nodes=(10)
+num_processors=(3)
+stimulation_type=abs
+diffusion_type=rayleigh
+I_var=6
+horizon=20
 s=1
+sparsity=(0.1)
 for j in ${simulation_times[*]}
 do
 	for n in ${num_nodes[*]}
 	do
-		mkdir -p r/network_${n}_nodes/network_sim_time_$j
+		mkdir -p r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
 		for i in ${num_processors[*]}
 		do
 			echo "Number of nodes: $num_nodes, Simulation Time: $j, Number of processors: $num_processors, Seed $s:"
-			bash main.sh 1 $n 0.1 $j r/network_${n}_nodes/network_sim_time_$j/network_seed_$s.csv w/firing.csv w/indice.csv r/network_${n}_nodes/network_sim_time_$j/results.csv r/network_${n}_nodes/network_sim_time_$j/matlab_inferred_matrix_seed_$s.csv r/network_${n}_nodes/network_sim_time_$j/progress_tracker_seed_$s.txt rayleigh 20 $i
+			indicesFileName=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/indices_$s.csv
+			firingsFileName=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/firings_$s.csv
+			networkFileName=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/network_$s.csv
+			resultsFileName=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/results_$s.csv
+			inferredMatrixFileName=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/inferred_matrix_$s.csv
+			fileToTrackProgress=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/progress_tracker_$s.txt
+
+			bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredMatrixFileName $fileToTrackProgress $diffusion_type $horizon $i
+
 		done
 	done
 done
 
-poweroff
+# poweroff

@@ -17,6 +17,7 @@ simulation_duration=int(sys.argv[4])
 networkFileName=sys.argv[5]
 firingsFileName=sys.argv[6]
 indicesFileName=sys.argv[7]
+I_var = 6
 
 # seed=int(1)
 # N=int(50)
@@ -40,7 +41,7 @@ tau=1*ms
 eqs= '''
 dv/dt = (0.04*v*v + 5*v + 140 - u + I + stimulation)/tau : 1
 du/dt = (a*(b*v-u))/tau : 1
-I = 1*randn() : 1 (constant over dt)
+I = 0*randn() : 1 (constant over dt)
 a:1
 b:1
 c:1
@@ -91,15 +92,15 @@ while time < simulation_duration:
 
     # only stimulate 1 node with the absolute value of a normal distribution
     G.stimulation = 0
-    G.stimulation[stimulated_node] = 8*abs(np.random.randn(1)[0])
+    G.stimulation[stimulated_node] = I_var*abs(np.random.randn(1)[0])
 
     spikemon = SpikeMonitor(G)
 
     run(stimulation_duration*ms)
 
     # store firings and indices
-    firings.append(list(spikemon.i))
-    indices.append(list(spikemon.t/ms))
+    firings.append(list(spikemon.t/ms))
+    indices.append(list(spikemon.i))
     
 
 # plot(M.t/ms, M.v[0])

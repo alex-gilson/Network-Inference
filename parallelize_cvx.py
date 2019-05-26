@@ -1,4 +1,3 @@
-
 import os
 import multiprocessing
 from multiprocessing import Pool
@@ -9,8 +8,8 @@ import sys
 num_processors = int(sys.argv[1])
 num_nodes = int(sys.argv[2])
 horizon = int(sys.argv[3])
-diffusion_type = sys.argv[4]
-fileToTrackProgress = sys.argv[5]
+diffusion_type = str(sys.argv[4])
+fileToTrackProgress = str(sys.argv[5])
 
 # Algorithm to distribute nodes between processors as a function of the number of cascades
 processor_list = []

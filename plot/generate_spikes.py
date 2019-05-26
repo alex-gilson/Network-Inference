@@ -16,9 +16,9 @@ simulation_duration=int(sys.argv[4])
 stimulus=str(sys.argv[5])
 sparsity=float(0.1)
 
-networkFileName = '../spike_data/network_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + stimulus +  '_' + str(seed) + '.csv'
-firingsFileName = '../spike_data/firings_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + stimulus +  '_' + str(seed) + '.csv'
-indicesFileName = '../spike_data/indices_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) +  '_' + stimulus + '_' + str(seed) + '.csv'
+networkFileName = '/spike_data/network_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + stimulus +  '_' + str(seed) + '.csv'
+firingsFileName = '/spike_data/firings_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) + '_' + stimulus +  '_' + str(seed) + '.csv'
+indicesFileName = '/spike_data/indices_' + str(int(N)) + '_' + str(int(I_var*10)) + '_' + str(int(simulation_duration)) +  '_' + stimulus + '_' + str(seed) + '.csv'
 
 if (os.path.isfile(networkFileName) and os.path.isfile(firingsFileName) and os.path.isfile(indicesFileName)):
     sys.exit('Files for Brian simulation found')

@@ -14,6 +14,19 @@ diffusion_type="${11}"
 horizon="${12}"
 num_processors="${13}"
 
+echo -e $seed 
+echo -e $num_nodes 
+echo -e $sparsity 
+echo -e $simulation_duration 
+echo -e $networkFileName 
+echo -e $firingsFileName 
+echo -e $indicesFileName 
+echo -e $resultsFileName 
+echo -e $matlabNetworkFileName 
+echo -e $fileToTrackProgress 
+echo -e $diffusion_type 
+echo -e $horizon 
+echo -e $num_processors
 # seed=1
 # num_nodes=10
 # sparsity=0.1
@@ -33,14 +46,14 @@ mkdir temporary
 . py27env/bin/activate
 
 # if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]; then
-	python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName
+python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName
 
 
 echo -e "Found Brian Simulator files"
 
 echo -e "\tGenerating cascades..."
 
-matlab -nodesktop -nosplash -nojvm -r "generate_cascades('$firingsFileName','$indicesFileName','$networkFileName',$num_nodes,$horizon,$sparsity,'$diffusion_type','$resultsFileName','$matlabNetworkFileName','$fileToTrackProgress');exit;"
+python generate_cascades.py $num_nodes $indicesFileName $firingsFileName $diffusion_type $horizon $simulation_duration
 
 # Get current time and store it into a pickle file
 python initial_time.py
@@ -49,17 +62,17 @@ echo -e "\tComputing Netrate..."
 
 python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $fileToTrackProgress
 
-# echo -e "Processing results..."
-#
-# matlab -nodesktop -nosplash -nojvm -r "process_results($sparsity,'$resultsFileName','$diffusion_type','$matlabNetworkFileName','$fileToTrackProgress');exit;"
-#
-# echo -e "Calculating elapsed time..."
-#
-# python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $matlabNetworkFileName $fileToTrackProgress $horizon $num_processors
-#
-# rm initial_time.pickle
-# rm temporary/*
-#
-# echo "Results are available at '$resultsFileName'"
+echo -e "Processing results..."
+
+matlab -nodesktop -nosplash -nojvm -r "process_results($sparsity,'$resultsFileName','$diffusion_type','$matlabNetworkFileName','$fileToTrackProgress');exit;"
+
+echo -e "Calculating elapsed time..."
+
+python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $matlabNetworkFileName $fileToTrackProgress $horizon $num_processors
+
+rm initial_time.pickle
+rm temporary/*
+
+echo "Results are available at '$resultsFileName'"
 #
 
