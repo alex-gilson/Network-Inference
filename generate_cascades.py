@@ -8,7 +8,7 @@ indicesFileName = str(sys.argv[2])
 firingsFileName = str(sys.argv[3])
 diffusion_type = str(sys.argv[4])
 horizon = int(sys.argv[5])
-simulation_duration = int(sys.argv[6])
+simulation_duration = int(sys.argv[6])*1000
 
 indices = []
 firings = []
@@ -58,7 +58,7 @@ while n < len(firings):
         print(x*1000)
         x = x + 1
 
-    # define the window of observation
+    # define the window f observation
     start = firings[n] 
     end = start + horizon
 

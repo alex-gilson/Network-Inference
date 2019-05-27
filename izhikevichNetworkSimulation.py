@@ -13,7 +13,7 @@ from brian2  import *
 seed=int(sys.argv[1])
 N=int(sys.argv[2])
 sparsity=float(sys.argv[3])
-simulation_duration=int(sys.argv[4])
+simulation_duration=int(sys.argv[4])*1000
 networkFileName=sys.argv[5]
 firingsFileName=sys.argv[6]
 indicesFileName=sys.argv[7]

@@ -1,7 +1,7 @@
 #!/usr/local/bin/bash
 
-simulation_times=(10)
-num_nodes=(10)
+simulation_times=(50)
+num_nodes=(5)
 num_processors=(3)
 stimulation_type=abs
 diffusion_type=rayleigh
@@ -24,7 +24,7 @@ do
 			inferredMatrixFileName=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/inferred_matrix_$s.csv
 			fileToTrackProgress=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/progress_tracker_$s.txt
 
-			bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredMatrixFileName $fileToTrackProgress $diffusion_type $horizon $i
+			bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredMatrixFileName $fileToTrackProgress $diffusion_type $horizon $i $stimulation_type
 
 		done
 	done

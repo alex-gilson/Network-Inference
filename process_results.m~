@@ -1,16 +1,18 @@
-function process_results(N, sparsity, r, networkFileName, diffusion_type, m, fileToTrackProgress)
+function process_results(N, sparsity, r, diffusion_type, m, fileToTrackProgress)
 
+sparsity = 0.1
+diffusion_type = 'rayleigh'
+m = 'asdf'
+fileToTrackProgress = 'asdf'
+r = 'temporary/accuracy.csv';
+S = csvread('w/S_matrix.csv');
 cascades = csvread('w/cascades.csv');
-% network = csvread(networkFileName);
-%
-% % obtain adjacency matrix
-% S=zeros(int32(N),int32(N));
-% for i=1:size(network,1)
-%     S(network(i,1)+1,network(i,2)+1)=network(i,3);
-% end
+size_S = size(S);
+num_nodes = size_S(2);
+
 
 % Obtain each of the columns of the estimated adjacency matrix
-for n = 1:N
+for n = 1:num_nodes
 	S_hat(:,n) = csvread(strcat('temporary/a_hat_',int2str(n), '.csv'));
 end
 
