@@ -1,13 +1,13 @@
 #!/usr/local/bin/bash
 
-simulation_times=(50)
+simulation_times=(20)
 num_nodes=(5)
 num_processors=(3)
 stimulation_type=abs
 diffusion_type=rayleigh
 I_var=6
 horizon=20
-s=1
+s=2
 sparsity=(0.1)
 for j in ${simulation_times[*]}
 do

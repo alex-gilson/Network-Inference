@@ -1,0 +1,4 @@
+,MAE,accuracy,diffusion_type,elapsed_time,horizon,num_nodes,num_processors,precision,recall,seed,sparsity,stimulation_mode
+0,0.08572979646826277,0.2857142857142857,3,0:01:50.674166,20.0,5,3,0.16666666666666666,1.0,1,0.1,rayleigh
+,MAE,accuracy,diffusion_type,elapsed_time,horizon,num_nodes,num_processors,precision,recall,seed,sparsity,stimulation_mode
+0,0.08572979646826277,0.8,3,0:04:09.338815,20.0,5,3,0.6666666666666666,1.0,1,0.1,rayleigh

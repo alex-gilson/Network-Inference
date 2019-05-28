@@ -35,6 +35,6 @@ data = genfromtxt('temporary/results.csv', delimiter=',')
 # data = data[-1,:].reshape(-1,1)
 d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': data[0], 'MAE': data[1], 'precision': data[2], 'recall': data[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode]}
 df = pd.DataFrame(d)
-df.to_csv(resultsFileName, mode='a', header=False)
+df.to_csv(resultsFileName, mode='a', header=True)
 
 

@@ -16,6 +16,8 @@ num_processors="${13}"
 stimulation_type="${14}"
 
 mkdir temporary
+mkdir w
+mkdir r
 # Activate virtual environment
 . py27env/bin/activate
 
