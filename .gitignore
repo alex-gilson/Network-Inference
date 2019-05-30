@@ -4,4 +4,16 @@ Documentation/papers/
 spike_data/
 *.swp
 temporary/
+w/
+*.aux
+*.log
+*.lof
+*.lot
+*.toc
+*.bbf
+*.bcf
+*.xml
+*.out
+*.bbl
+*.blg
 

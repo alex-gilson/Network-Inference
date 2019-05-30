@@ -17,6 +17,7 @@ simulation_duration=int(sys.argv[4])*1000
 networkFileName=sys.argv[5]
 firingsFileName=sys.argv[6]
 indicesFileName=sys.argv[7]
+# Remember to remove this I_var and change it for an argument of the script
 I_var = 6
 
 # seed=int(1)
@@ -117,7 +118,7 @@ while time < simulation_duration:
 #
 #
 # Write Network to File
-myNetworkFile=open(networkFileName,'w')
+myNetworkFile = open(networkFileName,'w')
 for l in zip(S.i, S.j, S.w):
 	myNetworkFile.write(",".join(map(str,l)))
 	myNetworkFile.write("\n")

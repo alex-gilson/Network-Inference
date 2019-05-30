@@ -18,6 +18,7 @@ stimulation_type="${14}"
 mkdir temporary
 mkdir w
 mkdir r
+
 # Activate virtual environment
 . py27env/bin/activate
 
@@ -42,7 +43,7 @@ python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $f
 
 echo -e "Processing results..."
 
-python compare_networks.py $num_nodes $networkFileName 1
+python compare_networks.py $num_nodes $networkFileName $matlabNetworkFileName 1
 
 echo -e "Calculating elapsed time..."
 

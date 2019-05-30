@@ -7,12 +7,24 @@ from scipy import stats
 
 N=int(sys.argv[1])
 networkFileName=str(sys.argv[2])
-matlab_or_python_graph=int(sys.argv[3])
+inferredNetworkFileName=str(sys.argv[3])
+matlab_or_python_graph=int(sys.argv[4])
 
 S_hat = np.zeros((N,N))
 S = np.zeros((N,N))
 S_hat_boolean = np.zeros((N,N),dtype=bool)
 S_boolean = np.zeros((N,N),dtype=bool)
+
+original_network=[[],[],[]]
+with open(networkFileName, 'r') as csvfile:
+	spamreader = csv.reader(csvfile, delimiter=',')
+	for row in spamreader:
+            original_network[0].append(row[0])
+            original_network[1].append(row[1])
+            original_network[2].append(float(row[2]))
+
+for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
+    S[int(i),int(j)] = k;
 
 # Open all the a_hat files to create the S_hat matrix
 for i in range(N):
@@ -23,39 +35,16 @@ for i in range(N):
 S_hat[np.where(np.isnan(S_hat))] = 0
 
 # Remove values very close to zero (unfeasible rate)
-import pdb; pdb.set_trace()
 S_hat[np.where(S_hat <= np.percentile(S_hat,90, interpolation='lower'))] = 0
 
-# S_hat[np.where(S_hat<np.median(S_hat))] = 0
-# S_hat[np.where(S_hat<np.sort(S.flatten())[int((S.flatten().shape[0]-1)/10)])] = 0
-
-S_hat = np.interp(S_hat.T, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
-
-
-
-original_network=[[],[],[]]
-with open(networkFileName, 'r') as csvfile:
-	spamreader = csv.reader(csvfile, delimiter=',')
-	for row in spamreader:
-		original_network[0].append(row[0])
-		original_network[1].append(row[1])
-		original_network[2].append(float(row[2]))
+S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
 
 
 inferred_network = []
 for i, row in enumerate(S_hat):
     for j, col in enumerate(row):
         if col != 0:
-            inferred_network.append([j, i, col])
-
-
-
-for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
-    S[int(i),int(j)] = k;
-
-# for i,j in zip(inferred_network[0],inferred_network[1]):
-	# S_hat[int(i),int(j)]=True;
-
+            inferred_network.append([i, j, col])
 
 # Compute mae
 mae = np.mean(abs(S_hat[np.where(S!=0)]-S[np.where(S!=0)])/S[np.where(S!=0)])
@@ -77,12 +66,14 @@ accuracy = 1 - float(np.sum(np.logical_xor(S_boolean,S_hat_boolean)))/(np.sum(S_
 results = np.array([accuracy, mae, precision, recall])
 
 np.savetxt("temporary/results.csv", results, delimiter=",")
+np.savetxt(inferredNetworkFileName, inferred_network, delimiter=",")
 
 print('MAE: ', mae)
 print('Precision: ', precision)
 print('Recall: ', recall)
 print('Accuracy: ', accuracy)
 
+import pdb; pdb.set_trace()
 
 
 # plt.figure(figsize=(10,7))

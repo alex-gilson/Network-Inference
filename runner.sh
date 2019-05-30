@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 
-simulation_times=(20)
+simulation_times=(200)
 num_nodes=(5)
 num_processors=(3)
 stimulation_type=abs
