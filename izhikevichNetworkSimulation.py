@@ -71,8 +71,8 @@ S.connect(condition='i!=j', p=sparsity)
 S.w='30*rand()'
 
 # reset v and u values
-# G.v=-65
-# G.u=G.b*G.v
+G.v=-65
+G.u=G.b*G.v
 
 time = 0
 # run the stimulation N number of times
