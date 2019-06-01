@@ -27,14 +27,16 @@ for n in range(1,DATASET_LENGTH + 1):
         spikes[i] = data['spikes'][0][0][i][0].shape[1]
         print(spikes[i])
     
+    duration = data['recordinglength'][0][0][0][0]
     sum_spikes[n-1] = np.sum(spikes)
     mean_spikes[n-1] = np.mean(spikes)
     median_spikes[n-1] = np.median(spikes)
     std_spikes[n-1] = np.std(spikes)
     freq_spikes = (1000*sum_spikes[n-1])/simulation_duration
     freq_spikes_neuron = (1000*sum_spikes[n-1])/(simulation_duration*number_neurons)
-
+    
     text_file.write('Dataset: %i\n' % n) 
+    text_file.write('Duration: %i' % duration)
     text_file.write('# neurons: %d ' % number_neurons)
     text_file.write('Sum: %d ' % sum_spikes[n-1])
     text_file.write('Mean: %d.2 ' % mean_spikes[n-1])

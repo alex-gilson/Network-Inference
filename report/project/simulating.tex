@@ -3,7 +3,7 @@
 
 Up until now the inference of networks using NetRate has been used only on simulations. A random structure was generated and the spikes simulated using the Brian simulator. This is very useful because it allows the possibility of comparing the inferred network to a ground truth and evaluating the performance of the algorithm. However, the goal is to be able to implement NetRate on real biological networks whose topology could provide insight to scientists. The analysis of real biological neural networks is met with many difficulties that need to be dealt with.\\
 
-The main problem regarding the inference of the connectivity of a biological neural network is the lack of a ground truth with which to compare the capabilities of the algorithm. Although never to a full extent, there are certain ways that can help deal with this issue. The first is to simulate a network that replicates the characteristics of the real one. Under the assumption that the simulated network has a similar behaviour (not necessarily same connections) to the biological one, the algorithm can be implemented and tested. Then, the accuracy obtained can be taken to be an approximation to the accuracy inferred real network. However, this is a very big assumption and in reality the simulated network is very different to the real one. However, the main reason for testing on a simulated network is to verify that any change in the stimulation model of the system or any new method of cascade generation is still valid. A deeper explanation of this topic will be given in section \ref{sec:differences_simulation_real}.
+The main problem regarding the inference of the connectivity of a biological neural network is the lack of a ground truth with which to compare the capabilities of the algorithm. Although never to a full extent, there are certain ways that can help deal with this issue. The first is to simulate a network that replicates the characteristics of the real one. Under the assumption that the simulated network has a similar behaviour (not necessarily same connections) to the biological one, the algorithm can be implemented and tested. Then, the accuracy obtained can be taken to be an approximation to the accuracy inferred real network. However, this is a very big assumption and in reality the simulated network is very different to the real one. However, the main reason for testing on a simulated network is to verify that any change in the stimulation model of the system or any new method of cascade generation is still valid. A deeper explanation of this topic will be given in section \ref{sec:number_of_spikes}.
 
 Another way of measuring performance would be to separate the dataset into training and testing and running NetRate on the training set. With the resulting estimated weights, given that a set of neurons have fired at time \(t\), estimate the neuron with highest probability of spiking. The relevance of this analysis stems from the fact that if \(\alpha_{j,i}\) is high, then the probability of neuron \(i\) spiking given that neuron \(j\) has fired is also high. If the accuracy of prediction is sufficiently high, the network can be taken to be correctly inferred.\\
 
@@ -24,27 +24,44 @@ The dataset consists of 25 different 1 hour recordings with a varying number of 
 	\label{fig:histogram_spikes}
 \end{figure}
 
-\section{Differences between the real and simulated biological neural network}\label{sec:differences_simulation_real}
+\section{Input stimulus to the system}
+
+Previous work \cite{alexandru2018estimating} simulated a network whose input was a DC voltage that stimulated each of the neurons one by one for a defined period of time (4 seconds). This proved to be very useful because it facilitated the analysis of each of the neurons regardless of their level of connectivity and because it provided a systematic way of generating cascades (more on this in section \ref{sec:simulating_cascade_generation}).
+However, the neural system cultures from the dataset are not stimulated. Instead, they are left alone to interact between each other. The neurons then communicate between them independently of the outside environment and spike at a lower frequency as a result. \\
+
+The input stimulus cannot be left unchanged because the behaviour of the network would be radically different to that of the real one. It can be null either because then no interactions between the neurons would occur. Some type of random input noise must be present in order to have spikes. Moreover, the new model should have biological significance since a real network is being replicated. Several options are investigated that could potentially meet these requirements.\\
+
+\subsection{System with random spikes}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{I_var_plot.pdf}
+	\caption{Number of spikes as a function of the parameter I for a 1 hour simulated network of 98 neurons and a random spike stimulus}
+	\label{fig:I_var_plot}
+\end{figure}
+
+\subsection{System with randomly spiking clusters}
+
+
+\section{Number of spikes}\label{sec:number_of_spikes}
 
 At the beginning of this chapter the need for a simulated network that approximated the biological one was explained. Such a model can provide an approximation of performance of the algorithm. It is based on the assumption that the simulation is a faithful representation of the real nature of the network. Moreover, the differences between previous simulated networks and this new real network make it vital to verify that the algorithm would still work under these new conditions. 
 
 \begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|c|}
-		\hline
-		Number of neurons & Total & Mean   & Median & STD    & Freq spikes/neuron \\ \hline
-		98                & 636878           & 6498.2 & 3723.2 & 7849.2 & 1.2                \\ \hline
-	\end{tabular}
-	\caption{Spike characteristics of a 98 neuron network from the somatosensory cortex of a mouse}
-	\label{tab:spike_characteristics}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Type of network  & Neurons & Duration & Number of spikes & Mean    & Freq spikes/neuron \\ \hline
+Real             & 98                & 3600 s           & 636878           & 6498.2  & 1.2 Hz               \\ \hline
+Sim. DC stimulus & 98                & 392 s            & 4038313          & 41207.3 & 105.12 Hz            \\ \hline
+\end{tabular}
+\caption{Spike characteristics of different types of neural networks}
+\label{tab:spike_characteristics}
 \end{table}
 
-As it can be observed in table \ref{tab:spike_characteristics}, one of the most obvious changes with respect to the previous simulations is the total number of spikes. This number is significantly larger than before due to the fact that the observation time is larger. In \cite{alexandru2018estimating} the total observation time was equal to the defined length of stimulation multiplied by the number of neurons. Since the stimulation period was found to be optimal for 4 seconds, then for a network of 98 neurons, this would result in a total of 392 seconds of recordings. 
+As seen in table \ref{tab:spike_characteristics}, one of the most obvious changes with respect to previous simulations is the total number of spikes. This number is significantly smaller than before even though the observation time is larger. This is because the stimulation model forced the neurons to spike very frequently. In \cite{alexandru2018estimating} the total observation time was equal to the defined length of stimulation multiplied by the number of neurons. Since the stimulation period was found to be optimal for 4 seconds, then for a network of 98 neurons, this would result in a total of 392 seconds of recordings. 
 On the other hand, the real dataset consists of recordings of one hour. Therefore, the model of the simulation must be such that the number of spikes is roughly the same for a 1 hour simulation length.
 
-\section{Input stimulus to the system}
-
-Previous work \cite{alexandru2018estimating} simulated a network whose input was a DC voltage that would stimulate each of the neurons one by one. 
 
 % Number of spikes
 % 	I_var
@@ -57,10 +74,7 @@ Previous work \cite{alexandru2018estimating} simulated a network whose input was
 
 
 
-\section{Input stimulus to the system}
-\subsection{System with random spikes}
-\subsection{System with randomly spiking clusters}
-\section{Cascade generation}
+\section{Cascade generation}\label{simulating_cascade_generation}
 \subsection{Method of maximum cascades}
 \subsection{Method of maximum independence}
 \subsection{Optimal cascade generation}
