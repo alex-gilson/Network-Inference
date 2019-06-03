@@ -5,6 +5,7 @@ spike_data/
 *.swp
 temporary/
 w/
+r/
 *.aux
 *.log
 *.lof

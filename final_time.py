@@ -14,10 +14,9 @@ networkFileName = sys.argv[5]
 firingsFileName = sys.argv[6]
 indicesFileName = sys.argv[7]
 matlabNetworkFileName = sys.argv[8]
-fileToTrackProgress = sys.argv[9]
-horizon = float(sys.argv[10])
-diffusion_type = str(sys.argv[11])
-stimulation_mode = str(sys.argv[12])
+horizon = float(sys.argv[9])
+diffusion_type = str(sys.argv[10])
+stimulation_mode = str(sys.argv[11])
 
 # Select the number of CPUs to use, if -1, use all of the available CPUs 
 if int(sys.argv[11]) != -1:

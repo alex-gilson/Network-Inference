@@ -17,8 +17,8 @@ simulation_duration=int(sys.argv[4])*1000
 networkFileName=sys.argv[5]
 firingsFileName=sys.argv[6]
 indicesFileName=sys.argv[7]
-# Remember to remove this I_var and change it for an argument of the script
-I_var = 6
+I_var=float(sys.argv[8])
+
 
 # seed=int(1)
 # N=int(50)
@@ -75,6 +75,7 @@ G.v=-65
 G.u=G.b*G.v
 
 time = 0
+
 # run the stimulation N number of times
 # at each iteration, stimulate a different node
 while time < simulation_duration:

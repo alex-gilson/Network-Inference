@@ -9,6 +9,11 @@ firingsFileName = str(sys.argv[3])
 diffusion_type = str(sys.argv[4])
 horizon = int(sys.argv[5])
 simulation_duration = int(sys.argv[6])*1000
+cascadesFileName = str(sys.argv[7])
+aBadFileName = str(sys.argv[8])
+aPotentialFileName = str(sys.argv[9])
+numCascadesFileName = str(sys.argv[10])
+cascadeOption = str(sys.argv[11])
 
 indices = []
 firings = []
@@ -51,44 +56,46 @@ x = 0
 start = firings[n]
 cascades = np.ones((int(simulation_duration/horizon),N))*(-1)
 
-# Iterate through the simulation spikes
-while n < len(firings):
-    
-    if n != 0 and (n > x*1000):
-        print(x*1000)
-        x = x + 1
+if cascadeOption == 'maximum_cascades': 
 
-    # define the window f observation
-    start = firings[n] 
-    end = start + horizon
-
-    index = np.array(np.where((firings >= start) & (firings < end)))[0]
-
-    firings_in_window = [firings[i] for i in index]
-    firings_in_window = firings_in_window - start
-    indices_in_window = [indices[i] for i in index]
-
-    # initialise a cascade, non-fired with -1; assume all non-fired
-    current_cascade = np.ones(N)*(-1)
-
-    # first neuron to spike starts the cascade
-    current_cascade[indices_in_window[0]-1] = 0
-
-    # update cascade based on the rest of the firings
-    for k in range(len(indices_in_window)):
+    # Iterate through the simulation spikes
+    while n < len(firings):
         
-        # Only the first firing is taken into account
-        if current_cascade[indices_in_window[k]-1] == -1:
-            current_cascade[indices_in_window[k]-1] = firings_in_window[k]    
+        if n != 0 and (n > x*100000):
+            print(x*100000)
+            x = x + 1
 
-    cascades[m] = current_cascade
-    m = m + 1 
+        # define the window f observation
+        start = firings[n] 
+        end = start + horizon
 
-    # The index of the firing that starts the next cascade is the one following the last firing of this cascade 
-    n = index[-1] + 1
+        index = np.array(np.where((firings >= start) & (firings < end)))[0]
 
-# Delete the cascades with no entries (they were initialized with all -1s)
-cascades = cascades[0:np.where(cascades == 0)[0][-1] + 1]
+        firings_in_window = [firings[i] for i in index]
+        firings_in_window = firings_in_window - start
+        indices_in_window = [indices[i] for i in index]
+
+        # initialise a cascade, non-fired with -1; assume all non-fired
+        current_cascade = np.ones(N)*(-1)
+
+        # first neuron to spike starts the cascade
+        current_cascade[indices_in_window[0]-1] = 0
+
+        # update cascade based on the rest of the firings
+        for k in range(len(indices_in_window)):
+            
+            # Only the first firing is taken into account
+            if current_cascade[indices_in_window[k]-1] == -1:
+                current_cascade[indices_in_window[k]-1] = firings_in_window[k]    
+
+        cascades[m] = current_cascade
+        m = m + 1 
+
+        # The index of the firing that starts the next cascade is the one following the last firing of this cascade 
+        n = index[-1] + 1
+
+    # Delete the cascades with no entries (they were initialized with all -1s)
+    cascades = cascades[0:np.where(cascades == 0)[0][-1] + 1]
 
 x = 0
 
@@ -140,13 +147,11 @@ for c in range(len(cascades)):
                     A_bad[idx[order[i]], j] = A_bad[idx[order[i]], j] + np.log(horizon - val[i])
                 if diffusion_type == 'rayleigh':
                     A_bad[idx[order[i]], j] = A_bad[idx[order[i]], j] + 0.5*(horizon-val[i])**2;
-            
-        
-        
-np.savetxt("w/a_potential.csv", A_potential, delimiter=",")
-np.savetxt("w/a_bad.csv", A_bad, delimiter=",")
-np.savetxt("w/cascades.csv", cascades, delimiter=",")
-np.savetxt("w/num_cascades.csv", num_cascades, delimiter=",")
+                    
+np.savetxt(aPotentialFileName, A_potential, delimiter=",")
+np.savetxt(aBadFileName, A_bad, delimiter=",")
+np.savetxt(cascadesFileName, cascades, delimiter=",")
+np.savetxt(numCascadesFileName, num_cascades, delimiter=",")
 
 
 print('Finished generating cascades')

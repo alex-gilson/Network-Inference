@@ -2,7 +2,6 @@ function [a_hat, obj] = solve_using_cvx(i, type_diffusion, num_nodes, num_cascad
     cvx_begin quiet
     cvx_expert true
     
-    
         % optimisation variables, objects, not yet numbers
         % after the problem is solved, these will become numbers
         % a_hat(num_nodes) is a vector

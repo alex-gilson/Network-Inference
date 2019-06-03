@@ -9,15 +9,20 @@ num_processors = int(sys.argv[1])
 num_nodes = int(sys.argv[2])
 horizon = int(sys.argv[3])
 diffusion_type = str(sys.argv[4])
-fileToTrackProgress = str(sys.argv[5])
+cascadesFileName = str(sys.argv[5])
+aBadFileName = str(sys.argv[6])
+aPotentialFileName = str(sys.argv[7])
+numCascadesFileName = str(sys.argv[8])
+
 
 # Algorithm to distribute nodes between processors as a function of the number of cascades
 processor_list = []
-num_cascades = np.loadtxt('w/num_cascades.csv',delimiter=',').astype(int)
+num_cascades = np.loadtxt(numCascadesFileName,delimiter=',').astype(int)
 print('Number of cascades:')
 print(num_cascades)
 idxs = np.argsort(num_cascades)[::-1]
 k = 0
+
 for idx in idxs:
    # Each processor will have the num_processors first largest values 
    if k < num_processors:
@@ -33,7 +38,7 @@ for idx in idxs:
        argmin = np.argmin(sum_array)
        processor_list[argmin].append(idx)
 
-def cvx_matlab(i, num_nodes=num_nodes, horizon=horizon, diffusion_type=diffusion_type, fileToTrackProgress=fileToTrackProgress, processor_list=processor_list):
+def cvx_matlab(i, num_nodes=num_nodes, horizon=horizon, diffusion_type=diffusion_type, processor_list=processor_list):
     print('Number of processors: ')
     print(num_processors)
     arguments = ''
@@ -43,10 +48,7 @@ def cvx_matlab(i, num_nodes=num_nodes, horizon=horizon, diffusion_type=diffusion
     # If the processor number is even, start computing the nodes with the least number of cascades
     if i%2 == 0:
         nodes = nodes[::-1]
-    # Remove the .txt extension from the file
-    extension_file = fileToTrackProgress[-4:]
-    fileToTrackProgress = fileToTrackProgress[0:-4] + '_' + str(i) + extension_file
-    arguments = str(nodes) + ', ' + str(num_nodes) + ', ' + str(num_processors) + ', ' + str(horizon) + ", '" + str(diffusion_type) + "', " + "'" + fileToTrackProgress + "'"
+    arguments = str(nodes) + ', ' + str(num_nodes) + ', ' + str(num_processors) + ', ' + str(horizon) + ", '" + str(diffusion_type) + "', '" + str(cascadesFileName) + "', '" + str(aBadFileName) + "', '" + str(aPotentialFileName) + "', '" + str(numCascadesFileName) + "'"
     os.system("matlab -nodesktop -nosplash -r \"parallel_cvx(" + arguments + ");exit;\"")
 
 # Select the number of CPUs to use, if -1, use all of the available CPUs 
