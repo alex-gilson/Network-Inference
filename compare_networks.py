@@ -44,7 +44,7 @@ inferred_network = []
 for i, row in enumerate(S_hat):
     for j, col in enumerate(row):
         if col != 0:
-            inferred_network.append([i, j, col])
+            inferred_network.append([int(i+1), int(j+1), col])
 
 # Compute mae
 mae = np.mean(abs(S_hat[np.where(S!=0)]-S[np.where(S!=0)])/S[np.where(S!=0)])

@@ -1,3 +1,4 @@
+
 function [a_hat, obj] = solve_using_cvx(i, type_diffusion, num_nodes, num_cascades, A_potential, A_bad, C)
     cvx_begin quiet
     cvx_expert true
@@ -92,13 +93,13 @@ function [a_hat, obj] = solve_using_cvx(i, type_diffusion, num_nodes, num_cascad
                 % add the hazard functions into the objective function,
                 % which is the likelihood of a set of cascades happening
                 obj = obj + log(t_hat(c_act));
-                
+
                 c_act = c_act + 1;
             end
         end
 
         % sets the constraint that each element of a_hat has to be
-        % positive. This is shown in the paper in equation number 9.
+        % positive. This cis shown in the paper in equation number 9.
         a_hat >= 0;
         
         % maximise the likelihood function

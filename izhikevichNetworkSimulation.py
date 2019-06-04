@@ -138,3 +138,4 @@ for l in indices:
 	myIndicesFile.write(",".join(map(str,l)))
 	myIndicesFile.write("\n")
 myIndicesFile.close()
+

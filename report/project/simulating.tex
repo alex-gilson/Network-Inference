@@ -11,7 +11,7 @@ It is important to find a suitable dataset to analyse. It must either be made ou
 
 \section{Mouse somatosensory cortex neuron dataset}
 
-For this project, the dataset that will be studied is the CRNCNS mouse somatosensory cortex SSC-3 dataset \cite{ito2016spontaneous, ito2014large, litke2004does}. This is a recording of the spiking activity from a mouse's somatosensory cortex brain cells. These cells were grown in cultures for 2-4 weeks in vitro and 25 measurements of around 1 hour were taken. The measurement method consisted of a 512 multi-electrode array	that sensed the voltage in the culture for each of the neurons. These recordings were then spike sorted using PCA. \\
+For this project, the dataset that will be studied is the CRNCNS mouse somatosensory cortex SSC-3 dataset \cite{ito2016spontaneous, ito2014large, litke2004does}. This is a recording of the spiking activity from a mouse's somatosensory cortex brain cells. These cells were grown in cultures for 2-4 weeks in vitro and 25 measurements of 1 hour were taken. The measurement method consisted of a 512 multi-electrode array	that sensed the voltage in the culture for each of the neurons. These recordings were then spike sorted using PCA. \\
 
 The somatosensory cortex is a set of modules located in the neocortex in the brain. The neocortex is vital in giving humans many of its cognitive abilities such as language processing, logic, sensory perception and many others. The neocortex shares many of its characteristics and architecture across different species of animals which makes it a very interesting subject of study. The somatosensory cortex is special because it is responsible for the touch sensations and because its anatomy and physiology has been intensively investigated \cite{markram2015reconstruction}.\\
 
@@ -27,11 +27,21 @@ The dataset consists of 25 different 1 hour recordings with a varying number of 
 \section{Input stimulus to the system}
 
 Previous work \cite{alexandru2018estimating} simulated a network whose input was a DC voltage that stimulated each of the neurons one by one for a defined period of time (4 seconds). This proved to be very useful because it facilitated the analysis of each of the neurons regardless of their level of connectivity and because it provided a systematic way of generating cascades (more on this in section \ref{sec:simulating_cascade_generation}).
-However, the neural system cultures from the dataset are not stimulated. Instead, they are left alone to interact between each other. The neurons then communicate between them independently of the outside environment and spike at a lower frequency as a result. \\
+However, the neural system cultures from the dataset are not stimulated. Instead, they are left alone to interact between each other. The neurons then communicate independently of the outside environment and spike at a lower frequency as a result. \\
 
-The input stimulus cannot be left unchanged because the behaviour of the network would be radically different to that of the real one. It can be null either because then no interactions between the neurons would occur. Some type of random input noise must be present in order to have spikes. Moreover, the new model should have biological significance since a real network is being replicated. Several options are investigated that could potentially meet these requirements.\\
+The input stimulus cannot be left unchanged because the behaviour of the network would be radically different to that of the real one. It cannot be null either because then no interactions between the neurons would occur. Some type of random input noise must be present in order to have spikes. Moreover, the new model should have biological significance since a real network is being replicated. An option is investigated that could potentially meet these requirements.\\
 
 \subsection{System with random spikes}
+
+The proposed model intends to mimic biological behaviour by assuming that neurons spike when they want to transmit some information that they have conveyed by themselves. In order to do so, a random neuron is selected from the network and stimulated with random noise for some length of time.\\
+
+The noise that is input to the selected neuron is taken from the absolute value of a normal distribution of zero mean and standard deviation equal to \(\alpha ^{2}\). Since, a model of only excitatory neurons is being implemented, negative values from the distribution are not valid. 
+
+The amount of time the selected neuron is stimulated for is also random. It is taken from a uniform distribution in the range 0 to 200 ms. There is no evidence to support the selection of this number since to this day, the behaviour of the neuron is not very well understood. However, it must be sufficiently large for the neuron to spike but to not too big so as to allow other neurons to be stimulated too. \\
+
+The benefit of this model arises from its ability to insure that every neuron has roughly the same probability of originating a spike train, from its random behaviour in the system and from its major biological resemblance than the model used in \cite{alexandru2018estimating}.
+
+
 
 \begin{figure}
 	\centering
@@ -39,9 +49,6 @@ The input stimulus cannot be left unchanged because the behaviour of the network
 	\caption{Number of spikes as a function of the parameter I for a 1 hour simulated network of 98 neurons and a random spike stimulus}
 	\label{fig:I_var_plot}
 \end{figure}
-
-\subsection{System with randomly spiking clusters}
-
 
 \section{Number of spikes}\label{sec:number_of_spikes}
 
@@ -74,7 +81,10 @@ On the other hand, the real dataset consists of recordings of one hour. Therefor
 
 
 
-\section{Cascade generation}\label{simulating_cascade_generation}
+\section{Cascade generation}\label{sec:simulating_cascade_generation}
 \subsection{Method of maximum cascades}
 \subsection{Method of maximum independence}
 \subsection{Optimal cascade generation}
+\section{Concluding remarks}
+
+At the beginning of this chapter the need for a simulated network that approximated the biological one was explained. Such a model can provide an approximation of performance of the algorithm. It is based on the assumption that the simulation is a faithful representation of the real nature of the network. Moreover, the differences between previous simulated networks and this new real network make it vital to verify that the algorithm would still work under these new conditions. 

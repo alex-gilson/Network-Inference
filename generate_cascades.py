@@ -28,6 +28,7 @@ with open(firingsFileName, 'r') as csvfile:
     for row in reader:
         firings.append(row)
 
+import pdb;pdb.set_trace()
 
 num_cascades = np.zeros(N);
 A_potential = np.zeros((N,N));
@@ -55,6 +56,7 @@ m = 0
 x = 0
 start = firings[n]
 cascades = np.ones((int(simulation_duration/horizon),N))*(-1)
+import pdb;pdb.set_trace()
 
 if cascadeOption == 'maximum_cascades': 
 
@@ -80,6 +82,7 @@ if cascadeOption == 'maximum_cascades':
 
         # first neuron to spike starts the cascade
         current_cascade[indices_in_window[0]-1] = 0
+        import pdb;pdb.set_trace()
 
         # update cascade based on the rest of the firings
         for k in range(len(indices_in_window)):

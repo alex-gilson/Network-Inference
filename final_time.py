@@ -6,21 +6,21 @@ import pickle
 import datetime
 from numpy import genfromtxt
 
-resultsFileName = sys.argv[1]
+resultsFileName = str(sys.argv[1])
 seed = int(sys.argv[2])
 num_nodes = int(sys.argv[3])
 sparsity = float(sys.argv[4])
-networkFileName = sys.argv[5]
-firingsFileName = sys.argv[6]
-indicesFileName = sys.argv[7]
-matlabNetworkFileName = sys.argv[8]
+networkFileName = str(sys.argv[5])
+firingsFileName = str(sys.argv[6])
+indicesFileName = str(sys.argv[7])
+inferredNetworkFileName = sys.argv[8]
 horizon = float(sys.argv[9])
-diffusion_type = str(sys.argv[10])
-stimulation_mode = str(sys.argv[11])
+diffusion_type = str(sys.argv[11])
+stimulation_mode = str(sys.argv[12])
 
 # Select the number of CPUs to use, if -1, use all of the available CPUs 
-if int(sys.argv[11]) != -1:
-    num_processors = int(sys.argv[11])
+if int(sys.argv[10]) != -1:
+    num_processors = int(sys.argv[10])
 else:
     num_processors = multiprocessing.cpu_count()
 

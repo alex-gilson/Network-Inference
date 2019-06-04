@@ -63,7 +63,7 @@ if (($infer_network == 1))
 
 then
 
-		if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ]
+	if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ] || (($repeat == 1))
 	then
 
 		echo -e "Generating cascades..."
