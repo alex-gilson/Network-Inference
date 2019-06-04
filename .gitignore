@@ -6,6 +6,7 @@ spike_data/
 temporary/
 w/
 r/
+*.csv
 *.aux
 *.log
 *.lof

@@ -24,10 +24,11 @@ I_var=float(sys.argv[8])
 # N=int(50)
 # sparsity=float(0.1)
 # simulation_duration=int(5000)
-# networkFileName='network_98.csv'
-# firingsFileName='firings_98.csv'
-# indicesFileName='indices_98.csv'
-
+# networkFileName='network_50.csv'
+# firingsFileName='firings_50.csv'
+# indicesFileName='indices_50.csv'
+# I_var=4
+#
 # set the default seed
 devices.device.seed(seed)
 
@@ -117,7 +118,6 @@ while time < simulation_duration:
 # show()
 #
 #
-#
 # Write Network to File
 myNetworkFile = open(networkFileName,'w')
 for l in zip(S.i, S.j, S.w):
@@ -128,14 +128,16 @@ myNetworkFile.close()
 # Write Firings to File
 myFiringsFile=open(firingsFileName,'w')
 for l in firings:
-	myFiringsFile.write(",".join(map(str,l)))
-	myFiringsFile.write("\n")
+    if l:
+        myFiringsFile.write(",".join(map(str,l)))
+        myFiringsFile.write("\n")
 myFiringsFile.close()
 
 # Write Indices to File
 myIndicesFile=open(indicesFileName,'w')
 for l in indices:
-	myIndicesFile.write(",".join(map(str,l)))
-	myIndicesFile.write("\n")
+    if l:
+        myIndicesFile.write(",".join(map(str,l)))
+        myIndicesFile.write("\n")
 myIndicesFile.close()
 

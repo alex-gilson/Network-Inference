@@ -49,7 +49,6 @@ def cvx_matlab(i, num_nodes=num_nodes, horizon=horizon, diffusion_type=diffusion
     if i%2 == 0:
         nodes = nodes[::-1]
     arguments = str(nodes) + ', ' + str(num_nodes) + ', ' + str(num_processors) + ', ' + str(horizon) + ", '" + str(diffusion_type) + "', '" + str(cascadesFileName) + "', '" + str(aBadFileName) + "', '" + str(aPotentialFileName) + "', '" + str(numCascadesFileName) + "'"
-    print(arguments)
     os.system("matlab -nodesktop -nosplash -r \"parallel_cvx(" + arguments + ");exit;\"")
 
 # Select the number of CPUs to use, if -1, use all of the available CPUs 

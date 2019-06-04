@@ -82,6 +82,14 @@ On the other hand, the real dataset consists of recordings of one hour. Therefor
 
 
 \section{Cascade generation}\label{sec:simulating_cascade_generation}
+
+Once the network model is defined what remains to clarify is how the cascades will be built. The method used in \cite{alexandru2018estimating} was simple and consistent. Since a DC stimulus was given to one neuron at a time, this neuron was selected to be the beginning of the cascade. This cascade would last for \(T\) length of time and only the first firing of each neuron would be taken into account. However, since the system no longer has a DC input, the cascade generation method must be changed. When selecting an appropriate method of cascade generation, certain factors are taken into account.
+\begin{enumerate}
+\item The higher the number of cascades that are generated, the more information will be conveyed and, in general, the better NetRate will be able to infer the connectivity of the network. 
+\item The more separated the cascades are from each other in the time domain, the more independent they will be. Cascade independence is a critical characteristic of high quality cascade because it maximizes the likelihood of the spikes in the time horizon being caused by a previous spike in the same cascade.
+\item A high sparsity insures that enough cascade information is obtained from all the neurons in the network. Otherwise, only neurons who spike often will be the ones generating cascades.
+\end{enumerate}
+
 \subsection{Method of maximum cascades}
 \subsection{Method of maximum independence}
 \subsection{Optimal cascade generation}
