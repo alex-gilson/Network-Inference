@@ -19,7 +19,7 @@ aHatFileName = str(sys.argv[9])
 # Algorithm to distribute nodes between processors as a function of the number of cascades
 processor_list = []
 num_cascades = np.loadtxt(numCascadesFileName,delimiter=',').astype(int)
-print('Number of cascades:')
+print('Number of firings:')
 print(num_cascades)
 idxs = np.argsort(num_cascades)[::-1]
 k = 0

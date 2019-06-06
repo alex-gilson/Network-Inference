@@ -1,9 +1,11 @@
 #!/usr/local/bin/bash
 
 # simulation_times=(100 500 1000 1500 2000)
-simulation_times=(1500 2000)
+simulation_times=(500 1000 1500)
+# simulation_times=(100)
+# simulation_times=(1500 2000)
 num_nodes=(10)
-num_processors=(1)
+num_processors=(3)
 stimulation_type=random_spikes
 diffusion_type=rayleigh
 I_var=4

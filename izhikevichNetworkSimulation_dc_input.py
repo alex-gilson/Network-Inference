@@ -9,8 +9,8 @@ import multiprocessing as mp
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
-from brian2  import *
-# from utility import *
+from brian2  import devices, NeuronGroup, Synapses, SpikeMonitor, run
+from utility import *
 
 # extract command line arguments
 # seed=int(sys.argv[1])
@@ -24,7 +24,7 @@ seed=1
 N=int(10)
 sparsity=float(0.1)
 simulation_duration=int(1000)
-networkFileName="w/network.csv"
+networkFileName="r/for_histogram/network_sim_time_100/network_seed_1.csv"
 firingsFileName="w/firing.csv"
 indicesFileName="w/indice.csv"
 
@@ -90,7 +90,6 @@ for stimulated_node in range(0,N):
 	indices.append(list(spikemon.t/ms))
 
 
-import pdb; pdb.set_trace()
 # Write Network to File
 myNetworkFile=open(networkFileName,'w')
 for l in zip(S.i, S.j, S.w):
@@ -98,7 +97,6 @@ for l in zip(S.i, S.j, S.w):
 	myNetworkFile.write("\n")
 myNetworkFile.close()
 
-import pdb; pdb.set_trace()
 # Write Firings to File
 myFiringsFile=open(firingsFileName,'w')
 for l in firings:
@@ -106,7 +104,6 @@ for l in firings:
 	myFiringsFile.write("\n")
 myFiringsFile.close()
 
-import pdb; pdb.set_trace()
 # Write Indices to File
 myIndicesFile=open(indicesFileName,'w')
 for l in indices:
@@ -114,6 +111,4 @@ for l in indices:
 	myIndicesFile.write("\n")
 myIndicesFile.close()
 
-import pdb; pdb.set_trace()
 print('Finished izhikevichNetworkSimulation.py')
-

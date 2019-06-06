@@ -45,10 +45,6 @@ aHatFileName="${22}"
 # echo -e cascade option$cascadeOption
 
 
-mkdir temporary
-mkdir w
-mkdir r
-
 # Activate virtual environment
 . py27env/bin/activate
 

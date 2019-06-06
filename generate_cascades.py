@@ -122,7 +122,8 @@ for c in range(len(cascades)):
     # stimulated node)
     for i in range(1,len(val)):
         
-        # num_cascades stores the amount of times each node has fired
+        # num_cascades stores the amount of times each node has generated a cascade
+        # num_cascades = [np.bincount(cascades.T[k].astype(int)+1)[1] for k in range(cascades.shape[1])]
         num_cascades[idx[order[i]]] = num_cascades[idx[order[i]]] + 1
 
         for j in range(i-1):

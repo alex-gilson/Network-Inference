@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 import sys
 import numpy as np
 from scipy import stats
+import time
+import pickle
+import multiprocessing
+import pandas as pd
+import datetime
 
 matlab_or_python_graph=int(sys.argv[1])
 aHatFileName=str(sys.argv[2])
@@ -18,6 +23,8 @@ inferredNetworkFileName = sys.argv[10]
 horizon = float(sys.argv[11])
 diffusion_type = str(sys.argv[12])
 stimulation_mode = str(sys.argv[13])
+
+N = num_nodes
 
 # Select the number of CPUs to use, if -1, use all of the available CPUs 
 if int(sys.argv[14]) != -1:
@@ -83,7 +90,7 @@ accuracy = 1 - float(np.sum(np.logical_xor(S_boolean,S_hat_boolean)))/(np.sum(S_
 
 results = np.array([accuracy, mae, precision, recall])
 
-np.savetxt("temporary/results.csv", results, delimiter=",")
+# np.savetxt("temporary/results.csv", results, delimiter=",")
 np.savetxt(inferredNetworkFileName, inferred_network, delimiter=",")
 
 print('MAE: ', mae)
@@ -91,17 +98,15 @@ print('Precision: ', precision)
 print('Recall: ', recall)
 print('Accuracy: ', accuracy)
 
-
-
 final_time = time.time()
 pickle_in = open('initial_time.pickle', 'rb')
 initial_time = pickle.load(pickle_in)
 elapsed_time = str(datetime.timedelta(seconds=(final_time - initial_time)))
 pickle_in.close()
 
-data = genfromtxt('temporary/results.csv', delimiter=',')
+# data = np.genfromtxt('temporary/results.csv', delimiter=',')
 # data = data[-1,:].reshape(-1,1)
-d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': data[0], 'MAE': data[1], 'precision': data[2], 'recall': data[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode]}
+d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': results[0], 'MAE': results[1], 'precision': results[2], 'recall': results[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode]}
 df = pd.DataFrame(d)
 df.to_csv(resultsFileName, mode='a', header=True)
 
