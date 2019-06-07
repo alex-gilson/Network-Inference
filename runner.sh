@@ -1,6 +1,6 @@
 
 # simulation_times=(1)
-# simulation_times=(3000 3500 4000 4500 5000)
+# simulation_times=(5000 4500)
 simulation_times=(500 1000 1500 2000 2500 3000 3500 4000 4500 5000)
 # simulation_times=(500 1000 1500)
 num_nodes=(30)

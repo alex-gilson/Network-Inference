@@ -11,8 +11,47 @@ MATLAB is the language in which the optimization problem is defined. The need fo
 Python is the language of preference for this project. Not only is it easy to program and full of libraries, but it is also open-source and, therefore, easily available. A great effort has been made to move into this language from the previous version used in \cite{alexandru2018estimating}, which was mostly written in MATLAB. 
 The parallelization process was carried out using this programming language with the use of the \textit{multiprocessing} library. Cascade generation and performance evalutation was translated from MATLAB to Python.\\
 
-One of the major constraints that has to be taken into account when using NetRate is the memory and computation power. This issue is accentuated when trying to infer networks with a large number of nodes or when the number of cascades is high. This issue can be dealt with by using large computers that have MATLAB and the CVX package installed. However, many times researches do not have this hardware capabilities in their hands.  
+One of the major constraints that has to be taken into account when using NetRate is memory and computation power. This issue is accentuated when trying to infer networks with a large number of nodes or when the number of cascades is high. This issue can be dealt with by using large computers that have MATLAB and the CVX package installed. However, many times researches do not have this hardware capabilities at their hands. For this reason, the use of cloud computing services is critical for high performance data processing. However, many of these services do not offer MATLAB compatibility and the CVX package cannot, therefore, be used. A scalable network inference algorithm would need to be written in an open source language such as Python. One of the goals of this project has been to go in that direction. 
+
 
 \section{System requirements}
+
+The network inference algorithm has been run using a Linux operating system. Python's \texit{multiprocessing} library does not work on Windows. Moreover, the use of a linux terminal is required when using Windows because the algorithm makes use of bash scripts. Compatibility with MacOS can be achieved by translating these scripts. The necessary components of the algorithm can be found in table \ref{tab:requirements}.
+
+
+
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+Component  & Version \\ \hline
+CVX				 & 2.1		 \\ \hline
+numpy      & 1.15.4  \\ \hline
+sympy      & 1.3     \\ \hline
+jinja2     & 2.10    \\ \hline
+brian2     & 2.2.1   \\ \hline
+matplotlib & 1.5.3   \\ \hline
+pandas     & 0.23.4  \\ \hline
+networks   & 2.2     \\ \hline
+\end{tabular}
+\end{table}
+
+
 \section{Folder architecture}
+
+\begin{forest}
+	for tree={font=\sffamily, %grow'=0,
+	folder indent=.9em, folder icons,
+	edge=densely dotted}
+	[main folder
+		[images, this folder size=20pt
+			[wallpapers]
+			[logo.pdf, is file]]
+		[tex-files
+			[chapter1.tex, is file]]
+		[main.tex, is file]
+		[main.aux, is file]
+	]
+\end{forest}
+
+
 \section{Usage}
