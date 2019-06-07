@@ -1,8 +1,16 @@
 #!/usr/local/bin/bash
-
-simulation_times=(4000)
-num_nodes=(5)
-num_processors=(3)
+simulation_times=(1000)
+# simulation_times=(1500)
+# simulation_times=(500 2000)
+# simulation_times=(2000 2500 3000 3500 4000 4500 5000)
+# simulation_times=(2500)
+# simulation_times=(3000)
+# simulation_times=(3500)
+# simulation_times=(4000)
+# simulation_times=(4500)
+# simulation_times=(5000)
+num_nodes=(15)
+num_processors=(1)
 stimulation_type=random_spikes
 diffusion_type=rayleigh
 I_var=4
@@ -19,11 +27,12 @@ do
 	do
 		for s in ${seeds[*]}
 		do
-			mkdir -p r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
+			# mkdir -p r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
+			mkdir -p r/test_sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
 			for i in ${num_processors[*]}
 			do
 				echo "Number of nodes: $num_nodes, Simulation Time: $j, Number of processors: $num_processors, Seed $s:"
-				folderName=r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
+				folderName=r/test_sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
 				indicesFileName="${folderName}indices_$s.csv"
 				firingsFileName="${folderName}firings_$s.csv"
 				networkFileName="${folderName}network_$s.csv"

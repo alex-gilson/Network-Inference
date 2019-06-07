@@ -88,8 +88,10 @@ if cascadeOption == 'maximum_cascades':
             if current_cascade[indices_in_window[k]-1] == -1:
                 current_cascade[indices_in_window[k]-1] = firings_in_window[k]    
 
-        cascades[m] = current_cascade
-        m = m + 1 
+        import pdb; pdb.set_trace()
+        if np.bincount(cascades[0].astype(int)+1)[0] < N - 1:
+            cascades[m] = current_cascade
+            m = m + 1 
 
         # The index of the firing that starts the next cascade is the one following the last firing of this cascade 
         n = index[-1] + 1

@@ -1,6 +1,6 @@
 
 import csv
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import sys
 import numpy as np
 from scipy import stats
@@ -73,7 +73,6 @@ print('Precision: ', precision)
 print('Recall: ', recall)
 print('Accuracy: ', accuracy)
 
-import pdb; pdb.set_trace()
 
 
 # plt.figure(figsize=(10,7))
