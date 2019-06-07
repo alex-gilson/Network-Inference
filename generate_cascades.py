@@ -88,8 +88,8 @@ if cascadeOption == 'maximum_cascades':
             if current_cascade[indices_in_window[k]-1] == -1:
                 current_cascade[indices_in_window[k]-1] = firings_in_window[k]    
 
-        import pdb; pdb.set_trace()
-        if np.bincount(cascades[0].astype(int)+1)[0] < N - 1:
+        # Don't count the cascades where only one node fires
+        if np.bincount(current_cascade.astype(int) + 1)[0] < N - 1:
             cascades[m] = current_cascade
             m = m + 1 
 
@@ -98,6 +98,7 @@ if cascadeOption == 'maximum_cascades':
 
     # Delete the cascades with no entries (they were initialized with all -1s)
     cascades = cascades[0:np.where(cascades == 0)[0][-1] + 1]
+    # print('Number of cascades: ', m)
 
 x = 0
 
@@ -121,7 +122,8 @@ for c in range(len(cascades)):
     # stimulated node)
     for i in range(1,len(val)):
         
-        # num_cascades stores the amount of times each node has fired
+        # num_cascades stores the amount of times each node has generated a cascade
+        # num_cascades = [np.bincount(cascades.T[k].astype(int)+1)[1] for k in range(cascades.shape[1])]
         num_cascades[idx[order[i]]] = num_cascades[idx[order[i]]] + 1
 
         for j in range(i-1):

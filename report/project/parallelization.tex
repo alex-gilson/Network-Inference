@@ -39,13 +39,13 @@ It can be concluded that an optimal benefit from parallelization can be achieved
 Originally, the algorithm computed steps 3 and 4 sequentially. Once the transmission rates of a row of the adjacency matrix were computed, it continued with the following one. However, in a parallelized NetRate, they are all computed at the same time with step 5 also involving the stacking of each of the \(\bm{\hat{\alpha}}_{n}\) vectors to form the matrix \(\bm{\hat{A}}\).
 The components in step 2 correspond to the ones seen in Eq.\ref{eq:solution_netrate} and whose solution is the assembled version of the one in step 3.\\
 
-Once the structure of the algorithm is laid out, it still remains to plan how each of the jobs in steps 3 and 4 are will be assigned to the available processors. Not all the jobs take the same amount of time to be computed because they heavily depend on the number of cascades for their given node. As an illustration, a network of 10 neurons is simulated, and the number of cascades belonging to each node is shown in Eq.\ref{eq:num_cascades}. \\
+Once the structure of the algorithm is laid out, it still remains to plan how each of the jobs in steps 3 and 4 are will be assigned to the available processors. Not all the jobs take the same amount of time to be computed because they heavily depend on the number of cascades for their given node. As an illustration, a network of 10 neurons is simulated, and the number of cascades belonging to each node is shown in Eq.\ref{eq:num_cascades}. 
 
 \begin{equation}
 	\centering
 	NoC = \{12, 21, 62, 166, 21, 67, 17, 30, 18, 81\}
 	\label{eq:num_cascades}
-\end{equation}\\
+\end{equation}
 
 The mean of the distribution is 49 and the standard deviation 46. This means that the number of cascades differs significantly from node to node and that an appropriate way of distributing the jobs is required in order to keep all processors similarly busy. This is necessary because the whole algorithm will not finish until the last processor has estimated the weight parameters belonging to the last node. \\
 

@@ -27,12 +27,11 @@ do
 	do
 		for s in ${seeds[*]}
 		do
-			# mkdir -p r/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
-			mkdir -p r/test_sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
+			mkdir -p r/sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
 			for i in ${num_processors[*]}
 			do
 				echo "Number of nodes: $num_nodes, Simulation Time: $j, Number of processors: $num_processors, Seed $s:"
-				folderName=r/test_sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
+				folderName=r/sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
 				indicesFileName="${folderName}indices_$s.csv"
 				firingsFileName="${folderName}firings_$s.csv"
 				networkFileName="${folderName}network_$s.csv"
@@ -42,8 +41,9 @@ do
 				aBadFileName="${folderName}a_bad_${cascadeOption}_$s.csv"
 				aPotentialFileName="${folderName}a_potential_${cascadeOption}_$s.csv"
 				numCascadesFileName="${folderName}num_cascades_${cascadeOption}_$s.csv"
+				aHatFileName="${folderName}a_hat_"
 
-				bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredNetworkFileName $diffusion_type $horizon $i $stimulation_type $I_var $infer_network $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $repeat
+				bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredNetworkFileName $diffusion_type $horizon $i $stimulation_type $I_var $infer_network $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $repeat $aHatFileName
 
 			done
 		done

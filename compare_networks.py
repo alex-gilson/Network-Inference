@@ -4,11 +4,33 @@ import csv
 import sys
 import numpy as np
 from scipy import stats
+import time
+import pickle
+import multiprocessing
+import pandas as pd
+import datetime
 
-N=int(sys.argv[1])
-networkFileName=str(sys.argv[2])
-inferredNetworkFileName=str(sys.argv[3])
-matlab_or_python_graph=int(sys.argv[4])
+matlab_or_python_graph=int(sys.argv[1])
+aHatFileName=str(sys.argv[2])
+resultsFileName = str(sys.argv[3])
+seed = int(sys.argv[4])
+num_nodes = int(sys.argv[5])
+sparsity = float(sys.argv[6])
+networkFileName = str(sys.argv[7])
+firingsFileName = str(sys.argv[8])
+indicesFileName = str(sys.argv[9])
+inferredNetworkFileName = sys.argv[10]
+horizon = float(sys.argv[11])
+diffusion_type = str(sys.argv[12])
+stimulation_mode = str(sys.argv[13])
+
+N = num_nodes
+
+# Select the number of CPUs to use, if -1, use all of the available CPUs 
+if int(sys.argv[14]) != -1:
+    num_processors = int(sys.argv[14])
+else:
+    num_processors = multiprocessing.cpu_count()
 
 S_hat = np.zeros((N,N))
 S = np.zeros((N,N))
@@ -28,8 +50,11 @@ for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
 
 # Open all the a_hat files to create the S_hat matrix
 for i in range(N):
-    filename = 'temporary/a_hat_' + str(i+1) + '.csv'
+    filename = aHatFileName + str(i+1) + '.csv'
     S_hat[i] = np.genfromtxt(filename, delimiter=',')
+
+# Transpose the inferred matrix
+S_hat = S_hat.T
 
 # Convert NaN to zeros
 S_hat[np.where(np.isnan(S_hat))] = 0
@@ -37,7 +62,7 @@ S_hat[np.where(np.isnan(S_hat))] = 0
 # Remove values very close to zero (unfeasible rate)
 S_hat[np.where(S_hat <= np.percentile(S_hat,90, interpolation='lower'))] = 0
 
-S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
+# S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
 
 
 inferred_network = []
@@ -65,7 +90,7 @@ accuracy = 1 - float(np.sum(np.logical_xor(S_boolean,S_hat_boolean)))/(np.sum(S_
 
 results = np.array([accuracy, mae, precision, recall])
 
-np.savetxt("temporary/results.csv", results, delimiter=",")
+# np.savetxt("temporary/results.csv", results, delimiter=",")
 np.savetxt(inferredNetworkFileName, inferred_network, delimiter=",")
 
 print('MAE: ', mae)
@@ -73,7 +98,17 @@ print('Precision: ', precision)
 print('Recall: ', recall)
 print('Accuracy: ', accuracy)
 
+final_time = time.time()
+pickle_in = open('initial_time.pickle', 'rb')
+initial_time = pickle.load(pickle_in)
+elapsed_time = str(datetime.timedelta(seconds=(final_time - initial_time)))
+pickle_in.close()
 
+# data = np.genfromtxt('temporary/results.csv', delimiter=',')
+# data = data[-1,:].reshape(-1,1)
+d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': results[0], 'MAE': results[1], 'precision': results[2], 'recall': results[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode]}
+df = pd.DataFrame(d)
+df.to_csv(resultsFileName, mode='a', header=True)
 
 # plt.figure(figsize=(10,7))
 # plt.scatter(original_network[1],original_network[0], original_network[2],c='b',label='Original Network')

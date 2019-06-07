@@ -2,7 +2,6 @@
 import numpy as np
 import csv
 import matplotlib.pyplot as plt
-import matplotlib
 
 seed=1
 N=98
@@ -30,15 +29,15 @@ for i, I_var in enumerate(I_vars):
     spikes[i] = len(indices)
 
 
-matplotlib.rcParams['text.usetex'] = True
-matplotlib.rcParams['text.latex.unicode'] = True
-    
 plt.figure()
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif')
 plot1 = plt.plot(I_vars, spikes, label='simulated network')
 plot2 = plt.vlines(4.018, 0, 636878,'r', linestyle="dashed", label=None)
 plot3 = plt.hlines(636878, 0, 4.018,'r', linestyle="dashed", label=None)
 plot4 = plt.plot(4.018, 636878, color='r',marker='.', zorder=2, label='mouse dataset',markersize=17)
-plt.xlabel(r'$\textbf{\alpha $')
+plt.xlabel(r"$\displaystyle\alpha$")
+# plt.xlabel(r'\(\alpha}\)')
 plt.ylabel('number of spikes')
 plt.title('Number of spikes as a function of parameter I')
 plt.legend()

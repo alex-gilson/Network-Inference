@@ -21,6 +21,7 @@ aPotentialFileName="${18}"
 numCascadesFileName="${19}"
 cascadeOption="${20}"
 repeat="${21}"
+aHatFileName="${22}"
 
 # echo -e seed $seed
 # echo -e num_nodes $num_nodes
@@ -43,10 +44,6 @@ repeat="${21}"
 # echo -e num_cascades $numCascadesFileName
 # echo -e cascade option$cascadeOption
 
-
-mkdir temporary
-mkdir w
-mkdir r
 
 # Activate virtual environment
 . py27env/bin/activate
@@ -79,15 +76,16 @@ then
 
 	echo -e "Computing Netrate..." 
 
-	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName
+	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName
 
 	echo -e "Processing results..."
 
-	python compare_networks.py $num_nodes $networkFileName $inferredNetworkFileName 1
+	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors
 
-	echo -e "Calculating elapsed time..."
 
-	python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $num_processors $diffusion_type $stimulation_type 
+	# echo -e "Calculating elapsed time..."
+  #
+	# python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $num_processors $diffusion_type $stimulation_type 
 
 	rm initial_time.pickle
 	# rm -r temporary/

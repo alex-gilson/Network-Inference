@@ -17,7 +17,7 @@ The somatosensory cortex is a set of modules located in the neocortex in the bra
 
 The dataset consists of 25 different 1 hour recordings with a varying number of neurons ranging from 98 to 594. The average number of spikes per neuron for all datasets is 2.1 Hz and the sampling frequency is 20 kHz. The dataset also contains additional information on the x-y coordinates of each of the neurons in the cultures. With all this information, it is of interest to analyse what the distribution of spikes is. Neurons with larger connections will spike more often than the rest. Figure \ref{fig:histogram_spikes} displays how the spikes are distributed in the network. It is clear that the number of spikes per neuron follows an exponential distribution. Most of the neurons have sparse connections and will fire less than 6000 times during the length of the recordings while a few neurons will fire many times due to their high connectivity. In the next section, a simulated network will be implemented that tries to mimic the observable characteristics of the real 98 neuron network.\\
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{histogram_number_spikes_dataset.pdf}
 	\caption{Histogram of the number of spikes in a network of 98 neurons}
@@ -31,28 +31,20 @@ However, the neural system cultures from the dataset are not stimulated. Instead
 
 The input stimulus cannot be left unchanged because the behaviour of the network would be radically different to that of the real one. It cannot be null either because then no interactions between the neurons would occur. Some type of random input noise must be present in order to have spikes. Moreover, the new model should have biological significance since a real network is being replicated. An option is investigated that could potentially meet these requirements.\\
 
-\subsection{System with random spikes}
+\subsection{System with random spikes}\label{sec:sys_rand_spikes}
 
-The proposed model intends to mimic biological behaviour by assuming that neurons spike when they want to transmit some information that they have conveyed by themselves. In order to do so, a random neuron is selected from the network and stimulated with random noise for some length of time.\\
+The proposed model intends to mimic biological behaviour by assuming that neurons spike when they want to transmit some information that they have conveyed by themselves. In order to do so, a random neuron is selected from the network and stimulated with random noise for some length of time.
+The benefit of this model arises from its ability to insure that every neuron has roughly the same probability of originating a spike train, from its random behaviour in the system and from its major biological resemblance than the model used in \cite{alexandru2018estimating}.\\
 
-The noise that is input to the selected neuron is taken from the absolute value of a normal distribution of zero mean and standard deviation equal to \(\alpha ^{2}\). Since, a model of only excitatory neurons is being implemented, negative values from the distribution are not valid. 
+The noise that is input to the selected neuron is taken from the absolute value of a normal distribution of zero mean and standard deviation equal to \(\alpha\). Since, a model of only excitatory neurons is being implemented, negative values from the distribution are not valid. \\
 
 The amount of time the selected neuron is stimulated for is also random. It is taken from a uniform distribution in the range 0 to 200 ms. There is no evidence to support the selection of this number since to this day, the behaviour of the neuron is not very well understood. However, it must be sufficiently large for the neuron to spike but to not too big so as to allow other neurons to be stimulated too. \\
 
-The benefit of this model arises from its ability to insure that every neuron has roughly the same probability of originating a spike train, from its random behaviour in the system and from its major biological resemblance than the model used in \cite{alexandru2018estimating}.
 
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{I_var_plot.pdf}
-	\caption{Number of spikes as a function of the parameter I for a 1 hour simulated network of 98 neurons and a random spike stimulus}
-	\label{fig:I_var_plot}
-\end{figure}
 
 \section{Number of spikes}\label{sec:number_of_spikes}
 
-At the beginning of this chapter the need for a simulated network that approximated the biological one was explained. Such a model can provide an approximation of performance of the algorithm. It is based on the assumption that the simulation is a faithful representation of the real nature of the network. Moreover, the differences between previous simulated networks and this new real network make it vital to verify that the algorithm would still work under these new conditions. 
+It can be seen in table \ref{tab:spike_characteristics} that one of the most obvious differences between the real dataset and the previous simulations is the total number of spikes. The number is significantly smaller than before even though the observation time is larger. This is because the stimulation model forced the neurons to spike very frequently. In \cite{alexandru2018estimating} the total observation time was equal to the defined length of stimulation multiplied by the number of neurons. Since the stimulation period was found to be optimal for 4 seconds, then for a network of 98 neurons, this would result in a total of 392 seconds of recordings. \\ 
 
 \begin{table}[]
 \centering
@@ -66,8 +58,15 @@ Sim. DC stimulus & 98                & 392 s            & 4038313          & 412
 \label{tab:spike_characteristics}
 \end{table}
 
-As seen in table \ref{tab:spike_characteristics}, one of the most obvious changes with respect to previous simulations is the total number of spikes. This number is significantly smaller than before even though the observation time is larger. This is because the stimulation model forced the neurons to spike very frequently. In \cite{alexandru2018estimating} the total observation time was equal to the defined length of stimulation multiplied by the number of neurons. Since the stimulation period was found to be optimal for 4 seconds, then for a network of 98 neurons, this would result in a total of 392 seconds of recordings. 
-On the other hand, the real dataset consists of recordings of one hour. Therefore, the model of the simulation must be such that the number of spikes is roughly the same for a 1 hour simulation length.
+On the other hand, the real dataset consists of recordings of one hour. Therefore, the model of the simulation must be such that the number of spikes is roughly the same for a 1 hour simulation length. This can be achieved by multiplying by varying the parameter \(\alpha\) from the input stimulus of the model. This variable controls the standard deviation of the absolute normal distribution defined in section \ref{sec:sys_rand_spikes}. The larger it is, the more voltage will be induced into the neuron and the higher its probability of spiking.
+Every simulation will have a considerably different number of spikes given the parameter \(\alpha\). However, its effect on the number of spikes is investigated for a 1 hour simulated network of 98 neurons. This will give a rough estimate of what the parameter value should be. Figure \ref{fig:I_var_plot} shows that the most appropriate value of \(\alpha\) is 4. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{I_var_plot.pdf}
+	\caption{Number of spikes as a function of the parameter I for a 1 hour simulated network of 98 neurons and a random spike stimulus}
+	\label{fig:I_var_plot}
+\end{figure}
 
 
 % Number of spikes
@@ -83,7 +82,7 @@ On the other hand, the real dataset consists of recordings of one hour. Therefor
 
 \section{Cascade generation}\label{sec:simulating_cascade_generation}
 
-Once the network model is defined what remains to clarify is how the cascades will be built. The method used in \cite{alexandru2018estimating} was simple and consistent. Since a DC stimulus was given to one neuron at a time, this neuron was selected to be the beginning of the cascade. This cascade would last for \(T\) length of time and only the first firing of each neuron would be taken into account. However, since the system no longer has a DC input, the cascade generation method must be changed. When selecting an appropriate method of cascade generation, certain factors are taken into account.
+Once the network model is defined what remains to clarify is how the cascades will be built. The method used in \cite{alexandru2018estimating} was simple and consistent. Since a DC stimulus was given to one neuron at a time, this neuron was selected to be the beginning of the cascade. This cascade would last for \(T\) length of time and only the first firing of each neuron would be taken into account. This insures that the third assumption from \cite{rodriguez2011uncovering} is not broken, i.e observable artefacts in are binary. Since the system no longer has a DC input, the cascade generation method must be changed. When selecting an appropriate method of cascade generation, certain factors are taken into account.
 \begin{enumerate}
 \item The higher the number of cascades that are generated, the more information will be conveyed and, in general, the better NetRate will be able to infer the connectivity of the network. 
 \item The more separated the cascades are from each other in the time domain, the more independent they will be. Cascade independence is a critical characteristic of high quality cascade because it maximizes the likelihood of the spikes in the time horizon being caused by a previous spike in the same cascade.
@@ -91,8 +90,39 @@ Once the network model is defined what remains to clarify is how the cascades wi
 \end{enumerate}
 
 \subsection{Method of maximum cascades}
+
+One way of building cascades is the proposed method of maximum cascades. This is a very simple approach that uses the first spiking neuron as the beginning of the cascade. This cascade lasts for the defined horizon and includes all the firing activity within this time period. This process is repeated beginning after the last spike of the generated cascade and until the whole time series have been evaluated. It is worth remembering that, in the case of one neuron firing twice within the same time period, only the first one is taken into account and recorded in the cascade. As an example, let there be a network of 5 neurons that spike during a recording of 12 seconds and let the firing times and neuron indices be:
+
+\begin{align}
+	\centering
+	firings = &\{1.5, 2.6, 4.7, 8.1, 8.4, 9.4, 11.2\}\\
+	indices = &\{4,  3,  5,  3,  2,  2, 4\}
+\end{align}
+
+Then, using the method of maximum cascades, the resulting two cascades would be the ones seen below:
+
+\begin{align}
+	\centering
+	\textbf{t}^{1} = &\{\infty, \infty, 2.6, 1.5, 4.7 \}\\
+	\textbf{t}^{2} = &\{\infty, 8.4, 8.1, 11.2, \infty \}
+\end{align}
+
+The first cascade starts at time \(t=1.5s\) and ends at \(t=6.5s\). During this time, neurons 3, 4 and 5 spike. Then, the second cascade, starts at time \(t=8.4s\) and finishes at \(t=12s\). Here, neurons 2, 3 and 4 spike. However, although neuron 2 spikes twice, only the first firing is taken into account.
+
+
 \subsection{Method of maximum independence}
 \subsection{Optimal cascade generation}
 \section{Concluding remarks}
 
-At the beginning of this chapter the need for a simulated network that approximated the biological one was explained. Such a model can provide an approximation of performance of the algorithm. It is based on the assumption that the simulation is a faithful representation of the real nature of the network. Moreover, the differences between previous simulated networks and this new real network make it vital to verify that the algorithm would still work under these new conditions. 
+At the beginning of this chapter the need for a simulated network that approximated the biological one was explained. Such a model can provide an approximation of performance of the algorithm. It is based on the assumption that the simulation is a faithful representation of the real nature of the network. Moreover, the differences between previous simulated networks and this new real network make it vital to verify that the algorithm would still work under these new conditions. \\
+
+A new model was defined that tries to mimic the behaviour of the real mouse recordings. For this reason, instead of simulating a network whose input consisted of a DC stimulus, a random input was established that consisted of the absolute value from a normal distribution of mean zero and standard deviation \(\alpha\). This stimulus would be given for a random amount time to a random neuron in the system. \\
+
+Finally, a new method of cascade generation was defined. This was necessary because the change of input stimulus made the previous approach obsolete. Following this new method, the number of cascades is maximized regardless of the quality of the cascades.
+
+
+
+
+
+
+

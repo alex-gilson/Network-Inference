@@ -13,12 +13,13 @@ cascadesFileName = str(sys.argv[5])
 aBadFileName = str(sys.argv[6])
 aPotentialFileName = str(sys.argv[7])
 numCascadesFileName = str(sys.argv[8])
+aHatFileName = str(sys.argv[9])
 
 
 # Algorithm to distribute nodes between processors as a function of the number of cascades
 processor_list = []
 num_cascades = np.loadtxt(numCascadesFileName,delimiter=',').astype(int)
-print('Number of cascades:')
+print('Number of firings:')
 print(num_cascades)
 idxs = np.argsort(num_cascades)[::-1]
 k = 0
@@ -48,7 +49,7 @@ def cvx_matlab(i, num_nodes=num_nodes, horizon=horizon, diffusion_type=diffusion
     # If the processor number is even, start computing the nodes with the least number of cascades
     if i%2 == 0:
         nodes = nodes[::-1]
-    arguments = str(nodes) + ', ' + str(num_nodes) + ', ' + str(num_processors) + ', ' + str(horizon) + ", '" + str(diffusion_type) + "', '" + str(cascadesFileName) + "', '" + str(aBadFileName) + "', '" + str(aPotentialFileName) + "', '" + str(numCascadesFileName) + "'"
+    arguments = str(nodes) + ', ' + str(num_nodes) + ', ' + str(num_processors) + ', ' + str(horizon) + ", '" + str(diffusion_type) + "', '" + str(cascadesFileName) + "', '" + str(aBadFileName) + "', '" + str(aPotentialFileName) + "', '" + str(numCascadesFileName) + "', '" + str(aHatFileName) + "'"
     os.system("matlab -nodesktop -nosplash -r \"parallel_cvx(" + arguments + ");exit;\"")
 
 # Select the number of CPUs to use, if -1, use all of the available CPUs 

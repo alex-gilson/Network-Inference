@@ -1,5 +1,5 @@
 
-function parallel_cvx(i, num_nodes, num_processors, horizon, type_diffusion, cascadesFileName, aBadFileName, aPotentialFileName, numCascadesFileName)
+function parallel_cvx(i, num_nodes, num_processors, horizon, type_diffusion, cascadesFileName, aBadFileName, aPotentialFileName, numCascadesFileName, aHatFileName)
 
 A_potential = csvread(aPotentialFileName);
 A_bad = csvread(aBadFileName);
@@ -23,7 +23,7 @@ for n = nodes
 	fprintf('Computing node %i \n ', n);
 	if (num_cascades(n)==0)
 		a_hat = zeros(num_nodes,1);
-		filename = 'temporary/a_hat_' + string(n) + '.csv';
+		filename = aHatFileName + string(n) + '.csv';
 		csvwrite(filename, full(a_hat)); 
 		continue;
 	end
@@ -33,7 +33,7 @@ for n = nodes
 	stop=toc;
 
 	total_obj = total_obj + obj;
-	filename = 'temporary/a_hat_' + string(n) + '.csv';
+	filename = aHatFileName + string(n) + '.csv';
 	csvwrite(filename, full(a_hat)); 
 	disp(strcat('Finished computing node ', string(n)))
 end
