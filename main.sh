@@ -22,6 +22,7 @@ numCascadesFileName="${19}"
 cascadeOption="${20}"
 repeat="${21}"
 aHatFileName="${22}"
+timeFileName="${23}"
 
 # echo -e seed $seed
 # echo -e num_nodes $num_nodes
@@ -72,7 +73,7 @@ then
 	fi
 
 	# Get current time and store it into a pickle file
-	python initial_time.py
+	python initial_time.py $timeFileName
 
 	echo -e "Computing Netrate..." 
 
@@ -80,15 +81,14 @@ then
 
 	echo -e "Processing results..."
 
-	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors
+	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors $timeFileName
 
 
 	# echo -e "Calculating elapsed time..."
   #
 	# python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $num_processors $diffusion_type $stimulation_type 
 
-	rm initial_time.pickle
-	# rm -r temporary/
+	rm $timeFileName 
 
 	echo "Results are available at '$resultsFileName'"
 

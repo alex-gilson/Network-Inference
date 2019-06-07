@@ -23,6 +23,8 @@ inferredNetworkFileName = sys.argv[10]
 horizon = float(sys.argv[11])
 diffusion_type = str(sys.argv[12])
 stimulation_mode = str(sys.argv[13])
+num_processors = str(sys.argv[14])
+timeFileName = str(sys.argv[15])
 
 N = num_nodes
 
@@ -99,14 +101,14 @@ print('Recall: ', recall)
 print('Accuracy: ', accuracy)
 
 final_time = time.time()
-pickle_in = open('initial_time.pickle', 'rb')
+pickle_in = open(timeFileName, 'rb')
 initial_time = pickle.load(pickle_in)
 elapsed_time = str(datetime.timedelta(seconds=(final_time - initial_time)))
 pickle_in.close()
 
 # data = np.genfromtxt('temporary/results.csv', delimiter=',')
 # data = data[-1,:].reshape(-1,1)
-d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': results[0], 'MAE': results[1], 'precision': results[2], 'recall': results[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode]}
+d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': results[0], 'MAE': results[1], 'precision': results[2], 'recall': results[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode], 'date': [datetime.datetime.now().strftime("%Y-%m-%d %H:%M")]}
 df = pd.DataFrame(d)
 df.to_csv(resultsFileName, mode='a', header=True)
 

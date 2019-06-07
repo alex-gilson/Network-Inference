@@ -6,8 +6,12 @@
 The software that is used for this project is based on a set of scripts written in bash, Python and MATLAB. Each of these languages is used in a different where they excel due to either availability of libraries or ease of use. \\
 
 Bash scripts are used as the entry point to the software package, their main function is iterating through tests, calling the functions that simulate and infer networks, and move the output files in an organized manner.
-MATLAB is the language in which the optimization problem is defined. The need for a convex optimization tool that implements recursive quadratic programming made it imperative to use this programming language. CVX is a software package that meets this criteria. Although there is also a version of this package available for Python, it does make use of recursive quadratic programming and the accuracy of NetRate is 
- 
+MATLAB is the language in which the optimization problem is defined. The need for a convex optimization tool that implements recursive quadratic programming made it imperative to use this programming language. CVX is a software package that meets this criteria. Although there is also a version of this package available for Python, it does not make use of recursive quadratic programming and the accuracy of NetRate is, consequently, drastically reduced.\\
+
+Python is the language of preference for this project. Not only is it easy to program and full of libraries, but it is also open-source and, therefore, easily available. A great effort has been made to move into this language from the previous version used in \cite{alexandru2018estimating}, which was mostly written in MATLAB. 
+The parallelization process was carried out using this programming language with the use of the \textit{multiprocessing} library. Cascade generation and performance evalutation was translated from MATLAB to Python.\\
+
+One of the major constraints that has to be taken into account when using NetRate is the memory and computation power. This issue is accentuated when trying to infer networks with a large number of nodes or when the number of cascades is high. This issue can be dealt with by using large computers that have MATLAB and the CVX package installed. However, many times researches do not have this hardware capabilities in their hands.  
 
 \section{System requirements}
 \section{Folder architecture}

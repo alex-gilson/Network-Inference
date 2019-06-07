@@ -1,21 +1,15 @@
-#!/usr/local/bin/bash
-simulation_times=(1000)
-# simulation_times=(1500)
-# simulation_times=(500 2000)
-# simulation_times=(2000 2500 3000 3500 4000 4500 5000)
-# simulation_times=(2500)
-# simulation_times=(3000)
-# simulation_times=(3500)
-# simulation_times=(4000)
-# simulation_times=(4500)
-# simulation_times=(5000)
-num_nodes=(15)
-num_processors=(1)
+
+# simulation_times=(1)
+# simulation_times=(3000 3500 4000 4500 5000)
+simulation_times=(500 1000 1500 2000 2500 3000 3500 4000 4500 5000)
+# simulation_times=(500 1000 1500)
+num_nodes=(30)
+num_processors=(2)
 stimulation_type=random_spikes
 diffusion_type=rayleigh
 I_var=4
 horizon=20
-seeds=(1)
+seeds=(1 2 3 4 5)
 sparsity=(0.1)
 infer_network=1
 cascadeOption=maximum_cascades
@@ -42,8 +36,9 @@ do
 				aPotentialFileName="${folderName}a_potential_${cascadeOption}_$s.csv"
 				numCascadesFileName="${folderName}num_cascades_${cascadeOption}_$s.csv"
 				aHatFileName="${folderName}a_hat_"
+				timeFileName="${folderName}initial_time.pickle"
 
-				bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredNetworkFileName $diffusion_type $horizon $i $stimulation_type $I_var $infer_network $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $repeat $aHatFileName
+				bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredNetworkFileName $diffusion_type $horizon $i $stimulation_type $I_var $infer_network $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $repeat $aHatFileName $timeFileName
 
 			done
 		done
