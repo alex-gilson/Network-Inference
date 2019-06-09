@@ -100,6 +100,55 @@ if cascadeOption == 'maximum_cascades':
     cascades = cascades[0:np.where(cascades == 0)[0][-1] + 1]
     # print('Number of cascades: ', m)
 
+if cascadeOption == 'maximum_independence': 
+
+    # Iterate through the simulation spikes
+    while n < len(firings):
+        
+        if n != 0 and (n > x*100000):
+            print(x*100000)
+            x = x + 1
+
+        # define the window f observation
+        start = firings[n] 
+        end = start + horizon
+
+        if n > 0 and np.diff(firings)[n-1] < 100:
+
+           n = n + 1
+           continue 
+            
+
+        index = np.array(np.where((firings >= start) & (firings < end)))[0]
+
+        firings_in_window = [firings[i] for i in index]
+        firings_in_window = firings_in_window - start
+        indices_in_window = [indices[i] for i in index]
+
+        # initialise a cascade, non-fired with -1; assume all non-fired
+        current_cascade = np.ones(N)*(-1)
+
+        # first neuron to spike starts the cascade
+        current_cascade[indices_in_window[0]-1] = 0
+
+        # update cascade based on the rest of the firings
+        for k in range(len(indices_in_window)):
+            
+            # Only the first firing is taken into account
+            if current_cascade[indices_in_window[k]-1] == -1:
+                current_cascade[indices_in_window[k]-1] = firings_in_window[k]    
+
+        # Don't count the cascades where only one node fires
+        if np.bincount(current_cascade.astype(int) + 1)[0] < N - 1:
+            cascades[m] = current_cascade
+            m = m + 1 
+
+        # The index of the firing that starts the next cascade is the one following the last firing of this cascade 
+        n = index[-1] + 1
+
+    # Delete the cascades with no entries (they were initialized with all -1s)
+    cascades = cascades[0:np.where(cascades == 0)[0][-1] + 1]
+
 x = 0
 
 # Iterate through all the cascades

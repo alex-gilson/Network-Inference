@@ -1,10 +1,10 @@
 
 # simulation_times=(1)
 # simulation_times=(5000 4500)
-simulation_times=(500 1000 1500 2000 2500 3000 3500 4000 4500 5000)
-# simulation_times=(500 1000 1500)
-num_nodes=(30)
-num_processors=(2)
+# simulation_times=(2000 2500 3000)
+simulation_times=(1500 2000 2500)
+num_nodes=(10 20 30)
+num_processors=(3)
 stimulation_type=random_spikes
 diffusion_type=rayleigh
 I_var=4

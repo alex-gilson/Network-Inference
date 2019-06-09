@@ -61,17 +61,19 @@ S_hat = S_hat.T
 # Convert NaN to zeros
 S_hat[np.where(np.isnan(S_hat))] = 0
 
-# Remove values very close to zero (unfeasible rate)
+# Remove values very close to zero
 S_hat[np.where(S_hat <= np.percentile(S_hat,90, interpolation='lower'))] = 0
 
-# S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
+S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
+
+# S_hat[np.where(S_hat < 5)] = 0
 
 
 inferred_network = []
 for i, row in enumerate(S_hat):
     for j, col in enumerate(row):
         if col != 0:
-            inferred_network.append([int(i+1), int(j+1), col])
+            inferred_network.append([int(i), int(j), col])
 
 # Compute mae
 mae = np.mean(abs(S_hat[np.where(S!=0)]-S[np.where(S!=0)])/S[np.where(S!=0)])
