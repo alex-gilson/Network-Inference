@@ -81,7 +81,7 @@ then
 
 	echo -e "Processing results..."
 
-	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors $timeFileName
+	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors $timeFileName $cascadeOption
 
 
 	# echo -e "Calculating elapsed time..."

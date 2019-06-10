@@ -25,6 +25,7 @@ diffusion_type = str(sys.argv[12])
 stimulation_mode = str(sys.argv[13])
 num_processors = str(sys.argv[14])
 timeFileName = str(sys.argv[15])
+cascadeOption = str(sys.argv[16])
 
 N = num_nodes
 
@@ -61,17 +62,19 @@ S_hat = S_hat.T
 # Convert NaN to zeros
 S_hat[np.where(np.isnan(S_hat))] = 0
 
-# Remove values very close to zero (unfeasible rate)
+# Remove values very close to zero
 S_hat[np.where(S_hat <= np.percentile(S_hat,90, interpolation='lower'))] = 0
 
-# S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
+S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(0,30,1000))
+
+# S_hat[np.where(S_hat < 5)] = 0
 
 
 inferred_network = []
 for i, row in enumerate(S_hat):
     for j, col in enumerate(row):
         if col != 0:
-            inferred_network.append([int(i+1), int(j+1), col])
+            inferred_network.append([int(i), int(j), col])
 
 # Compute mae
 mae = np.mean(abs(S_hat[np.where(S!=0)]-S[np.where(S!=0)])/S[np.where(S!=0)])
@@ -108,7 +111,7 @@ pickle_in.close()
 
 # data = np.genfromtxt('temporary/results.csv', delimiter=',')
 # data = data[-1,:].reshape(-1,1)
-d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': results[0], 'MAE': results[1], 'precision': results[2], 'recall': results[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode], 'date': [datetime.datetime.now().strftime("%Y-%m-%d %H:%M")]}
+d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': results[0], 'MAE': results[1], 'precision': results[2], 'recall': results[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode], 'date': [datetime.datetime.now().strftime("%Y-%m-%d %H:%M")], 'cascade_option': [cascadeOption]}
 df = pd.DataFrame(d)
 df.to_csv(resultsFileName, mode='a', header=True)
 

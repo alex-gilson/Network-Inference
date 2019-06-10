@@ -56,7 +56,7 @@ x = 0
 start = firings[n]
 cascades = np.ones((int(simulation_duration/horizon),N))*(-1)
 
-if cascadeOption == 'maximum_cascades': 
+if cascadeOption == 'maximum_cascades' or cascadeOption == 'maximum_independence': 
 
     # Iterate through the simulation spikes
     while n < len(firings):
@@ -68,6 +68,13 @@ if cascadeOption == 'maximum_cascades':
         # define the window f observation
         start = firings[n] 
         end = start + horizon
+
+        # Only count the cascade if it had previously reached a steady state
+        if cascadeOption == 'maximum_independence':
+            if n > 0 and np.diff(firings)[n-1] < horizon:
+
+               n = n + 1
+               continue 
 
         index = np.array(np.where((firings >= start) & (firings < end)))[0]
 
@@ -99,6 +106,7 @@ if cascadeOption == 'maximum_cascades':
     # Delete the cascades with no entries (they were initialized with all -1s)
     cascades = cascades[0:np.where(cascades == 0)[0][-1] + 1]
     # print('Number of cascades: ', m)
+
 
 x = 0
 
