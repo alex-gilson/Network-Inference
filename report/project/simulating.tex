@@ -82,16 +82,16 @@ Every simulation will have a considerably different number of spikes given the p
 
 \section{Cascade generation}\label{sec:simulating_cascade_generation}
 
-Once the network model is defined what remains to clarify is how the cascades will be built. The method used in \cite{alexandru2018estimating} was simple and consistent. Since a DC stimulus was given to one neuron at a time, this neuron was selected to be the beginning of the cascade. This cascade would last for \(T\) length of time and only the first firing of each neuron would be taken into account. This insures that the third assumption from \cite{rodriguez2011uncovering} is not broken, i.e observable artefacts in are binary. Since the system no longer has a DC input, the cascade generation method must be changed. When selecting an appropriate method of cascade generation, certain factors are taken into account.
+Once the network model is defined what remains to clarify is how the cascades will be built. The method used in \cite{alexandru2018estimating} was simple and consistent. Since a DC stimulus was given to one neuron at a time, this neuron was selected to be the beginning of the cascade. This cascade would last for \(T\) length of time and only the first firing of each neuron would be taken into account. This insures that the third assumption from \cite{rodriguez2011uncovering} is not broken, i.e observable artefacts in are binary. Moreover, with this cascade generation method, cascade independence was guaranteed because it provided a clear entry point into the diffusion process. Since the system no longer has a DC input, the cascade generation method must be changed. When selecting an appropriate method of cascade generation, certain factors are taken into account.
 \begin{enumerate}
 \item The higher the number of cascades that are generated, the more information will be conveyed and, in general, the better NetRate will be able to infer the connectivity of the network. 
-\item The more separated the cascades are from each other in the time domain, the more independent they will be. Cascade independence is a critical characteristic of high quality cascade because it maximizes the likelihood of the spikes in the time horizon being caused by a previous spike in the same cascade.
+\item The more separated the cascades are from each other in the time domain, the more independent they will be. Although in \cite{rodriguez2011uncovering}, independence is defined as uniqueness of spikes for all the cascades in the diffusion process, it will be redefined as the likelihood of the spikes in the time horizon being caused by a previous spike in the same cascade. This means that not only all spikes are unique within all the cascades but that, there is no influence from the previous cascades on the present one.
 \item A high sparsity insures that enough cascade information is obtained from all the neurons in the network. Otherwise, only neurons who spike often will be the ones generating cascades.
 \end{enumerate}
 
 \subsection{Method of maximum cascades}
 
-One way of building cascades is the proposed method of maximum cascades. This is a very simple approach that uses the first spiking neuron as the beginning of the cascade. This cascade lasts for the defined horizon and includes all the firing activity within this time period. This process is repeated beginning after the last spike of the generated cascade and until the whole time series have been evaluated. It is worth remembering that, in the case of one neuron firing twice within the same time period, only the first one is taken into account and recorded in the cascade. As an example, let there be a network of 5 neurons that spike during a recording of 12 seconds and let the firing times and neuron indices be:
+One way of building cascades is the proposed method of maximum cascades. This is a very simple approach that uses the first spiking neuron as the beginning of the cascade. This cascade lasts for the defined horizon and includes all the firing activity within this time period. This process is repeated after the last spike of the generated cascade and until the whole time series has been evaluated. It is worth remembering that, in the case of one neuron firing twice within the same time period, only the first one is taken into account and recorded in the cascade. As an example, let there be a network of 5 neurons that spike during a recording of 12 seconds and let the firing times and neuron indices be:
 
 \begin{align}
 	\centering
@@ -103,18 +103,51 @@ Then, using the method of maximum cascades, the resulting two cascades would be 
 
 \begin{align}
 	\centering
-	\textbf{t}^{1} = &\{\infty, \infty, 2.6, 1.5, 4.7 \}\\
-	\textbf{t}^{2} = &\{\infty, 8.4, 8.1, 11.2, \infty \}
+	\textbf{t}^{1} = &\{\infty, \infty, 1.1, 0, 3.2 \}\\
+	\textbf{t}^{2} = &\{\infty, 0.3, 0, 2.1, \infty \}
 \end{align}
 
-The first cascade starts at time \(t=1.5s\) and ends at \(t=6.5s\). During this time, neurons 3, 4 and 5 spike. Then, the second cascade, starts at time \(t=8.4s\) and finishes at \(t=12s\). Here, neurons 2, 3 and 4 spike. However, although neuron 2 spikes twice, only the first firing is taken into account.
+The first cascade starts at time \(t=1.5s\) and ends at \(t=6.5s\). During this time, neurons 3, 4 and 5 spike. Then, the second cascade, starts at time \(t=8.4s\) and finishes at \(t=12s\). Here, neurons 2, 3 and 4 spike. However, although neuron 2 spikes twice, only the first firing is taken into account. It is also worth remembering that, cascades are based on time differences rather than absolute times. \\
+
+The advantage of this method stems from the large number of cascades that are generated. Every spike is used for generating cascades and, thus, the number of cascades is maximized. However, this is done irrespective of their quality. The quality of a cascade is defined as the fidelity of the probabilistic description of the network. In other words, how well it represents the true nature of the system. As an example, let the firings and indices of a simulation of 20 seconds with a horizon of 10 seconds be the ones in \ref{eq:quality_cascades} and let the network connections be the ones in table \ref{tab:quality_cascades}.
+
+\begin{align}
+	\centering
+	firings = &\{1, 9, 11, 12, 19\}\\
+	indices = &\{1, 2,  3,  4, 2\}
+	\label{eq:quality_cascades}
+\end{align}
+
+The resulting cascades would then be:
+
+\begin{align}
+	\centering
+	\textbf{t}^{1} = &\{0, 8, \infty, \infty \}\\
+	\textbf{t}^{2} = &\{\infty, 8, 0, 1 \}
+\end{align}
+
+Although the above cascades are well constructed, the second cascade is of poor quality. This is because, under a deterministic model where there is no noise, the cascade would lead to believe that there is a connection between nodes 3 and 4 when, in fact, the spiking of node 4 was caused by either node 1 or 2. Since NetRate is made for inferring networks under stochastic conditions, this scenario could happen under an otherwise perfect system. However, the cascade method of maximum cascades is fundamentally flawed because cascades are not independent. The diffusion process from the first cascade has not reached a steady state and it has affected the second cascade. A new cascade method is proposed where the independence of cascades is increased. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Source & Target \\ \hline
+1      & 2      \\ \hline
+1      & 4      \\ \hline
+2      & 3      \\ \hline
+2      & 4      \\ \hline
+3      & 2      \\ \hline
+\end{tabular}
+\caption{Network connections example}
+\label{tab:quality_cascades}
+\end{table}
 
 
 \subsection{Method of maximum independence}
 
+Under the new definition, independence of cascades cannot be guaranteed. Any spike that occurs could cause another neuron to spike in the future or could, at least, help it to do so by increasing its membrane potential. However, it can be improved significantly by allowing the network to reach a steady state before starting the cascade.
 
-
-\subsection{Optimal cascade generation}
 \section{Concluding remarks}
 
 At the beginning of this chapter the need for a simulated network that approximated the biological one was explained. Such a model can provide an approximation of performance of the algorithm. It is based on the assumption that the simulation is a faithful representation of the real nature of the network. Moreover, the differences between previous simulated networks and this new real network make it vital to verify that the algorithm would still work under these new conditions. \\
