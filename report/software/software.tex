@@ -1,9 +1,11 @@
 
 \chapter{Software Package}
 
+The final version of the Network Inference software package is fruit of the combined work from the authors in \cite{alexandru2018estimating} and myself. Every effort has been made in this project to deliver an algorithm that provides clear and comprehensive data to the scientist that intends to use it. Further changes to how the network is simulated and cascade generation modalities can be easily made with the recent changes to the structure of the software. A Github repository has been made available \href{https://github.com/gilson15/Network-Inference}{\underline{here}} for use and further development. 
+
 \section{Programming languages}
 
-The software that is used for this project is based on a set of scripts written in bash, Python and MATLAB. Each of these languages is used in a different where they excel due to either availability of libraries or ease of use. \\
+The software that is used for this project is based on a set of scripts written in bash, Python and MATLAB. Each of these languages is used in different areas where they excel due to either availability of libraries or ease of use. \\
 
 Bash scripts are used as the entry point to the software package, their main function is iterating through tests, calling the functions that simulate and infer networks, and move the output files in an organized manner.
 MATLAB is the language in which the optimization problem is defined. The need for a convex optimization tool that implements recursive quadratic programming made it imperative to use this programming language. CVX is a software package that meets this criteria. Although there is also a version of this package available for Python, it does not make use of recursive quadratic programming and the accuracy of NetRate is, consequently, drastically reduced.\\
@@ -14,13 +16,66 @@ The parallelization process was carried out using this programming language with
 One of the major constraints that has to be taken into account when using NetRate is memory and computation power. This issue is accentuated when trying to infer networks with a large number of nodes or when the number of cascades is high. This issue can be dealt with by using large computers that have MATLAB and the CVX package installed. However, many times researches do not have this hardware capabilities at their hands. For this reason, the use of cloud computing services is critical for high performance data processing. However, many of these services do not offer MATLAB compatibility and the CVX package cannot, therefore, be used. A scalable network inference algorithm would need to be written in an open source language such as Python. One of the goals of this project has been to go in that direction. 
 
 
+
+
+\section{Description of the algorithm}
+
+
+Once the required components for the Network Inference software have been installed, the package is ready to be used. The entry point to the algorithm is \textit{runner.sh}. This is a bash script that defines the simulation variables, iterates through different testing options and calls \textit{main.sh}. This later file calls each of the modules of the algorithm that are in charge of simulating the network, generating cascades, parallelizing NetRate and obtaining results.\\
+
+The first module that is executed is the \textit{izhikevichNetworkSimulation.py} script. It uses the Brian simulator to generate a network based on the equations in \ref{eq:izhikevich_ode}. It randomizes the connections between the neurons and applies a defined input stimulus to the system. Finally, the script outputs three csv files containing the network weights, the firing times and the indices of the neurons that fired.\\
+
+After the network and spiking data is simulated, the next step is to generate the cascades. Given a cascade generation option, \textit{generate\_cascades.py} will produce these sets of spikes for NetRate to use. This script is also in charge of creating the \textit{A\_bad} and \textit{A\_potential} matrices. These contain the survival and hazard functions from step 2 in \ref{fig:diagram_parallelization}. Moreover, it also creates a vector containing the number of firings each of the neurons has in the set of cascades. \\
+
+The script \textit{initial\_time.py} is a very simple program that starts measuring the time it takes for NetRate to infer the network. It stores the time in a pickle file that is latter opened in \textit{compare\_network.py}. This is used to test NetRate's parallelization performance.\\
+
+The main module of the algorithm starts with \textit{parallelize\_cvx.py}. Given the number of processors, this python script is in charge of opening several MATLAB instances and telling each of them which nodes to compute NetRate on. This is done by calling several times (the number of processors) the function \textit{parallel\_cvx.m}. This function iterates through all the nodes assigned to its given processor and calls \textit{solve\_using\_cvx.m}, the actual NetRate function that defines the optimization problem using the \textit{A\_bad} and \textit{A\_potential} matrices, and the number of firings vector from \textit{generate\_cascades.py}.
+Every time \textit{parallel\_cvx.m} has finished with one node, it outputs a \textit{csv} file containing the estimated weights from that node. All of these files are then rejoined in \textit{compare\_network.py} and compared to the ground truth. For this purpose, the MAE, accuracy, precision and recall performance metrics are used. The results are finally stored in a \textit{csv} file in its corresponding folder.
+
+
+\section{Folder architecture}
+
+Many files are used for this project. This is due to the large number of tasks that need to be carried out and that three different programming languages are used. Moreover, it is vital to keep track of all the output files from both the Brian Simulator and NetRate. Many different modalities of the algorithm can be run and they need to be stored in an organized manner. Moreover, once the simulation or the cascades have been generated, there is no need to recompute them again if they have been saved. Below is displayed the tree structure of the software package.
+
+
+\begin{forest}
+	for tree={font=\sffamily, grow'=0,
+	folder indent=.9em, folder icons,
+	edge=densely dotted}
+	[Network inference
+		[r
+			[network\_10\_nodes
+				[network\_stimulation\_random\_spikes\_stimulation\_time\_100\_4	
+				[cascades\_maximum\_cascades\_1.csv, is file]
+				[inferred\_network\_1.csv, is file]
+				[network\_1.csv, is file]
+				[firings\_1.csv, is file]
+				[indices\_1.csv, is file]
+				[results\_1.csv, is file]]]
+			[network\_20\_nodes]
+			[network\_30\_nodes]]
+		[Documentation]
+		[runner.sh, is file]
+		[main.sh, is file]
+		[izhikevichNetworkSimulation.py, is file]
+		[parallelize\_cvx.py, is file]
+		[parallel\_cvx.m, is file]
+		[solve\_using\_cvx.m, is file]
+		[compare\_networks.py, is file]
+		[generate\_cascades.py, is file]
+		[initial\_time.py, is file]
+	]
+\end{forest}
+
+
 \section{System requirements}
 
-The network inference algorithm has been run using a Linux operating system. Python's \texit{multiprocessing} library does not work on Windows. Moreover, the use of a linux terminal is required when using Windows because the algorithm makes use of bash scripts. Compatibility with MacOS can be achieved by translating these scripts. The necessary components of the algorithm can be found in table \ref{tab:requirements}.
+The Network Inference software has been run using a Linux operating system. Python's \textit{multiprocessing} library does not work on Windows. Moreover, the use of a linux terminal is required when using Windows because the algorithm makes use of bash scripts. Compatibility with MacOS can be achieved by translating these scripts. The necessary components of the algorithm can be found in table \ref{tab:requirements}.
 
 
 
-\begin{table}[]
+\begin{table}[H]
+\centering
 \begin{tabular}{|l|l|}
 \hline
 Component  & Version \\ \hline
@@ -33,25 +88,13 @@ matplotlib & 1.5.3   \\ \hline
 pandas     & 0.23.4  \\ \hline
 networks   & 2.2     \\ \hline
 \end{tabular}
+\caption{System requirements for the network inference software package}
+\label{tab:requirements}
 \end{table}
 
 
-\section{Folder architecture}
-
-\begin{forest}
-	for tree={font=\sffamily, %grow'=0,
-	folder indent=.9em, folder icons,
-	edge=densely dotted}
-	[main folder
-		[images, this folder size=20pt
-			[wallpapers]
-			[logo.pdf, is file]]
-		[tex-files
-			[chapter1.tex, is file]]
-		[main.tex, is file]
-		[main.aux, is file]
-	]
-\end{forest}
 
 
-\section{Usage}
+
+
+
