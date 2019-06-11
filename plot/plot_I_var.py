@@ -39,7 +39,7 @@ plot4 = plt.plot(4.018, 636878, color='r',marker='.', zorder=2, label='mouse dat
 plt.xlabel(r"$\displaystyle\alpha$")
 # plt.xlabel(r'\(\alpha}\)')
 plt.ylabel('number of spikes')
-plt.title('Number of spikes as a function of parameter I')
+plt.title(r"Number of spikes as a function of parameter $\displaystyle\alpha$")
 plt.legend()
 plt.grid()
 plt.xlim(0,None)

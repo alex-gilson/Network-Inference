@@ -35,9 +35,10 @@ Every time \textit{parallel\_cvx.m} has finished with one node, it outputs a \te
 
 \section{Folder architecture}
 
-Many files are used for this project. This is due to the large number of tasks that need to be carried out and that three different programming languages are used. Moreover, it is vital to keep track of all the output files from both the Brian Simulator and NetRate. Many different modalities of the algorithm can be run and they need to be stored in an organized manner. Moreover, once the simulation or the cascades have been generated, there is no need to recompute them again if they have been saved. Below is displayed the tree structure of the software package.
+Many files are used for this project. This is due to the large number of tasks that need to be carried out and that three different programming languages are used. Moreover, it is vital to keep track of all the output files from both the Brian Simulator and NetRate. Many different modalities of the algorithm can be run and they need to be stored in an organized manner. Moreover, once the simulation or the cascades have been generated, there is no need to recompute them again if they have been saved. In figure \ref{fig:folders} is displayed the tree structure of the software package.
 
 
+\begin{figure}
 \begin{forest}
 	for tree={font=\sffamily, grow'=0,
 	folder indent=.9em, folder icons,
@@ -66,6 +67,9 @@ Many files are used for this project. This is due to the large number of tasks t
 		[initial\_time.py, is file]
 	]
 \end{forest}
+\label{fig:folders}
+\caption{Folder architecture for the Network Inference software package}
+\end{figure}
 
 
 \section{System requirements}
