@@ -1,10 +1,11 @@
 
-function parallel_cvx(i, num_nodes, num_processors, horizon, type_diffusion, cascadesFileName, aBadFileName, aPotentialFileName, numCascadesFileName, aHatFileName)
+function parallel_cvx(i, num_nodes, num_processors, horizon, type_diffusion, cascadesFileName, aBadFileName, aPotentialFileName, numCascadesFileName, aHatFileName, numFiringsFileName)
 
 A_potential = csvread(aPotentialFileName);
 A_bad = csvread(aBadFileName);
 cascades = csvread(cascadesFileName);
 num_cascades = csvread(numCascadesFileName);
+num_firings = csvread(numFiringsFileName);
 % run('cvx_setup.m');
 % Number of nodes that each processor will compute
 % Matlab rounds integers by default
@@ -21,7 +22,7 @@ fprintf('\n');
 total_obj = 0;
 for n = nodes
 	fprintf('Computing node %i \n ', n);
-	if (num_cascades(n)==0)
+	if (num_firings(n)==0)
 		a_hat = zeros(num_nodes,1);
 		filename = aHatFileName + string(n) + '.csv';
 		csvwrite(filename, full(a_hat)); 
@@ -29,7 +30,8 @@ for n = nodes
 	end
 
 	tic
-	[a_hat, obj] = solve_using_cvx(n, type_diffusion, num_nodes, num_cascades, A_potential, A_bad, cascades);
+	% Inside solve_using_cvx, num_firings turns into num_cascades, don't want to change the code
+	[a_hat, obj] = solve_using_cvx(n, type_diffusion, num_nodes, num_firings, A_potential, A_bad, cascades);
 	stop=toc;
 
 	total_obj = total_obj + obj;
