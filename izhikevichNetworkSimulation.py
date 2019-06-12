@@ -20,15 +20,6 @@ indicesFileName=sys.argv[7]
 I_var=float(sys.argv[8])
 
 
-# seed=int(1)
-# N=int(50)
-# sparsity=float(0.1)
-# simulation_duration=int(5000)
-# networkFileName='network_50.csv'
-# firingsFileName='firings_50.csv'
-# indicesFileName='indices_50.csv'
-# I_var=4
-#
 # set the default seed
 devices.device.seed(seed)
 
@@ -87,7 +78,7 @@ while time < simulation_duration:
     # Select a random amount of time to stimulate the neuron
     stimulation_duration = int(round(200*np.random.rand(1)[0]))
 
-    # Beware of the difference between simulation and sTimulation
+    # Beware of the difference between simulation and stimulation
     if time + stimulation_duration > simulation_duration:
         stimulation_duration = simulation_duration - time
 

@@ -25,28 +25,6 @@ aHatFileName="${22}"
 timeFileName="${23}"
 numFiringsFileName="${24}"
 
-# echo -e seed $seed
-# echo -e num_nodes $num_nodes
-# echo -e sparsity $sparsity
-# echo -e duration$simulation_duration
-# echo -e network $networkFileName
-# echo -e firings $firingsFileName
-# echo -e indices$indicesFileName
-# echo -e results$resultsFileName
-# echo -e matlab $inferredNetworkFileName
-# echo -e diffusion type $diffusion_type
-# echo -e horizon $horizon
-# echo -e num_processors $num_processors
-# echo -e stimulation_type $stimulation_type
-# echo -e I_var $I_var
-# echo -e infer_network $infer_network
-# echo -e cascadesFileName $cascadesFileName
-# echo -e a_bad $aBadFileName
-# echo -e a_potential $aPotentialFileName
-# echo -e num_cascades $numCascadesFileName
-# echo -e cascade option$cascadeOption
-
-
 # Activate virtual environment
 . py27env/bin/activate
 
