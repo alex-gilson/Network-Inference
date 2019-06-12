@@ -15,12 +15,12 @@ The aim of this project is to improve on the state of the art research of networ
 
 In \cite{alexandru2018estimating}, the size of the studied networks ranged from 10 to 30 nodes with the exception of one experiment with 50 neurons. This was due to the fact that the algorithm is very computationally expensive and it takes a long time for it to provide results. NetRate can be parallelized by nature since it computes an optimization problem for each column in a matrix. However, it makes use of CVX, a package for specifying and solving convex programs \cite{cvx,gb08}. Until this date, CVX cannot be naturally parallelized from within MATLAB. \\
 
-In \cite{alexandru2018estimating}, a solution to this problem was attempted. Instead of using CVX, a different convex optimization package was employed, namely, CVXPY. This package was written for Python and could easily be parallelizable, so it was a good candidate for replacing CVX. However, solving the optimization problem involved the computation of a logarithmic function and most convex optimization packages are unable of doing so. They make use of successive approximation heuristic by which a polynomial approximation is input to the algorithm consecutively until the result converges. Unfortunately, this method is not used in CVXPY and, therefore, the output of the algorithm has a significantly poorer performance \cite{pranav_report}. \\
-
 In this project a novel approach is implemented where the algorithm can be parallelized and the size of the network that can be computed increased. Instead of attempting to parallelize CVX from within MATLAB, several MATLAB instances are run at the same time from the terminal and thus achieving parallelism. The aim of the project is, thus, to explain this approach and to measure accurately how much faster the algorithm is with different sizes of networks. 
 
 \subsection{Inferring the connectivity of a real dataset}
 
-A simulation that resembles more the behaviour of a network in a real world scenario provides a more meaningful insight to the performance of the algorithm on real brain tissue recordings. For this experiment, a dataset of real spiking activity from the brain is selected and simulated neural model is devised to imitate it. 
+The objective of testing the algorithm on simulated networks is to eventually be able to use it on real spiking data. The information obtained from such an experiment would help researchers in their study of the brain. 
+
+A simulation that resembles more the behaviour of a network in a real world scenario provides a more meaningful insight to the performance of the algorithm on real brain tissue recordings. Moreover, it allows to test whether the Network Inference algorithm would still work under the conditions seen in the real dataset. For this project, such a simulation is computed and the connections within a real neural network are estimated.
 
 \section{Project structure}

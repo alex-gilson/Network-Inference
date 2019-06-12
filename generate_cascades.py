@@ -1,6 +1,5 @@
 import sys
 import csv
-import scipy.io
 import numpy as np
 
 N = int(sys.argv[1])
