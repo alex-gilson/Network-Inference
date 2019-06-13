@@ -1,38 +1,27 @@
 import csv
 import numpy as np
-
-TRAIN_TEST_SPLIT = 50
-
-indicesFileName = "/home/alex/Documents/Final-Year-Project/r/network_10_nodes/network_stimulation_random_spikes_stimulation_time_100_4/indices_1.csv"
-firingsFileName = "/home/alex/Documents/Final-Year-Project/r/network_10_nodes/network_stimulation_random_spikes_stimulation_time_100_4/firings_1.csv"
-
-indices = []
-firings = []
-
-with open(indicesFileName, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',')
-    for row in reader:
-        indices.append(row)
-
-with open(firingsFileName, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',')
-    for row in reader:
-        firings.append(row)
+import sys
 
 
-spikes = []
+testIndicesFileName = str(sys.argv[1])
+testFiringsFileName = str(sys.argv[2])
+networkFileName = str(sys.argv[3])
+N = int(sys.argv[4])
 
-# Flatten the firing times from each of the neurons
-firings = np.array([item for sublist in firings for item in sublist]).astype(float)
+test_firings = np.genfromtxt(testFiringsFileName, delimiter=",")
+test_indices = np.genfromtxt(testIndicesFileName, delimiter=",").astype(int)
+S = np.zeros((N,N))
 
-# Flatten the firing times from each of the neurons
-indices = np.array([item for sublist in indices for item in sublist]).astype(float)
+original_network=[[],[],[]]
+with open(networkFileName, 'r') as csvfile:
+	spamreader = csv.reader(csvfile, delimiter=',')
+	for row in spamreader:
+            original_network[0].append(row[0])
+            original_network[1].append(row[1])
+            original_network[2].append(float(row[2]))
 
-# Order the firings and indices chronologically
-sort_idx = np.argsort(firings)
-firings = np.array([firings[sort_idx[i]] for i in range(len(firings))])
-indices = np.array([indices[sort_idx[i]] for i in range(len(indices))]).astype(int)
+for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
+    S[int(i),int(j)] = k;
 
-time_cuttoff = len(firings)*(TRAIN_TEST_SPLIT/100)
+current_neuron = test_indices[0]
 import pdb; pdb.set_trace()
-

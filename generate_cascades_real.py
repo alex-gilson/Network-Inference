@@ -2,9 +2,23 @@ import scipy.io
 import numpy as np
 import os
 
-d = 4   # Dataset number
+dataset = int(sys.argv[1])
+indicesFileName = str(sys.argv[2])
+firingsFileName = str(sys.argv[3])
+diffusion_type = str(sys.argv[4])
+horizon = int(sys.argv[5])
+simulation_duration = int(sys.argv[6])*1000
+cascadesFileName = str(sys.argv[7])
+aBadFileName = str(sys.argv[8])
+aPotentialFileName = str(sys.argv[9])
+numCascadesFileName = str(sys.argv[10])
+cascadeOption = str(sys.argv[11])
+numFiringsFileName = str(sys.argv[12])
+
+
+n = 4   # Dataset number
 # Load the data
-filename = 'CRCNS/data/DataSet' + str(d) + '.mat'
+filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
 data = scipy.io.loadmat(filename)['data']
 NUMBER_NEURONS = data['nNeurons'][0][0][0][0]
 N = NUMBER_NEURONS
@@ -19,25 +33,6 @@ A_potential = np.zeros((N,N));
 A_bad = np.zeros((N,N));
 A_hat = np.zeros((N,N));
 
-spikes = []
-
-# This is needed to create a firings and indices file
-for i in range(0,NUMBER_NEURONS):
-    spikes.append(data['spikes'][0][0][i][0][0])
-
-# Flatten the firing times from each of the neurons
-firings = [item for sublist in spikes for item in sublist]
-
-# Create the indices where each row is a different index
-indices = [[i+1]*len(spikes[i]) for i in range(len(spikes))]
-
-# Flatten the indices from each of the spikes
-indices = [item for sublist in indices for item in sublist]
-
-# Order the firings and indices chronologically
-sort_idx = np.argsort(firings)
-firings = [firings[sort_idx[i]] for i in range(len(firings))]
-indices = [indices[sort_idx[i]] for i in range(len(indices))]
 
 
 n = 0
