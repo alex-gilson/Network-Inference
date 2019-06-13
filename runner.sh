@@ -2,9 +2,9 @@
 # simulation_times=(1)
 # simulation_times=(5000 4500)
 # simulation_times=(2000 2500 3000)
-simulation_times=(500 1000 1500 2000)
+simulation_times=(250 300 350 400 450)
 num_nodes=(10)
-num_processors=(3)
+num_processors=(2)
 stimulation_type=random_spikes
 diffusion_type=rayleigh
 I_var=4
@@ -38,12 +38,13 @@ do
 				numCascadesFileName="${folderName}num_cascades_${cascadeOption}_$s.csv"
 				aHatFileName="${folderName}a_hat_"
 				timeFileName="${folderName}initial_time.pickle"
+				numFiringsFileName="${folderName}num_firings_${cascadeOption}_$s.csv"
 
-				bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredNetworkFileName $diffusion_type $horizon $i $stimulation_type $I_var $infer_network $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $repeat $aHatFileName $timeFileName
+				bash main.sh $s $n $sparsity $j $networkFileName $firingsFileName $indicesFileName $resultsFileName $inferredNetworkFileName $diffusion_type $horizon $i $stimulation_type $I_var $infer_network $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $repeat $aHatFileName $timeFileName $numFiringsFileName
 
 			done
 		done
 	done
 done
 
-poweroff
+# poweroff

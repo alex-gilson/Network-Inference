@@ -23,6 +23,7 @@ cascadeOption="${20}"
 repeat="${21}"
 aHatFileName="${22}"
 timeFileName="${23}"
+numFiringsFileName="${24}"
 
 # echo -e seed $seed
 # echo -e num_nodes $num_nodes
@@ -66,7 +67,7 @@ then
 
 		echo -e "Generating cascades..."
 
-		python generate_cascades.py $num_nodes $indicesFileName $firingsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption
+		python generate_cascades.py $num_nodes $indicesFileName $firingsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName
 
 	else
 		echo -e Found cascade files
@@ -77,16 +78,11 @@ then
 
 	echo -e "Computing Netrate..." 
 
-	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName
+	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName
 
 	echo -e "Processing results..."
 
 	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors $timeFileName $cascadeOption
-
-
-	# echo -e "Calculating elapsed time..."
-  #
-	# python final_time.py $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $num_processors $diffusion_type $stimulation_type 
 
 	rm $timeFileName 
 

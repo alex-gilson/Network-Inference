@@ -1,6 +1,5 @@
 import sys
 import csv
-import scipy.io
 import numpy as np
 
 N = int(sys.argv[1])
@@ -14,6 +13,7 @@ aBadFileName = str(sys.argv[8])
 aPotentialFileName = str(sys.argv[9])
 numCascadesFileName = str(sys.argv[10])
 cascadeOption = str(sys.argv[11])
+numFiringsFileName = str(sys.argv[12])
 
 indices = []
 firings = []
@@ -30,6 +30,7 @@ with open(firingsFileName, 'r') as csvfile:
 
 
 num_cascades = np.zeros(N);
+num_firings = np.zeros(N);
 A_potential = np.zeros((N,N));
 A_bad = np.zeros((N,N));
 A_hat = np.zeros((N,N));
@@ -132,7 +133,8 @@ for c in range(len(cascades)):
         
         # num_cascades stores the amount of times each node has generated a cascade
         # num_cascades = [np.bincount(cascades.T[k].astype(int)+1)[1] for k in range(cascades.shape[1])]
-        num_cascades[idx[order[i]]] = num_cascades[idx[order[i]]] + 1
+        num_firings[idx[order[i]]] = num_firings[idx[order[i]]] + 1
+        num_cascades = [len(np.where(cascades.T[k] == 0)[0]) for k in range(N)]
 
         for j in range(i-1):
             
@@ -164,12 +166,9 @@ np.savetxt(aPotentialFileName, A_potential, delimiter=",")
 np.savetxt(aBadFileName, A_bad, delimiter=",")
 np.savetxt(cascadesFileName, cascades, delimiter=",")
 np.savetxt(numCascadesFileName, num_cascades, delimiter=",")
-
+np.savetxt(numFiringsFileName, num_firings, delimiter=",")
 
 print('Finished generating cascades')
-
-
-
 
 
 

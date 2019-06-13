@@ -1,9 +1,26 @@
 
 \chapter{Introduction}
 
-The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. However, little is known about how it works. By studying how the neurons structure to store and process information we can understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and epilepsy \cite{PONTEN2007918}, and in machine learning for the development of more intelligent neural networks.\\
+The brain is a complex machine, it allows the human being to think, communicate and feel. It does so thanks to the billions of neurons that communicate in a dense network through synapses. Simple interactions between neurons build large structures of complex intelligence. However, little is known about how it works. By studying how the neurons structure to store and process information we can begin to understand how the brain as a whole functions. This could have important applications in medicine for curing diseases such as Parkinson \cite{OldeDubbelinkKimT.E.2014Dbnt} and epilepsy \cite{PONTEN2007918}, and in machine learning for the development of more intelligent neural networks.\\
 
-In order to infer the network structure of a set of neurons, they are treated as a diffusion network where electrical spikes increase the likelihood of connected neurons to spike and therefore transmit a signal that travels as if it were a disease. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the relationship between all of the neurons, an estimate of the topology of the network can be obtained. \\
+In order to infer the network structure of a set of neurons, they are treated as a diffusion network. In this scenario, a neuron's likelihood of spiking is increased if it is connected to another neuron that has spiked in the past. This is similar to the transmission of a disease where an infection (signal) is propagated within a population of transmitters. By evaluating the time of "infection", the relationship between two neurons can be probabilistically estimated. After computing the connections between all the neurons, an estimate of the topology of the network can be obtained. \\
 
 Previous work on this topic \cite{pranav_report, alexandru2018estimating} evaluated the feasibility of using a maximum-likelihood estimator algorithm, NetRate \cite{rodriguez2011uncovering}, for the inference of the structure of biological neural networks. A network was simulated using the Izhikevic neuron model \cite{izhikevich2003simple} and the Brian simulator \cite{10.3389/neuro.01.026.2009}. The connections between the neurons were then estimated, compared to the original network and the performance of the algorithm was evaluated. Recent developments in technology now allow scientists to obtain individual neuron spike information from the brain tissue \cite{ito2016spontaneous, ito2014large, litke2004does}. This data is very useful and serves as a mean of evaluating the performance of the algorithm with real neurons. Moreover, this information can help in creating simulated networks that resemble more the real biological ones.
 
+\section{Motivations}
+
+The aim of this project is to improve on the state of the art research of network inference and the understanding of the underlying structure of the brain. There are many ways in which this can be done such as scalability, increasing the similarity between simulated and real neural networks or changing NetRate so that it is more adapted to the problem at hand. Ultimately, the goal is to employ the algorithm on real spiking recordings and make topology estimations out of them. For this project, some of these objectives will be attempted and evaluated.
+
+\subsection{Increasing the speed of the algorithm}
+
+In \cite{alexandru2018estimating}, the size of the studied networks ranged from 10 to 30 nodes with the exception of one experiment with 50 neurons. This was due to the fact that the algorithm is very computationally expensive and it takes a long time for it to provide results. NetRate can be parallelized by nature since it computes an optimization problem for each column in a matrix. However, it makes use of CVX, a package for specifying and solving convex programs \cite{cvx,gb08}. Until this date, CVX cannot be naturally parallelized from within MATLAB. \\
+
+In this project a novel approach is implemented where the algorithm can be parallelized and the size of the network that can be computed increased. Instead of attempting to parallelize CVX from within MATLAB, several MATLAB instances are run at the same time from the terminal and thus achieving parallelism. The aim of the project is, thus, to explain this approach and to measure accurately how much faster the algorithm is with different sizes of networks. 
+
+\subsection{Inferring the connectivity of a real dataset}
+
+The objective of testing the algorithm on simulated networks is to eventually be able to use it on real spiking data. The information obtained from such an experiment would help researchers in their study of the brain. 
+
+A simulation that resembles more the behaviour of a network in a real world scenario provides a more meaningful insight to the performance of the algorithm on real brain tissue recordings. Moreover, it allows to test whether the Network Inference algorithm would still work under the conditions seen in the real dataset. For this project, such a simulation is computed and the connections within a real neural network are estimated.
+
+\section{Project structure}

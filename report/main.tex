@@ -50,7 +50,7 @@
 		([xshift=\forestregister{folder indent}]!u.parent anchor) |- (.child anchor)},
 		inner sep=1pt},
 		this folder size/.style={edge path'/.expanded={%
-		([xshift=\forestregister{folder indent}]!u.parent anchor) |- (.child anchor) pic[solid]{folder=#1}}, inner ysep=0.6*#1},
+		([xshift=\forestregister{folder indent}]!u.parent anchor) |- (.child anchor) pic[solid]{folder=#1}}, inner xsep=0.6*#1},
 		folder tree indent/.style={before computing xy={l=#1}},
 		folder icons/.style={folder, this folder size=#1, folder tree indent=3*#1},
 		folder icons/.default={12pt},
