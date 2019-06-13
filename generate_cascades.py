@@ -1,6 +1,7 @@
 import sys
 import csv
 import numpy as np
+import scipy.io
 
 N = int(sys.argv[1])
 indicesFileName = str(sys.argv[2])
@@ -14,19 +15,45 @@ aPotentialFileName = str(sys.argv[9])
 numCascadesFileName = str(sys.argv[10])
 cascadeOption = str(sys.argv[11])
 numFiringsFileName = str(sys.argv[12])
+dataset = int(sys.argv[13])
 
-indices = []
-firings = []
 
-with open(indicesFileName, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',')
-    for row in reader:
-        indices.append(row)
+# Simulated data
+if dataset == 0:
 
-with open(firingsFileName, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',')
-    for row in reader:
-        firings.append(row)
+    indices = []
+    firings = []
+
+    with open(indicesFileName, 'r') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',')
+        for row in reader:
+            indices.append(row)
+
+    with open(firingsFileName, 'r') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',')
+        for row in reader:
+            firings.append(row)
+
+    # Flatten the firing times from each of the neurons
+    firings = np.array([item for sublist in firings for item in sublist]).astype(float)
+
+    # Flatten the firing times from each of the neurons
+    indices = np.array([item for sublist in indices for item in sublist]).astype(float)
+
+    # Order the firings and indices chronologically
+    sort_idx = np.argsort(firings)
+    firings = np.array([firings[sort_idx[i]] for i in range(len(firings))])
+    indices = np.array([indices[sort_idx[i]] for i in range(len(indices))]).astype(int)
+    cascades = np.ones((int(simulation_duration/horizon),N))*(-1)
+
+# Real data
+else:
+
+    firings = np.genfromtxt(firingsFileName, delimiter=',')
+    indices = np.genfromtxt(indicesFileName, delimiter=',').astype(int)
+    filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
+    N = scipy.io.loadmat(filename)['data']['nNeurons'][0][0][0][0]
+    cascades = np.ones((int(3600000/horizon),N))*(-1)
 
 
 num_cascades = np.zeros(N);
@@ -35,27 +62,10 @@ A_potential = np.zeros((N,N));
 A_bad = np.zeros((N,N));
 A_hat = np.zeros((N,N));
 
-spikes = []
-
-# Flatten the firing times from each of the neurons
-firings = np.array([item for sublist in firings for item in sublist]).astype(float)
-
-# Flatten the firing times from each of the neurons
-indices = np.array([item for sublist in indices for item in sublist]).astype(float)
-
-# Order the firings and indices chronologically
-sort_idx = np.argsort(firings)
-firings = np.array([firings[sort_idx[i]] for i in range(len(firings))])
-indices = np.array([indices[sort_idx[i]] for i in range(len(indices))]).astype(int)
-
-# The addition is to keep consistency of indices with the real dataset
-# indices = indices + 1
-
 n = 0
 m = 0
 x = 0
 start = firings[n]
-cascades = np.ones((int(simulation_duration/horizon),N))*(-1)
 
 if cascadeOption == 'maximum_cascades' or cascadeOption == 'maximum_independence': 
 
@@ -81,7 +91,7 @@ if cascadeOption == 'maximum_cascades' or cascadeOption == 'maximum_independence
 
         firings_in_window = [firings[i] for i in index]
         firings_in_window = firings_in_window - start
-        indices_in_window = [indices[i] for i in index]
+        indices_in_window = np.array([indices[i] for i in index])
 
         # initialise a cascade, non-fired with -1; assume all non-fired
         current_cascade = np.ones(N)*(-1)

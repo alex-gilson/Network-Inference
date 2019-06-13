@@ -1,11 +1,11 @@
 
 num_nodes=10
 num_processors=(2)
-train_test_split=50
+train_test_split=70
 dataset=4
 diffusion_type=rayleigh
 stimulation_type=random_spikes
-simulation_times=(10)
+simulation_times=(15)
 horizon=20
 seeds=(1)
 infer_network=1
@@ -20,16 +20,19 @@ do
 	do
 		for s in ${seeds[*]}
 		do
-			 mkdir -p r/no_ground_truth/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
 			for i in ${num_processors[*]}
 			do
 				echo "Dataset: $dataset, Train test split: $train_test_split, Number of processors: $num_processors, Seed $s:"
-				folderName=r/no_ground_truth/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
+				if (($dataset == 0))
+				then
+					folderName=r/no_ground_truth/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
+				else
+					folderName=r/no_ground_truth/CRCNS_${dataset}/train_test_split_${train_test_split}/
+				fi
+				mkdir -p $folderName
 				indicesFileName="${folderName}indices_$s.csv"
 				firingsFileName="${folderName}firings_$s.csv"
 				networkFileName="${folderName}network_$s.csv"
-				# indicesFileName="/home/alex/Documents/Final-Year-Project/r/network_10_nodes/network_stimulation_random_spikes_stimulation_time_100_4/indices_1.csv"
-				# firingsFileName="/home/alex/Documents/Final-Year-Project/r/network_10_nodes/network_stimulation_random_spikes_stimulation_time_100_4/firings_1.csv"
 				trainIndicesFileName="${folderName}train_indices_${train_test_split}_$s.csv"
 				testIndicesFileName="${folderName}test_indices_${train_test_split}_$s.csv"
 				trainFiringsFileName="${folderName}train_firings_${train_test_split}_$s.csv"
@@ -44,7 +47,7 @@ do
 				timeFileName="${folderName}initial_time.pickle"
 				numFiringsFileName="${folderName}num_firings_${cascadeOption}_${train_test_split}_$s.csv"
 
-				bash main_real.sh $s $train_test_split $indicesFileName $firingsFileName $networkFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $resultsFileName $inferredNetworkFileName $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $diffusion_type $num_nodes $sparsity $horizon $j $I_var $cascadeOption
+				bash main_real.sh $s $train_test_split $indicesFileName $firingsFileName $networkFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $resultsFileName $inferredNetworkFileName $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $diffusion_type $num_nodes $sparsity $horizon $j $I_var $cascadeOption $dataset $num_processors
 
 			done
 		done

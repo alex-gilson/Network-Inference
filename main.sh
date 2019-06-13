@@ -28,6 +28,7 @@ numFiringsFileName="${24}"
 # Activate virtual environment
 . py27env/bin/activate
 
+# It's a simulated network
 if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]
 then
 	python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName $I_var
@@ -45,7 +46,7 @@ then
 
 		echo -e "Generating cascades..."
 
-		python generate_cascades.py $num_nodes $indicesFileName $firingsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName
+		python generate_cascades.py $num_nodes $indicesFileName $firingsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName 0 
 
 	else
 		echo -e Found cascade files
@@ -56,7 +57,7 @@ then
 
 	echo -e "Computing Netrate..." 
 
-	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName
+	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName 0 
 
 	echo -e "Processing results..."
 

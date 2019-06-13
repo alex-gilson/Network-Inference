@@ -23,31 +23,44 @@ horizon=${21}
 simulation_duration=${22}
 I_var=${23}
 cascadeOption=${24}
+dataset=${25}
+num_processors=${26}
 
 # Activate virtual environment
 . py27env/bin/activate
 
-if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]
+if (($dataset == 0))
 then
-	python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName $I_var
+	if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]
+	then
+		python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName $I_var
 
-else
-	echo -e "Found Brian Simulator files"
+	else
+		echo -e "Found Brian Simulator files"
+	fi
 fi
 
-python train_test_splitter.py $train_test_split $indicesFileName $firingsFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName 
+python train_test_splitter.py $train_test_split $indicesFileName $firingsFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $dataset
 
 if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ]
 then
 
 	echo -e "Generating cascades..."
 
-	python generate_cascades.py $num_nodes $trainIndicesFileName $trainFiringsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName
+	python generate_cascades.py $num_nodes $trainIndicesFileName $trainFiringsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName $dataset
 
 else
 	echo -e Found cascade files
 fi
 
-python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes
+	echo -e "Computing Netrate..." 
+
+	echo $num_processors
+	echo $num_nodes
+	echo $horizon
+
+	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
+
+# python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes
 
 
