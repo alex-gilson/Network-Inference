@@ -16,7 +16,6 @@ cascadeOption = str(sys.argv[11])
 numFiringsFileName = str(sys.argv[12])
 
 
-n = 4   # Dataset number
 # Load the data
 filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
 data = scipy.io.loadmat(filename)['data']
@@ -33,6 +32,25 @@ A_potential = np.zeros((N,N));
 A_bad = np.zeros((N,N));
 A_hat = np.zeros((N,N));
 
+spikes = []
+
+# This is needed to create a firings and indices file
+for i in range(0,NUMBER_NEURONS):
+    spikes.append(data['spikes'][0][0][i][0][0])
+
+    # Flatten the firing times from each of the neurons
+    firings = [item for sublist in spikes for item in sublist]
+
+    # Create the indices where each row is a different index
+    indices = [[i+1]*len(spikes[i]) for i in range(len(spikes))]
+
+    # Flatten the indices from each of the spikes
+    indices = [item for sublist in indices for item in sublist]
+
+    # Order the firings and indices chronologically
+    sort_idx = np.argsort(firings)
+    firings = [firings[sort_idx[i]] for i in range(len(firings))]
+    indices = [indices[sort_idx[i]] for i in range(len(indices))]
 
 
 n = 0

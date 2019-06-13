@@ -4,6 +4,7 @@ from multiprocessing import Pool
 from functools import partial
 import numpy as np
 import sys
+import scipy.io
 
 num_processors = int(sys.argv[1])
 num_nodes = int(sys.argv[2])
@@ -15,8 +16,13 @@ aPotentialFileName = str(sys.argv[7])
 numCascadesFileName = str(sys.argv[8])
 aHatFileName = str(sys.argv[9])
 numFiringsFileName = str(sys.argv[10])
+dataset = int(sys.argv[11])
 
 
+if dataset != 0:
+    filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
+    num_nodes = scipy.io.loadmat(filename)['data']['nNeurons'][0][0][0][0]
+    
 # Algorithm to distribute nodes between processors as a function of the number of cascades
 processor_list = []
 num_cascades = np.loadtxt(numCascadesFileName,delimiter=',').astype(int)
