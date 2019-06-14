@@ -1,15 +1,15 @@
 
-# simulation_times=(1)
+simulation_times=(1 2 4 6 8 10)
 # simulation_times=(5000 4500)
 # simulation_times=(2000 2500 3000)
-simulation_times=(1 2 3 4 5 6 7 8 9 11 12 13 14 16 17 18 19)
-num_nodes=(10 20)
+# simulation_times=(1 2 3 4 5 6 7 8 9 11 12 13 14 16 17 18 19)
+num_nodes=(5 10 15)
 num_processors=(2)
 stimulation_type=random_spikes
 diffusion_type=rayleigh
 I_var=4
 horizon=20
-seeds=(1)
+seeds=(1 2 3 4 5 6 7 8 9 10)
 # seeds=1
 sparsity=(0.1)
 infer_network=1
@@ -24,11 +24,11 @@ do
 	do
 		for s in ${seeds[*]}
 		do
-			mkdir -p r/sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
+			mkdir -p r/sim_times_2/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}
 			for i in ${num_processors[*]}
 			do
 				echo "Number of nodes: $num_nodes, Simulation Time: $j, Number of processors: $num_processors, Seed $s:"
-				folderName=r/sim_times/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
+				folderName=r/sim_times_2/network_${n}_nodes/network_stimulation_${stimulation_type}_stimulation_time_${j}_${I_var}/
 				indicesFileName="${folderName}indices_$s.csv"
 				firingsFileName="${folderName}firings_$s.csv"
 				networkFileName="${folderName}network_$s.csv"

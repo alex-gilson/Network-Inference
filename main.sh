@@ -31,7 +31,7 @@ numFiringsFileName="${24}"
 # It's a simulated network
 if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]
 then
-	python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName $I_var
+	python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName $I_var $stimulation_type
 
 else
 	echo -e "Found Brian Simulator files"
@@ -55,17 +55,17 @@ then
 	# Get current time and store it into a pickle file
 	python initial_time.py $timeFileName
 
-	echo -e "Computing Netrate..." 
+ 	echo -e "Computing Netrate..." 
 
-	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName 0 
+ 	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName 0 
 
-	echo -e "Processing results..."
+ 	echo -e "Processing results..."
 
-	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors $timeFileName $cascadeOption
+ 	python compare_networks.py 1 $aHatFileName $resultsFileName $seed $num_nodes $sparsity $networkFileName $firingsFileName $indicesFileName $inferredNetworkFileName $horizon $diffusion_type $stimulation_type $num_processors $timeFileName $cascadeOption
 
-	rm $timeFileName 
+ 	rm $timeFileName 
 
-	echo "Results are available at '$resultsFileName'"
+ 	echo "Results are available at '$resultsFileName'"
 
 fi
 

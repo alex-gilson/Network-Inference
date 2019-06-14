@@ -57,7 +57,7 @@ else
 	echo -e Found cascade files
 fi
 
-echo -e "Computing Netrate..." 
+# echo -e "Computing Netrate..." 
 
 # python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
 

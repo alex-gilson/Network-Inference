@@ -18,6 +18,7 @@ networkFileName=sys.argv[5]
 firingsFileName=sys.argv[6]
 indicesFileName=sys.argv[7]
 I_var=float(sys.argv[8])
+stimulation_type=str(sys.argv[9])
 
 
 # set the default seed
@@ -31,16 +32,29 @@ indices=[]
 
 tau=1*ms
 
-eqs= '''
-dv/dt = (0.04*v*v + 5*v + 140 - u + I + stimulation)/tau : 1
-du/dt = (a*(b*v-u))/tau : 1
-I = 0*randn() : 1 (constant over dt)
-a:1
-b:1
-c:1
-d:1
-stimulation:1
-'''
+if stimulation_type == 'random_spikes':
+    eqs= '''
+    dv/dt = (0.04*v*v + 5*v + 140 - u + I + stimulation)/tau : 1
+    du/dt = (a*(b*v-u))/tau : 1
+    I = 0*randn() : 1 (constant over dt)
+    a:1
+    b:1
+    c:1
+    d:1
+    stimulation:1
+    '''
+
+if stimulation_type == 'dc_input':
+    eqs= '''
+    dv/dt = (0.04*v*v + 5*v + 140 - u + I + stimulation)/tau : 1
+    du/dt = (a*(b*v-u))/tau : 1
+    I = 12*randn() : 1 (constant over dt)
+    a:1
+    b:1
+    c:1
+    d:1
+    stimulation:1
+    '''
 
 threshold='v>30'
 
@@ -62,39 +76,62 @@ S = Synapses(G, G, 'w:1', on_pre='v_post += w')
 S.connect(condition='i!=j', p=sparsity)
 S.w='30*rand()'
 
-# reset v and u values
-G.v=-65
-G.u=G.b*G.v
+if stimulation_type == 'random_spikes':
+    # reset v and u values
+    G.v=-65
+    G.u=G.b*G.v
 
-time = 0
+    time = 0
 
-# run the stimulation N number of times
-# at each iteration, stimulate a different node
-while time < simulation_duration:
-    
-    # Select a random neuron from the system to stimulate
-    stimulated_node = int(round((N-1)*np.random.rand(1)[0]))
+    # run the stimulation N number of times
+    # at each iteration, stimulate a different node
+    while time < simulation_duration:
+        
+        # Select a random neuron from the system to stimulate
+        stimulated_node = int(round((N-1)*np.random.rand(1)[0]))
 
-    # Select a random amount of time to stimulate the neuron
-    stimulation_duration = int(round(200*np.random.rand(1)[0]))
+        # Select a random amount of time to stimulate the neuron
+        stimulation_duration = int(round(200*np.random.rand(1)[0]))
 
-    # Beware of the difference between simulation and stimulation
-    if time + stimulation_duration > simulation_duration:
-        stimulation_duration = simulation_duration - time
+        # Beware of the difference between simulation and stimulation
+        if time + stimulation_duration > simulation_duration:
+            stimulation_duration = simulation_duration - time
 
-    time = time + stimulation_duration
+        time = time + stimulation_duration
 
-    # only stimulate 1 node with the absolute value of a normal distribution
-    G.stimulation = 0
-    G.stimulation[stimulated_node] = I_var*abs(np.random.randn(1)[0])
+        # only stimulate 1 node with the absolute value of a normal distribution
+        G.stimulation = 0
+        G.stimulation[stimulated_node] = I_var*abs(np.random.randn(1)[0])
 
-    spikemon = SpikeMonitor(G)
+        spikemon = SpikeMonitor(G)
 
-    run(stimulation_duration*ms)
+        run(stimulation_duration*ms)
 
-    # store firings and indices
-    firings.append(list(spikemon.t/ms))
-    indices.append(list(spikemon.i))
+        # store firings and indices
+        firings.append(list(spikemon.t/ms))
+        indices.append(list(spikemon.i))
+
+if stimulation_type == 'dc_input':
+    # run the stimulation N number of times
+    # at each iteration, stimulate a different node
+    for stimulated_node in range(0,N):
+
+            # reset v and u values
+            G.v=-65
+            G.u=G.b*G.v
+
+            # only stimulate 1 node
+            G.stimulation = 0
+            G.stimulation[stimulated_node] = 3
+
+            spikemon = SpikeMonitor(G)
+
+            run(simulation_duration*ms)
+
+            # store firings and indices
+            indices.append(list(spikemon.i))
+            firings.append(list(spikemon.t/ms))
+
     
 
 # plot(M.t/ms, M.v[0])
