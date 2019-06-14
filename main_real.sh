@@ -40,7 +40,11 @@ then
 	fi
 fi
 
-python train_test_splitter.py $train_test_split $indicesFileName $firingsFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $dataset
+if [ ! -f $trainFiringsFileName ] || [ ! -f $trainIndicesFileName ] || [ ! -f $testFiringsFileName ] || [ ! -f $testIndicesFileName ]
+then
+
+	python train_test_splitter.py $train_test_split $indicesFileName $firingsFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $dataset
+fi
 
 if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ]
 then
@@ -53,13 +57,12 @@ else
 	echo -e Found cascade files
 fi
 
-	echo -e "Computing Netrate..." 
+echo -e "Computing Netrate..." 
 
-	echo $num_processors
-	echo $num_nodes
-	echo $horizon
+# python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
 
-	python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
+python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName
+
 
 # python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes
 
