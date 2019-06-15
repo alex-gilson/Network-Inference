@@ -1,18 +1,19 @@
 
-num_nodes=10
+num_nodes=5
 num_processors=(2)
 train_test_split=60
-dataset=4
+dataset=0
 diffusion_type=rayleigh
 stimulation_type=random_spikes
-simulation_times=(15)
+simulation_times=(1000)
 horizon=20
-seeds=(1)
+seeds=(4)
 infer_network=1
 sparsity=0.1
 cascadeOption=maximum_independence
 repeat=0
 I_var=4
+ground_truth=0
 
 for n in ${num_nodes[*]}
 do
@@ -47,7 +48,7 @@ do
 				timeFileName="${folderName}initial_time.pickle"
 				numFiringsFileName="${folderName}num_firings_${cascadeOption}_${train_test_split}_$s.csv"
 
-				bash main_real.sh $s $train_test_split $indicesFileName $firingsFileName $networkFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $resultsFileName $inferredNetworkFileName $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $diffusion_type $num_nodes $sparsity $horizon $j $I_var $cascadeOption $dataset $num_processors
+				bash main_real.sh $s $train_test_split $indicesFileName $firingsFileName $networkFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $resultsFileName $inferredNetworkFileName $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $diffusion_type $num_nodes $sparsity $horizon $j $I_var $cascadeOption $dataset $num_processors $stimulation_type
 
 			done
 		done

@@ -25,6 +25,7 @@ I_var=${23}
 cascadeOption=${24}
 dataset=${25}
 num_processors=${26}
+stimulation_type=${27}
 
 # Activate virtual environment
 . py27env/bin/activate
@@ -33,7 +34,7 @@ if (($dataset == 0))
 then
 	if [ ! -f $networkFileName ] || [ ! -f $firingsFileName ] || [ ! -f $indicesFileName ]
 	then
-		python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName $I_var
+		python izhikevichNetworkSimulation.py $seed $num_nodes $sparsity $simulation_duration $networkFileName $firingsFileName $indicesFileName $I_var $stimulation_type
 
 	else
 		echo -e "Found Brian Simulator files"
@@ -57,13 +58,13 @@ else
 	echo -e Found cascade files
 fi
 
-# echo -e "Computing Netrate..." 
+echo -e "Computing Netrate..." 
 
 # python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
 
-python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName
+# python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName $num_nodes
 
 
-# python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes
+python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes$horizon
 
 
