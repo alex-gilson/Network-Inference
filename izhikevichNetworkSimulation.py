@@ -108,8 +108,8 @@ if stimulation_type == 'random_spikes':
         run(stimulation_duration*ms)
 
         # store firings and indices
-        firings.append(list(spikemon.t/ms))
         indices.append(list(spikemon.i))
+        firings.append(list(spikemon.t/ms))
 
 if stimulation_type == 'dc_input':
     # run the stimulation N number of times
