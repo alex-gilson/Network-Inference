@@ -108,16 +108,18 @@ if cascadeOption == 'maximum_cascades' or cascadeOption == 'maximum_independence
         current_cascade = np.ones(N)*(-1)
 
         # first neuron to spike starts the cascade
-        current_cascade[indices_in_window[0]-1] = 0
+        current_cascade[indices_in_window[0]] = 0
 
         # update cascade based on the rest of the firings
         for k in range(len(indices_in_window)):
             
             # Only the first firing is taken into account
-            if current_cascade[indices_in_window[k]-1] == -1:
-                current_cascade[indices_in_window[k]-1] = firings_in_window[k]    
+            if current_cascade[indices_in_window[k]] == -1:
+                current_cascade[indices_in_window[k]] = firings_in_window[k]    
 
-        cascades.append(current_cascade)
+        if np.bincount(current_cascade.astype(int) + 1)[0] < N - 1:
+            cascades.append(current_cascade)
+        # cascades.append(current_cascade)
 
         # The index of the firing that starts the next cascade is the one following the last firing of this cascade 
         n = index[-1] + 1
@@ -162,6 +164,8 @@ if cascadeOption == 'dc_input':
                     current_cascade[int(firings_in_window[k,0])] = firings_in_window[k,1]
             
             cascades.append(current_cascade)
+
+    cascades = np.array(cascades)
 
 x = 0
 

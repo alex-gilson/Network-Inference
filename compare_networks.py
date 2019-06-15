@@ -55,6 +55,7 @@ for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
 for i in range(N):
     filename = aHatFileName + str(i+1) + '.csv'
     S_hat[i] = np.genfromtxt(filename, delimiter=',')
+import pdb; pdb.set_trace()
 
 # Transpose the inferred matrix
 S_hat = S_hat.T
@@ -95,7 +96,6 @@ accuracy = 1 - float(np.sum(np.logical_xor(S_boolean,S_hat_boolean)))/(np.sum(S_
 
 results = np.array([accuracy, mae, precision, recall])
 
-# np.savetxt("temporary/results.csv", results, delimiter=",")
 np.savetxt(inferredNetworkFileName, inferred_network, delimiter=",")
 
 print('MAE: ', mae)
@@ -109,8 +109,6 @@ initial_time = pickle.load(pickle_in)
 elapsed_time = str(datetime.timedelta(seconds=(final_time - initial_time)))
 pickle_in.close()
 
-# data = np.genfromtxt('temporary/results.csv', delimiter=',')
-# data = data[-1,:].reshape(-1,1)
 d = {'seed': [seed], 'num_nodes': [num_nodes], 'elapsed_time': [elapsed_time], 'num_processors': [num_processors],'accuracy': results[0], 'MAE': results[1], 'precision': results[2], 'recall': results[3], 'sparsity': [sparsity],  'horizon': [horizon],'diffusion_type':[diffusion_type], 'stimulation_mode': [stimulation_mode], 'date': [datetime.datetime.now().strftime("%Y-%m-%d %H:%M")], 'cascade_option': [cascadeOption]}
 df = pd.DataFrame(d)
 df.to_csv(resultsFileName, mode='a', header=True)
