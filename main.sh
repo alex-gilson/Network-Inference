@@ -41,19 +41,19 @@ if (($infer_network == 1))
 
 then
 
-	if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ] || (($repeat == 1))
-	then
+	# if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ] || (($repeat == 1))
+	# then
 
 		echo -e "Generating cascades..."
 
 		python generate_cascades.py $num_nodes $indicesFileName $firingsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName 0 
 
-	else
-		echo -e Found cascade files
-	fi
+	# else
+		# echo -e Found cascade files
+	# fi
 
 	# Get current time and store it into a pickle file
-	python initial_time.py $timeFileName
+	# python initial_time.py $timeFileName
 
  	echo -e "Computing Netrate..." 
 

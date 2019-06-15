@@ -117,8 +117,11 @@ if cascadeOption == 'maximum_cascades' or cascadeOption == 'maximum_independence
             if current_cascade[indices_in_window[k]-1] == -1:
                 current_cascade[indices_in_window[k]-1] = firings_in_window[k]    
 
-        cascades.append(current_cascade)
+        # Don't count the cascades where only one node fires
+        # if np.bincount(current_cascade.astype(int) + 1)[0] < N - 1:
+            # cascades.append(current_cascade)
 
+        cascades.append(current_cascade)
         # The index of the firing that starts the next cascade is the one following the last firing of this cascade 
         n = index[-1] + 1
 
@@ -160,9 +163,12 @@ if cascadeOption == 'dc_input':
                 # only the first one is considered
                 if current_cascade[int(firings_in_window[k,0])] == -1:
                     current_cascade[int(firings_in_window[k,0])] = firings_in_window[k,1]
-            
-            cascades.append(current_cascade)
 
+            # Don't count the cascades where only one node fires
+            # if np.bincount(current_cascade.astype(int) + 1)[0] < N - 1:
+                # cascades.append(current_cascade)
+        cascades.append(current_cascade)
+    cascades = np.array(cascades)
 x = 0
 
 # Iterate through all the cascades

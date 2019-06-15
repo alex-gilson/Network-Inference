@@ -57,11 +57,11 @@ else
 	echo -e Found cascade files
 fi
 
-# echo -e "Computing Netrate..." 
+echo -e "Computing Netrate..." 
 
-# python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
+python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
 
-python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName
+# python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName
 
 
 # python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes

@@ -1,18 +1,17 @@
 
-simulation_times=(1 2 4 6 8 10)
-# simulation_times=(5000 4500)
-# simulation_times=(2000 2500 3000)
-# simulation_times=(1 2 3 4 5 6 7 8 9 11 12 13 14 16 17 18 19)
-num_nodes=(5 10 15)
-num_processors=(2)
+# simulation_times=( 6 8 10)
+# simulation_times=(500 1000 1500 2000 2500 3000 3500 4000 4500)
+simulation_times=(3000 3500)
+# simulation_times=(2000 2500 3000 3500 4000 4500)
+num_nodes=(15)
+num_processors=(1)
 stimulation_type=random_spikes
 diffusion_type=rayleigh
 I_var=4
 horizon=20
-seeds=(1 2 3 4 5 6 7 8 9 10)
-# seeds=1
+seeds=(1 2 3 4)
 sparsity=(0.1)
-infer_network=1
+infer_network=0
 cascadeOption=maximum_independence
 repeat=0
 train_test_split=50
