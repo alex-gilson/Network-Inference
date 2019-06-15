@@ -62,6 +62,7 @@ else:
 
     firings = np.genfromtxt(firingsFileName, delimiter=',')
     indices = np.genfromtxt(indicesFileName, delimiter=',').astype(int)
+    indices = indices - 1
     filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
     N = scipy.io.loadmat(filename)['data']['nNeurons'][0][0][0][0]
 
