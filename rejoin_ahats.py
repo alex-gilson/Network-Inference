@@ -10,11 +10,13 @@ import networkx as nx
 dataset = int(sys.argv[1])
 aHatFileName = str(sys.argv[2])
 inferredNetworkFileName = str(sys.argv[3])
+N = int(sys.argv[4])
 
-filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
-N = scipy.io.loadmat(filename)['data']['nNeurons'][0][0][0][0]
-x_array = scipy.io.loadmat(filename)['data']['x'][0][0][0]
-y_array = scipy.io.loadmat(filename)['data']['y'][0][0][0]
+if dataset != 0:
+    filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
+    N = scipy.io.loadmat(filename)['data']['nNeurons'][0][0][0][0]
+    x_array = scipy.io.loadmat(filename)['data']['x'][0][0][0]
+    y_array = scipy.io.loadmat(filename)['data']['y'][0][0][0]
 
 
 S_hat = np.zeros((N,N))
@@ -36,22 +38,25 @@ S_hat = np.interp(S_hat, np.linspace(S_hat.min(),S_hat.max(),1000), np.linspace(
 
 # S_hat[np.where(S_hat < 5)] = 0
 
-DG = nx.DiGraph()
-
-for i in range(N):
-    DG.add_node(i, pos=(x_array[i], y_array[i]))
+if dataset != 0:
+    DG = nx.DiGraph()
+    for i in range(N):
+        DG.add_node(i, pos=(x_array[i], y_array[i]))
 
 inferred_network = []
 for i, row in enumerate(S_hat):
     for j, col in enumerate(row):
         if col != 0:
             inferred_network.append([int(i), int(j), col])
-            DG.add_weighted_edges_from([(int(j),int(i),col)])
+            if dataset != 0:
+                DG.add_weighted_edges_from([(int(j),int(i),col)])
 
+import pdb; pdb.set_trace()
 np.savetxt(inferredNetworkFileName, inferred_network, delimiter=",")
 
-pos=nx.get_node_attributes(DG,'pos')
-nx.draw(DG,pos, node_color='blue')
-plt.show()
+if dataset != 0:
+    pos=nx.get_node_attributes(DG,'pos')
+    nx.draw(DG,pos, node_color='blue')
+    plt.show()
 
 

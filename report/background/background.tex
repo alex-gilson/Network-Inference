@@ -217,7 +217,7 @@ As an example, let there be a network of 6 nodes ($N=6$) and a horizon of $T=20$
 Remember from Eq.\ref{eq:data_netrate} that the symbol $\infty $ represents a node that is not infected during the cascade. Nodes 2 and 6 were infected while nodes 1, 3 and 4 remained healthy for the duration of the cascade. Since at time $t=3$ the only infected node was 3, this node must have infected node 2. However, it becomes inconclusive as to which node infected 6 at time $t=6$. We could be lead to believe that the uninfected nodes are not connected to any of the other infected nodes. However, cascades are probabilistic models and no one cascade can tell us what the values of $\alpha_{j,i}$ are. We would, therefore, require a large number of cascades in order to infer those values with a high confidence. 
 
 
-\subsection{Performance metrics}
+\subsection{Performance metrics}\label{sec:performance_metrics}
 
 Evaluating the performance of NetRate involves analysing the inferred network $\hat G$: which edges have been correctly inferred, which ones have been missed and what weights have been assigned to the inferred edges. These questions are answered in \cite{rodriguez2011uncovering} by calculating the accuracy, precision, recall and MAE against the true network $G^{*}$:
 
