@@ -1,7 +1,7 @@
 
 \chapter{Inferring the connectivity of a mouse's neuronal system}
 
-In chapter 4 a neural network model was simulated to try and mimic the behaviour of the real network described in \ref{sec:mouse_resultsset}. A new input stimulus and two cascade generation methods were proposed. In this chapter, the suitability of these new methods will be proved by inferring the connectivity of the new simulation modality outlined in section \ref{sec:input_stimulus}. Moreover, the effect of the simulation duration and the network size on the performance of the algorithm will be assessed.\\
+In chapter 4 a neural network model was simulated to try and mimic the behaviour of the real network described in \ref{sec:mouse_dataset}. A new input stimulus and two cascade generation methods were proposed. In this chapter, the suitability of these new methods will be proved by inferring the connectivity of the new simulation modality outlined in section \ref{sec:input_stimulus}. Moreover, the effect of the simulation duration and the network size on the performance of the algorithm will be assessed.\\
 
 Once the suitability has been demonstrated, the same algorithm will be used to infer the connectivity of one of the networks from the CRCNS dataset. Further analysis of this structure will be carried out and its main characteristics will be described.\\
 
@@ -11,8 +11,36 @@ In order to evaluate the performance of the algorithm, the four metrics describe
 \section{Proof of the suitability of the model}
 
 
-
-
 \section{Effect of the size of the network and simulation time on the performance of NetRate}
 \section{Evaluating the performance without a ground truth}
-\section{Results}
+\section{Inference results}
+
+Once the suitability of the model and the algorithm has been proven, the connectivity of a biological neural network can be inferred. For consistency, the 98 neuron network analysed in section \ref{sec:mouse_dataset} will be the one evaluated. Due to the dataset being large enough, the \textit{optimal independence} method of cascade generation will be employed. As explained in section \ref{sec:optimal_independence}, this will achieve a higher quality set of cascades.\\
+
+When computing NetRate for a large dataset like the one at hand, the main constraint that the researcher has to deal with is memory. This is directly proportional to the number of cascades computed at any given moment. Therefore, if only one processor is being used, the constraint will be set by the node with the maximum number of cascades. For the current dataset and, using the \textit{optimal independence} method of cascade generation, this corresponds to neuron 12 with 7956 cascades. The computation of this node requires an array of size 18Gb but, with the resources at hand, such an operation is not possible. For this reason, the dataset is partitioned into a smaller set containing the first half of the spike recordings. If the system is assumed to be static for the whole length of the recording, then only the performance of NetRate could be affected by this split. The resulting maximum number of cascades is reduced to 5168, with the amount of memory required being lowered to 11Gb.\\
+
+In figure \ref{fig:crcns_4_network}, the resulting inferred network is displayed. Each of the nodes is represented by a circle whose connections are the lines adjacent to them. Since the network is directed, the edges are represented by arrows that indicate the source and target of the connections. Each of the nodes in the figure is coloured according to their degree. Nodes in directed networks can be described by their indegree and outdegree, or number of inward and outward connections, respectively. Red nodes have more inward connections and blue nodes more outward connections. If their inward and outward degree is the same, in the figure, these cancel out and their colour becomes purple, just like neurons that have no connections at all. \\
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{crcns_4_50_xy.pdf}
+	\caption{Inference of a biological neural network of 98 neurons}
+	\label{fig:crcns_4_network}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{degree_histogram_real_network.pdf}
+	\caption{Indegree and outdegree histogram of a biological neural network}
+	\label{fig:degree_histogram}
+\end{figure}
+
+An illustration of the degree of nodes in the network is shown in figure \ref{fig:degree_histogram}. 
+
+
+
+
+
+
+
+

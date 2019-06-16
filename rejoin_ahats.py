@@ -70,8 +70,8 @@ if plot:
     # Plot Indegree
     plt.figure()
     bins = np.linspace(0, 15, 12)
-    plt.hist(senders_count,bins, label='outdegree', color='red', alpha=0.5)
-    plt.hist(receivers_count,bins, label='indegree', color='blue', alpha=0.5)
+    plt.hist(senders_count,bins, label='outdegree', color='blue', alpha=0.5)
+    plt.hist(receivers_count,bins, label='indegree', color='red', alpha=0.5)
     plt.xlabel('number of connections')
     plt.ylabel('number of occurrences')
     plt.title('Indegree and outdegree of the biological neural network')
@@ -100,7 +100,7 @@ if plot:
     if dataset != 0:
         pos=nx.get_node_attributes(DG,'pos')
         nx.draw(DG,pos, node_color=color_map)
-        plt.savefig('plot/crcns_4_60_xy.pdf', dpi=300)
+        plt.savefig('plot/crcns_4_50_xy.pdf', dpi=300)
         plt.title('Connectivity of a biological neural network')
         plt.show()
 
