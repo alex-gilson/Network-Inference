@@ -232,13 +232,13 @@ Evaluating the performance of NetRate involves analysing the inferred network $\
 
 \subsection{Structure of the Network}
 
-In order to understand how neural networks are connected, a clear visual representation is required. This is achieved with an adjacency matrix plot. These matrices can be of three different types: binary ($\alpha_{i,j}\in\{0,1\}$), ternary ($\alpha_{i,j}\in\{-1,0,1\}$) or real ($\alpha_{i,j}\in \mathbb{R}$). Due to the characteristics of biological neuron connections, real adjacency matrices are employed. In Fig.\ref{fig:graph_20_nodes} an adjacency matrix of a network of 20 nodes can be observed. When $\alpha_{j,i}^{BNN}\neq 0$, the target neuron $i$ and the source neuron $j$ are connected and a dot appears on the graph. The source nodes are indexed in the x-axis and the target nodes on the y-axis. The weight of each of the edges is represented by the diameter of the dot. \\
+In order to understand how neural networks are connected, a clear visual representation is required. This is achieved with an adjacency matrix plot. These matrices can be of three different types: binary ($\alpha_{i,j}\in\{0,1\}$), ternary ($\alpha_{i,j}\in\{-1,0,1\}$) or real ($\alpha_{i,j}\in \mathbb{R}$). Due to the characteristics of biological neuron connections, real adjacency matrices are employed. In figure \ref{fig:graph_20_nodes} an adjacency matrix of a network of 20 nodes can be observed. When $\alpha_{j,i}^{BNN}\neq 0$, the target neuron $i$ and the source neuron $j$ are connected and a dot appears on the graph. The source nodes are indexed in the x-axis and the target nodes on the y-axis. The weight of each of the edges is represented by the diameter of the dot. \\
 
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{graph_20_nodes.png}
-  \caption{Adjacency matrix of a network of 20 nodes}
 	\label{fig:graph_20_nodes}
+  \caption{Adjacency matrix of a network of 20 nodes}
 \end{figure}
 
 The superscript \textit{BNN} in $\alpha_{j,i}^{BNN}$ is employed to differentitate between the weights in biological neural networks and the analogous transmission rates $\alpha_{j,i}$ in diffusion networks \cite{pranav_report}. When neurons $j$ and $i$ are connected with a weight $\alpha_{j,i}^{BNN}$, everytime $j$ spikes, it causes the membrane potential $v$ from Eq.\ref{eq:izhikevich_ode} to increase by $\alpha_{j,i}^{BNN}$. If neuron $i$ crosses the threshold of 30mV, it spikes. This phenomenon is proved in \cite{alexandru2018estimating} and explained in section \ref{sec:input_stimulus_model_for_cascade_generation}. Using the example in figure \ref{fig:graph_20_nodes}, when node 10 spikes, it causes nodes 13 and 9 to increase by $\alpha_{10,13}^{BNN}$ and $\alpha_{10,9}^{BNN}$, respectively. 
