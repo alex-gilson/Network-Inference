@@ -7,6 +7,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import networkx as nx
 from colour import Color
+from scipy.spatial import distance
 
 dataset = int(sys.argv[1])
 aHatFileName = str(sys.argv[2])
@@ -79,7 +80,6 @@ if plot:
     plt.savefig('plot/degree_histogram_real_network.pdf', dpi=300)
     plt.show()
 
-    import pdb; pdb.set_trace()
 
     for i in count:
         if i <= -3:
@@ -104,4 +104,33 @@ if plot:
         plt.title('Connectivity of a biological neural network')
         plt.show()
 
+    edges = np.array(DG.edges)
+    distance_edges = np.zeros(edges.shape[0])
 
+    # Compute the average edge distance
+    for i in range(edges.shape[0]):
+        distance_edges[i] = distance.euclidean(pos[np.array(DG.edges)[i,0]],pos[np.array(DG.edges)[i,1]])
+    average_distance = np.mean(distance_edges)     
+    print(str('Average edge distance is ' +  str(average_distance) + ' um'))
+    positions = [pos[i] for i in range(N)] 
+    min_x = min(np.array(positions)[:,0])
+    min_y = min(np.array(positions)[:,1])
+    max_x = max(np.array(positions)[:,0])
+    max_y = max(np.array(positions)[:,1])
+    print('Min x_axis = ', min_x)
+    print('Max x_axis = ', max_x)
+    print('Min y_axis = ', min_y)
+    print('Max y_axis = ', max_y)
+    positions = np.array(positions)
+    distance_nodes = []
+    for i in range(N):
+        position_1 = positions[i]
+        for j in range(N):
+            if j != i:
+                distance_nodes.append(distance.euclidean(positions[j],position_1))
+    distance_nodes = np.array(distance_nodes)
+    mean_distance_nodes = np.mean(distance_nodes)
+    print('Mean distance between nodes is ', mean_distance_nodes)
+
+            
+    
