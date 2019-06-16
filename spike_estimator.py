@@ -27,7 +27,6 @@ for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
 
 n = 0
 # S[j,i]
-S[2,3] = 1
 current_neuron = test_indices[0]
 connected_neurons = np.where(S[current_neuron,:] > 0)[0]
 weights = S[current_neuron,np.where(S[current_neuron,:] > 0)][0]
@@ -36,7 +35,7 @@ possible_neurons = [connected_neurons[np.flip(np.argsort(weights))[i]] for i in 
 start = test_firings[n] 
 end = start + horizon
 # Find the location of all the nodes that fired in the window
-index = np.array(np.where((firings >= start) & (firings < end)))[0]
-indices_in_window = np.array([indices[i] for i in index])
+index = np.array(np.where((test_firings >= start) & (test_firings < end)))[0]
+indices_in_window = np.array([test_indices[i] for i in index])
 
 import pdb; pdb.set_trace()

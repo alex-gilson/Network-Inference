@@ -41,30 +41,30 @@ then
 	fi
 fi
 
-if [ ! -f $trainFiringsFileName ] || [ ! -f $trainIndicesFileName ] || [ ! -f $testFiringsFileName ] || [ ! -f $testIndicesFileName ]
-then
+# if [ ! -f $trainFiringsFileName ] || [ ! -f $trainIndicesFileName ] || [ ! -f $testFiringsFileName ] || [ ! -f $testIndicesFileName ]
+# then
 
-	python train_test_splitter.py $train_test_split $indicesFileName $firingsFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $dataset
-fi
+	# python train_test_splitter.py $train_test_split $indicesFileName $firingsFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $dataset
+# fi
 
 # if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ]
 # then
 
-	echo -e "Generating cascades..."
+	# echo -e "Generating cascades..."
 
-	python generate_cascades.py $num_nodes $trainIndicesFileName $trainFiringsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName $dataset
+	# python generate_cascades.py $num_nodes $trainIndicesFileName $trainFiringsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName $dataset
 
 # else
 	# echo -e Found cascade files
 # fi
 
-echo -e "Computing Netrate..." 
+# echo -e "Computing Netrate..." 
 
-python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
+# python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
 
 python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName $num_nodes
 
 
-python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes$horizon
+# python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes $horizon
 
 
