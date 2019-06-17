@@ -50,4 +50,15 @@ for n, size in enumerate(network_sizes):
     plt.savefig('plot/results_' + str(size) + '_neurons.pdf', dpi=300)
     plt.show()
 
+plt.figure()
+plt.plot(network_sizes, np.mean(np.mean(maes, axis=2), axis=1), label = 'MAE')
+plt.plot(network_sizes, np.mean(np.mean(accuracies, axis=2), axis=1), label = 'accuracy')
+plt.plot(network_sizes, np.mean(np.mean(precisions, axis=2), axis=1), label = 'precision')
+plt.plot(network_sizes, np.mean(np.mean(recalls, axis=2), axis=1), label = 'recall')
+plt.legend()
+plt.grid()
+plt.xlabel('number of neurons')
+plt.title('Size of the network effect on performance')
+plt.savefig('plot/size_effect_performance.pdf', dpi=300)
+plt.show()
 
