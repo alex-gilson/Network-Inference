@@ -1,78 +1,53 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
+import os
 
-mae_10 = []
-acc_10 = []
-prec_10 = []
-rec_10 = []
-mae_10.append([0.99, 0.99, 0.99, 0.99, 0.99])
-acc_10.append([0.08, 0.125, 0.1, 0.11, 0])
-prec_10.append([0.1, 0.1, 0.1, 0.1, 0])
-rec_10.append([0.07, 0.17, 0.1, 0.13, 0])
+path = 'r/sim_times_2/network_5_nodes/network_stimulation_random_spikes_stimulation_time_1000_4/'
 
-mae_10.append([0.99, 0.99, 0.99, 0.99, 0.99])
-acc_10.append([0.16, 0.125, 0.1, 0.22, 0])
-prec_10.append([0.2, 0.1, 0.1, 0.2, 0])
-rec_10.append([0.13, 0.17, 0.1, 0.25, 0])
+simulation_times = [250, 500, 750, 1000, 1250, 1500]
+seeds = [1,2,3,4]
+network_sizes = [5,10,15]
+maes = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
+accuracies = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
+precisions = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
+recalls = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
 
-mae_10.append([0.96, 0.99, 0.99, 0.99, 0.99])
-acc_10.append([0.16, 0.125, 0.1, 0.22, 0])
-prec_10.append([0.2, 0.1, 0.1, 0.2, 0])
-rec_10.append([0.13, 0.17, 0.1, 0.25, 0])
-
-mae_20 = []
-acc_20 = []
-prec_20 = []
-rec_20 = []
-
-
-mae_20.append([0.99, 0.99, 0.98, 0.99, 0.99])
-acc_20.append([0.02, 0.1, 0.08, 0.07, 0.17])
-prec_20.append([0.03, 0.1, 0.08, 0.08, 0.18])
-rec_20.append([0.03, 0.1, 0.08, 0.07, 0.16])
-
-mae_20.append([0.99, 0.99, 0.98, 0.99, 0.99])
-acc_20.append([0.02, 0.1, 0.1, 0.07, 0.17])
-prec_20.append([0.03, 0.1, 0.1, 0.08, 0.18])
-rec_20.append([0.03, 0.1, 0.11, 0.07, 0.16])
-
-mae_20.append([0.99, 0.99, 0.98, 0.99, 0.99])
-acc_20.append([0.02, 0.1, 0.1, 0.07, 0.17])
-prec_20.append([0.03, 0.1, 0.1, 0.08, 0.18])
-rec_20.append([0.03, 0.1, 0.11, 0.07, 0.16])
-
-mae_10 = np.array(mae_10)
-mae_20 = np.array(mae_20)
-acc_10 = np.array(acc_10)
-acc_20 = np.array(acc_20)
-prec_10 = np.array(prec_10)
-prec_20 = np.array(prec_20)
-rec_10 = np.array(rec_10)
-rec_20 = np.array(rec_20)
+for a, n in enumerate(network_sizes):
+    for b, time in enumerate(simulation_times):
+        for c, s in enumerate(seeds):
+            path = 'r/sim_times_2/network_' + str(n) + '_nodes/network_stimulation_random_spikes_stimulation_time_' + str(time) + '_4/' + 'results_' + str(s) + '.csv'
+            if os.path.exists(path):
+                with open(path, 'r') as csvfile:
+                    spamreader = csv.reader(csvfile, delimiter=',')
+                    results = []
+                    for row in spamreader:
+                        results.append(row)
+                    maes[a,b,c] = float(results[-1][1])
+                    accuracies[a,b,c] = float(results[-1][2])
+                    precisions[a,b,c] = float(results[-1][9])
+                    recalls[a,b,c] = float(results[-1][10])
+            else:
+                print('Missing results for network size: ' + str(n) + ' nodes, simulation time: ' + str(time) + ', seed: ' + str(s))
+                maes[a,b,c] = np.nan
+                accuracies[a,b,c] = np.nan
+                precisions[a,b,c] = np.nan
+                recalls[a,b,c] = np.nan
 
 
+for n, size in enumerate(network_sizes):
 
-plt.figure()
-# plt.plot([500,1000,1500], np.mean(mae_10, axis=1), label='MAE')
-plt.plot([500,1000,1500], np.mean(acc_10, axis=1), label='accuracy')
-plt.plot([500,1000,1500], np.mean(prec_10, axis=1), label='precision')
-plt.plot([500,1000,1500], np.mean(rec_10, axis=1), label='recall')
-plt.legend()
-plt.grid()
-plt.xlabel('length of simulation (s)')
-plt.title('Simulation results for a network of 10 neurons')
-plt.savefig('results_10_neurons.pdf', dpi=300)
-plt.show()
+    plt.figure()
+    plt.plot(simulation_times, np.mean(maes[n], axis=1), label='MAE')
+    plt.plot(simulation_times, np.mean(accuracies[n], axis=1), label='accuracy')
+    plt.plot(simulation_times, np.mean(precisions[n], axis=1), label='precision')
+    plt.plot(simulation_times, np.mean(recalls[n], axis=1), label='recall')
+    plt.legend()
+    plt.grid()
+    plt.xlabel('length of simulation (s)')
+    plt.title('Simulation results for a network of ' + str(size) + ' neurons')
+    plt.savefig('plot/results_' + str(size) + '_neurons.pdf', dpi=300)
+    plt.show()
 
-plt.figure()
-# plt.plot([500,1000,1500], np.mean(mae_10, axis=1), label='MAE')
-plt.plot([500,1000,1500], np.mean(acc_20, axis=1), label='accuracy')
-plt.plot([500,1000,1500], np.mean(prec_20, axis=1), label='precision')
-plt.plot([500,1000,1500], np.mean(rec_20, axis=1), label='recall')
-plt.legend()
-plt.grid()
-plt.xlabel('length of simulation (s)')
-plt.title('Simulation results for a network of 20 neurons')
-plt.savefig('results_20_neurons.pdf', dpi=300)
-plt.show()
+
