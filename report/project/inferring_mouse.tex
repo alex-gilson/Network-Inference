@@ -1,21 +1,20 @@
 
 \chapter{Inferring the connectivity of a mouse's neuronal system}
 
-In chapter 4 a neural network model was simulated to try and mimic the behaviour of the real network described in \ref{sec:mouse_dataset}. A new input stimulus and two cascade generation methods were proposed. In this chapter, the suitability of these new methods will be proved by inferring the connectivity of the new simulation modality outlined in section \ref{sec:input_stimulus}. Moreover, the effect of the simulation duration and the network size on the performance of the algorithm will be assessed.\\
+In chapter 4 a neural network model was simulated to try and mimic the behaviour of the real network described in \ref{sec:mouse_dataset}. A new input stimulus and two cascade generation methods were proposed. In this chapter, the suitability of these new methods will be proved by inferring the connectivity of the new simulation model outlined in section \ref{sec:input_stimulus}. Moreover, the effect of the simulation duration and the network size on the performance of the algorithm will be assessed.\\
 
 Once the suitability has been demonstrated, the same algorithm will be used to infer the connectivity of one of the networks from the CRCNS dataset. Further analysis of this structure will be carried out and its main characteristics will be described.\\
 
 In order to evaluate the performance of the algorithm, the four metrics described in \ref{sec:performance_metrics} will be used. However, as outlined in \cite{pranav_report}, the structure of the network can have a great effect on NetRate's ability to estimate it. For this reason, for validating the suitability of the model, an average of 4 experiments will be used as the results displayed in this chapter.
 
-
-\section{Proof of the suitability of the model}
+\section{Proof of the suitability of the algorithm}\label{sec:proof_suitability}
 
 
 \section{Effect of the size of the network and simulation time on the performance of NetRate}
 \section{Evaluating the performance without a ground truth}
 \section{Inference results}
 
-Once the suitability of the model and the algorithm has been proven, the connectivity of a biological neural network can be inferred. For consistency, the 98 neuron network analysed in section \ref{sec:mouse_dataset} will be the one evaluated. Due to the dataset being large enough, the \textit{optimal independence} method of cascade generation will be employed. As explained in section \ref{sec:optimal_independence}, this will achieve a higher quality set of cascades.\\
+Once the suitability of the algorithm has been proven, the connectivity of a biological neural network can be inferred. In this section, the 98 neuron network analysed in section \ref{sec:mouse_dataset} and whose evaluation suitability was proven in \ref{sec:proof_suitability} is the one evaluated. Due to the dataset being large enough, the \textit{optimal independence} method of cascade generation is employed. As explained in section \ref{sec:optimal_independence}, this will achieve a higher quality set of cascades.\\
 
 When computing NetRate for a large dataset like the one at hand, the main constraint that the researcher has to deal with is memory. This is directly proportional to the number of cascades computed at any given moment. Therefore, if only one processor is being used, the constraint will be set by the node with the maximum number of cascades. For the current dataset and, using the \textit{optimal independence} method of cascade generation, this corresponds to neuron 12 with 7956 cascades. The computation of this node requires an array of size 18Gb but, with the resources at hand, such an operation is not possible. For this reason, the dataset is partitioned into a smaller set containing the first half of the spike recordings. If the system is assumed to be static\footnote{A network is static if no connections are created or erased during the period of observation.} for the whole length of the recording, then only the performance of NetRate could be affected by this split. The resulting maximum number of cascades is reduced to 5168, with the amount of memory required being lowered to 11Gb.\\
 
