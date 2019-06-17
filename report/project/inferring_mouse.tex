@@ -11,6 +11,26 @@ In order to evaluate the performance of the algorithm, the four metrics describe
 
 
 \section{Effect of the size of the network and simulation time on the performance of NetRate}
+
+It is of interest to analyse how the performance of the algorithm varies with different simulation times. Figure \ref{fig:results_10_neurons} shows the results for this analysis. It can be observed that the larger the simulation time, the better NetRate's ability to infer the network. This finding is to be expected due to the fact that the longer the observation length, the more information is captured. However, this behaviour begins to plateau after 1250 seconds of simulation time.\\
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{results_10_neurons.pdf}
+	\caption{Network inference performance for a neural network of 10 neurons}
+	\label{fig:results_10_neurons}
+\end{figure}
+
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{size_effect_performance.pdf}
+	\caption{Average network inference performance for different network sizes}
+	\label{fig:results_network_sizes}
+\end{figure}
+
 \section{Evaluating the performance without a ground truth}
 \section{Inference results}
 
@@ -23,7 +43,7 @@ In figure \ref{fig:crcns_4_network}, the resulting inferred network is displayed
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{crcns_4_50_xy.pdf}
-	\caption{Inference of a biological neural network of 98 neurons}
+	\caption{Inference of a biological neural network of 98 neurons. Red for indegree > outdegree, blue for outdegree > indegree and peach for non connected neurons.}
 	\label{fig:crcns_4_network}
 \end{figure}
 

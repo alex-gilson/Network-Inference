@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from colour import Color
 from scipy.spatial import distance
+from mpl_toolkits.axes_grid1 import ImageGrid
 
 dataset = int(sys.argv[1])
 aHatFileName = str(sys.argv[2])
@@ -50,6 +51,7 @@ inferred_network = []
 color_map = []
 red = Color('#f64f59')
 colours = list(red.range_to(Color("#12c2e9"),7))
+not_connected = []
 for i, row in enumerate(S_hat):
     for j, col in enumerate(row):
         if col != 0:
@@ -58,6 +60,11 @@ for i, row in enumerate(S_hat):
                 DG.add_weighted_edges_from([(int(j),int(i),col)])
 
 np.savetxt(inferredNetworkFileName, inferred_network, delimiter=",")
+
+# Check which nodes are connected
+for k in range(N):
+    if np.array(np.where(np.array(inferred_network) == k)).size == 0:
+        not_connected.append(k)
 
 
 if plot:
@@ -81,8 +88,10 @@ if plot:
     plt.show()
 
 
-    for i in count:
-        if i <= -3:
+    for k, i in enumerate(count):
+        if k in np.array(not_connected):
+            color_map.append(str('#ffbc98'))
+        elif i <= -3:
             color_map.append(str(colours[0]))
         elif i == -2:
             color_map.append(str(colours[1]))
@@ -100,8 +109,8 @@ if plot:
     if dataset != 0:
         pos=nx.get_node_attributes(DG,'pos')
         nx.draw(DG,pos, node_color=color_map)
-        plt.savefig('plot/crcns_4_50_xy.pdf', dpi=300)
         plt.title('Connectivity of a biological neural network')
+        plt.savefig('plot/crcns_4_50_xy.pdf', dpi=300)
         plt.show()
 
     edges = np.array(DG.edges)
@@ -132,5 +141,10 @@ if plot:
     mean_distance_nodes = np.mean(distance_nodes)
     print('Mean distance between nodes is ', mean_distance_nodes)
 
+    if dataset != 0:
+        nx.draw(DG,node_color=color_map)
+        plt.title('Connectivity of a biological neural network')
+        plt.savefig('plot/crcns_4_50_xy_2.pdf', dpi=300)
+        plt.show()
             
     

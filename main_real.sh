@@ -62,9 +62,9 @@ fi
 
 # python parallelize_cvx.py $num_processors $num_nodes $horizon $diffusion_type $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $aHatFileName $numFiringsFileName $dataset
 
-# python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName $num_nodes
+python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName $num_nodes
 
 
-python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes $horizon
+# python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes $horizon
 
 

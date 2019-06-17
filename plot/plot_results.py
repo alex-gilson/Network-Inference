@@ -8,7 +8,7 @@ path = 'r/sim_times_2/network_5_nodes/network_stimulation_random_spikes_stimulat
 
 simulation_times = [250, 500, 750, 1000, 1250, 1500]
 seeds = [1,2,3,4]
-network_sizes = [5,10,15]
+network_sizes = [5,10,15,20]
 maes = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
 accuracies = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
 precisions = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
