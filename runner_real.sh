@@ -1,13 +1,13 @@
 
-num_nodes=5
+num_nodes=15
 num_processors=(1)
-train_test_split=90
+train_test_split=60
 dataset=0
 diffusion_type=rayleigh
 stimulation_type=random_spikes
-simulation_times=(1000)
+simulation_times=(1500)
 horizon=20
-seeds=(4)
+seeds=(2)
 infer_network=1
 sparsity=0.1
 cascadeOption=maximum_independence
