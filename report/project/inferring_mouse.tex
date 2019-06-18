@@ -5,9 +5,22 @@ In chapter 4 a neural network model was simulated to try and mimic the behaviour
 
 Once the suitability has been demonstrated, the same algorithm will be used to infer the connectivity of one of the networks from the CRCNS dataset. Further analysis of this structure will be carried out and its main characteristics will be described.\\
 
-In order to evaluate the performance of the algorithm, the four metrics described in \ref{sec:performance_metrics} will be used. However, as outlined in \cite{pranav_report}, the structure of the network can have a great effect on NetRate's ability to estimate it. For this reason, for validating the suitability of the model, an average of 4 experiments will be used as the results displayed in this chapter.
+In order to evaluate the performance of the algorithm, the four metrics described in \ref{sec:performance_metrics} will be used. However, as outlined in \cite{pranav_report}, the structure of the network can have a great effect on NetRate's ability to estimate it. For this reason, for validating the suitability of the model and changes in performance, an average of 4 experiments will be used as the results displayed in this chapter.
 
 \section{Proof of the suitability of the algorithm}\label{sec:proof_suitability}
+
+In this section, the suitability of the new network model and the consequent new cascade generation method are proved. In order to do so, a network of 20 neurons is simulated for 1500 seconds and its connectivity is inferred. If this estimation is sufficiently similar to the ground truth, the effectiveness of the algorithm will have been demonstrated. Figure \ref{fig:proof_suitability} shows the averaged results of this analysis.\\
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{proof_suitability.pdf}
+	\caption{Average network inference performance for a neural network of 10 neurons and a stimulation time of 1500 seconds}
+	\label{fig:results_10_neurons}
+\end{figure}
+
+It is clear that, for the given network model and given the generated cascades, NetRate is relatively good at estimating the connections of the system. Just as in \cite{alexandru2018estimating}, it fails to infer weights of the connections.
+
+
 
 
 \section{Effect of the size of the network and simulation time on the performance of NetRate}
@@ -21,7 +34,29 @@ It is of interest to analyse how the performance of the algorithm varies with di
 	\label{fig:results_10_neurons}
 \end{figure}
 
+Another variable that could have an effect on the performance of the algorithm is the size of the network. The larger it is, the more connections are possible and the more information is required to infer the edges. Figure \ref{fig:results_network_sizes} shows the results of this study. Surprisingly, the inference ability of the algorithm goes up with the size of the network. In order find the reason for this phenomenon, a closer look needs to be taken to the number of firings for each network size. Spiking activity conveys information about the effect the neuron has on the network and vice-versa. For networks of 5 and 10 neurons and a simulation time of 1000 seconds, these can be seen in tables \ref{tab:spiking_activity_5_neurons} and \ref{tab:spiking_activity_10_neurons}, respectively. The ratio of spikes to neuron goes from 385.4 to 714.7 when the network size is doubled. With more spikes, more cascades are generated and, in general, the better NetRate will perform.\\
 
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Neuron number    & 1  & 2  & 3   & 4  & 5    \\ \hline
+Number of spikes & 46 & 67 & 108 & 76 & 1630 \\ \hline
+\end{tabular}
+\caption{Spiking activity of a network of 5 neurons during a 1000 second simulation}
+\label{tab:spiking_activity_5_neurons}
+\end{table}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Neuron number    & 1  & 2  & 3    & 4  & 5   & 6    & 7    & 8    & 9   & 10 \\ \hline
+Number of spikes & 21 & 28 & 1642 & 42 & 846 & 1184 & 1065 & 1855 & 445 & 19 \\ \hline
+\end{tabular}
+\caption{Spiking activity of a network of 10 neurons during a 1000 second simulation}
+\label{tab:spiking_activity_10_neurons}
+\end{table}
 
 
 \begin{figure}
@@ -31,10 +66,9 @@ It is of interest to analyse how the performance of the algorithm varies with di
 	\label{fig:results_network_sizes}
 \end{figure}
 
-\section{Evaluating the performance without a ground truth}
 \section{Inference results}
 
-Once the suitability of the algorithm has been proven, the connectivity of a biological neural network can be inferred. In this section, the 98 neuron network analysed in section \ref{sec:mouse_dataset} and whose evaluation suitability was proven in \ref{sec:proof_suitability} is the one evaluated. Due to the dataset being large enough, the \textit{optimal independence} method of cascade generation is employed. As explained in section \ref{sec:optimal_independence}, this will achieve a higher quality set of cascades.\\
+Once the suitability of the algorithm has been proved, the connectivity of a biological neural network can be inferred. In this section, the 98 neuron network analysed in section \ref{sec:mouse_dataset} and whose evaluation suitability was proved in \ref{sec:proof_suitability} is the one evaluated. Due to the dataset being large enough, the \textit{optimal independence} method of cascade generation is employed. As explained in section \ref{sec:optimal_independence}, this will achieve a higher quality set of cascades.\\
 
 When computing NetRate for a large dataset like the one at hand, the main constraint that the researcher has to deal with is memory. This is directly proportional to the number of cascades computed at any given moment. Therefore, if only one processor is being used, the constraint will be set by the node with the maximum number of cascades. For the current dataset and, using the \textit{optimal independence} method of cascade generation, this corresponds to neuron 12 with 7956 cascades. The computation of this node requires an array of size 18Gb but, with the resources at hand, such an operation is not possible. For this reason, the dataset is partitioned into a smaller set containing the first half of the spike recordings. If the system is assumed to be static\footnote{A network is static if no connections are created or erased during the period of observation.} for the whole length of the recording, then only the performance of NetRate could be affected by this split. The resulting maximum number of cascades is reduced to 5168, with the amount of memory required being lowered to 11Gb.\\
 
