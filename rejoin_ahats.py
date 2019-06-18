@@ -14,7 +14,7 @@ dataset = int(sys.argv[1])
 aHatFileName = str(sys.argv[2])
 inferredNetworkFileName = str(sys.argv[3])
 N = int(sys.argv[4])
-plot = True
+plot = False
 
 if dataset != 0:
     filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
@@ -147,4 +147,21 @@ if plot:
         plt.savefig('plot/crcns_4_50_xy_2.pdf', dpi=300)
         plt.show()
             
-    
+   
+    d = dict(DG.degree)
+
+    nx.draw(DG, pos=nx.spring_layout(DG),nodelist=d.keys(), node_size=[v * 99 for v in d.values()]) 
+    plt.show()
+
+    gamma = -2.5
+    plt.figure()
+    bins = np.linspace(0, 15, 12)
+    plt.hist(senders_count + receivers_count ,bins, label='outdegree', color='blue', alpha=0.5)
+    plt.plot(np.arange(15), np.arange(15)**gamma, 'r')
+    plt.xlabel('number of connections')
+    plt.ylabel('number of occurrences')
+    plt.title('Number of connections of the biological neural network')
+    plt.grid()
+    plt.legend()
+    plt.savefig('plot/connexions_histogram_real_network.pdf', dpi=300)
+    plt.show()

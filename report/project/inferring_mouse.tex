@@ -15,13 +15,19 @@ In this section, the suitability of the new network model and the consequent new
 	\centering
 	\includegraphics[width=0.8\linewidth]{proof_suitability.pdf}
 	\caption{Average network inference performance for a neural network of 10 neurons and a stimulation time of 1500 seconds}
-	\label{fig:results_10_neurons}
+	\label{fig:proof_suitability}
 \end{figure}
 
-It is clear that, for the given network model and given the generated cascades, NetRate is relatively good at estimating the connections of the system. Just as in \cite{alexandru2018estimating}, it fails to infer weights of the connections.
+It is clear that, for the given network model and given the generated cascades, NetRate is relatively good at estimating the connections of the system. Just as in \cite{alexandru2018estimating}, MAE is very high, which means, it fails to infer the weights of the connections. To visualize the capabilities of the algorithm, the adjacency matrix is plotted in figure \ref{fig:adjacency_10_neurons}.\\
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{adjacency_matrix_10_neurons.pdf}
+	\caption{Adjacency matrix plot for the original and inferred networks of size 10.}
+	\label{fig:adjacency_10_neurons}
+\end{figure}
 
-
+There is no obvious way of comparing the results achieved in this project with the ones obtained in \cite{alexandru2018estimating}. This is because networks are simulated differently and the method for cascade generation needed to be changed. However, the DC input stimulation model gave way to cascades with a greater spiking activity. For this reason, it is difficult for the current model to achieve a higher performance than the one achieved in table \ref{tab:results_pranav}. A big advantage of the new model, however, lies in its ability to infer networks without any external input to the system.
 
 \section{Effect of the size of the network and simulation time on the performance of NetRate}
 
@@ -34,7 +40,7 @@ It is of interest to analyse how the performance of the algorithm varies with di
 	\label{fig:results_10_neurons}
 \end{figure}
 
-Another variable that could have an effect on the performance of the algorithm is the size of the network. The larger it is, the more connections are possible and the more information is required to infer the edges. Figure \ref{fig:results_network_sizes} shows the results of this study. Surprisingly, the inference ability of the algorithm goes up with the size of the network. In order find the reason for this phenomenon, a closer look needs to be taken to the number of firings for each network size. Spiking activity conveys information about the effect the neuron has on the network and vice-versa. For networks of 5 and 10 neurons and a simulation time of 1000 seconds, these can be seen in tables \ref{tab:spiking_activity_5_neurons} and \ref{tab:spiking_activity_10_neurons}, respectively. The ratio of spikes to neuron goes from 385.4 to 714.7 when the network size is doubled. With more spikes, more cascades are generated and, in general, the better NetRate will perform.\\
+Another variable that could have an effect on the performance of the algorithm is the size of the network. The larger it is, the more connections are possible and the more information is required to infer the edges. Figure \ref{fig:results_network_sizes} shows the results of this study. Surprisingly, the inference ability of the algorithm goes up with the size of the network. In order find the reason for this phenomenon, a closer look needs to be taken to the number of firings for each network size. Spiking activity conveys information about the effect the neuron has on the network and vice-versa. For networks of 5 and 10 neurons and a simulation time of 1000 seconds, these can be seen in tables \ref{tab:spiking_activity_5_neurons} and \ref{tab:spiking_activity_10_neurons}, respectively. When the network size is doubled, the ratio of spikes to neuron goes from 385.4 to 714.7. This is a significant increase which gives rise to this behaviour. With more spikes, more cascades are generated and, in general, the better NetRate will perform.\\
 
 \begin{table}[]
 \centering

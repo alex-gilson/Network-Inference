@@ -1,8 +1,8 @@
 
 num_nodes=5
-num_processors=(2)
-train_test_split=50
-dataset=4
+num_processors=(1)
+train_test_split=90
+dataset=0
 diffusion_type=rayleigh
 stimulation_type=random_spikes
 simulation_times=(1000)

@@ -114,21 +114,5 @@ d = {'seed': [seed], 'num_nodes': [num_nodes], 'num_processors': [num_processors
 df = pd.DataFrame(d)
 df.to_csv(resultsFileName, mode='a', header=True)
 
-# plt.figure(figsize=(10,7))
-# plt.scatter(original_network[1],original_network[0], original_network[2],c='b',label='Original Network')
-# if matlab_or_python_graph==0:
-# 	plt.scatter(inferred_network[1],inferred_network[0], inferred_network[2], c='r',label='Matlab Inferred Network')
-# 	title='Matlab Results, Accuracy: {}, Precision: {}, Recall: {}'.format(round(accuracy,3), round(precision,3), round(recall,3))
-# 	plt.suptitle(title, fontsize=14, fontweight='bold')
-# else:
-# 	plt.scatter(inferred_network[1],inferred_network[0], inferred_network[2], c='g',label='Python Inferred Network')
-# 	title='Python Results, Accuracy: {}, Precision: {}, Recall: {}'.format(round(accuracy,3), round(precision,3), round(recall,3))
-# 	plt.suptitle(title, fontsize=14, fontweight='bold')
-#
-# plt.xlabel('Target neuron index')
-# plt.ylabel('Source neuron index')
-# plt.xlim(-0.5, N-0.5)
-# plt.ylim(-0.5, N-0.5)
-# plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
-#            ncol=2,  borderaxespad=0.)
-# plt.show()           
+
+

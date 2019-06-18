@@ -18,6 +18,7 @@ original_network=[[],[],[]]
 with open(networkFileName, 'r') as csvfile:
 	spamreader = csv.reader(csvfile, delimiter=',')
 	for row in spamreader:
+            row = np.array(row).astype(float)
             original_network[0].append(row[0])
             original_network[1].append(row[1])
             original_network[2].append(float(row[2]))
@@ -26,16 +27,33 @@ for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
     S[int(i),int(j)] = k;
 
 n = 0
+accuracy = []
+num_firings = []
 # S[j,i]
-current_neuron = test_indices[0]
-connected_neurons = np.where(S[current_neuron,:] > 0)[0]
-weights = S[current_neuron,np.where(S[current_neuron,:] > 0)][0]
-# Order the possibly spiking neurons by weights
-possible_neurons = [connected_neurons[np.flip(np.argsort(weights))[i]] for i in range(len(weights))]
-start = test_firings[n] 
-end = start + horizon
-# Find the location of all the nodes that fired in the window
-index = np.array(np.where((test_firings >= start) & (test_firings < end)))[0]
-indices_in_window = np.array([test_indices[i] for i in index])
+# Iterate through the simulation spikes
+while n < len(test_firings):
 
-import pdb; pdb.set_trace()
+    current_neuron = test_indices[n]
+
+    connected_neurons = np.where(S[current_neuron,:] > 0)[0]
+    weights = S[current_neuron,np.where(S[current_neuron,:] > 0)][0]
+
+    # Order the possibly spiking neurons by weights
+    possible_neurons = [connected_neurons[np.flip(np.argsort(weights))[i]] for i in range(len(weights))]
+
+    start = test_firings[n] 
+    end = start + horizon
+
+    # Find the location of all the nodes that fired in the window
+    index = np.array(np.where((test_firings >= start) & (test_firings < end)))[0]
+    indices_in_window = np.array([test_indices[i] for i in index])[1:]
+    num_firings.append(indices_in_window.size)
+
+    if num_firings[-1] > 0:
+        accuracy.append(np.sum(possible_neurons == indices_in_window)/indices_in_window.size)
+
+    n = index[-1] + 1
+    import pdb; pdb.set_trace()
+
+print('Accuracy is : ', np.mean(np.array(accuracy)))
+

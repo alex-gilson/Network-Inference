@@ -35,28 +35,40 @@ def raster_plot(spikemon):
     ylabel('Neuron index');
     show()
 
-def visualise_simple(networkFileName):
+def visualise_simple(networkFileName, inferredNetworkFileName):
+    inferred_network=[[],[],[]]
+    with open(inferredNetworkFileName, 'r') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            inferred_network[0].append(row[0])
+            inferred_network[1].append(row[1])
+            inferred_network[2].append(float(row[2])*20)
+    inferred_network = np.asarray(inferred_network).astype(float)
+    inferred_network[0] = np.add(inferred_network[0].astype(int),np.ones(len(inferred_network[0])))
+    inferred_network[1] = np.add(inferred_network[1].astype(int),np.ones(len(inferred_network[1])))
     original_network=[[],[],[]]
-    with open(networkFileName, 'rb') as csvfile:
+    with open(networkFileName, 'r') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             original_network[0].append(row[0])
             original_network[1].append(row[1])
             original_network[2].append(float(row[2])*20)
-    original_network = np.asarray(original_network)
+    original_network = np.asarray(original_network).astype(float)
     original_network[0] = np.add(original_network[0].astype(int),np.ones(len(original_network[0])))
     original_network[1] = np.add(original_network[1].astype(int),np.ones(len(original_network[1])))
-    plt.figure(figsize=(10,7))
+    plt.figure()
     plt.grid('--',linewidth=1, zorder=-1) 
-    plt.scatter(original_network[0],original_network[1], original_network[2].astype(float),c='b',label='Original Network', zorder=1)
+    plt.scatter(original_network[0],original_network[1], original_network[2].astype(float),c='#eb104e',label='Original Network', zorder=1, alpha=1)
+    plt.scatter(inferred_network[0],inferred_network[1], inferred_network[2].astype(float),c='#5a3aa9',label='Inferred Network', zorder=1, alpha=1)
     plt.xlabel('Source neuron index')
     plt.ylabel('Target neuron index')
-    plt.xlim([0,21])
-    plt.ylim([0,21])
-    plt.xticks(np.arange(1, 21, step=1))
-    plt.yticks(np.arange(1, 21, step=1))
-    plt.title('Network of 20 nodes')
-    # plt.set_axisbelow(True)
+    plt.xlim([0,11])
+    plt.ylim([0,11])
+    plt.xticks(np.arange(1, 11, step=1))
+    plt.yticks(np.arange(1, 11, step=1))
+    plt.title('Network of 10 nodes')
+    plt.legend()
+    plt.savefig('plot/adjacency_matrix_10_neurons.pdf', dpi=300)
     plt.show()           
 
     # # # Generating sample data
@@ -72,4 +84,26 @@ def visualise_simple(networkFileName):
     # plt.show()
     #
 if __name__ == "__main__":
-    visualise_simple(sys.argv[1])
+    visualise_simple(sys.argv[1], sys.argv[2])
+    # original_network=[[],[],[]]
+    # with open(networkFileName, 'r') as csvfile:
+    #     spamreader = csv.reader(csvfile, delimiter=',')
+    #     for row in spamreader:
+    #         original_network[0].append(row[0])
+    #         original_network[1].append(row[1])
+    #         original_network[2].append(float(row[2])*20)
+    # original_network = np.asarray(original_network).astype(float)
+    # original_network[0] = np.add(original_network[0].astype(int),np.ones(len(original_network[0])))
+    # original_network[1] = np.add(original_network[1].astype(int),np.ones(len(original_network[1])))
+    # plt.figure(figsize=(10,7))
+    # plt.grid('--',linewidth=1, zorder=-1) 
+    # plt.scatter(original_network[0],original_network[1], original_network[2].astype(float),c='b',label='Original Network', zorder=1)
+    # plt.xlabel('Source neuron index')
+    # plt.ylabel('Target neuron index')
+    # plt.xlim([0,21])
+    # plt.ylim([0,21])
+    # plt.xticks(np.arange(1, 21, step=1))
+    # plt.yticks(np.arange(1, 21, step=1))
+    # plt.title('Network of 20 nodes')
+    # # plt.set_axisbelow(True)
+    # plt.show()           
