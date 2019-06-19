@@ -1,2 +1,35 @@
 
-\chapter{Conclusion}
+\chapter{Conclusion and future work}
+
+\section{Summary of achievements}
+
+The objective of this project was to improve the state of the art of neural network inference by increasing NetRate's performance or scalability. It was also intended for this algorithm to be used for the network inference of a biological neural networks. This objective brought along many challenges that had to be dealt with beforehand such as changing the network model and updating the cascade generation method. Overall, this project has been successful at achieving the defined goals. \\
+
+\begin{enumerate}
+\item In chapter 1, a brief explanation of the project was given. It also included what the objectives were. 
+\item Chapter 2 explained the mathematical background behind the network inference algorithm and the previous work done in this area.
+\item Chapter 3 explained how a novel method could achieve a certain level of parallelization in NetRate and increase the speed of the algorithm.
+\item In chapter 4, the model for a biological neural network that mimicked a real biological one was devised. Moreover, two new cascade generation methods were proposed in order to adapt to the changes in the network model.
+\item A new performance metric was proposed in chapter 5 for networks without a ground truth. Its drawbacks were analysed and illustrative results were shown.
+\item In chapter 6 the suitability of the changes in the algorithm done in chapter 4 is proved. Then a biological neural network is inferred and its characteristics are analysed. Moreover, the performance metric outlined in chapter 5 is used to test the knowledge of the network. It was shown that NetRate is able to capture some network information from the real data.
+\item Finally, in chapter 7, the software package used for this project is described. Moreover, the folder structure within which all the results are saved is explained.
+\end{enumerate}
+
+\section{Future work}
+
+\subsection{Test on more recordings}
+
+In this project, only recording 4 from the 25 available was used. This was due to the fact that it was the dataset with the lowest number of neurons. An extension of this project could investigate the structure of the rest of recordings in the dataset. 
+
+\subsection{Increase the complexity of the network model}
+
+The model of the network employed in this project consisted of only excitatory neurons. However, biological neural networks consist of many different kinds of neurons. Future work could study the effect of having inhibitory neurons in the system but inferring the connectivity of the network with the assumption of them all being excitatory. 
+
+\subsection{Random spiking cluster model}
+
+The network model used in this project was the random spikes model. This was a very simple introductory method to mimicking biological neural networks. However, a more complex model could be studied where clusters of neurons spike at random times. Otherwise, due to the large differences yet to be solved between the real recordings and simulated network readings, more parameters can be changed so that the similarity is increased.
+
+\subsection{Update the spiking prediction metric}
+
+A method for evaluating the performance of NetRate on networks without a ground truth was proposed and tested in chapter 5. This is a very simple metric, however, it fails to make the best predictions possible. For this reason, an update to this metric could be proposed where not only the first neuron to spike is given, but also all the previous spikes in the recording. With such information it could be possible to estimate the membrane potential of all the neurons in the network and obtain a higher prediction score.
+

@@ -37,6 +37,7 @@ for i,j,k in zip(original_network[0],original_network[1], original_network[2]):
 n = 0
 accuracies = []
 num_firings = []
+Ks = []
 # S[j,i]
 # Iterate through the simulation spikes
 print(len(test_firings))
@@ -79,7 +80,6 @@ while n < len(test_firings):
         if size_set == len(set(possible_neurons)):
             break
    
-    print(n)
     idxs = []
     for i in range(len(possible_neurons)):
         if np.sum(np.array(possible_neurons) == possible_neurons[i]) > 1:
@@ -97,6 +97,7 @@ while n < len(test_firings):
             possible_neurons_2.append(possible_neurons[i])
         
     possible_neurons = possible_neurons_2
+    Ks.append(indices_in_window.size)
 
     if num_firings[-1] > 0:
         accuracy = np.sum(np.array([np.sum(possible_neurons == i) for i in indices_in_window]))*indices_in_window.size**-1        
@@ -105,6 +106,7 @@ while n < len(test_firings):
     n = index[-1] + 1
 
 print('Accuracy is : ', np.mean(np.array(accuracies)))
+print('Average K is: ', np.mean(np.array(Ks))+1)
 #0.8343457427306646 networkFileName
 # 0.10438514907359596 inferredNetworkFileName
 # 0.07691112545496863 Real dataset 4
