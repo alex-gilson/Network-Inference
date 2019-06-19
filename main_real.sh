@@ -67,6 +67,6 @@ echo -e "Done computing NetRate."
 # python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName $num_nodes
 
 
-python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes $horizon $dataset
+python spike_estimator.py $testIndicesFileName $testFiringsFileName $inferredNetworkFileName $num_nodes $horizon $dataset
 
 
