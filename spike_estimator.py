@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 import sys
+import scipy.io
 
 
 testIndicesFileName = str(sys.argv[1])
@@ -8,9 +9,16 @@ testFiringsFileName = str(sys.argv[2])
 networkFileName = str(sys.argv[3])
 N = int(sys.argv[4])
 horizon = int(sys.argv[5])
+dataset = int(sys.argv[6])
+
+if dataset != 0:
+    filename = 'CRCNS/data/DataSet' + str(dataset) + '.mat'
+    N = scipy.io.loadmat(filename)['data']['nNeurons'][0][0][0][0]
 
 test_firings = np.genfromtxt(testFiringsFileName, delimiter=",")
 test_indices = np.genfromtxt(testIndicesFileName, delimiter=",").astype(int)
+if dataset != 0:
+    test_indices = test_indices - 1
 S = np.zeros((N,N))
 rank = 3
 
@@ -31,6 +39,7 @@ accuracies = []
 num_firings = []
 # S[j,i]
 # Iterate through the simulation spikes
+print(len(test_firings))
 while n < len(test_firings):
 
     start = test_firings[n] 
@@ -70,6 +79,7 @@ while n < len(test_firings):
         if size_set == len(set(possible_neurons)):
             break
    
+    print(n)
     idxs = []
     for i in range(len(possible_neurons)):
         if np.sum(np.array(possible_neurons) == possible_neurons[i]) > 1:
@@ -96,3 +106,5 @@ while n < len(test_firings):
 
 print('Accuracy is : ', np.mean(np.array(accuracies)))
 #0.8343457427306646 networkFileName
+# 0.10438514907359596 inferredNetworkFileName
+# 0.07691112545496863 Real dataset 4

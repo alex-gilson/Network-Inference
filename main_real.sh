@@ -47,16 +47,16 @@ then
 	python train_test_splitter.py $train_test_split $indicesFileName $firingsFileName $trainIndicesFileName $testIndicesFileName $trainFiringsFileName $testFiringsFileName $dataset
 fi
 
-if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ]
-then
+# if [ ! -f $aBadFileName ] || [ ! -f $aPotentialFileName ] || [ ! -f $cascadesFileName ] || [ ! -f $numCascadesFileName ]
+# then
 
 	echo -e "Generating cascades..."
 
-	python generate_cascades.py $num_nodes $trainIndicesFileName $trainFiringsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName $dataset
+	# python generate_cascades.py $num_nodes $trainIndicesFileName $trainFiringsFileName $diffusion_type $horizon $simulation_duration $cascadesFileName $aBadFileName $aPotentialFileName $numCascadesFileName $cascadeOption $numFiringsFileName $dataset
 
-else
-	echo -e Found cascade files
-fi
+# else
+	# echo -e Found cascade files
+# fi
 
 echo -e "Computing NetRate..." 
 
@@ -64,9 +64,9 @@ echo -e "Computing NetRate..."
 
 echo -e "Done computing NetRate." 
 
-python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName $num_nodes
+# python rejoin_ahats.py $dataset $aHatFileName $inferredNetworkFileName $num_nodes
 
 
-python spike_estimator.py $testIndicesFileName $testFiringsFileName $inferredNetworkFileName $num_nodes $horizon
+python spike_estimator.py $testIndicesFileName $testFiringsFileName $networkFileName $num_nodes $horizon $dataset
 
 
