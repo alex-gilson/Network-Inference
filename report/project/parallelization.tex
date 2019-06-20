@@ -2,7 +2,7 @@
 \graphicspath{ {project/} }
 \chapter{Improving the speed of NetRate}
 
-NetRate is a powerful algorithm that can make a good estimate of the connections of the nodes in a network. It analyses the spiking time of numerous neurons and constructs cascades that are used in the optimization problem. However, this is a computationally expensive process due to the large number of interactions between each of the neurons in the network. Moreover, as the size of the network increases, the number of cascades that are built grows exponentially. For a network of 10 neurons it only takes 8 minutes to obtain a result using one processor\footnote{The processors used throughout the whole work are the Intel(R) Core(TM) i7-4770 CPU @ 3.4GHz with 12GB of RAM}. However, for each addition of ten neurons to the system, the computation time increases threefold. \\
+NetRate is a powerful algorithm that can make a good estimate of the connections of the nodes in a network. It analyses the spiking times of numerous neurons and constructs cascades that are used in the optimization problem. However, this is a computationally expensive process due to the large number of interactions between each of the neurons in the network. Moreover, as the size of the network increases, the number of cascades that are built grows exponentially. For a network of 10 neurons it only takes 8 minutes to obtain a result using one processor\footnote{The processors used throughout the whole project are the Intel(R) Core(TM) i7-4770 CPU @ 3.4GHz with 12GB of RAM}. However, for each addition of ten neurons to the system, the computation time increases threefold\footnote{This is using the network model and cascade generation method used in \cite{alexandru2018estimating}.}. \\
 
 For this algorithm to eventually become useful in the area of neural signal processing it must be able to scale up and analyse systems of hundreds if not thousands of neurons. Fortunately, NetRate is an inherently parallel problem because it computes an independent optimization problem for each of the nodes of the network. A node \(j\) within a system of \(N\) nodes has \(N-1\) directed connections to all the neurons but itself. This makes the diagonal entries of the adjacency matrix equal to zero. Remember that the transmission rate of a node with itself is null \(\alpha_{j,i} = 0 \text{ if } j=i\). \\ 
 
@@ -73,7 +73,7 @@ As mentioned above, the CVX package cannot be parallelized naturally. Since the 
 
 \subsection{Speed improvement results}
 
-In this section the speed performance of the parallelized NetRate is evaluated. The computation time of NetRate for networks of different sizes, a stimulation period of 4000 ms and using 1, 4 and 8 processors is displayed in figure \ref{fig:speed_netrate}. Due to memory constraints of the computer, only up to 40 nodes were evaluated. As explained above, the more processors used at the time the more memory is required and this made the algorithm stall when using 8 processors in a network of 50 neurons.\\
+In this section the speed performance of the parallelized NetRate is evaluated. The computation time of NetRate for networks of different sizes, a stimulation period of 4000 ms and using 1, 4 and 8 processors is displayed in figure \ref{fig:speed_netrate}. Due to the memory constraints of the computer, only up to 40 nodes were evaluated. As explained above, the more processors used at the time the more memory is required and this made the algorithm stall when using 8 processors in a network of 50 neurons.\\
 
 \begin{figure}
 \centering

@@ -3,13 +3,13 @@
 
 In chapter 4 a neural network model was simulated to try and mimic the behaviour of the real network described in \ref{sec:mouse_dataset}. A new input stimulus and two cascade generation methods were proposed. In this chapter, the suitability of these new methods will be proved by inferring the connectivity of the new simulation model outlined in section \ref{sec:input_stimulus}. Moreover, the effect of the simulation duration and the network size on the performance of the algorithm will be assessed.\\
 
-Once the suitability has been demonstrated, the same algorithm will be used to infer the connectivity of one of the networks from the CRCNS dataset. Further analysis of this structure will be carried out and its main characteristics will be described.\\
+Once the suitability has been demonstrated, the same algorithm will be used to infer the connectivity of one of the networks from the CRCNS dataset. Further analysis of this structure will be carried out and its main characteristics will be described. Finally, the performance metric outlined in chapter 5 will be employed for this network and its results will be examined.\\
 
-In order to evaluate the performance of the algorithm, the four metrics described in \ref{sec:performance_metrics} will be used. However, as outlined in \cite{pranav_report}, the structure of the network can have a great effect on NetRate's ability to estimate it. For this reason, for validating the suitability of the model and changes in performance, an average of 4 experiments will be used as the results displayed in this chapter.
+In order to evaluate the performance of the algorithm, the four metrics described in \ref{sec:performance_metrics} will be used. However, as outlined in \cite{pranav_report}, the structure of the network can have a great effect on NetRate's ability to estimate it. For this reason, when validating the suitability of the model and evaluating the changes in performance for different parameters, an average of 4 experiments will be used as the displayed results.
 
 \section{Proof of the suitability of the algorithm}\label{sec:proof_suitability}
 
-In this section, the suitability of the new network model and the consequent new cascade generation method are proved. In order to do so, a network of 20 neurons is simulated for 1500 seconds and its connectivity is inferred. If this estimation is sufficiently similar to the ground truth, the effectiveness of the algorithm will have been demonstrated. Figure \ref{fig:proof_suitability} shows the averaged results of this analysis.\\
+In this section, the suitability of the new network model and the consequent new cascade generation method are proved. In order to do so, a network of 20 neurons is simulated for 1500 seconds. Then using the cascade generation method of \textit{optimal independence}, NetRate is used to infer the connectivity of the network. If this estimation is sufficiently similar to the ground truth, the effectiveness of the algorithm will have been demonstrated. Figure \ref{fig:proof_suitability} shows the averaged results of this analysis.\\
 
 \begin{figure}
 	\centering
@@ -27,22 +27,24 @@ It is clear that, for the given network model and given the generated cascades, 
 	\label{fig:adjacency_10_neurons}
 \end{figure}
 
-There is no obvious way of comparing the results achieved in this project with the ones obtained in \cite{alexandru2018estimating}. This is because networks are simulated differently and the method for cascade generation needed to be changed. However, the DC input stimulation model gave way to cascades with a greater spiking activity. For this reason, it is difficult for the current model to achieve a higher performance than the one achieved in table \ref{tab:results_pranav}. A big advantage of the new model, however, lies in its ability to infer networks without any external input to the system.
+For the network model of \textit{random spikes}, the use of the method of \textit{maximum cascades} and \textit{optimal independence} makes no difference. This is because spiking trains are very sparse and the distance between cascades is relatively large. However, for different types of networks where there is a sufficiently large recording, the method of \textit{optimal independence} will be used. This will insure the use of high quality cascades that will improve the performance of NetRate.\\
+
+There is no obvious way of comparing the results achieved in this project with the ones obtained in \cite{alexandru2018estimating}. This is because networks are simulated differently and the method for cascade generation needed to be changed. However, the DC input stimulation model gave way to cascades with a greater spiking activity. For this reason, it is difficult for the current model to achieve a higher performance than the one achieved in table \ref{tab:results_pranav}. A big advantage of the new model, however, lies in its ability to infer networks without any external input to the system\footnote{The model used in \cite{alexandru2018estimating} was based on the idea of artificially stimulating neurons with a DC input. In chapter 4, the model of random spikes is referred to as an input, but only as a reference to noise from within the network}.
 
 \section{Effect of the size of the network and simulation time on the performance of NetRate}
 
-It is of interest to analyse how the performance of the algorithm varies with different simulation times. Figure \ref{fig:results_10_neurons} shows the results for this analysis. It can be observed that the larger the simulation time, the better NetRate's ability to infer the network. This finding is to be expected due to the fact that the longer the observation length, the more information is captured. However, this behaviour begins to plateau after 1250 seconds of simulation time.\\
+It is of interest to analyse how the performance of the algorithm varies with different simulation times. Figure \ref{fig:results_25_neurons} shows the results for this analysis. It can be observed that the larger the simulation time, the better NetRate's ability to infer the network. This finding is to be expected due to the fact that the longer the observation length, the more information is captured. However, after 1250 seconds of simulation, it begins to plateau.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{results_10_neurons.pdf}
-	\caption{Network inference performance for a neural network of 10 neurons}
-	\label{fig:results_10_neurons}
+	\includegraphics[width=0.8\linewidth]{results_25_neurons.pdf}
+	\caption{Network inference performance for a neural network of 25 neurons}
+	\label{fig:results_25_neurons}
 \end{figure}
 
 Another variable that could have an effect on the performance of the algorithm is the size of the network. The larger it is, the more connections are possible and the more information is required to infer the edges. Figure \ref{fig:results_network_sizes} shows the results of this study. Surprisingly, the inference ability of the algorithm goes up with the size of the network. In order find the reason for this phenomenon, a closer look needs to be taken to the number of firings for each network size. Spiking activity conveys information about the effect the neuron has on the network and vice-versa. For networks of 5 and 10 neurons and a simulation time of 1000 seconds, these can be seen in tables \ref{tab:spiking_activity_5_neurons} and \ref{tab:spiking_activity_10_neurons}, respectively. When the network size is doubled, the ratio of spikes to neuron goes from 385.4 to 714.7. This is a significant increase which gives rise to this behaviour. With more spikes, more cascades are generated and, in general, the better NetRate will perform.\\
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -53,7 +55,7 @@ Number of spikes & 46 & 67 & 108 & 76 & 1630 \\ \hline
 \label{tab:spiking_activity_5_neurons}
 \end{table}
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -74,11 +76,11 @@ Number of spikes & 21 & 28 & 1642 & 42 & 846 & 1184 & 1065 & 1855 & 445 & 19 \\ 
 
 \section{Inference results}
 
-Once the suitability of the algorithm has been proved, the connectivity of a biological neural network can be inferred. In this section, the 98 neuron network analysed in section \ref{sec:mouse_dataset} and whose evaluation suitability was proved in \ref{sec:proof_suitability} is the one evaluated. Due to the dataset being large enough, the \textit{optimal independence} method of cascade generation is employed. As explained in section \ref{sec:optimal_independence}, this will achieve a higher quality set of cascades.\\
+Once the suitability of the algorithm has been proved, the connectivity of a biological neural network can be inferred. In this section, the 98 neuron network analysed in section \ref{sec:mouse_dataset} is the one evaluated. Due to the dataset being large enough, the \textit{optimal independence} method of cascade generation is employed. As explained in section \ref{sec:optimal_independence}, this will achieve a higher quality set of cascades.\\
 
-When computing NetRate for a large dataset like the one at hand, the main constraint that the researcher has to deal with is memory. This is directly proportional to the number of cascades computed at any given moment. Therefore, if only one processor is being used, the constraint will be set by the node with the maximum number of cascades. For the current dataset and, using the \textit{optimal independence} method of cascade generation, this corresponds to neuron 12 with 7956 cascades. The computation of this node requires an array of size 18Gb but, with the resources at hand, such an operation is not possible. For this reason, the dataset is partitioned into a smaller set containing the first half of the spike recordings. If the system is assumed to be static\footnote{A network is static if no connections are created or erased during the period of observation.} for the whole length of the recording, then only the performance of NetRate could be affected by this split. The resulting maximum number of cascades is reduced to 5168, with the amount of memory required being lowered to 11Gb.\\
+When computing NetRate for a large dataset like the one at hand, the main constraint that the researcher has to deal with is memory. This is directly proportional to the number of cascades computed at any given moment. Therefore, if only one processor is being used, the constraint will be set by the node with the maximum number of cascades. For the current dataset and, using the \textit{optimal independence} method of cascade generation, this corresponds to neuron 12 with 7956 cascades. The computation of this node requires an array of size 18Gb but, with the resources at hand, such an operation is not possible. For this reason, the dataset is partitioned into a smaller set containing the first half of the spike recordings. If for the whole length of the recording the system is assumed to be static i.e., no connections are created or erased during the period of observation, then only the performance of NetRate could be affected by this split. The resulting maximum number of cascades is reduced to 5168, with the amount of memory required being lowered to 11Gb. This is a large memory requirement, however, if only one processor is used at a time, it can be computed.\\
 
-In figure \ref{fig:crcns_4_network}, the resulting inferred network is displayed. Each of the nodes is represented by a circle whose connections are the lines adjacent to them. Since the network is directed, the edges are represented by arrows that indicate the source and target of the connections. Each of the nodes in the figure is coloured according to their degree. Nodes in directed networks can be described by their indegree and outdegree i.e., number of inward and outward connections, respectively. Red nodes have more inward connections and blue nodes more outward connections. If their inward and outward degree is the same, in the figure, these cancel out and their colour becomes purple, just like neurons that have no connections at all. \\
+In figure \ref{fig:crcns_4_network}, the resulting inferred network is displayed. This plot contains the nodes and edges of the inferred network laid out on their x-y coordinates. Each of the nodes is represented by a circle whose connections are the lines adjacent to them. Since the network is directed, the edges are represented by arrows that indicate the source and target of the connections. Each of the nodes in the figure is coloured according to their degree. Nodes in directed networks can be described by their indegree and outdegree i.e., number of inward and outward connections, respectively. Red nodes have more inward connections and blue nodes more outward connections. If their inward and outward degree is the same, in the figure, these cancel out and their colour becomes purple. Neurons that have no connections at all are represented by a peach coloured circle.\\
 
 \begin{figure}
 	\centering

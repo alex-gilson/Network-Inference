@@ -8,7 +8,7 @@ path = 'r/sim_times_2/network_5_nodes/network_stimulation_random_spikes_stimulat
 
 simulation_times = [250, 500, 750, 1000, 1250, 1500]
 seeds = [1,2,3,4]
-network_sizes = [5,10,15,20]
+network_sizes = [5,10,15,20, 25]
 maes = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
 accuracies = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
 precisions = np.zeros((len(network_sizes), len(simulation_times), len(seeds)))
@@ -65,6 +65,7 @@ for n, size in enumerate(network_sizes):
 #     plt.show()
 plt.figure()
 plt.plot(network_sizes, np.mean(np.mean(maes, axis=2), axis=1), label = 'MAE',color='#5a3aa9')
+plt.xticks(network_sizes)
 plt.plot(network_sizes, np.mean(np.mean(accuracies, axis=2), axis=1), label = 'accuracy', color='#00a0ff')
 plt.plot(network_sizes, np.mean(np.mean(precisions, axis=2), axis=1), label = 'precision', color='#8b9dc3')
 plt.plot(network_sizes, np.mean(np.mean(recalls, axis=2), axis=1), label = 'recall', color='#eb104e')
@@ -85,7 +86,7 @@ barlist[2].set_color('#8b9dc3')
 barlist[3].set_color('#eb104e')
 plt.xticks(x, ['MAE', 'Accuracy', 'Precision', 'Recall'])
 plt.title('Average performance of NetRate')
-# plt.grid()
+plt.grid()
 plt.savefig('plot/proof_suitability.pdf', dpi=300)
 plt.show()
 

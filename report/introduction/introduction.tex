@@ -15,7 +15,7 @@ The aim of this project is to improve on the state of the art research of networ
 
 In \cite{alexandru2018estimating}, the size of the studied networks ranged from 10 to 30 nodes with the exception of one experiment with 50 neurons. This was due to the fact that the algorithm is very computationally expensive and it takes a long time for it to provide results. NetRate can be parallelized by nature since it computes an optimization problem for each column in a matrix. However, it makes use of CVX, a package for specifying and solving convex programs \cite{cvx,gb08}. Until this date, CVX cannot be naturally parallelized from within MATLAB. \\
 
-In this project a novel approach is implemented where the algorithm can be parallelized and the size of the network that can be computed increased. Instead of attempting to parallelize CVX from within MATLAB, several MATLAB instances are run at the same time from the terminal and thus achieving parallelism. The aim of the project is, thus, to explain this approach and to measure accurately how much faster the algorithm is with different sizes of networks. 
+In this project a novel approach is implemented where the algorithm can be parallelized and the size of the network that can be computed increased. Instead of attempting to parallelize CVX from within MATLAB, several MATLAB instances are run at the same time from the terminal and thus achieving parallelism. The aim of the project is, therefore, to explain this approach and to measure accurately how much faster the algorithm is with different sizes of networks. 
 
 \subsection{Inferring the connectivity of a real dataset}
 
